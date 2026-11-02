@@ -36,6 +36,7 @@ class Handler(http.server.SimpleHTTPRequestHandler):
             ".css": "text/css; charset=utf-8",
             ".js": "application/javascript; charset=utf-8",
             ".svg": "image/svg+xml",
+            ".pdf": "application/pdf",
         }
     )
 
@@ -48,11 +49,24 @@ class Handler(http.server.SimpleHTTPRequestHandler):
         pass
 
 
-socketserver.TCPServer.allow_reuse_address = True
+class Server(socketserver.ThreadingTCPServer):
+    """Threaded, so one slow request cannot block the page's other files."""
+
+    allow_reuse_address = True
+    daemon_threads = True
+
+    def handle_error(self, request, client_address):
+        # A browser closing a tab or reloading mid-download is normal, not an
+        # error worth a traceback.
+        exc = sys.exc_info()[1]
+        if isinstance(exc, (BrokenPipeError, ConnectionResetError, ConnectionAbortedError)):
+            return
+        super().handle_error(request, client_address)
+
 
 for attempt in range(10):
     try:
-        httpd = socketserver.TCPServer(("", port), Handler)
+        httpd = Server(("", port), Handler)
         break
     except OSError:
         port += 1
