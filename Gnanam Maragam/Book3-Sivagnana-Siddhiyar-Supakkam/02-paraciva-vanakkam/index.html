@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+<html lang="ta">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>பரசிவ வணக்கம் | சிவஞான சித்தியார் சுபக்கம்</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Tamil:wght@400;500;600;700&family=Noto+Serif+Tamil:wght@600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#faf7f2;--bg-deep:#f3ede3;--surface:#fffdf9;
+  --ink:#2b2622;--ink-soft:#5c534a;--ink-dim:#8a7f73;
+  --line:rgba(43,38,34,0.13);--line-strong:rgba(43,38,34,0.28);
+  --terracotta:#b4441f;--terracotta-dim:#f6e6de;
+  --sage:#4f6b1e;--sage-dim:#eaf0dd;
+  --teal:#1b5a68;--teal-dim:#e0ecef;
+  --gold:#a9761a;--gold-dim:#f7eed9;
+  --font-body:'Noto Sans Tamil','Latha',system-ui,sans-serif;
+  --font-head:'Noto Serif Tamil','Noto Sans Tamil',serif;
+  --font-mono:'IBM Plex Mono',monospace;
+}
+*{box-sizing:border-box;}
+body{margin:0;
+  background:radial-gradient(1200px 600px at 12% -8%, rgba(180,68,31,0.07), transparent 60%),
+             radial-gradient(900px 500px at 92% 4%, rgba(27,90,104,0.07), transparent 60%),
+             var(--bg);
+  color:var(--ink);font-family:var(--font-body);font-size:16px;line-height:1.65;
+  -webkit-font-smoothing:antialiased;}
+.wrap{max-width:1240px;margin:0 auto;padding:52px 32px 92px;}
+.eyebrow{font-family:var(--font-mono);font-size:11.5px;letter-spacing:.16em;text-transform:uppercase;
+  color:var(--terracotta);display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin-bottom:20px;}
+.eyebrow::before{content:"";width:26px;height:1px;background:var(--terracotta);display:block;}
+h1{font-family:var(--font-head);font-size:clamp(34px,4.8vw,56px);line-height:1.16;margin:0 0 14px;
+  font-weight:700;letter-spacing:-0.01em;}
+.sub{font-size:16.5px;color:var(--ink-soft);max-width:70ch;margin:0;}
+.meta{display:flex;flex-wrap:wrap;gap:8px;margin-top:26px;}
+.chip{font-family:var(--font-mono);font-size:11.5px;letter-spacing:.04em;padding:5px 11px;
+  border:1px solid var(--line-strong);border-radius:999px;color:var(--ink-soft);background:rgba(255,255,255,.5);}
+.verse{margin:42px 0 0;padding:34px 38px 30px;background:var(--surface);border:1px solid var(--line);
+  border-left:3px solid var(--gold);border-radius:4px;
+  box-shadow:0 1px 2px rgba(43,38,34,.04),0 12px 32px -22px rgba(43,38,34,.4);}
+.verse .tag{font-family:var(--font-mono);font-size:11px;letter-spacing:.16em;text-transform:uppercase;
+  color:var(--gold);margin-bottom:16px;}
+.verse p{font-family:var(--font-head);font-size:clamp(16px,1.95vw,20.5px);line-height:2.05;margin:0;}
+.verse .gloss{font-family:var(--font-body);font-size:14.5px;color:var(--ink-soft);margin-top:18px;
+  padding-top:16px;border-top:1px dashed var(--line);line-height:1.8;}
+.sec{margin-top:72px;}
+.sec-head{display:flex;align-items:baseline;gap:14px;margin-bottom:8px;}
+.sec-num{font-family:var(--font-mono);font-size:12px;color:var(--terracotta);letter-spacing:.1em;}
+h2{font-family:var(--font-head);font-size:clamp(23px,2.8vw,31px);margin:0;font-weight:700;letter-spacing:-0.01em;}
+.sec-note{color:var(--ink-soft);font-size:15px;margin:0 0 32px;max-width:78ch;}
+.map{margin-top:8px;}
+.rootwrap{display:flex;flex-direction:column;align-items:center;}
+.root{background:var(--ink);color:#faf7f2;padding:20px 40px 18px;border-radius:6px;text-align:center;
+  box-shadow:0 14px 34px -18px rgba(43,38,34,.65);max-width:760px;}
+.root .r-main{font-family:var(--font-head);font-size:clamp(21px,2.5vw,29px);font-weight:700;line-height:1.3;}
+.root .r-sub{font-family:var(--font-mono);font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;
+  color:rgba(250,247,242,.62);margin-top:7px;}
+.root .r-sub2{font-size:13.5px;color:rgba(250,247,242,.82);margin-top:9px;}
+.stem{width:2px;height:34px;background:var(--line-strong);}
+.bus{height:2px;background:var(--line-strong);margin:0 16.66%;}
+.cols{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:26px;align-items:start;}
+.branch{position:relative;padding-top:32px;}
+.branch::before{content:"";position:absolute;top:0;left:50%;width:2px;height:32px;
+  background:var(--line-strong);transform:translateX(-1px);}
+.bhead{border-radius:6px;padding:18px 20px 16px;border:1px solid;position:relative;}
+.bhead .b-name{font-family:var(--font-head);font-size:21px;font-weight:700;line-height:1.3;}
+.bhead .b-eq{font-family:var(--font-mono);font-size:10.5px;letter-spacing:.09em;text-transform:uppercase;
+  margin-top:6px;opacity:.85;}
+.bhead .b-desc{font-size:13.6px;line-height:1.62;margin-top:9px;color:var(--ink-soft);}
+.bhead .b-count{position:absolute;top:-11px;right:14px;font-family:var(--font-mono);font-size:10.5px;
+  letter-spacing:.1em;padding:2px 9px;border-radius:999px;background:var(--surface);
+  border:1px solid var(--line-strong);color:var(--ink-dim);}
+.b1 .bhead{background:var(--terracotta-dim);border-color:rgba(180,68,31,.28);}
+.b1 .b-name,.b1 .b-eq{color:var(--terracotta);}
+.b2 .bhead{background:var(--sage-dim);border-color:rgba(79,107,30,.3);}
+.b2 .b-name,.b2 .b-eq{color:var(--sage);}
+.b3 .bhead{background:var(--teal-dim);border-color:rgba(27,90,104,.3);}
+.b3 .b-name,.b3 .b-eq{color:var(--teal);}
+.children{margin:20px 0 0 14px;padding-left:18px;border-left:1px solid var(--line-strong);}
+.b1 .children{border-left-color:rgba(180,68,31,.35);}
+.b2 .children{border-left-color:rgba(79,107,30,.38);}
+.b3 .children{border-left-color:rgba(27,90,104,.35);}
+.node{position:relative;margin-bottom:13px;}
+.node:last-child{margin-bottom:0;}
+.node::before{content:"";position:absolute;left:-18px;top:20px;width:16px;height:1px;background:var(--line-strong);}
+.b1 .node::before{background:rgba(180,68,31,.35);}
+.b2 .node::before{background:rgba(79,107,30,.38);}
+.b3 .node::before{background:rgba(27,90,104,.35);}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:5px;padding:13px 16px 14px;
+  transition:border-color .18s ease,transform .18s ease,box-shadow .18s ease;}
+.card:hover{border-color:var(--line-strong);transform:translateY(-1px);
+  box-shadow:0 10px 22px -18px rgba(43,38,34,.6);}
+.card .n-t{font-family:var(--font-head);font-size:16px;font-weight:700;line-height:1.42;}
+.card .n-s{font-family:var(--font-mono);font-size:10.5px;letter-spacing:.05em;color:var(--ink-dim);margin-top:3px;}
+.card .n-d{font-size:13.5px;line-height:1.62;color:var(--ink-soft);margin-top:8px;}
+.card .n-x{font-size:12.8px;line-height:1.6;color:var(--ink-dim);margin-top:9px;padding-top:9px;
+  border-top:1px dotted var(--line);}
+.card .n-x b{color:var(--ink-soft);font-weight:600;}
+.b1 .n-t{color:var(--terracotta);}
+.b2 .n-t{color:var(--sage);}
+.b3 .n-t{color:var(--teal);}
+.flow{margin-top:32px;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));
+  border:1px solid var(--line);border-radius:6px;overflow:hidden;background:var(--surface);}
+.fcell{padding:18px 22px;border-right:1px solid var(--line);}
+.fcell:last-child{border-right:none;}
+.fcell .f-top{font-family:var(--font-mono);font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;
+  color:var(--ink-dim);margin-bottom:8px;}
+.fcell .f-main{font-family:var(--font-head);font-size:17px;font-weight:700;}
+.fcell .f-note{font-size:13.2px;line-height:1.6;color:var(--ink-soft);margin-top:6px;}
+.f1 .f-main{color:var(--terracotta);}
+.f2 .f-main{color:var(--sage);}
+.f3 .f-main{color:var(--teal);}
+.panels{display:grid;grid-template-columns:1.1fr 1fr;gap:26px;margin-top:32px;align-items:start;}
+.panel{background:var(--surface);border:1px solid var(--line);border-radius:6px;padding:26px 28px 24px;}
+.panel h3{font-family:var(--font-head);font-size:19px;margin:0 0 4px;font-weight:700;}
+.panel .p-note{font-size:13.4px;color:var(--ink-dim);margin:0 0 18px;}
+table{width:100%;border-collapse:collapse;font-size:14px;}
+th{text-align:left;font-family:var(--font-mono);font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;
+  color:var(--ink-dim);font-weight:500;padding:0 0 9px;border-bottom:1px solid var(--line-strong);}
+td{padding:9px 0;border-bottom:1px solid var(--line);vertical-align:top;line-height:1.55;}
+tr:last-child td{border-bottom:none;}
+td.term{font-family:var(--font-head);font-weight:700;color:var(--ink);width:36%;font-size:14px;}
+td.mean{color:var(--ink-soft);}
+ol.kuripu{list-style:none;counter-reset:k;margin:0;padding:0;}
+ol.kuripu li{counter-increment:k;position:relative;padding-left:34px;font-size:14px;line-height:1.68;
+  color:var(--ink-soft);margin-bottom:14px;}
+ol.kuripu li:last-child{margin-bottom:0;}
+ol.kuripu li::before{content:counter(k);position:absolute;left:0;top:1px;font-family:var(--font-mono);
+  font-size:11.5px;width:22px;height:22px;border-radius:50%;display:flex;align-items:center;
+  justify-content:center;background:var(--bg-deep);border:1px solid var(--line-strong);color:var(--ink-dim);}
+ol.kuripu li b{color:var(--ink);font-weight:600;}
+.insight{margin-top:32px;padding:34px 38px 32px;background:linear-gradient(180deg,#fffdf9,#fbf5ea);
+  border:1px solid var(--line);border-top:3px solid var(--terracotta);border-radius:6px;}
+.insight .i-tag{font-family:var(--font-mono);font-size:10.5px;letter-spacing:.16em;text-transform:uppercase;
+  color:var(--terracotta);margin-bottom:14px;}
+.insight .i-q{font-family:var(--font-head);font-size:clamp(20px,2.5vw,27px);line-height:1.45;margin:0 0 18px;
+  font-weight:700;}
+.insight p{font-size:15px;line-height:1.82;color:var(--ink-soft);margin:0 0 14px;max-width:82ch;}
+.insight p:last-child{margin-bottom:0;}
+.insight strong{color:var(--ink);font-weight:600;}
+footer{margin-top:64px;padding-top:22px;border-top:1px solid var(--line);font-size:12.5px;
+  color:var(--ink-dim);line-height:1.8;}
+footer b{color:var(--ink-soft);font-weight:600;}
+@media (max-width:960px){
+  .wrap{padding:38px 20px 66px;}
+  .cols{grid-template-columns:1fr;gap:18px;}
+  .bus,.stem{display:none;}
+  .branch{padding-top:0;}
+  .branch::before{display:none;}
+  .bhead .b-count{position:static;display:inline-block;margin-top:10px;}
+  .flow,.panels{grid-template-columns:1fr;}
+  .fcell{border-right:none;border-bottom:1px solid var(--line);}
+  .fcell:last-child{border-bottom:none;}
+  .verse,.insight{padding:24px 22px;}
+}
+@media (prefers-color-scheme:dark){
+  :root{--bg:#17140f;--bg-deep:#221d16;--surface:#1e1a15;--ink:#f2ece1;--ink-soft:#c3b8a8;
+    --ink-dim:#94897a;--line:rgba(242,236,225,0.12);--line-strong:rgba(242,236,225,0.26);
+    --terracotta:#e0784e;--terracotta-dim:#2a1a12;--sage:#a3c260;--sage-dim:#1d2314;
+    --teal:#6cb3c4;--teal-dim:#122226;--gold:#d9a94a;}
+  .root{background:#2a231a;color:#f7f1e6;}
+  .insight{background:linear-gradient(180deg,#1e1a15,#241d15);}
+  .chip{background:rgba(255,255,255,.04);}
+}
+@media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important;}}
+</style>
+<style>
+.sd-back{display:inline-block;margin:0 0 1.3rem;font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.1em;color:#8a7f73;text-decoration:none;border:1px solid rgba(43,38,34,.28);border-radius:6px;padding:5px 11px;background:rgba(255,253,249,.9)}
+.sd-back:hover{color:#b4441f;border-color:#b4441f;text-decoration:none}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <a class="sd-back" href="../index.html">← பாடல்களின் பட்டியல்</a>
+    <div class="eyebrow">சிவஞான சித்தியார் சுபக்கம் · பாயிரம் · பாடல் 2</div>
+  <h1>பரசிவ வணக்கம்</h1>
+  <p class="sub">நான்கு நிலைகளாகப் பிரிந்த இருபத்துநான்கு சமயங்களையும் ஒரு படிக்கட்டாக நிறுத்தி, அவற்றிற்கெல்லாம் பொருளாயும் அவற்றின் குறிகளுக்கு அப்பாற்பட்டவனாயும் நிற்கும் சிவனை வணங்குகிறார். இது வாதம் அல்ல — படிநிலை.</p>
+  <div class="meta">
+    <span class="chip">பாடல் 2 / 11</span>
+    <span class="chip">பாயிரம்</span>
+    <span class="chip">24 சமயங்கள்</span>
+    <span class="chip">உரைக் குறிப்பு 7</span>
+    <span class="chip">பக். 3 – 8</span>
+  </div>
+  <div class="verse">
+    <div class="tag">மூலம் — பாடல் 2</div>
+    <p>
+      அறுவகைச் சமயத்தோர்க்கு அவ்வவர் பொருளாய், வேறும்<br>
+      குறியது உடைத்தாய், வேதாகமங்களின் குறியிறந்து,<br>
+      அங்கு அறிவினில் அருளால் மன்னி, அம்மையோடு அப்பன் ஆகி,<br>
+      செறிவொழியாது நின்ற சிவன் அடி சென்னி வைப்பாம்.
+    </p>
+    <div class="gloss">புறப்புறம், புறம், அகப்புறம், அகம் என்னும் நான்கு வகுப்பில் ஆறு ஆறாக நிற்கும் இருபத்துநான்கு சமயத்தாருக்கும், அவரவர் கொண்ட முதற்பொருளாகவும்; சித்தாந்த சைவர் கூறும் சொரூப இலக்கணத்தையுடையவனாகவும்; வேதாகமங்களின் கருத்துக்கு எட்டாதவனாகவும்; அறிவுக்கு அறிவாக அருளால் பொருந்தி நிற்பவனாகவும்; சத்தியும் சிவமும் ஆகி உயிர்களுக்கு வியாபக அறிவைப் பயப்பிப்பவனாகவும்; எங்கும் செறிந்து நிற்கும் சிவபெருமானின் திருவடியைச் சிரசில் சூடிக்கொள்வோம்.</div>
+  </div>
+  <div class="sec">
+    <div class="sec-head">
+      <span class="sec-num">01</span>
+      <h2>பாடலின் பிரிவு மரம்</h2>
+    </div>
+    <p class="sec-note">முதல் கிளை சமயங்களின் பட்டியல்; இரண்டாவது, சிவன் அந்தச் சமயங்களுக்கு எப்படி நிற்கிறான் என்பது; மூன்றாவது, சித்தாந்த சைவம் அவனை எப்படிக் காண்கிறது என்பது.</p>
+    <div class="map">
+      <div class="rootwrap">
+        <div class="root">
+          <div class="r-main">பரசிவ வணக்கம்</div>
+          <div class="r-sub">பாடல் 2 · பாயிரம்</div>
+          <div class="r-sub2">எல்லாச் சமயங்களுக்கும் பொருளாய், எல்லாவற்றிற்கும் அப்பாற்பட்டவனாய் நிற்கும் சிவன்</div>
+        </div>
+        <div class="stem"></div>
+        <div class="bus"></div>
+      </div>
+
+      <div class="cols">
+        <div class="branch b1">
+          <div class="bhead">
+            <span class="b-count">1 / 3</span>
+            <div class="b-name">நான்கு வகுப்பு · இருபத்துநான்கு சமயம்</div>
+            <div class="b-eq">புறப்புறம் · புறம் · அகப்புறம் · அகம்</div>
+            <div class="b-desc">ஒவ்வொரு வகுப்பிலும் ஆறு சமயம். சிவனிடமிருந்து தூரமானவற்றிலிருந்து நெருக்கமானவை நோக்கி வரிசை ஏறுகிறது.</div>
+          </div>
+          <div class="children">
+            <div class="node"><div class="card">
+              <div class="n-t">புறப்புறம்</div>
+              <div class="n-s">வெளியில் மிகத் தொலைவு</div>
+              <div class="n-d">உலோகாயதர், மாத்தியமிகர், யோகாசாரர், சௌத்திராந்திகர், வைபாடிகர், ஆருகதர் — இவர்கள் ஆறு பேர்.</div>
+              <div class="n-x"><b>உள்ளடக்கம்:</b> ஒரு பொருள்முதல் வாதியும், நால்வகைப் பெளத்தரும், ஆருகதரும்.</div>
+            </div></div>
+
+            <div class="node"><div class="card">
+              <div class="n-t">புறம்</div>
+              <div class="n-s">வெளிப்புறம்</div>
+              <div class="n-d">தார்க்கிகர், மீமாஞ்சகர், ஏகான்மவாதிகள், சாங்கியர், யோகமதத்தினர், பாஞ்சராத்திரிகள்.</div>
+              <div class="n-x"><b>இயல்பு:</b> தத்துவ ஆராய்ச்சி செய்யும் ஆறு மதங்கள்.</div>
+            </div></div>
+
+            <div class="node"><div class="card">
+              <div class="n-t">அகப்புறம்</div>
+              <div class="n-s">உள்ளே நுழைந்த வெளி</div>
+              <div class="n-d">பாசுபதர், மாவிரதர், காபாலர், வாமமதத்தினர், வைரவமதத்தினர், ஐக்கியவாத சைவர்.</div>
+              <div class="n-x"><b>குறிப்பு:</b> ஐக்கியவாத சைவர் ஆணவமலத்தை மறுப்பதால் இங்கே வைக்கப்படுகின்றனர்.</div>
+            </div></div>
+
+            <div class="node"><div class="card">
+              <div class="n-t">அகம்</div>
+              <div class="n-s">உள்ளே — சைவச் சமயங்கள்</div>
+              <div class="n-d">பாடாணவாதர், பேதவாதர், சிவசமவாதர், சிவசங்கிராந்தவாதர், ஈசுவராவிகாரவாதர், சிவாத்துவிதர்.</div>
+              <div class="n-x"><b>இவர்களுள்</b> சிவாத்துவித சைவமே சைவ சித்தாந்தம்.</div>
+            </div></div>
+
+          </div>
+        </div>
+
+        <div class="branch b2">
+          <div class="bhead">
+            <span class="b-count">2 / 3</span>
+            <div class="b-name">சிவன் எப்படி நிற்கிறான்</div>
+            <div class="b-eq">பாடலின் நடு அடிகள்</div>
+            <div class="b-desc">பாடலின் ஆறு சொற்றொடர்கள் — ஒவ்வொன்றும் சிவனின் ஒரு நிலையைச் சொல்கிறது.</div>
+          </div>
+          <div class="children">
+            <div class="node"><div class="card">
+              <div class="n-t">அவ்வவர் பொருளாய்</div>
+              <div class="n-s">எல்லாச் சமயங்களுக்கும் பொருள்</div>
+              <div class="n-d">ஒவ்வொரு சமயமும் தான் கொண்ட முதற்பொருளாகக் கூறுவது வேறு வேறு; ஆனால் அனைத்திற்கும் பொருளாய் நிற்பவன் அவனே.</div>
+            </div></div>
+
+            <div class="node"><div class="card">
+              <div class="n-t">வேறுங்குறியது உடைத்தாய்</div>
+              <div class="n-s">சித்தாந்தத்திற்குச் சொரூபி</div>
+              <div class="n-d">சித்தாந்த சைவருக்கோ சச்சிதானந்த வடிவினனாகவும், அவர்கள் கூறும் சொரூப இலக்கணத்தையுடையவனாகவும் நிற்கிறான்.</div>
+              <div class="n-x"><b>சொரூபசிவம்</b> — அவனது சொந்த வடிவம்; மற்ற சமயங்கள் கூறுவது அவனது குறி மட்டுமே.</div>
+            </div></div>
+
+            <div class="node"><div class="card">
+              <div class="n-t">வேதாகமங்களின் குறியிறந்து</div>
+              <div class="n-s">சொல்லுக்கு எட்டாதவன்</div>
+              <div class="n-d">வேதம் ஓதுவதால் பரஞானம் உண்டாகும்; அதனால் சிவன் அறியப்படான். சிவாகமம் ஓதுவதால் அபரஞானம் உண்டாகும்; அதனாலும் அவன் அறியப்படான்.</div>
+              <div class="n-x"><b>ஏன்:</b> பரஞானம் ஒன்றிலேயே அவன் அனுபவமாய் அறியப்படுவதால்.</div>
+            </div></div>
+
+            <div class="node"><div class="card">
+              <div class="n-t">அறிவினில் அருளால் மன்னி</div>
+              <div class="n-s">உயிருக்கு உயிராய்</div>
+              <div class="n-d">ஆன்ம அறிவின் கூறு இறைவனது திருவருளோடு பொருந்தி, உயிருக்குயிராக நிற்றல்.</div>
+            </div></div>
+
+            <div class="node"><div class="card">
+              <div class="n-t">அம்மையோடு அப்பன் ஆகி</div>
+              <div class="n-s">சத்தியும் சிவமும்</div>
+              <div class="n-d">அவ்வறிவின் கண் வியாபக அறிவைப் பயப்பிக்கும் சத்தியும் சிவமும் ஆகி, ஆன்மாவின் ஏகதேச அறிவை நீக்கி வியாபக அறிவை உண்டாக்குதல்.</div>
+            </div></div>
+
+            <div class="node"><div class="card">
+              <div class="n-t">செறிவொழியாது நின்ற</div>
+              <div class="n-s">எங்கும் நிறைந்தவன்</div>
+              <div class="n-d">எங்கும் செறிந்து வியாபகமாகி நிற்றல் — ஒரு இடத்திலும் விட்டு விலகாதவன்.</div>
+            </div></div>
+
+          </div>
+        </div>
+
+        <div class="branch b3">
+          <div class="bhead">
+            <span class="b-count">3 / 3</span>
+            <div class="b-name">சித்தாந்தம் அவனைக் காணும் விதம்</div>
+            <div class="b-eq">சொரூபம் · ஐந்தொழில் · மூன்று தடங்கள்</div>
+            <div class="b-desc">மற்ற சமயங்கள் அவனது குறியைப் பிடித்தவை; சித்தாந்தம் அவனது சொரூபத்தைப் பிடிக்கிறது.</div>
+          </div>
+          <div class="children">
+            <div class="node"><div class="card">
+              <div class="n-t">சச்சிதானந்த வடிவு</div>
+              <div class="n-s">முதற்பொருள்</div>
+              <div class="n-d">சொரூபசிவமே முதற்பொருள் — அறிவும் இன்பமும் உடைய வடிவினன்.</div>
+            </div></div>
+
+            <div class="node"><div class="card">
+              <div class="n-t">ஐந்தொழில்</div>
+              <div class="n-s">ஆன்மாக்களின் பொருட்டு</div>
+              <div class="n-d">அவன் ஆன்மாக்களுக்காகவே பஞ்சகிருத்தியங்களைச் செய்கிறான்.</div>
+            </div></div>
+
+            <div class="node"><div class="card">
+              <div class="n-t">மூன்று தடங்கள்</div>
+              <div class="n-s">இலயம் · போகம் · அதிகாரம்</div>
+              <div class="n-d">ஐந்தொழிலைச் செய்ய அவன் இலயம், போகம், அதிகாரம் என்னும் மூன்று தடத்த வடிவங்களைக் கொள்கிறான்.</div>
+              <div class="n-x"><b>தடம்</b> — நிலை, படிநிலை. அருளுக்கு ஏற்ப வடிவம் மாறுகிறது, அவன் மாறுவதில்லை.</div>
+            </div></div>
+
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <div class="flow">
+      <div class="fcell f1">
+        <div class="f-top">அடி 1</div>
+        <div class="f-main">சமயங்களின் பட்டியல்</div>
+        <div class="f-note">24 சமயம், நான்கு நிலைகள்</div>
+      </div>
+      <div class="fcell f2">
+        <div class="f-top">அடி 2 – 3</div>
+        <div class="f-main">அவற்றிற்கு அப்பாற்பட்டவன்</div>
+        <div class="f-note">வேதாகமம் கடந்தவன், அருளால் அறியப்படுபவன்</div>
+      </div>
+      <div class="fcell f3">
+        <div class="f-top">அடி 3 – 4</div>
+        <div class="f-main">அம்மையோடப்பன்</div>
+        <div class="f-note">சத்தியும் சிவமும் ஆகி வணங்கப்படுதல்</div>
+      </div>
+    </div>
+  </div>
+  <div class="sec">
+    <div class="sec-head">
+      <span class="sec-num">02</span>
+      <h2>இருபத்துநான்கு சமயங்களும் அவற்றின் முதற்பொருளும்</h2>
+    </div>
+    <p class="sec-note">உரையாசிரியர் ஒவ்வொரு சமயத்தின் முதற்பொருளையும் சுருக்கமாகப் பதிவு செய்கிறார். இந்தப் பட்டியலே பாடலின் முதல் அடிக்கு விளக்கம்.</p>
+    <div class="panels">
+      <div class="panel">
+        <h3>சமயமும் முதற்பொருளும்</h3>
+        <p class="p-note">இடது புறம் சமயம், வலது புறம் அது கொள்ளும் முதற்பொருள்.</p>
+        <table>
+          <thead><tr><th>சமயம்</th><th>கொள்ளும் முதற்பொருள்</th></tr></thead>
+          <tbody>
+            <tr><td class="term">உலோகாயதர்</td><td class="mean">பிருதிவி, அப்பு, தேயு, வாயு — நான்கு பூதங்கள் மட்டுமே, நித்தம்</td></tr>
+            <tr><td class="term">நால்வகைப் பெளத்தர்</td><td class="mean">புத்தன்; ஐந்து கந்தங்கள் கூடி உணர்வு; முத்திசொரூபம்</td></tr>
+            <tr><td class="term">ஆருகதர்</td><td class="mean">அருகன்; எண்குணன்; சம்மியதாபாவம் = அழியாமை</td></tr>
+            <tr><td class="term">தார்க்கிகர்</td><td class="mean">ஒன்பது திரவியம்; நான்கு பரமாணு; பரமான்மா</td></tr>
+            <tr><td class="term">மீமாஞ்சகர்</td><td class="mean">வேதமே பிரமம், நித்தம்</td></tr>
+            <tr><td class="term">ஏகான்மவாதிகள்</td><td class="mean">பிரமம் ஒன்றே மெய்ப்பொருள் — பாற்கரியர், மாயாவாதி, சத்தப்பிரமவாதி, கிரீடாப்பிரமவாதி</td></tr>
+            <tr><td class="term">சாங்கியர்</td><td class="mean">இருபத்தைந்தாம் தத்துவம் புருடன்; ஆன்மாவிற்கு வேறான ஈசுரன் இல்லை</td></tr>
+            <tr><td class="term">யோகமதத்தினர்</td><td class="mean">இருபத்தாறாம் தத்துவம் ஈசுரன்; அதிட்டித்து நிற்பவன்</td></tr>
+            <tr><td class="term">பாஞ்சராத்திரிகள்</td><td class="mean">வாசுதேவன்; நான்கு வியூகங்கள்</td></tr>
+            <tr><td class="term">பாசுபதர்</td><td class="mean">திருநீறும் சடையும் தரித்த சிவன்</td></tr>
+            <tr><td class="term">மாவிரதர்</td><td class="mean">என்புமாலை தரித்த சிவன்</td></tr>
+            <tr><td class="term">காபாலர்</td><td class="mean">கபாலம் உடைய சிவன்</td></tr>
+            <tr><td class="term">வாமமதத்தினர்</td><td class="mean">அக்கினியும் உபவீதமும் தரித்த சிவன்</td></tr>
+            <tr><td class="term">வைரவமதத்தினர்</td><td class="mean">தமருகமும் சிலம்பும் தரித்த சிவன்</td></tr>
+            <tr><td class="term">ஐக்கியவாத சைவர்</td><td class="mean">பதி — சிவன், சதாசிவன், மகேசுவரன்; அருவம், அருவுருவம், உருவம்</td></tr>
+            <tr><td class="term">அகச் சமயத்தார் அறுவர்</td><td class="mean">அதே மூன்று பெயரும் மூன்று வடிவும்; ஆனால் ஆணவமலம் உண்டு என்பர்</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="panel">
+        <h3>உரையின் ஏழு குறிப்புகள்</h3>
+        <p class="p-note">பாடலின் ஒவ்வொரு சொற்றொடருக்கும் தனி விளக்கம்.</p>
+        <ol class="kuripu">
+          <li><b>அறுவகைச் சமயம்.</b> நான்கு வகுப்பு × ஆறு = இருபத்துநான்கு.</li>
+          <li><b>அவ்வவர் பொருளாய்.</b> ஒவ்வொரு சமயத்தின் முதற்பொருளும் அவனே.</li>
+          <li><b>வேறுங்குறியது உடைத்தாய்.</b> சித்தாந்தத்திற்குச் சச்சிதானந்த சொரூபி; ஐந்தொழிலுக்கு மூன்று தடங்கள்.</li>
+          <li><b>வேதாகமங்களின் குறியிறந்து.</b> வேதம் → பரஞானம்; சிவாகமம் → அபரஞானம்; இரண்டாலும் அவன் அறியப்படான். குறி = கருத்து.</li>
+          <li><b>அறிவினில் அருளால் மன்னி.</b> ஆன்ம அறிவின் கூறு திருவருளோடு பொருந்தி உயிர்க்குயிராய் நிற்றல்.</li>
+          <li><b>அங்கு அம்மையோடப்பன் ஆகி.</b> சத்தியும் சிவமும் ஏகதேச அறிவை நீக்கி வியாபக அறிவைத் தருதல்.</li>
+          <li><b>சிவனடி.</b> சிவனது ஞானக்கிரியா சொரூபம், சத்தி சொரூபம்.</li>
+        </ol>
+      </div>
+    </div>
+  </div>
+  <div class="insight">
+    <div class="i-tag">என் புரிதல்</div>
+    <div class="i-q">இது சமய வாதம் அல்ல — சமயங்களின் படிக்கட்டு</div>
+    <p>பாடல் முதலில் ஒரு பட்டியல் போலத் தெரிகிறது. ஆனால் வரிசைமுறையே செய்தி: <strong>புறப்புறம்</strong> என்பது சிவனிடமிருந்து மிகத் தொலைவு — பொருளையே முதற்பொருளாகக் கொள்ளும் உலோகாயதரும், புத்தனையும் அருகனையும் கொள்ளும் பெளத்தரும் அருகதரும் இங்கே. <strong>புறம்</strong> என்பது தத்துவ ஆராய்ச்சி — தார்க்கிகர் முதல் பாஞ்சராத்திரிகள் வரை. <strong>அகப்புறம்</strong> என்பது சிவனைப் பெயரால் கொள்ளும் ஆனால் மலத்தை முழுதும் ஏற்காத ஆறு சைவப் பிரிவுகள். <strong>அகம்</strong> என்பது சைவ சமயங்கள், அவற்றுள் சிவாத்துவிதமே சித்தாந்தம்.</p>
+    <p>இரண்டாவது, மிகத் துணிச்சலான கூற்று: <strong>அவ்வவர் பொருளாய்</strong>. பொருளையோ புத்தனையோ வேதத்தையோ முதற்பொருளாகக் கூறும் சமயங்களுக்கும் அந்த முதற்பொருளாக நிற்பவன் சிவனே என்று சொல்கிறார். அதாவது மற்ற சமயங்கள் தவறானவை என்று தள்ளிவிடாமல், அவை பிடித்தது அவனது குறியை மட்டுமே என்று வைக்கிறார். புறம் நோக்கி இது வாதம் அல்ல; உள்ளே நோக்கி இது ஒரு படிநிலை.</p>
+    <p>மூன்றாவது, <strong>வேதாகமங்களின் குறியிறந்து</strong>. வேதத்தால் பரஞானம், சிவாகமத்தால் அபரஞானம் — இரண்டும் அவனை முழுதும் அடையா. அப்படியானால் அவன் அறியப்படுவது எப்படி? <strong>அறிவினில் அருளால் மன்னி</strong> என்பதே பதில்: அறிவின் உள்ளே அருளாக அவன் நிற்கிறான். அதனால்தான் அடுத்த சொல் <strong>அம்மையோடு அப்பன்</strong> — சத்தியும் சிவமும் பிரியாது நின்று ஆன்மாவின் ஏகதேச அறிவை நீக்கி வியாபக அறிவைத் தருகிறான். வணக்கம் இங்கே தகுதியின் அடையாளமாக மாறுகிறது.</p>
+  </div>
+  <footer><b>மூலம்:</b> சிவஞான சித்தியார் சுபக்கம் — பாயிரம், பாடல் 2, "பரசிவ வணக்கம்", உரை: திரு. மு. திருவிளங்கம் (யாழ்ப்பாணம் கூட்டுறவுத் தமிழ் நூற்பதிப்பு விற்பனைக் கழகம், 1971), பக். 3–8.<br><b>குறிப்பு:</b> இருபத்துநான்கு சமயங்களின் பட்டியலும் முதற்பொருள் விளக்கங்களும் அப்பதிப்பின் உரையின்படி சுருக்கப்பட்டவை.</footer>
+</div>
+</body>
+</html>
