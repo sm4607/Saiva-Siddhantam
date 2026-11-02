@@ -1,0 +1,483 @@
+<!DOCTYPE html>
+<html lang="ta">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>பாடல் 1 — விநாயக வணக்கம் | சிவஞான சித்தியார் சுபக்கம்</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Tamil:wght@400;500;600;700&family=Noto+Serif+Tamil:wght@600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#faf7f2;
+  --bg-deep:#f3ede3;
+  --surface:#fffdf9;
+  --ink:#2b2622;
+  --ink-soft:#5c534a;
+  --ink-dim:#8a7f73;
+  --line:rgba(43,38,34,0.13);
+  --line-strong:rgba(43,38,34,0.28);
+  --terracotta:#b4441f;
+  --terracotta-dim:#f6e6de;
+  --sage:#4f6b1e;
+  --sage-dim:#eaf0dd;
+  --teal:#1b5a68;
+  --teal-dim:#e0ecef;
+  --gold:#a9761a;
+  --gold-dim:#f7eed9;
+  --font-body:'Noto Sans Tamil', 'Latha', system-ui, sans-serif;
+  --font-head:'Noto Serif Tamil', 'Noto Sans Tamil', serif;
+  --font-mono:'IBM Plex Mono', monospace;
+}
+*{box-sizing:border-box;}
+body{
+  margin:0;
+  background:
+    radial-gradient(1200px 600px at 12% -8%, rgba(180,68,31,0.07), transparent 60%),
+    radial-gradient(900px 500px at 92% 4%, rgba(27,90,104,0.07), transparent 60%),
+    var(--bg);
+  color:var(--ink);
+  font-family:var(--font-body);
+  font-size:16px;
+  line-height:1.65;
+  -webkit-font-smoothing:antialiased;
+}
+.wrap{max-width:1240px;margin:0 auto;padding:52px 32px 92px;}
+
+.eyebrow{
+  font-family:var(--font-mono);
+  font-size:11.5px;letter-spacing:.16em;text-transform:uppercase;
+  color:var(--terracotta);
+  display:flex;align-items:center;gap:10px;flex-wrap:wrap;
+  margin-bottom:20px;
+}
+.eyebrow::before{content:"";width:26px;height:1px;background:var(--terracotta);display:block;}
+h1{
+  font-family:var(--font-head);
+  font-size:clamp(36px,5vw,58px);
+  line-height:1.16;margin:0 0 14px;font-weight:700;letter-spacing:-0.01em;
+}
+.sub{font-size:16.5px;color:var(--ink-soft);max-width:68ch;margin:0;}
+.meta{display:flex;flex-wrap:wrap;gap:8px;margin-top:26px;}
+.chip{
+  font-family:var(--font-mono);font-size:11.5px;letter-spacing:.04em;
+  padding:5px 11px;border:1px solid var(--line-strong);border-radius:999px;
+  color:var(--ink-soft);background:rgba(255,255,255,.5);
+}
+
+.verse{
+  margin:42px 0 0;padding:34px 38px 30px;background:var(--surface);
+  border:1px solid var(--line);border-left:3px solid var(--gold);border-radius:4px;
+  box-shadow:0 1px 2px rgba(43,38,34,.04), 0 12px 32px -22px rgba(43,38,34,.4);
+}
+.verse .tag{font-family:var(--font-mono);font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--gold);margin-bottom:16px;}
+.verse p{font-family:var(--font-head);font-size:clamp(16.5px,2vw,21px);line-height:2.05;margin:0;}
+.verse .gloss{
+  font-family:var(--font-body);font-size:14.5px;color:var(--ink-soft);
+  margin-top:18px;padding-top:16px;border-top:1px dashed var(--line);line-height:1.8;
+}
+
+.sec{margin-top:72px;}
+.sec-head{display:flex;align-items:baseline;gap:14px;margin-bottom:8px;}
+.sec-num{font-family:var(--font-mono);font-size:12px;color:var(--terracotta);letter-spacing:.1em;}
+h2{font-family:var(--font-head);font-size:clamp(23px,2.8vw,31px);margin:0;font-weight:700;letter-spacing:-0.01em;}
+.sec-note{color:var(--ink-soft);font-size:15px;margin:0 0 32px;max-width:78ch;}
+
+.map{margin-top:8px;}
+.rootwrap{display:flex;flex-direction:column;align-items:center;}
+.root{
+  background:var(--ink);color:#faf7f2;padding:20px 40px 18px;border-radius:6px;
+  text-align:center;box-shadow:0 14px 34px -18px rgba(43,38,34,.65);
+}
+.root .r-main{font-family:var(--font-head);font-size:clamp(21px,2.5vw,29px);font-weight:700;line-height:1.3;}
+.root .r-sub{font-family:var(--font-mono);font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;color:rgba(250,247,242,.62);margin-top:7px;}
+.root .r-sub2{font-size:13.5px;color:rgba(250,247,242,.82);margin-top:9px;}
+.stem{width:2px;height:34px;background:var(--line-strong);}
+.bus{height:2px;background:var(--line-strong);margin:0 16.66%;}
+
+.cols{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:26px;align-items:start;}
+.branch{position:relative;padding-top:32px;}
+.branch::before{content:"";position:absolute;top:0;left:50%;width:2px;height:32px;background:var(--line-strong);transform:translateX(-1px);}
+.bhead{border-radius:6px;padding:18px 20px 16px;border:1px solid;position:relative;}
+.bhead .b-name{font-family:var(--font-head);font-size:22px;font-weight:700;line-height:1.3;}
+.bhead .b-eq{font-family:var(--font-mono);font-size:10.5px;letter-spacing:.09em;text-transform:uppercase;margin-top:6px;opacity:.85;}
+.bhead .b-desc{font-size:13.6px;line-height:1.62;margin-top:9px;color:var(--ink-soft);}
+.bhead .b-count{
+  position:absolute;top:-11px;right:14px;font-family:var(--font-mono);font-size:10.5px;
+  letter-spacing:.1em;padding:2px 9px;border-radius:999px;background:var(--surface);
+  border:1px solid var(--line-strong);color:var(--ink-dim);
+}
+.b1 .bhead{background:var(--terracotta-dim);border-color:rgba(180,68,31,.28);}
+.b1 .b-name,.b1 .b-eq{color:var(--terracotta);}
+.b2 .bhead{background:var(--sage-dim);border-color:rgba(79,107,30,.3);}
+.b2 .b-name,.b2 .b-eq{color:var(--sage);}
+.b3 .bhead{background:var(--teal-dim);border-color:rgba(27,90,104,.3);}
+.b3 .b-name,.b3 .b-eq{color:var(--teal);}
+
+.children{margin:20px 0 0 14px;padding-left:18px;border-left:1px solid var(--line-strong);}
+.b1 .children{border-left-color:rgba(180,68,31,.35);}
+.b2 .children{border-left-color:rgba(79,107,30,.38);}
+.b3 .children{border-left-color:rgba(27,90,104,.35);}
+.node{position:relative;margin-bottom:13px;}
+.node:last-child{margin-bottom:0;}
+.node::before{content:"";position:absolute;left:-18px;top:20px;width:16px;height:1px;background:var(--line-strong);}
+.b1 .node::before{background:rgba(180,68,31,.35);}
+.b2 .node::before{background:rgba(79,107,30,.38);}
+.b3 .node::before{background:rgba(27,90,104,.35);}
+.card{
+  background:var(--surface);border:1px solid var(--line);border-radius:5px;
+  padding:13px 16px 14px;transition:border-color .18s ease, transform .18s ease, box-shadow .18s ease;
+}
+.card:hover{border-color:var(--line-strong);transform:translateY(-1px);box-shadow:0 10px 22px -18px rgba(43,38,34,.6);}
+.card .n-t{font-family:var(--font-head);font-size:16.5px;font-weight:700;line-height:1.4;}
+.card .n-s{font-family:var(--font-mono);font-size:10.5px;letter-spacing:.05em;color:var(--ink-dim);margin-top:3px;}
+.card .n-d{font-size:13.6px;line-height:1.62;color:var(--ink-soft);margin-top:8px;}
+.card .n-x{font-size:13px;line-height:1.6;color:var(--ink-dim);margin-top:9px;padding-top:9px;border-top:1px dotted var(--line);}
+.card .n-x b{color:var(--ink-soft);font-weight:600;}
+.b1 .n-t{color:var(--terracotta);}
+.b2 .n-t{color:var(--sage);}
+.b3 .n-t{color:var(--teal);}
+
+.flow{
+  margin-top:32px;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));
+  border:1px solid var(--line);border-radius:6px;overflow:hidden;background:var(--surface);
+}
+.fcell{padding:18px 22px;border-right:1px solid var(--line);}
+.fcell:last-child{border-right:none;}
+.fcell .f-top{font-family:var(--font-mono);font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--ink-dim);margin-bottom:8px;}
+.fcell .f-main{font-family:var(--font-head);font-size:17px;font-weight:700;}
+.fcell .f-note{font-size:13.2px;line-height:1.6;color:var(--ink-soft);margin-top:6px;}
+.f1 .f-main{color:var(--terracotta);}
+.f2 .f-main{color:var(--sage);}
+.f3 .f-main{color:var(--teal);}
+
+.panels{display:grid;grid-template-columns:1.1fr 1fr;gap:26px;margin-top:32px;align-items:start;}
+.panel{background:var(--surface);border:1px solid var(--line);border-radius:6px;padding:26px 28px 24px;}
+.panel h3{font-family:var(--font-head);font-size:19px;margin:0 0 4px;font-weight:700;}
+.panel .p-note{font-size:13.4px;color:var(--ink-dim);margin:0 0 18px;}
+table{width:100%;border-collapse:collapse;font-size:14px;}
+th{
+  text-align:left;font-family:var(--font-mono);font-size:10.5px;letter-spacing:.1em;
+  text-transform:uppercase;color:var(--ink-dim);font-weight:500;
+  padding:0 0 9px;border-bottom:1px solid var(--line-strong);
+}
+td{padding:10px 0;border-bottom:1px solid var(--line);vertical-align:top;line-height:1.55;}
+tr:last-child td{border-bottom:none;}
+td.term{font-family:var(--font-head);font-weight:700;color:var(--ink);width:34%;font-size:14.5px;}
+td.mean{color:var(--ink-soft);}
+
+ol.kuripu{list-style:none;counter-reset:k;margin:0;padding:0;}
+ol.kuripu li{
+  counter-increment:k;position:relative;padding-left:34px;
+  font-size:14px;line-height:1.68;color:var(--ink-soft);
+  margin-bottom:14px;
+}
+ol.kuripu li:last-child{margin-bottom:0;}
+ol.kuripu li::before{
+  content:counter(k);position:absolute;left:0;top:1px;
+  font-family:var(--font-mono);font-size:11.5px;
+  width:22px;height:22px;border-radius:50%;
+  display:flex;align-items:center;justify-content:center;
+  background:var(--bg-deep);border:1px solid var(--line-strong);color:var(--ink-dim);
+}
+ol.kuripu li b{color:var(--ink);font-weight:600;}
+
+.insight{
+  margin-top:32px;padding:34px 38px 32px;
+  background:linear-gradient(180deg, #fffdf9, #fbf5ea);
+  border:1px solid var(--line);border-top:3px solid var(--terracotta);border-radius:6px;
+}
+.insight .i-tag{font-family:var(--font-mono);font-size:10.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--terracotta);margin-bottom:14px;}
+.insight .i-q{font-family:var(--font-head);font-size:clamp(20px,2.5vw,27px);line-height:1.45;margin:0 0 18px;font-weight:700;}
+.insight p{font-size:15px;line-height:1.82;color:var(--ink-soft);margin:0 0 14px;max-width:82ch;}
+.insight p:last-child{margin-bottom:0;}
+.insight strong{color:var(--ink);font-weight:600;}
+
+footer{margin-top:64px;padding-top:22px;border-top:1px solid var(--line);font-size:12.5px;color:var(--ink-dim);line-height:1.8;}
+footer b{color:var(--ink-soft);font-weight:600;}
+
+@media (max-width:960px){
+  .wrap{padding:38px 20px 66px;}
+  .cols{grid-template-columns:1fr;gap:18px;}
+  .bus,.stem{display:none;}
+  .branch{padding-top:0;}
+  .branch::before{display:none;}
+  .bhead .b-count{position:static;display:inline-block;margin-top:10px;}
+  .flow,.panels{grid-template-columns:1fr;}
+  .fcell{border-right:none;border-bottom:1px solid var(--line);}
+  .fcell:last-child{border-bottom:none;}
+  .verse,.insight{padding:24px 22px;}
+}
+@media (prefers-color-scheme:dark){
+  :root{
+    --bg:#17140f;--bg-deep:#221d16;--surface:#1e1a15;
+    --ink:#f2ece1;--ink-soft:#c3b8a8;--ink-dim:#94897a;
+    --line:rgba(242,236,225,0.12);--line-strong:rgba(242,236,225,0.26);
+    --terracotta:#e0784e;--terracotta-dim:#2a1a12;
+    --sage:#a3c260;--sage-dim:#1d2314;
+    --teal:#6cb3c4;--teal-dim:#122226;
+    --gold:#d9a94a;
+  }
+  .root{background:#2a231a;color:#f7f1e6;}
+  .insight{background:linear-gradient(180deg,#1e1a15,#241d15);}
+  .chip{background:rgba(255,255,255,.04);}
+}
+@media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important;}}
+</style>
+<style>
+.sd-back{display:inline-block;margin:0 0 1.3rem;font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.1em;color:#8a7f73;text-decoration:none;border:1px solid rgba(43,38,34,.28);border-radius:6px;padding:5px 11px;background:rgba(255,253,249,.9)}
+.sd-back:hover{color:#b4441f;border-color:#b4441f;text-decoration:none}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <a class="sd-back" href="../index.html">← பாடல்களின் பட்டியல்</a>
+  
+  <div class="eyebrow">சிவஞான சித்தியார் சுபக்கம் · பாயிரம் · பாடல் 1</div>
+  <h1>விநாயக வணக்கம்</h1>
+  <p class="sub">நூலின் முதல் பாடல். விநாயகரின் திருவடிகளை வணங்கும் காப்புச் செய்யுள் — ஆனால் அவ்வுருவின் ஒவ்வொரு அங்கத்திற்கும் சைவ சித்தாந்தப் பொருள் கொடுத்து, வணக்கத்திலேயே நூலின் தத்துவத்தைச் சுருக்கிவிடுகிறார் ஆசிரியர்.</p>
+  <div class="meta">
+    <span class="chip">பாடல் 1 / 11</span>
+    <span class="chip">பாயிரம் · காப்பு</span>
+    <span class="chip">4 அடிகள்</span>
+    <span class="chip">உரைக் குறிப்பு 6</span>
+    <span class="chip">பக். 1 – 3</span>
+  </div>
+
+  <div class="verse">
+    <div class="tag">மூலம் — பாடல் 1</div>
+    <p>
+      ஒருகோட்டன் இருசெவியன் மும்மதத்தன் நால்வாய் ஐங்கரத்தன்<br>
+      தருகோட்டம் பிறை இதழித் தாழ் சடையான் தரும் ஒருவாரணத்தின் தாள்கள்<br>
+      உருகு ஓட்டு அன்பொடும் வணங்கி ஓவாதே இரவுபகல் உணர்வோர் சிந்தைத்<br>
+      திருகு ஓட்டும்; அயன் திருமால் செல்வமும் ஒன்றே என்னச் செய்யும், தேவே.
+    </p>
+    <div class="gloss">
+      கங்கையையும், வளைந்த பிறையையும், கொன்றை மாலையையும், தாழ்ந்த சடையையும் உடைய சிவபெருமான் தந்தருளிய, ஒரு கொம்பும் இரண்டு செவியும் மூன்று மதமும் தூங்கும் வாயும் ஐந்து கையும் உடைய யானைமுகக் கடவுளின் திருவடிகளை, உருகி ஓடும் அன்போடு வணங்கி, இரவும் பகலும் இடைவிடாது தியானிப்பவரது மனத்தின் மலக்குற்றத்தை அது நீக்கிச் சிவத்தைத் தரும். அதுவுமன்றி, பிரமனும் திருமாலும் உடைய செல்வமும் இதற்கு ஒப்பாகுமோ என்று அதனை வெறுக்கும்படி, தெய்வத்தன்மைப் பெருவாழ்வையும் தரும்.
+    </div>
+  </div>
+
+  <!-- ================= MIND MAP ================= -->
+  <div class="sec">
+    <div class="sec-head">
+      <span class="sec-num">01</span>
+      <h2>பாடலின் பிரிவு மரம்</h2>
+    </div>
+    <p class="sec-note">பாடல் மூன்று அசைவுகளாக நகர்கிறது — உருவை விவரித்தல், வணங்குதல், பயன். உரையாசிரியர் இதை மூன்று தளங்களில் விரித்துள்ளார்.</p>
+
+    <div class="map">
+      <div class="rootwrap">
+        <div class="root">
+          <div class="r-main">விநாயக வணக்கம்</div>
+          <div class="r-sub">பாடல் 1 · பாயிரம் · காப்பு</div>
+          <div class="r-sub2">திருவடிகளை வணங்கி, அவ்வுருவின் உறுப்புகளுக்குள் நூலின் தத்துவத்தைப் புதைத்தல்</div>
+        </div>
+        <div class="stem"></div>
+        <div class="bus"></div>
+      </div>
+
+      <div class="cols">
+
+        <!-- 1 -->
+        <div class="branch b1">
+          <div class="bhead">
+            <span class="b-count">1 / 3</span>
+            <div class="b-name">வணங்கப்படும் உருவம்</div>
+            <div class="b-eq">ஒரு கோட்டன் … தாள்கள்</div>
+            <div class="b-desc">விநாயகரின் ஆறு அங்கங்கள். ஒவ்வொன்றும் ஒரு சித்தாந்தக் கருத்தின் குறியீடு — அலங்காரம் அல்ல, சொல்.</div>
+          </div>
+          <div class="children">
+
+            <div class="node"><div class="card">
+              <div class="n-t">ஒரு கோட்டன்</div>
+              <div class="n-s">ஓர் கொம்பு · ஒற்றைத் தந்தம்</div>
+              <div class="n-d">பரஞானபதி என்பதைக் குறிக்கும் — பரஞானத்திற்கே அதிபதி; ஒப்பற்ற, பிளவுபடாத மேலான அறிவு.</div>
+            </div></div>
+
+            <div class="node"><div class="card">
+              <div class="n-t">இருசெவியன்</div>
+              <div class="n-s">இரண்டு செவிகள்</div>
+              <div class="n-d">சர்வஞ்ஞத்துவமும் சர்வகர்த்திருத்துவமும் — எல்லாம் அறிதலும் எல்லாம் செய்தலும்.</div>
+            </div></div>
+
+            <div class="node"><div class="card">
+              <div class="n-t">மும்மதத்தன்</div>
+              <div class="n-s">மூன்று மதம்</div>
+              <div class="n-d">இச்சா, ஞான, கிரியை — இறைவனின் மூன்று சத்திகள்.</div>
+            </div></div>
+
+            <div class="node"><div class="card">
+              <div class="n-t">நால்வாய் ஐங்கரத்தன்</div>
+              <div class="n-s">தூங்கும் வாய் · ஐந்து கை</div>
+              <div class="n-d">பஞ்சகிருத்தியபதி — படைத்தல், காத்தல், அழித்தல், மறைத்தல், அருளல்.</div>
+              <div class="n-x"><b>நால்வாய்</b> = தூங்குகின்ற வாய்; <b>நாலுதல்</b> = தூங்குதல்.</div>
+            </div></div>
+
+            <div class="node"><div class="card">
+              <div class="n-t">ஒருவாரணம்</div>
+              <div class="n-s">ஒப்பற்ற யானைமுகம்</div>
+              <div class="n-d">யானைமுகம் பிரணவச் சொரூபம் — ஓம் என்பதன் வடிவம்.</div>
+              <div class="n-x"><b>வாரணம்</b> — ஆகுபெயர்; யானைக்கு உரிய முகத்தை யானை என்றே சொல்லும் வழக்கு.</div>
+            </div></div>
+
+            <div class="node"><div class="card">
+              <div class="n-t">தாள்கள்</div>
+              <div class="n-s">திருவடிகள்</div>
+              <div class="n-d">ஞானசத்தியும் கிரியாசத்தியும். இவை மலத்தை நீக்கி ஞானத்தை அடையச் செய்வன.</div>
+              <div class="n-x"><b>தொடர்பு:</b> அதனால்தான் அடுத்த அடியில் "சிந்தைத் திருகு ஓட்டும்" என்றும் "தேவே செய்யும்" என்றும் வருகிறது.</div>
+            </div></div>
+
+          </div>
+        </div>
+
+        <!-- 2 -->
+        <div class="branch b2">
+          <div class="bhead">
+            <span class="b-count">2 / 3</span>
+            <div class="b-name">சிவனின் திருவுரு</div>
+            <div class="b-eq">தாழ் சடையான் தரும்</div>
+            <div class="b-desc">விநாயகரின் உருவம் சிவனிடமிருந்து வந்தது. சிவனின் அணிகலன்களும் வெறும் அலங்காரம் அல்ல — ஒவ்வொன்றும் ஒரு குணத்தின் குறி.</div>
+          </div>
+          <div class="children">
+
+            <div class="node"><div class="card">
+              <div class="n-t">ஆறு</div>
+              <div class="n-s">கங்கை</div>
+              <div class="n-d">அகங்காரத்தை அடக்கும் வல்லமையைக் குறிக்கும்.</div>
+            </div></div>
+
+            <div class="node"><div class="card">
+              <div class="n-t">கோட்டம் தரு பிறை</div>
+              <div class="n-s">வளைவு பொருந்திய பிறை</div>
+              <div class="n-d">சரணடைந்தோருக்கு உயர்நிலையை அருளுபவர்; ஞானவடிவினர்; சர்வஞ்ஞத்துவர்.</div>
+            </div></div>
+
+            <div class="node"><div class="card">
+              <div class="n-t">இதழி</div>
+              <div class="n-s">கொன்றை மாலை · உபாங்கம்</div>
+              <div class="n-d">உபாங்கமாக நின்று திருவருளைக் குறிக்கும்.</div>
+            </div></div>
+
+            <div class="node"><div class="card">
+              <div class="n-t">தாழ் சடை</div>
+              <div class="n-s">தாழ்ந்த சடை · அங்கம்</div>
+              <div class="n-d">அங்கமாக நின்று திருவருளைக் குறிக்கும். இதழியும் சடையும் முறையே உபாங்கமும் அங்கமும்.</div>
+              <div class="n-x"><b>கருத்து:</b> அணிகலன்கள் இரண்டும் சேர்ந்து "திருவருள்" என்னும் ஒரே பொருளையே சுட்டுகின்றன.</div>
+            </div></div>
+
+          </div>
+        </div>
+
+        <!-- 3 -->
+        <div class="branch b3">
+          <div class="bhead">
+            <span class="b-count">3 / 3</span>
+            <div class="b-name">வணங்குவோரும் பயனும்</div>
+            <div class="b-eq">உருகு ஓட்டு அன்பு → தேவு</div>
+            <div class="b-desc">வணக்கம் எப்படி இருக்க வேண்டும், அதனால் என்ன கிடைக்கும் — இரண்டும் இங்கே.</div>
+          </div>
+          <div class="children">
+
+            <div class="node"><div class="card">
+              <div class="n-t">வணங்கும் முறை</div>
+              <div class="n-s">உருகு ஓட்டு அன்பொடும்</div>
+              <div class="n-d">உருகுதல் + ஓடுதல் — கரைந்து ஓடும் பேரன்பு. இரவும் பகலும் இடைவிடாது தியானிப்பவர் என்பது வணங்குவோரின் இலக்கணம்.</div>
+              <div class="n-x"><b>இலக்கணம்:</b> உருகு ஓட்டு என்பன முதனிலைத் தொழிற்பெயர்கள்; ஓடு → ஒட்டு எனப் பகுதி விகாரப்பட்டது.</div>
+            </div></div>
+
+            <div class="node"><div class="card">
+              <div class="n-t">சிந்தைத் திருகு ஓட்டும்</div>
+              <div class="n-s">முதற் பயன்</div>
+              <div class="n-d">அறிவில் பொருந்திய மலக்குற்றத்தை நீக்கும். திருகு = மாறுபாடு, குற்றம்.</div>
+            </div></div>
+
+            <div class="node"><div class="card">
+              <div class="n-t">தேவு செய்யும்</div>
+              <div class="n-s">இரண்டாம் பயன்</div>
+              <div class="n-d">தெய்வத்தன்மைப் பெருவாழ்வைத் தரும். அயன் திருமால் செல்வமும் இதற்கு ஒப்பாகுமோ என வெறுக்கும்படி.</div>
+              <div class="n-x"><b>தேவு</b> = தெய்வத்தன்மை.</div>
+            </div></div>
+
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <div class="flow">
+      <div class="fcell f1">
+        <div class="f-top">அடி 1 – 2</div>
+        <div class="f-main">உருவை விவரித்தல்</div>
+        <div class="f-note">ஆறு அங்கங்கள், சிவனின் நான்கு அணிகலன்கள்</div>
+      </div>
+      <div class="fcell f2">
+        <div class="f-top">அடி 3</div>
+        <div class="f-main">வணங்குதல்</div>
+        <div class="f-note">உருகு ஓட்டு அன்பு · இரவுபகல் ஓயாத உணர்வு</div>
+      </div>
+      <div class="fcell f3">
+        <div class="f-top">அடி 3 – 4</div>
+        <div class="f-main">பயன்</div>
+        <div class="f-note">மலம் நீங்குதல் · தெய்வத்தன்மை பெறுதல்</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ================= PANELS ================= -->
+  <div class="sec">
+    <div class="sec-head">
+      <span class="sec-num">02</span>
+      <h2>உரையின் ஆறு குறிப்புகளும் சொல்லிலக்கணமும்</h2>
+    </div>
+    <p class="sec-note">உரையாசிரியர் பாடலுக்குப் பின் ஆறு குறிப்புகள் தருகிறார். அவற்றுள் மூன்று பொருள் விளக்கம், மூன்று சொல்லிலக்கணம்.</p>
+
+    <div class="panels">
+      <div class="panel">
+        <h3>ஆறு குறிப்புகள் — சுருக்கம்</h3>
+        <p class="p-note">பாடலின் ஒவ்வொரு சொல்லுக்கும் தனிக் கவனம்.</p>
+        <ol class="kuripu">
+          <li><b>உறுப்புகளின் உட்பொருள்.</b> கொம்பு, செவி, மதம், கை — நான்கும் நான்கு இறைக் குணங்களைக் குறிக்கும்.</li>
+          <li><b>ஆறு, பிறை, இதழி, சடை.</b> அகங்கார அடக்கம், உயர்நிலை அருளல், ஞானவடிவு, சர்வஞ்ஞத்துவம் — இவற்றின் குறி.</li>
+          <li><b>வாரணம் ஆகுபெயர்.</b> யானைமுகம் பிரணவச் சொரூபம் என்பதைக் குறிப்பது.</li>
+          <li><b>தாள்கள்.</b> ஞானசத்தியும் கிரியாசத்தியும்; மலத்தை நீக்கி ஞானம் தருவன.</li>
+          <li><b>உருகு ஓட்டு.</b> முதனிலைத் தொழிற்பெயர்; ஓடு என்பது ஒட்டு எனப் பகுதி விகாரப்பட்டது.</li>
+          <li><b>நூலின் கருத்து.</b> மலக்குற்றை ஒழித்துச் சிவப்பேற்றைத் தரவல்ல திருவடிகள், இந்நூல் இனிது முடிவுபெற இடையூற்றை நீக்கும் — இது அருமையன்று.</li>
+        </ol>
+      </div>
+
+      <div class="panel">
+        <h3>சொல்லிலக்கணம்</h3>
+        <p class="p-note">உரையில் தரப்படும் சொற்பொருள் விளக்கங்கள்.</p>
+        <table>
+          <thead><tr><th>சொல்</th><th>இலக்கணமும் பொருளும்</th></tr></thead>
+          <tbody>
+            <tr><td class="term">வாரணம்</td><td class="mean">யானைமுகம்; ஆகுபெயர்</td></tr>
+            <tr><td class="term">நால்வாய்</td><td class="mean">தூங்குகின்ற வாய்</td></tr>
+            <tr><td class="term">நாலுதல்</td><td class="mean">தூங்குதல்</td></tr>
+            <tr><td class="term">உருகு ஓட்டு</td><td class="mean">உருகுதல், ஓடுதல் — முதனிலைத் தொழிற்பெயர்</td></tr>
+            <tr><td class="term">ஓடு</td><td class="mean">ஒட்டு எனப் பகுதி விகாரம்</td></tr>
+            <tr><td class="term">திருகு</td><td class="mean">மாறுபாடு, குற்றம்</td></tr>
+            <tr><td class="term">தேவு</td><td class="mean">தெய்வத்தன்மை</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <!-- ================= INSIGHT ================= -->
+  <div class="insight">
+    <div class="i-tag">என் புரிதல்</div>
+    <div class="i-q">வணக்கத்திலேயே நூலின் தத்துவம் முடிந்துவிடுகிறது</div>
+    <p>இது வழக்கமான கடவுள் வணக்கப் பாடல் அல்ல. விநாயகரின் ஒவ்வொரு உறுப்பும் ஒரு கருத்தின் குறியீடாகப் படிக்கப்படுகிறது — கொம்பு <strong>பரஞானபதி</strong>, செவிகள் <strong>சர்வஞ்ஞத்துவமும் சர்வகர்த்திருத்துவமும்</strong>, மூன்று மதம் <strong>இச்சா ஞான கிரியை</strong>, ஐந்து கை <strong>பஞ்சகிருத்தியம்</strong>, யானைமுகம் <strong>பிரணவம்</strong>, திருவடிகள் <strong>ஞானசத்தியும் கிரியாசத்தியும்</strong>. அதாவது நூல் முழுவதும் விளக்கப்போகும் பதி–பசு–பாசம் என்னும் மூன்றின் இயல்பு, முதல் பாடலின் உருவத்திலேயே அடங்கிவிட்டது.</p>
+    <p>இரண்டாவது, உருவின் மூலம் யார் என்பதை ஆசிரியர் மறக்கவில்லை — <strong>"தாழ் சடையான் தரும்"</strong>. விநாயகரின் வடிவம் சிவனால் தரப்பட்டது; அவருடைய அணிகலன்களும் அவரது ஞானமும் கிரியையும் ஒரு வடிவில் நிற்பதே இது. இதனால்தான் சைவ சித்தாந்தத்தின் நூல் ஒன்று விநாயக வணக்கத்தோடு தொடங்க முடிகிறது — வேறு கடவுளைத் தேடிச் செல்லாமல், சிவனது அருளையே வடிவம் கொண்டு வணங்குகிறது.</p>
+    <p>மூன்றாவது, பயன் இரண்டு படிகளாகச் சொல்லப்படுகிறது: <strong>சிந்தைத் திருகு ஓட்டும்</strong> — மனத்தின் மலக்குற்றம் நீங்குதல்; <strong>தேவு செய்யும்</strong> — தெய்வத்தன்மை பெறுதல். இவையே பசுவின் பயணத்தின் இரண்டு முனைகள். "அயன் திருமால் செல்வமும் ஒன்றே என்ன" என்பது அவர்களை இகழ்வதன்று — அவர்களுடைய பெருஞ்செல்வத்தைக்கூட இதற்கு முன் ஒன்றுமில்லை என்று கருதும்படி அருள் உயர்ந்தது என்பதைச் சொல்கிறது. உரையாசிரியரின் ஆறாவது குறிப்பும் இதையே முடிக்கிறது: திருவடிகள் இடையூற்றை நீக்குவதால், இந்நூல் இனிது முடிவுபெறும் என்பது அருமையான காரியமன்று.</p>
+  </div>
+
+  <footer>
+    <b>மூலம்:</b> சிவஞான சித்தியார் சுபக்கம் — பாயிரம், பாடல் 1, "விநாயக வணக்கம்", உரை: திரு. மு. திருவிளங்கம் (யாழ்ப்பாணம் கூட்டுறவுத் தமிழ் நூற்பதிப்பு விற்பனைக் கழகம், 1971), பக். 1–3.<br>
+    <b>குறிப்பு:</b> இப்பக்கத்தின் உரைப் பொருள் அப்பதிப்பின் உரைநடையைத் தழுவியது; பாடல் வரிகளும் சொற்பொருள் விளக்கங்களும் அதே பதிப்பின்படி.
+  </footer>
+
+</div>
+</body>
+</html>
