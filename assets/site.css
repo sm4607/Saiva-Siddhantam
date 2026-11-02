@@ -43,8 +43,8 @@ a{color:var(--terracotta);text-decoration:none}
 a:hover{text-decoration:underline}
 
 .label{
-  font-family:var(--font-mono);font-size:.72rem;letter-spacing:.12em;
-  text-transform:uppercase;color:var(--dim);margin:0 0 .7rem;
+  font-family:var(--font-body);font-size:.84rem;letter-spacing:.01em;
+  color:var(--dim);margin:0 0 .7rem;
   display:flex;align-items:center;gap:.55rem;
 }
 .label::before{content:"";width:22px;height:1px;background:var(--terracotta);flex:none}
@@ -84,7 +84,7 @@ a:hover{text-decoration:underline}
 
 /* section heading */
 .sec{margin:2.4rem 0 .2rem;display:flex;align-items:baseline;gap:.7rem;flex-wrap:wrap}
-.sec .n{font-family:var(--font-mono);font-size:.78rem;color:var(--terracotta)}
+.sec .n{font-family:var(--font-body);font-size:.88rem;color:var(--terracotta)}
 .sec-note{color:var(--dim);font-size:.94rem;margin:.2rem 0 1rem}
 
 /* ledger rows */
@@ -107,6 +107,21 @@ a:hover{text-decoration:underline}
 }
 
 /* small pieces */
+.prose{max-width:74ch;font-size:1.02rem;line-height:2;color:var(--ink-soft);margin:0 0 2.6rem}
+.prose p{margin:0 0 1.05em}
+.prose strong{color:var(--ink);font-weight:600}
+.guru{border-left:3px solid var(--terracotta);padding-left:1.25rem}
+.kural{margin:1.4rem 0;padding:.2rem 0 .2rem 1.1rem;
+  border-left:2px solid var(--terracotta);
+  font-family:var(--font-head);font-size:1.16rem;line-height:1.85;color:var(--ink)}
+.kural cite{display:block;font-family:var(--font-mono);font-style:normal;
+  font-size:.72rem;letter-spacing:.1em;color:var(--dim);margin-top:.5rem}
+.btn{display:inline-flex;align-items:center;gap:.45rem;font-family:var(--font-mono);
+  font-size:.76rem;letter-spacing:.08em;text-transform:uppercase;padding:.6rem 1rem;
+  border:1px solid var(--line-strong);border-radius:7px;background:var(--surface);
+  color:var(--ink);transition:border-color .16s ease,transform .16s ease}
+.btn:hover{text-decoration:none;border-color:var(--terracotta);transform:translateY(-1px)}
+
 .note{border:1px dashed var(--line-strong);border-radius:var(--radius);
   padding:1rem 1.2rem;color:var(--dim);font-size:.93rem;background:var(--surface);margin:0 0 2rem}
 .note code{font-family:var(--font-mono);font-size:.88em;background:var(--bg-deep);padding:.1rem .35rem;border-radius:4px}
