@@ -165,6 +165,15 @@ footer b{color:var(--ink-soft);font-weight:600;}
   .chip{background:rgba(255,255,255,.04);}
 }
 @media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important;}}
+.sd-nav{display:flex;justify-content:space-between;gap:1rem;flex-wrap:wrap;
+  margin:2.6rem 0 0;padding-top:1.5rem;border-top:1px solid rgba(43,38,34,.13)}
+.sd-nav-link{display:flex;flex-direction:column;gap:.15rem;text-decoration:none;
+  border:1px solid rgba(43,38,34,.28);border-radius:8px;padding:.7rem 1.05rem;
+  min-width:13rem;background:#fffdf9;color:#2b2622;transition:border-color .15s ease,transform .15s ease}
+.sd-nav-link:hover{border-color:#b4441f;text-decoration:none;transform:translateY(-1px)}
+.sd-nav-k{font-family:'Noto Sans Tamil',sans-serif;font-size:12px;letter-spacing:.02em;color:#8a7f73}
+.sd-nav-t{font-family:'Noto Serif Tamil',serif;font-size:.97rem;font-weight:600;line-height:1.45}
+.sd-nav-link--next{text-align:right;margin-left:auto}
 </style>
 <style>
 .sd-back{display:inline-block;margin:0 0 1.3rem;font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.1em;color:#8a7f73;text-decoration:none;border:1px solid rgba(43,38,34,.28);border-radius:6px;padding:5px 11px;background:rgba(255,253,249,.9)}
@@ -178,7 +187,7 @@ footer b{color:var(--ink-soft);font-weight:600;}
   <h1>பரசிவ வணக்கம்</h1>
   <p class="sub">நான்கு நிலைகளாகப் பிரிந்த இருபத்துநான்கு சமயங்களையும் ஒரு படிக்கட்டாக நிறுத்தி, அவற்றிற்கெல்லாம் பொருளாயும் அவற்றின் குறிகளுக்கு அப்பாற்பட்டவனாயும் நிற்கும் சிவனை வணங்குகிறார். இது வாதம் அல்ல — படிநிலை.</p>
   <div class="meta">
-    <span class="chip">பாடல் 2 / 12</span>
+    <span class="chip">பாடல் 2 / 11</span>
     <span class="chip">பாயிரம்</span>
     <span class="chip">24 சமயங்கள்</span>
     <span class="chip">உரைக் குறிப்பு 7</span>
@@ -406,6 +415,17 @@ footer b{color:var(--ink-soft);font-weight:600;}
     <p>மூன்றாவது, <strong>வேதாகமங்களின் குறியிறந்து</strong>. வேதத்தால் பரஞானம், சிவாகமத்தால் அபரஞானம் — இரண்டும் அவனை முழுதும் அடையா. அப்படியானால் அவன் அறியப்படுவது எப்படி? <strong>அறிவினில் அருளால் மன்னி</strong> என்பதே பதில்: அறிவின் உள்ளே அருளாக அவன் நிற்கிறான். அதனால்தான் அடுத்த சொல் <strong>அம்மையோடு அப்பன்</strong> — சத்தியும் சிவமும் பிரியாது நின்று ஆன்மாவின் ஏகதேச அறிவை நீக்கி வியாபக அறிவைத் தருகிறான். வணக்கம் இங்கே தகுதியின் அடையாளமாக மாறுகிறது.</p>
   </div>
   <footer><b>மூலம்:</b> சிவஞான சித்தியார் சுபக்கம் — பாயிரம், பாடல் 2, "பரசிவ வணக்கம்", உரை: திரு. மு. திருவிளங்கம் (யாழ்ப்பாணம் கூட்டுறவுத் தமிழ் நூற்பதிப்பு விற்பனைக் கழகம், 1971), பக். 3–8.<br><b>குறிப்பு:</b> இருபத்துநான்கு சமயங்களின் பட்டியலும் முதற்பொருள் விளக்கங்களும் அப்பதிப்பின் உரையின்படி சுருக்கப்பட்டவை.</footer>
+<nav class="sd-nav">
+  <a class="sd-nav-link" href="../01-vinayaka-vanakkam/index.html">
+    <span class="sd-nav-k">← முன் பாடல் · 01</span>
+    <span class="sd-nav-t">விநாயக வணக்கம்</span>
+  </a>
+  <a class="sd-nav-link sd-nav-link--next" href="../03-nulin-vazhi/index.html">
+    <span class="sd-nav-k">அடுத்த பாடல் · 03 →</span>
+    <span class="sd-nav-t">நூலின்வழி</span>
+  </a>
+</nav>
+
 </div>
 </body>
 </html>

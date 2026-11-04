@@ -223,6 +223,15 @@ footer b{color:var(--ink-soft);font-weight:600;}
   .chip{background:rgba(255,255,255,.04);}
 }
 @media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important;}}
+.sd-nav{display:flex;justify-content:space-between;gap:1rem;flex-wrap:wrap;
+  margin:2.6rem 0 0;padding-top:1.5rem;border-top:1px solid rgba(43,38,34,.13)}
+.sd-nav-link{display:flex;flex-direction:column;gap:.15rem;text-decoration:none;
+  border:1px solid rgba(43,38,34,.28);border-radius:8px;padding:.7rem 1.05rem;
+  min-width:13rem;background:#fffdf9;color:#2b2622;transition:border-color .15s ease,transform .15s ease}
+.sd-nav-link:hover{border-color:#b4441f;text-decoration:none;transform:translateY(-1px)}
+.sd-nav-k{font-family:'Noto Sans Tamil',sans-serif;font-size:12px;letter-spacing:.02em;color:#8a7f73}
+.sd-nav-t{font-family:'Noto Serif Tamil',serif;font-size:.97rem;font-weight:600;line-height:1.45}
+.sd-nav-link--next{text-align:right;margin-left:auto}
 </style>
 <style>
 .sd-back{display:inline-block;margin:0 0 1.3rem;font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.1em;color:#8a7f73;text-decoration:none;border:1px solid rgba(43,38,34,.28);border-radius:6px;padding:5px 11px;background:rgba(255,253,249,.9)}
@@ -237,7 +246,7 @@ footer b{color:var(--ink-soft);font-weight:600;}
   <h1>விநாயக வணக்கம்</h1>
   <p class="sub">நூலின் முதல் பாடல். விநாயகரின் திருவடிகளை வணங்கும் காப்புச் செய்யுள் — ஆனால் அவ்வுருவின் ஒவ்வொரு அங்கத்திற்கும் சைவ சித்தாந்தப் பொருள் கொடுத்து, வணக்கத்திலேயே நூலின் தத்துவத்தைச் சுருக்கிவிடுகிறார் ஆசிரியர்.</p>
   <div class="meta">
-    <span class="chip">பாடல் 1 / 12</span>
+    <span class="chip">பாடல் 1 / 11</span>
     <span class="chip">பாயிரம் · காப்பு</span>
     <span class="chip">4 அடிகள்</span>
     <span class="chip">உரைக் குறிப்பு 6</span>
@@ -477,6 +486,13 @@ footer b{color:var(--ink-soft);font-weight:600;}
     <b>மூலம்:</b> சிவஞான சித்தியார் சுபக்கம் — பாயிரம், பாடல் 1, "விநாயக வணக்கம்", உரை: திரு. மு. திருவிளங்கம் (யாழ்ப்பாணம் கூட்டுறவுத் தமிழ் நூற்பதிப்பு விற்பனைக் கழகம், 1971), பக். 1–3.<br>
     <b>குறிப்பு:</b> இப்பக்கத்தின் உரைப் பொருள் அப்பதிப்பின் உரைநடையைத் தழுவியது; பாடல் வரிகளும் சொற்பொருள் விளக்கங்களும் அதே பதிப்பின்படி.
   </footer>
+
+<nav class="sd-nav">
+  <a class="sd-nav-link sd-nav-link--next" href="../02-paraciva-vanakkam/index.html">
+    <span class="sd-nav-k">அடுத்த பாடல் · 02 →</span>
+    <span class="sd-nav-t">பரசிவ வணக்கம்</span>
+  </a>
+</nav>
 
 </div>
 </body>

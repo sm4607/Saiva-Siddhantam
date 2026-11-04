@@ -165,6 +165,15 @@ footer b{color:var(--ink-soft);font-weight:600;}
   .chip{background:rgba(255,255,255,.04);}
 }
 @media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important;}}
+.sd-nav{display:flex;justify-content:space-between;gap:1rem;flex-wrap:wrap;
+  margin:2.6rem 0 0;padding-top:1.5rem;border-top:1px solid rgba(43,38,34,.13)}
+.sd-nav-link{display:flex;flex-direction:column;gap:.15rem;text-decoration:none;
+  border:1px solid rgba(43,38,34,.28);border-radius:8px;padding:.7rem 1.05rem;
+  min-width:13rem;background:#fffdf9;color:#2b2622;transition:border-color .15s ease,transform .15s ease}
+.sd-nav-link:hover{border-color:#b4441f;text-decoration:none;transform:translateY(-1px)}
+.sd-nav-k{font-family:'Noto Sans Tamil',sans-serif;font-size:12px;letter-spacing:.02em;color:#8a7f73}
+.sd-nav-t{font-family:'Noto Serif Tamil',serif;font-size:.97rem;font-weight:600;line-height:1.45}
+.sd-nav-link--next{text-align:right;margin-left:auto}
 </style>
 <style>
 .sd-back{display:inline-block;margin:0 0 1.3rem;font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.1em;color:#8a7f73;text-decoration:none;border:1px solid rgba(43,38,34,.28);border-radius:6px;padding:5px 11px;background:rgba(255,253,249,.9)}
@@ -178,7 +187,7 @@ footer b{color:var(--ink-soft);font-weight:600;}
   <h1>அவையடக்கம் — 1</h1>
   <p class="sub">எதனாலும் சொல்லொணாத இறைவனைப் பற்றிப் பேசும் ஆசை எனக்கு இருக்கிறது; அது ஞானிகளுக்கு நகைப்பையே தரும். அவையடக்கத்தின் முதல் பாதி — மறுப்பு.</p>
   <div class="meta">
-    <span class="chip">பாடல் 5 / 12</span>
+    <span class="chip">பாடல் 5 / 11</span>
     <span class="chip">பாயிரம் · அவையடக்கம்</span>
     <span class="chip">6 வழி மறுப்பு</span>
     <span class="chip">பக். 11 – 13</span>
@@ -390,6 +399,17 @@ footer b{color:var(--ink-soft);font-weight:600;}
     <p>மூன்றாவது, <strong>மனம் பரஞானத்தையும் வாக்கு அபரஞானத்தையும் உணர்த்தும்</strong> என்னும் உரைக் குறிப்பு முக்கியமானது. அதாவது இந்த ஆறு வழிகளும் வெறும் தோல்விகள் அல்ல — அவை ஒவ்வொன்றும் ஒரு படி வரை கொண்டு சேர்கின்றன, கடைசிப் படியைத் தவிர. சைவ சித்தாந்தத்தின் முறை இதுதான்: எதையும் தள்ளாமல், ஒவ்வொன்றின் எல்லையையும் காட்டி, கடைசியில் அருளிடம் கொண்டு நிறுத்துதல்.</p>
   </div>
   <footer><b>மூலம்:</b> சிவஞான சித்தியார் சுபக்கம் — பாயிரம், பாடல் 5, அவையடக்கம், உரை: திரு. மு. திருவிளங்கம் (யாழ்ப்பாணம், 1971), பக். 11–13.</footer>
+<nav class="sd-nav">
+  <a class="sd-nav-link" href="../04-nutaliya-porul/index.html">
+    <span class="sd-nav-k">← முன் பாடல் · 04</span>
+    <span class="sd-nav-t">நுதலிய பொருளும் கேட்போரும் பயனும்</span>
+  </a>
+  <a class="sd-nav-link sd-nav-link--next" href="../06-avaiyadakkam-2/index.html">
+    <span class="sd-nav-k">அடுத்த பாடல் · 06 →</span>
+    <span class="sd-nav-t">அவையடக்கம் — 2</span>
+  </a>
+</nav>
+
 </div>
 </body>
 </html>

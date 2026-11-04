@@ -165,6 +165,15 @@ footer b{color:var(--ink-soft);font-weight:600;}
   .chip{background:rgba(255,255,255,.04);}
 }
 @media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important;}}
+.sd-nav{display:flex;justify-content:space-between;gap:1rem;flex-wrap:wrap;
+  margin:2.6rem 0 0;padding-top:1.5rem;border-top:1px solid rgba(43,38,34,.13)}
+.sd-nav-link{display:flex;flex-direction:column;gap:.15rem;text-decoration:none;
+  border:1px solid rgba(43,38,34,.28);border-radius:8px;padding:.7rem 1.05rem;
+  min-width:13rem;background:#fffdf9;color:#2b2622;transition:border-color .15s ease,transform .15s ease}
+.sd-nav-link:hover{border-color:#b4441f;text-decoration:none;transform:translateY(-1px)}
+.sd-nav-k{font-family:'Noto Sans Tamil',sans-serif;font-size:12px;letter-spacing:.02em;color:#8a7f73}
+.sd-nav-t{font-family:'Noto Serif Tamil',serif;font-size:.97rem;font-weight:600;line-height:1.45}
+.sd-nav-link--next{text-align:right;margin-left:auto}
 </style>
 <style>
 .sd-back{display:inline-block;margin:0 0 1.3rem;font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.1em;color:#8a7f73;text-decoration:none;border:1px solid rgba(43,38,34,.28);border-radius:6px;padding:5px 11px;background:rgba(255,253,249,.9)}
@@ -178,7 +187,7 @@ footer b{color:var(--ink-soft);font-weight:600;}
   <h1>நூலின்வழி</h1>
   <p class="sub">நூலின் மேற்கோள். தன்னை மீட்ட அருளையும், அந்த அருளைத் தந்த மெய்கண்டானின் சிவஞானபோதத்தையும் நினைத்து, அதைச் சிரத்தில் கொண்டு சைவ சித்தாந்தத்தை விளக்கத் தொடங்குகிறார்.</p>
   <div class="meta">
-    <span class="chip">பாடல் 3 / 12</span>
+    <span class="chip">பாடல் 3 / 11</span>
     <span class="chip">பாயிரம்</span>
     <span class="chip">4 அடிகள்</span>
     <span class="chip">உரைக் குறிப்பு 3</span>
@@ -368,6 +377,17 @@ footer b{color:var(--ink-soft);font-weight:600;}
     <p>மூன்றாவது, <strong>சென்னியிற் கொண்டு</strong> என்பது சாதாரணச் சொல் அல்ல. மற்ற எல்லாப் பிரமாணங்களுக்கும் மேலே, தலைக்கு மேலே, இந்நூலை வைக்கிறார். அதனால்தான் அடுத்த பாடலில் "நுதலிய பொருளும் கேட்போரும் பயனும்" என்று இந்நூலின் எல்லையை வரையத் தொடங்குகிறார் — எல்லோருக்கும் எழுதப்படவில்லை என்பதைச் சொல்ல.</p>
   </div>
   <footer><b>மூலம்:</b> சிவஞான சித்தியார் சுபக்கம் — பாயிரம், பாடல் 3, "நூலின்வழி", உரை: திரு. மு. திருவிளங்கம் (யாழ்ப்பாணம், 1971), பக். 8–9.</footer>
+<nav class="sd-nav">
+  <a class="sd-nav-link" href="../02-paraciva-vanakkam/index.html">
+    <span class="sd-nav-k">← முன் பாடல் · 02</span>
+    <span class="sd-nav-t">பரசிவ வணக்கம்</span>
+  </a>
+  <a class="sd-nav-link sd-nav-link--next" href="../04-nutaliya-porul/index.html">
+    <span class="sd-nav-k">அடுத்த பாடல் · 04 →</span>
+    <span class="sd-nav-t">நுதலிய பொருளும் கேட்போரும் பயனும்</span>
+  </a>
+</nav>
+
 </div>
 </body>
 </html>
