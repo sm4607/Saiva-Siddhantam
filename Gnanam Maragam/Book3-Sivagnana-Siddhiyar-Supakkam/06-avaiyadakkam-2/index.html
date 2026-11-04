@@ -165,6 +165,15 @@ footer b{color:var(--ink-soft);font-weight:600;}
   .chip{background:rgba(255,255,255,.04);}
 }
 @media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important;}}
+.sd-nav{display:flex;justify-content:space-between;gap:1rem;flex-wrap:wrap;
+  margin:2.6rem 0 0;padding-top:1.5rem;border-top:1px solid rgba(43,38,34,.13)}
+.sd-nav-link{display:flex;flex-direction:column;gap:.15rem;text-decoration:none;
+  border:1px solid rgba(43,38,34,.28);border-radius:8px;padding:.7rem 1.05rem;
+  min-width:13rem;background:#fffdf9;color:#2b2622;transition:border-color .15s ease,transform .15s ease}
+.sd-nav-link:hover{border-color:#b4441f;text-decoration:none;transform:translateY(-1px)}
+.sd-nav-k{font-family:'Noto Sans Tamil',sans-serif;font-size:12px;letter-spacing:.02em;color:#8a7f73}
+.sd-nav-t{font-family:'Noto Serif Tamil',serif;font-size:.97rem;font-weight:600;line-height:1.45}
+.sd-nav-link--next{text-align:right;margin-left:auto}
 </style>
 <style>
 .sd-back{display:inline-block;margin:0 0 1.3rem;font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.1em;color:#8a7f73;text-decoration:none;border:1px solid rgba(43,38,34,.28);border-radius:6px;padding:5px 11px;background:rgba(255,253,249,.9)}
@@ -178,7 +187,7 @@ footer b{color:var(--ink-soft);font-weight:600;}
   <h1>அவையடக்கம் — 2</h1>
   <p class="sub">முந்தைய பாடலின் விடை. அறிவால் அறிய முடியாது என்பது சரி — ஆனால் அருளாலும், ஆகமத்தாலும், குருவின் உபதேசத்தாலும் அறியலாம். மறுப்பு இங்கே நிறைவாக மாறுகிறது.</p>
   <div class="meta">
-    <span class="chip">பாடல் 6 / 12</span>
+    <span class="chip">பாடல் 6 / 11</span>
     <span class="chip">பாயிரம் · அவையடக்கம்</span>
     <span class="chip">4 வழிகள்</span>
     <span class="chip">பக். 13 – 14</span>
@@ -359,6 +368,17 @@ footer b{color:var(--ink-soft);font-weight:600;}
     <p>மூன்றாவது, பாடல் 5 இல் "யான் இயம்பும் ஆசை" என்று தனித்து நின்றவர், பாடல் 6 இல் <strong>அடியாருக்கு ஆமே</strong> என்று ஒரு கூட்டத்திற்குள் வருகிறார். அதாவது அவையடக்கம் முடிந்ததும், தனிமனிதனின் தயக்கம் குழுவின் உரிமையாக மாறுகிறது. அதன்பிறகே நூல் தொடங்குகிறது.</p>
   </div>
   <footer><b>மூலம்:</b> சிவஞான சித்தியார் சுபக்கம் — பாயிரம், பாடல் 6, அவையடக்கம், உரை: திரு. மு. திருவிளங்கம் (யாழ்ப்பாணம், 1971), பக். 13–14.</footer>
+<nav class="sd-nav">
+  <a class="sd-nav-link" href="../05-avaiyadakkam-1/index.html">
+    <span class="sd-nav-k">← முன் பாடல் · 05</span>
+    <span class="sd-nav-t">அவையடக்கம் — 1</span>
+  </a>
+  <a class="sd-nav-link sd-nav-link--next" href="../07-muvakai-alavai/index.html">
+    <span class="sd-nav-k">அடுத்த பாடல் · 07 →</span>
+    <span class="sd-nav-t">மூவகை அளவை</span>
+  </a>
+</nav>
+
 </div>
 </body>
 </html>

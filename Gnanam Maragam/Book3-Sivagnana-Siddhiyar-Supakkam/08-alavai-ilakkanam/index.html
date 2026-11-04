@@ -165,6 +165,15 @@ footer b{color:var(--ink-soft);font-weight:600;}
   .chip{background:rgba(255,255,255,.04);}
 }
 @media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important;}}
+.sd-nav{display:flex;justify-content:space-between;gap:1rem;flex-wrap:wrap;
+  margin:2.6rem 0 0;padding-top:1.5rem;border-top:1px solid rgba(43,38,34,.13)}
+.sd-nav-link{display:flex;flex-direction:column;gap:.15rem;text-decoration:none;
+  border:1px solid rgba(43,38,34,.28);border-radius:8px;padding:.7rem 1.05rem;
+  min-width:13rem;background:#fffdf9;color:#2b2622;transition:border-color .15s ease,transform .15s ease}
+.sd-nav-link:hover{border-color:#b4441f;text-decoration:none;transform:translateY(-1px)}
+.sd-nav-k{font-family:'Noto Sans Tamil',sans-serif;font-size:12px;letter-spacing:.02em;color:#8a7f73}
+.sd-nav-t{font-family:'Noto Serif Tamil',serif;font-size:.97rem;font-weight:600;line-height:1.45}
+.sd-nav-link--next{text-align:right;margin-left:auto}
 </style>
 <style>
 .sd-back{display:inline-block;margin:0 0 1.3rem;font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.1em;color:#8a7f73;text-decoration:none;border:1px solid rgba(43,38,34,.28);border-radius:6px;padding:5px 11px;background:rgba(255,253,249,.9)}
@@ -178,7 +187,7 @@ footer b{color:var(--ink-soft);font-weight:600;}
   <h1>மூவகையளவையின் இலக்கணம்</h1>
   <p class="sub">முந்தைய பாடலில் மூன்றாகச் சுருக்கப்பட்ட அளவைகளுக்கு இப்போது இலக்கணம். ஒவ்வொன்றும் ஒரு கருவியாக அல்ல, ஆன்மசிற்சத்தியின் ஒரு நிலையாக வரையறுக்கப்படுகிறது.</p>
   <div class="meta">
-    <span class="chip">பாடல் 8 / 12</span>
+    <span class="chip">பாடல் 8 / 11</span>
     <span class="chip">ஞானபாதம்</span>
     <span class="chip">3 இலக்கணம்</span>
     <span class="chip">உரைக் குறிப்பு 3</span>
@@ -376,6 +385,17 @@ footer b{color:var(--ink-soft);font-weight:600;}
     <p>மூன்றாவது, ஆகமத்தின் இடம் கவனிக்கத்தக்கது. அது காட்சிக்கும் அனுமானத்திற்கும் போட்டியாக வரவில்லை — <strong>இம்மானத்து அடங்கிடாப் பொருள்</strong> என்று அதற்கென்று தனி எல்லை வரையப்பட்டுள்ளது. பரலோகம், பாதாளலோகம் போன்ற எதையும் கண்ணால் காணவோ ஊகிக்கவோ முடியாது; அங்கே ஆப்த வாக்கியமே வழி. அதாவது மூன்று அளவைகளும் போட்டியாளர்கள் அல்ல, மூன்று வெவ்வேறு எல்லைகள்.</p>
   </div>
   <footer><b>மூலம்:</b> சிவஞான சித்தியார் சுபக்கம் — ஞானபாதம், 2. மூவகையளவையின் இலக்கணம், பாடல் 8, உரை: திரு. மு. திருவிளங்கம் (யாழ்ப்பாணம், 1971), பக். 17–19.</footer>
+<nav class="sd-nav">
+  <a class="sd-nav-link" href="../07-muvakai-alavai/index.html">
+    <span class="sd-nav-k">← முன் பாடல் · 07</span>
+    <span class="sd-nav-t">மூவகை அளவை</span>
+  </a>
+  <a class="sd-nav-link sd-nav-link--next" href="../09-naalvakai-kaatchi/index.html">
+    <span class="sd-nav-k">அடுத்த பாடல் · 09 →</span>
+    <span class="sd-nav-t">நால்வகைக் காட்சிகள்</span>
+  </a>
+</nav>
+
 </div>
 </body>
 </html>
