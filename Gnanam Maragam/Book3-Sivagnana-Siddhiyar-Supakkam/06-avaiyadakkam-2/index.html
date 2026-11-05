@@ -178,16 +178,23 @@ footer b{color:var(--ink-soft);font-weight:600;}
 <style>
 .sd-back{display:inline-block;margin:0 0 1.3rem;font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.1em;color:#8a7f73;text-decoration:none;border:1px solid rgba(43,38,34,.28);border-radius:6px;padding:5px 11px;background:rgba(255,253,249,.9)}
 .sd-back:hover{color:#b4441f;border-color:#b4441f;text-decoration:none}
+.sd-top{display:flex;justify-content:space-between;gap:.6rem;flex-wrap:wrap}
+.sd-top-pn{display:flex;gap:.5rem}
+.sd-nav{display:grid;grid-template-columns:1fr auto 1fr}
+.sd-nav-link{min-width:0}
+.sd-nav-link--next{margin-left:0}
+.sd-nav-link--up{text-align:center}
+@media (max-width:620px){.sd-nav{grid-template-columns:1fr}.sd-nav>span{display:none}.sd-nav-link--up,.sd-nav-link--next{text-align:left}}
 </style>
 </head>
 <body>
 <div class="wrap">
-  <a class="sd-back" href="../index.html">← பாடல்களின் பட்டியல்</a>
+  <div class="sd-top"><a class="sd-back" href="../index.html#songs">← பாடல்களின் பட்டியல்</a><span class="sd-top-pn"><a class="sd-back" href="../05-avaiyadakkam-1/index.html">← 05</a><a class="sd-back" href="../07-muvakai-alavai/index.html">07 →</a></span></div>
     <div class="eyebrow">சிவஞான சித்தியார் சுபக்கம் · பாயிரம் · பாடல் 6</div>
   <h1>அவையடக்கம் — 2</h1>
   <p class="sub">முந்தைய பாடலின் விடை. அறிவால் அறிய முடியாது என்பது சரி — ஆனால் அருளாலும், ஆகமத்தாலும், குருவின் உபதேசத்தாலும் அறியலாம். மறுப்பு இங்கே நிறைவாக மாறுகிறது.</p>
   <div class="meta">
-    <span class="chip">பாடல் 6 / 11</span>
+    <span class="chip">பாடல் 6 / 12</span>
     <span class="chip">பாயிரம் · அவையடக்கம்</span>
     <span class="chip">4 வழிகள்</span>
     <span class="chip">பக். 13 – 14</span>
@@ -372,6 +379,10 @@ footer b{color:var(--ink-soft);font-weight:600;}
   <a class="sd-nav-link" href="../05-avaiyadakkam-1/index.html">
     <span class="sd-nav-k">← முன் பாடல் · 05</span>
     <span class="sd-nav-t">அவையடக்கம் — 1</span>
+  </a>
+  <a class="sd-nav-link sd-nav-link--up" href="../index.html#songs">
+    <span class="sd-nav-k">↑ மேலே</span>
+    <span class="sd-nav-t">பாடல்களின் பட்டியல்</span>
   </a>
   <a class="sd-nav-link sd-nav-link--next" href="../07-muvakai-alavai/index.html">
     <span class="sd-nav-k">அடுத்த பாடல் · 07 →</span>
