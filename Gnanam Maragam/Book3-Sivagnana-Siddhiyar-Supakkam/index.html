@@ -40,7 +40,9 @@
         <p>உரை: திரு. மு. திருவிளங்கம் · யாழ்ப்பாணம் கூட்டுறவுத் தமிழ் நூற்பதிப்பு விற்பனைக் கழகம், 1971. முழு நூல் இணையக் காப்பகத்தில் — தேவைப்படும்போது அங்கிருந்து பதிவிறக்கலாம்.</p>
       </a>
 
-      <div class="sec"><span class="n">பாடல்கள்</span><h2>பாடல் வாரியாக</h2></div>
+      <div class="folders">
+      <details class="folder" id="songs">
+      <summary><span class="f-name"><span class="n">பாடல்கள்</span><h2>பாடல் வாரியாக</h2></span><span class="f-count">12 பாடல்கள்</span></summary>
       <p class="sec-note">பாயிரம் — காப்பு முதல் அவையடக்கம் வரை; தொடர்ந்து ஞானபாதம்.</p>
       <div class="ledger">
       <a class="row" href="01-vinayaka-vanakkam/index.html">
@@ -104,8 +106,12 @@
         <div class="go">திறக்க →</div>
       </a>
 
+      </div>
+      </details>
+
       <!-- recordings-section -->
-      <div class="sec"><span class="n">வகுப்புகள்</span><h2>வகுப்புப் பதிவுகள்</h2></div>
+      <details class="folder" id="recordings">
+      <summary><span class="f-name"><span class="n">வகுப்புகள்</span><h2>வகுப்புப் பதிவுகள்</h2></span><span class="f-count">5 வகுப்புகள்</span></summary>
       <p class="sec-note">குருவின் உரை எழுத்துவடிவில் — பாடல் பக்கங்களுடன் ஒப்பிட்டுப் பார்க்க. பாடல்கள் குரு சொல்வதை, குரு சொல்வது பாடல்களை விளக்கும்.</p>
       <div class="ledger">
       <a class="row" href="recordings/siddhiyar-class-01/index.html">
@@ -139,7 +145,34 @@
           <div class="go">திறக்க →</div>
         </a>
       </div>
+      </details>
+
+      <details class="folder" id="vanika">
+      <summary><span class="f-name"><span class="n">வணிகப் பார்வை</span><h2>வணிக இணை</h2></span><span class="f-count">2 ஆவணங்கள்</span></summary>
+      <p class="sec-note">வகுப்புகளிலிருந்து உருவாகும் வணிகப் பார்வை.</p>
+      <div class="ledger">
+        <a class="row" href="vanika-inai/retrieval-design-brief.html">
+          <div class="num">01</div>
+          <div class="t">Retrieval You Can Defend<small>Design note</small></div>
+          <div class="go">திறக்க →</div>
+        </a>
+        <a class="row" href="vanika-inai/second-brain-architecture.html">
+          <div class="num">02</div>
+          <div class="t">Second Brain — The file that goes round the office<small>Architecture note</small></div>
+          <div class="go">திறக்க →</div>
+        </a>
       </div>
+      </details>
+      </div>
+    </div>
+  </section>
+  <section>
+    <div class="wrap">
+      <nav class="pager" aria-label="பக்க வழிசெலுத்தல்">
+        <a class="pager-link" href="../Book2-Thiruvarutpayan/index.html"><span class="k">← முன் நூல்</span><span class="t">திருவருட்பயன்</span></a>
+        <a class="pager-link pager-up" href="../index.html"><span class="k">↑ மேலே</span><span class="t">ஞான மார்க்கம்</span></a>
+        <span></span>
+      </nav>
     </div>
   </section>
 </main>
@@ -151,5 +184,8 @@
   </div>
 </footer>
 
+<script>
+(function(){var d=location.hash&&document.getElementById(location.hash.slice(1));if(d&&d.tagName==="DETAILS")d.open=true})();
+</script>
 </body>
 </html>

@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Retrieval You Can Defend — design note</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Azeret+Mono:wght@400;500&family=Noto+Serif+Tamil:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --font-body:'Plus Jakarta Sans', system-ui, sans-serif;
+  --font-mono:'Azeret Mono', ui-monospace, monospace;
+  --bg:#fbfbfa;
+  --surface:#ffffff;
+  --surface2:#f4f5f3;
+  --border:rgba(15,23,42,0.10);
+  --border-bright:rgba(15,23,42,0.20);
+  --text:#0f172a;
+  --text-dim:#5c6675;
+  --teal:#0d6e6e;
+  --teal-dim:rgba(13,110,110,0.08);
+  --amber:#a45a06;
+  --amber-dim:rgba(164,90,6,0.09);
+  --slate:#334155;
+  --slate-dim:rgba(51,65,85,0.07);
+  --red:#9f1239;
+  --red-dim:rgba(159,18,57,0.07);
+  --green:#166534;
+  --green-dim:rgba(22,101,52,0.08);
+}
+@media (prefers-color-scheme: dark){
+  :root{
+    --bg:#0d1117; --surface:#151b23; --surface2:#1c242e;
+    --border:rgba(255,255,255,0.08); --border-bright:rgba(255,255,255,0.18);
+    --text:#e8edf3; --text-dim:#93a1b3;
+    --teal:#4fc3c3; --teal-dim:rgba(79,195,195,0.12);
+    --amber:#e0a44a; --amber-dim:rgba(224,164,74,0.13);
+    --slate:#a8b6c8; --slate-dim:rgba(168,182,200,0.10);
+    --red:#f0779a; --red-dim:rgba(240,119,154,0.12);
+    --green:#7dd49a; --green-dim:rgba(125,212,154,0.12);
+  }
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+body{
+  background:var(--bg);
+  background-image:linear-gradient(180deg, var(--teal-dim) 0%, transparent 320px);
+  color:var(--text); font-family:var(--font-body); font-size:15.5px; line-height:1.65;
+  padding:56px 24px 88px; -webkit-font-smoothing:antialiased;
+}
+.wrap{max-width:900px;margin:0 auto;}
+.eyebrow{font-family:var(--font-mono);font-size:11px;letter-spacing:0.14em;text-transform:uppercase;color:var(--teal);margin-bottom:16px;}
+h1{font-size:clamp(30px,4.4vw,44px);font-weight:700;line-height:1.12;letter-spacing:-1.2px;margin-bottom:16px;text-wrap:balance;}
+h1 span{color:var(--teal);}
+.lede{font-size:17.5px;line-height:1.6;color:var(--text-dim);max-width:66ch;}
+.meta{display:flex;flex-wrap:wrap;gap:8px;margin-top:24px;font-family:var(--font-mono);font-size:11px;color:var(--text-dim);}
+.chip{border:1px solid var(--border-bright);border-radius:5px;padding:3px 9px;background:var(--surface);}
+header{border-bottom:2px solid var(--text);padding-bottom:30px;margin-bottom:44px;}
+h2{font-size:21px;font-weight:600;letter-spacing:-0.3px;margin-bottom:6px;}
+.num{font-family:var(--font-mono);font-size:11px;color:var(--teal);letter-spacing:.1em;display:block;margin-bottom:6px;}
+.section{margin-bottom:44px;animation:up .45s ease-out both;animation-delay:calc(var(--i,0)*0.05s);}
+@keyframes up{from{opacity:0;transform:translateY(8px);}to{opacity:1;transform:translateY(0);}}
+@media (prefers-reduced-motion:reduce){*{animation-duration:.01ms!important;}}
+p{margin-bottom:13px;} p:last-child{margin-bottom:0;}
+strong{font-weight:600;}
+.sub{font-size:13.5px;color:var(--text-dim);margin-bottom:18px;}
+
+/* failure cards */
+.cards{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:6px;}
+.fcard{background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:16px 16px 15px;border-top:2px solid var(--red);}
+.fcard h4{font-size:13.5px;font-weight:600;margin-bottom:6px;line-height:1.4;}
+.fcard p{font-size:12.5px;color:var(--text-dim);line-height:1.55;margin:0;}
+
+/* pipeline */
+.pipe{background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:26px 24px 22px;margin-top:6px;}
+.pipe-row{display:grid;grid-template-columns:repeat(5,1fr);gap:8px;margin-bottom:18px;}
+.step{position:relative;text-align:center;padding:12px 6px;border-radius:7px;background:var(--surface2);border:1px solid var(--border);}
+.step .n{font-family:var(--font-mono);font-size:10px;color:var(--teal);display:block;margin-bottom:5px;}
+.step .t{font-size:12.5px;font-weight:600;display:block;line-height:1.35;}
+.step .s{font-size:11px;font-weight:600;color:var(--teal);display:block;margin-top:5px;line-height:1.3;}
+.step .d{font-size:11px;color:var(--text-dim);display:block;margin-top:4px;line-height:1.35;}
+
+/* worked run */
+.run{background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:24px 24px 20px;margin-top:6px;}
+.run-row{display:grid;grid-template-columns:150px 24px 1fr;padding-bottom:14px;}
+.run-row:last-child{padding-bottom:0;}
+.run-name{padding-top:3px;text-align:right;padding-right:12px;}
+.run-name .a{font-size:13px;font-weight:700;display:block;line-height:1.25;}
+.run-name .p{font-size:11px;color:var(--teal);display:block;font-weight:600;line-height:1.3;margin-top:2px;}
+.run-line{position:relative;}
+.run-line::before{content:'';position:absolute;left:50%;top:8px;bottom:-14px;width:1px;background:var(--border-bright);transform:translateX(-50%);}
+.run-row:last-child .run-line::before{display:none;}
+.run-line::after{content:'';position:absolute;left:50%;top:6px;width:8px;height:8px;border-radius:50%;background:var(--surface);border:1.5px solid var(--teal);transform:translateX(-50%);}
+.run-body{background:var(--surface2);border:1px solid var(--border);border-radius:7px;padding:11px 14px;font-size:12.5px;line-height:1.55;color:var(--text-dim);}
+.run-body b{color:var(--text);font-weight:600;}
+.run-row.gate .run-name .p{color:var(--amber);}
+.run-row.gate .run-line::after{border-color:var(--amber);background:var(--amber);}
+.run-row.gate .run-body{background:var(--amber-dim);border-color:rgba(164,90,6,0.25);}
+.run-row.sig .run-name .p{color:var(--green);}
+.run-row.sig .run-line::after{border-color:var(--green);background:var(--green);}
+.run-row.sig .run-body{background:var(--green-dim);border-color:rgba(22,101,52,0.25);}
+.gates{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:14px;}
+.gate{background:var(--amber-dim);border:1px solid rgba(164,90,6,0.28);border-radius:7px;padding:11px 14px;}
+.gate b{font-size:12.5px;display:block;color:var(--amber);margin-bottom:2px;}
+.gate span{font-size:12px;color:var(--text-dim);line-height:1.4;}
+.sig{background:var(--green-dim);border:1px solid rgba(22,101,52,0.28);border-radius:7px;padding:11px 14px;display:flex;gap:12px;align-items:baseline;flex-wrap:wrap;}
+.sig b{font-size:12.5px;color:var(--green);}
+.sig span{font-size:12px;color:var(--text-dim);}
+
+/* table */
+.tw{overflow-x:auto;border:1px solid var(--border);border-radius:8px;background:var(--surface);}
+table{width:100%;border-collapse:collapse;font-size:13.5px;}
+th{text-align:left;font-family:var(--font-mono);font-size:10px;letter-spacing:.08em;text-transform:uppercase;color:var(--text-dim);font-weight:500;padding:11px 14px;background:var(--surface2);border-bottom:1px solid var(--border-bright);white-space:nowrap;}
+td{padding:11px 14px;border-bottom:1px solid var(--border);vertical-align:top;line-height:1.5;}
+tr:last-child td{border-bottom:none;}
+tbody tr:nth-child(even){background:var(--surface2);}
+
+/* callouts */
+.callout{border-left:3px solid var(--teal);background:var(--teal-dim);border-radius:0 7px 7px 0;padding:16px 20px;font-size:14px;line-height:1.6;}
+.callout--amber{border-left-color:var(--amber);background:var(--amber-dim);}
+.callout--slate{border-left-color:var(--slate);background:var(--slate-dim);}
+.callout b{display:block;margin-bottom:5px;}
+
+/* steps */
+ol.b{list-style:none;counter-reset:x;display:grid;gap:11px;}
+ol.b li{counter-increment:x;padding-left:32px;position:relative;font-size:14px;line-height:1.6;}
+ol.b li::before{content:counter(x);position:absolute;left:0;top:0;width:21px;height:21px;border-radius:5px;background:var(--teal);color:#fff;font-family:var(--font-mono);font-size:11px;display:flex;align-items:center;justify-content:center;}
+@media (prefers-color-scheme:dark){ol.b li::before{color:#0d1117;}}
+
+/* origin panel */
+.origin{background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:24px 26px;}
+.origin h3{font-size:15px;font-weight:600;margin-bottom:10px;}
+.origin .ta-line{font-family:'Noto Serif Tamil',serif;font-size:16px;line-height:1.9;color:var(--text-dim);border-left:2px solid var(--border-bright);padding-left:14px;margin:14px 0;}
+
+.ask{background:var(--text);color:#fff;border-radius:10px;padding:26px 28px;}
+.ask h2{color:#fff;margin-bottom:12px;}
+.ask p{color:rgba(255,255,255,0.78);font-size:14.5px;}
+.ask b{color:#fff;}
+@media (prefers-color-scheme:dark){.ask{background:#1f2937;} .ask p{color:rgba(255,255,255,0.8);}}
+
+footer{margin-top:52px;padding-top:22px;border-top:1px solid var(--border);font-size:12px;color:var(--text-dim);line-height:1.7;}
+
+@media (max-width:760px){
+  body{padding:32px 16px 64px;}
+  .cards{grid-template-columns:1fr;}
+  .pipe-row{grid-template-columns:1fr 1fr;}
+  .run-row{grid-template-columns:1fr;}
+  .run-name{text-align:left;padding-right:0;margin-bottom:6px;}
+  .run-line{display:none;}
+  .gates{grid-template-columns:1fr;}
+}
+@media print{
+  body{background:#fff;padding:0;font-size:11pt;}
+  .section{page-break-inside:avoid;}
+  .ask{background:#f4f5f3;color:#0f172a;}
+  .ask h2,.ask b{color:#0f172a;} .ask p{color:#334155;}
+}
+
+/* site navigation */
+.vi-nav{display:grid;grid-template-columns:1fr auto 1fr;gap:10px;margin:0 0 28px;font-family:'Noto Sans Tamil','Noto Serif Tamil',var(--font-body)}
+.vi-nav--end{margin:36px 0 0}
+.vi-nav a{display:flex;flex-direction:column;gap:2px;min-width:0;padding:9px 14px;background:var(--surface);color:var(--text);border:1px solid var(--border-bright);border-radius:8px;text-decoration:none;font-size:14px;font-weight:600;line-height:1.35}
+.vi-nav a:hover{border-color:var(--text-dim)}
+.vi-nav small{font-size:12px;font-weight:400;color:var(--text-dim)}
+.vi-nav .up{text-align:center}
+.vi-nav .nx{text-align:right}
+@media (max-width:620px){.vi-nav{grid-template-columns:1fr}.vi-nav>span{display:none}.vi-nav .up,.vi-nav .nx{text-align:left}}
+</style>
+</head>
+<body>
+<div class="wrap">
+<nav class="vi-nav" aria-label="பக்க வழிசெலுத்தல்"><span></span><a class="up" href="../index.html#vanika"><small>↑ மேலே</small>வணிக இணை</a><a class="nx" href="second-brain-architecture.html"><small>அடுத்த ஆவணம் →</small>Second Brain</a></nav>
+
+<header>
+  <div class="eyebrow">Design note · for discussion</div>
+  <h1>Retrieval you can <span>defend</span></h1>
+  <p class="lede">Enterprise search finds passages. Decisions need facts with an owner. The gap between the two is not model quality — it is a missing process. This note sketches that process, and where the idea came from.</p>
+  <div class="meta">
+    <span class="chip">6 min read</span>
+    <span class="chip">Status: early thinking</span>
+    <span class="chip">Applies to: Energy · Agriculture · Water</span>
+  </div>
+</header>
+
+<div class="section" style="--i:1">
+  <span class="num">01</span>
+  <h2>The problem is not search</h2>
+  <p class="sub">Ask a retrieval system a question today and you get paragraphs. Nobody can say whether the answer is right, who stands behind it, or what it replaced.</p>
+  <p>Three specific failures show up in almost every programme, and they are structural rather than technical:</p>
+  <div class="cards">
+    <div class="fcard">
+      <h4>Extraction and interpretation are fused</h4>
+      <p>The moment a document is parsed, it is also labelled. When the schema changes — and it always does — nothing can be re-derived without re-ingesting the world.</p>
+    </div>
+    <div class="fcard">
+      <h4>One confidence score, not two checks</h4>
+      <p>"How sure are you?" is not one question. Disagreement between sources and outright error are different failures, and a single number averages them into false comfort.</p>
+    </div>
+    <div class="fcard">
+      <h4>Approval is a checkbox</h4>
+      <p>Someone clicks approve. No name, no scope, no record of what they were entitled to sign. It looks like governance and is not.</p>
+    </div>
+  </div>
+</div>
+
+<div class="section" style="--i:2">
+  <span class="num">02</span>
+  <h2>The shape of the answer</h2>
+  <p class="sub">Five things must be present for a claim to exist at all, two gates must pass, and one person must sign.</p>
+
+  <div class="pipe">
+    <div class="pipe-row">
+      <div class="step"><span class="n">01</span><span class="t">Ask</span><span class="s">The request</span><span class="d">who wants it, for what decision, to what tolerance</span></div>
+      <div class="step"><span class="n">02</span><span class="t">Light</span><span class="s">The reasoning engine</span><span class="d">it can represent anything — it illuminates, it does not decide</span></div>
+      <div class="step"><span class="n">03</span><span class="t">Gates</span><span class="s">Intake</span><span class="d">documents, images, sensors, feeds, people</span></div>
+      <div class="step"><span class="n">04</span><span class="t">Medium</span><span class="s">The evidence record</span><span class="d">the raw, immutable record of what arrived</span></div>
+      <div class="step"><span class="n">05</span><span class="t">Form</span><span class="s">The registry</span><span class="d">the ontology that says what a thing is</span></div>
+    </div>
+    <div class="gates">
+      <div class="gate"><b>Gate one — Doubt · conflict check</b><span>Sources disagree. Surface it, hold it open. Do not average.</span></div>
+      <div class="gate"><b>Gate two — Falsification · stress test</b><span>Try to break the claim: units, physical limits, time, cross-source.</span></div>
+    </div>
+    <div class="sig">
+      <b>Signature · attestation</b><span>a named person, within their scope, with a timestamp — not a status field</span>
+    </div>
+  </div>
+
+  <div class="callout callout--amber" style="margin-top:16px;">
+    <b>Why five and not one</b>
+    Each step has its own failure mode, so each can be measured, fixed and audited separately. Merging them is what makes today's systems fast and unauditable.
+  </div>
+</div>
+
+<div class="section" style="--i:3">
+  <span class="num">03</span>
+  <h2>What we would build</h2>
+  <div class="tw">
+    <table>
+      <thead><tr><th>Component</th><th>Job</th><th>Why it earns its place</th></tr></thead>
+      <tbody>
+        <tr><td><strong>Percept store</strong></td><td>Immutable, label-free capture of what arrived</td><td>Re-derive everything after a schema change, without re-ingesting</td></tr>
+        <tr><td><strong>Claim store</strong></td><td>Facts, versioned, with supersession edges</td><td>Answer "what did we believe before, and why did it change"</td></tr>
+        <tr><td><strong>Skeptic</strong></td><td>Enumerates candidate readings, surfaces conflicts</td><td>Disagreement becomes a finding instead of an average</td></tr>
+        <tr><td><strong>Certifier</strong></td><td>Binds a percept to one reading</td><td>A single, committed answer — and the rejected ones kept</td></tr>
+        <tr><td><strong>Authority matrix</strong></td><td>Claim type × role</td><td>A signature that means something</td></tr>
+        <tr><td><strong>Governor</strong></td><td>Budget, backpressure, cheap/expensive routing</td><td>Cost stays proportional to consequence</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p style="margin-top:14px;font-size:13.5px;color:var(--text-dim);">One inference capability, used by several of these under different constraints — not a separate model per role. That is cheaper, more consistent, and easier to certify.</p>
+</div>
+
+<div class="section" style="--i:4">
+  <span class="num">04</span>
+  <h2>One case, end to end</h2>
+  <p class="sub">A transformer nameplate disagrees with the asset register. This happens constantly and is quietly resolved by whoever is closest. Here is the same five stages and two gates, with the actual values.</p>
+
+  <div class="run">
+    <div class="run-row">
+      <div class="run-name"><span class="a">Ask</span><span class="p">The request</span></div>
+      <div class="run-line"></div>
+      <div class="run-body">"What is the rated capacity of TR-114?" A crew is being scheduled against it this week. <b>Tolerance:</b> exact. <b>Who may sign:</b> the substation engineer — a vendor brochure is not acceptable.</div>
+    </div>
+    <div class="run-row">
+      <div class="run-name"><span class="a">Light</span><span class="p">The reasoning engine</span></div>
+      <div class="run-line"></div>
+      <div class="run-body">Reads all four artefacts and proposes candidate readings. It does not choose between them, and it has no authority to.</div>
+    </div>
+    <div class="run-row">
+      <div class="run-name"><span class="a">Gates</span><span class="p">Intake</span></div>
+      <div class="run-line"></div>
+      <div class="run-body">Four doors open: a nameplate photo from the field app, a 2004 commissioning certificate, a SCADA peak-load export, an email about a 2019 bushing replacement.</div>
+    </div>
+    <div class="run-row">
+      <div class="run-name"><span class="a">Medium</span><span class="p">The evidence record</span></div>
+      <div class="run-line"></div>
+      <div class="run-body">All four stored unmodified, hashed, timestamped. OCR returns <b>31.5 MVA</b>, <b>132/33 kV</b>, <b>Ynd11</b> with positions and confidences. The word "capacity" does not exist yet at this stage — nothing has been labelled.</div>
+    </div>
+    <div class="run-row">
+      <div class="run-name"><span class="a">Form</span><span class="p">The registry</span></div>
+      <div class="run-line"></div>
+      <div class="run-body">Binds the percepts to asset <b>AST-4471</b>: name TR-114, class power transformer, property 31.5 MVA / 132/33 kV, function step-down, identity the physical unit in the Perambalur yard.</div>
+    </div>
+    <div class="run-row gate">
+      <div class="run-name"><span class="a">Gate one</span><span class="p">Conflict check</span></div>
+      <div class="run-line"></div>
+      <div class="run-body">The register says <b>25 MVA</b>, last touched in 1998. Nameplate and certificate say <b>31.5 MVA</b>. The conflict is raised and held open, with both provenance chains attached. Not averaged.</div>
+    </div>
+    <div class="run-row gate">
+      <div class="run-name"><span class="a">Gate two</span><span class="p">Stress test</span></div>
+      <div class="run-line"></div>
+      <div class="run-body">Serials match, so the certificate belongs to this unit. Peak load of 22.4 MW at 0.8 power factor implies 28 MVA — fits 31.5, does not fit 25. The "wrong unit" hypothesis is rejected and kept on the record with its reason.</div>
+    </div>
+    <div class="run-row sig">
+      <div class="run-name"><span class="a">Signature</span><span class="p">Attestation</span></div>
+      <div class="run-line"></div>
+      <div class="run-body">The substation engineer confirms the 2004 replacement from her own knowledge and signs, with name, scope and timestamp. The fact supersedes the 25 MVA entry, which is retained. The next query answers in milliseconds, with the whole trail attached.</div>
+    </div>
+  </div>
+</div>
+
+<div class="section" style="--i:5">
+  <span class="num">05</span>
+  <h2>Why it ports across sectors</h2>
+  <p class="sub">Only two columns change. Everything else is shared infrastructure.</p>
+  <div class="tw">
+    <table>
+      <thead><tr><th>Shared</th><th>Energy</th><th>Agriculture</th><th>Water</th></tr></thead>
+      <tbody>
+        <tr><td><strong>Gates</strong></td><td>SCADA, nameplates, outage logs</td><td>Satellite tiles, soil labs, mandi feeds</td><td>Gauges, flow meters, quality labs</td></tr>
+        <tr><td><strong>Typical doubt</strong></td><td>Register vs nameplate rating</td><td>Two yield estimates; boundary overlap</td><td>Gauge vs inflow-outflow balance</td></tr>
+        <tr><td><strong>Who signs</strong></td><td>Substation engineer</td><td>Agriculture officer</td><td>Sectional engineer or hydrologist</td></tr>
+        <tr><td><strong>Everything else</strong></td><td colspan="3" style="color:var(--text-dim);">Percept store · claim store · skeptic · certifier · authority matrix · governor — built once</td></tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<div class="section" style="--i:6">
+  <span class="num">06</span>
+  <h2>Where this came from</h2>
+  <p class="sub">You should know the source, because it is unusual.</p>
+  <div class="origin">
+    <p>I have been studying a 12th-century Tamil text on how a mind comes to know a thing. In one verse it describes perception as five constituents that must all be present, followed by two gates — doubt and misidentification — before a thing can be said to be known at all.</p>
+    <div class="ta-line">"உயிரினோடு உணர்வு வாயில் ஒளி உருவாதி பற்றி…" — with the self, its light of knowing, the sense-gates, the medium and the object's form, all engaged together…</div>
+    <p>I am borrowing a description of a process, the way one might borrow a model from biology or from military doctrine. What transfers is the structure, not the doctrine — and the structure happens to be unusually precise about where knowledge is produced and where it can go wrong.</p>
+    <p>Two things I took from it that I would not have designed myself. First, that the un-named stage is real and must be preserved separately from the named one — most systems collapse them at ingest. Second, that <strong>speed hides structure</strong>: a thing feels known instantly only because five steps ran fast, and the value of rebuilding those steps is precisely that they become inspectable.</p>
+  </div>
+  <div class="callout callout--slate" style="margin-top:16px;">
+    <b>Where the analogy breaks — and it does</b>
+    The text's knower is a conscious self that experiences. Software has none. So the human signature is not a governance formality bolted on at the end; it is the only place in the system where anyone actually knows anything. The pipeline produces <em>warrant</em> — a defensible, traceable claim. It does not produce truth, and I would not sell it as such.
+  </div>
+</div>
+
+<footer>
+  <p>Early-stage exploration, shared for reaction rather than decision. The architecture referenced here is developed in a separate working note; this page is the business summary. Sources: a class recording on <em>Sivagnana Siddhiyar</em>, Gnanapadam verse 12, with the 1971 commentary of M. Thiruvilangam; the mapping to software components is my own construction and is not claimed as the text's doctrine.</p>
+</footer>
+
+<nav class="vi-nav vi-nav--end" aria-label="பக்க வழிசெலுத்தல்"><span></span><a class="up" href="../index.html#vanika"><small>↑ மேலே</small>வணிக இணை</a><a class="nx" href="second-brain-architecture.html"><small>அடுத்த ஆவணம் →</small>Second Brain</a></nav>
+</div>
+</body>
+</html>

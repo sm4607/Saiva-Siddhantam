@@ -1,0 +1,688 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Second Brain — Architecture from the Guru's Chain (Class 15, ~48 min)</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600&family=Noto+Serif+Tamil:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --font-display:'Instrument Serif', Georgia, serif;
+  --font-body:'IBM Plex Sans', system-ui, sans-serif;
+  --font-mono:'JetBrains Mono','SF Mono',Consolas,monospace;
+  --font-tamil:'Noto Serif Tamil','Latha',serif;
+
+  --bg:#f8f6f1; --surface:#ffffff; --surface2:#f2eee6; --surface3:#fbf9f4;
+  --border:rgba(30,58,95,0.10); --border-bright:rgba(30,58,95,0.20);
+  --text:#1b2330; --text-dim:#6f7a89;
+  --ink:#1e3a5f; --ink-soft:rgba(30,58,95,0.06);
+  --gold:#a8761c; --gold-bright:#d4a73a; --gold-dim:rgba(212,167,58,0.13);
+  --rust:#9a3412; --rust-dim:rgba(154,52,18,0.08);
+  --moss:#3f6212; --moss-dim:rgba(63,98,18,0.08);
+  --sea:#0f5f6e; --sea-dim:rgba(15,95,110,0.08);
+  --plum:#7a1f4a; --plum-dim:rgba(122,31,74,0.08);
+}
+@media (prefers-color-scheme: dark){
+  :root{
+    --bg:#12161c; --surface:#1a2029; --surface2:#222a35; --surface3:#1e252f;
+    --border:rgba(255,255,255,0.07); --border-bright:rgba(255,255,255,0.16);
+    --text:#e6e3dc; --text-dim:#93a0b0;
+    --ink:#8fb3dc; --ink-soft:rgba(143,179,220,0.09);
+    --gold:#e0b654; --gold-bright:#d4a73a; --gold-dim:rgba(224,182,84,0.12);
+    --rust:#e08a5f; --rust-dim:rgba(224,138,95,0.12);
+    --moss:#a3c46a; --moss-dim:rgba(163,196,106,0.12);
+    --sea:#6fc3d0; --sea-dim:rgba(111,195,208,0.12);
+    --plum:#e0a0be; --plum-dim:rgba(224,160,190,0.12);
+  }
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{
+  background:var(--bg);
+  background-image:
+    radial-gradient(ellipse 900px 500px at 15% -5%, var(--gold-dim) 0%, transparent 60%),
+    radial-gradient(ellipse 800px 600px at 95% 40%, var(--ink-soft) 0%, transparent 55%);
+  background-attachment:fixed;
+  color:var(--text); font-family:var(--font-body); font-size:15px; line-height:1.65;
+  padding:56px 24px 96px; -webkit-font-smoothing:antialiased;
+}
+.wrap{max-width:1080px;margin:0 auto;}
+h1{font-family:var(--font-display);font-size:clamp(34px,5vw,54px);font-weight:400;line-height:1.08;letter-spacing:-0.5px;margin-bottom:14px;}
+h1 em{font-style:italic;color:var(--gold);}
+.eyebrow{font-family:var(--font-mono);font-size:11px;letter-spacing:0.16em;text-transform:uppercase;color:var(--gold);margin-bottom:18px;}
+.lede{font-size:17px;line-height:1.6;color:var(--text-dim);max-width:74ch;}
+h2{font-family:var(--font-display);font-size:30px;font-weight:400;letter-spacing:-0.3px;margin-bottom:6px;}
+h3{font-size:14px;font-family:var(--font-mono);letter-spacing:0.1em;text-transform:uppercase;color:var(--gold);margin-bottom:14px;font-weight:500;}
+p{margin-bottom:14px;} p:last-child{margin-bottom:0;}
+strong{font-weight:600;color:var(--text);}
+code{font-family:var(--font-mono);font-size:0.87em;background:var(--surface2);padding:1px 5px;border-radius:4px;border:1px solid var(--border);}
+.ta{font-family:var(--font-tamil);}
+header{margin-bottom:52px;border-bottom:1px solid var(--border);padding-bottom:34px;}
+.meta-row{display:flex;flex-wrap:wrap;gap:10px;margin-top:24px;font-family:var(--font-mono);font-size:11.5px;color:var(--text-dim);}
+.chip{border:1px solid var(--border-bright);border-radius:100px;padding:4px 12px;background:var(--surface3);}
+.chip b{color:var(--ink);font-weight:500;}
+section{margin-bottom:52px;animation:fadeUp .5s ease-out both;animation-delay:calc(var(--i,0)*0.05s);}
+@keyframes fadeUp{from{opacity:0;transform:translateY(10px);}to{opacity:1;transform:translateY(0);}}
+@media (prefers-reduced-motion:reduce){*{animation-duration:.01ms!important;transition-duration:.01ms!important;}}
+.card{background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:24px 26px;}
+.card--recess{background:var(--surface3);box-shadow:inset 0 1px 3px rgba(0,0,0,0.03);}
+.section-head{margin-bottom:20px;}
+.section-head .loc{font-family:var(--font-mono);font-size:11.5px;color:var(--text-dim);margin-top:6px;}
+
+/* quote from the lecture */
+.quote{
+  background:var(--surface3);
+  border-left:3px solid var(--gold-bright);
+  border-radius:0 8px 8px 0;
+  padding:16px 22px;
+  margin:18px 0;
+}
+.quote .ta-q{font-family:var(--font-tamil);font-size:17px;line-height:1.95;display:block;}
+.quote .gloss{display:block;font-size:13px;color:var(--text-dim);margin-top:9px;font-style:italic;line-height:1.5;}
+.quote .stamp{display:block;font-family:var(--font-mono);font-size:10px;letter-spacing:.09em;text-transform:uppercase;color:var(--gold);margin-bottom:8px;}
+
+/* verse */
+.verse{font-family:var(--font-tamil);font-size:18px;line-height:2.0;background:var(--surface2);border-radius:8px;padding:20px 24px;margin-bottom:12px;}
+.verse .vline{display:block;}
+.verse .vline:nth-child(even){color:var(--text-dim);}
+.attrib{font-family:var(--font-mono);font-size:11.5px;color:var(--text-dim);padding-left:6px;}
+
+/* chain */
+.chain{display:grid;grid-template-columns:repeat(5,1fr);gap:0;margin:24px 0 8px;}
+.link{position:relative;background:var(--surface);border:1px solid var(--border-bright);border-radius:8px;padding:15px 12px 13px;text-align:center;margin-right:20px;transition:transform .18s ease,box-shadow .18s ease;}
+.link:last-child{margin-right:0;}
+.link:hover{transform:translateY(-3px);box-shadow:0 6px 18px rgba(30,58,95,0.09);}
+.link::after{content:'';position:absolute;top:50%;right:-16px;width:12px;height:1px;background:var(--border-bright);}
+.link:last-child::after{display:none;}
+.link .num{font-family:var(--font-mono);font-size:10px;color:var(--gold);letter-spacing:.1em;display:block;margin-bottom:6px;}
+.link .ta-word{font-family:var(--font-tamil);font-size:19px;font-weight:600;display:block;line-height:1.3;margin-bottom:4px;}
+.link .en{font-size:11.5px;color:var(--text-dim);line-height:1.4;display:block;}
+.link .sys{display:block;margin-top:9px;padding-top:8px;border-top:1px dashed var(--border-bright);font-family:var(--font-mono);font-size:10px;color:var(--sea);line-height:1.4;}
+
+/* ladder */
+.ladder{display:grid;gap:0;margin-top:8px;}
+.rung{display:grid;grid-template-columns:150px 1fr;gap:20px;padding:16px 0;border-bottom:1px solid var(--border);align-items:start;}
+.rung:last-child{border-bottom:none;}
+.rung .label{font-family:var(--font-tamil);font-size:16px;font-weight:600;line-height:1.4;}
+.rung .label small{display:block;font-family:var(--font-mono);font-size:10px;color:var(--text-dim);font-weight:400;letter-spacing:.06em;text-transform:uppercase;margin-top:3px;}
+.rung .body{font-size:14px;line-height:1.62;}
+.rung--bad .label{color:var(--rust);}
+.rung--good .label{color:var(--moss);}
+.rung--gold .label{color:var(--gold);}
+
+/* table */
+.table-wrap{overflow-x:auto;border:1px solid var(--border);border-radius:10px;background:var(--surface);}
+table{width:100%;border-collapse:collapse;font-size:13.5px;}
+thead th{text-align:left;font-family:var(--font-mono);font-size:10.5px;letter-spacing:.09em;text-transform:uppercase;color:var(--text-dim);font-weight:500;padding:13px 16px;background:var(--surface2);border-bottom:1px solid var(--border-bright);white-space:nowrap;}
+tbody td{padding:13px 16px;border-bottom:1px solid var(--border);vertical-align:top;line-height:1.5;}
+tbody tr:last-child td{border-bottom:none;}
+tbody tr:nth-child(even){background:var(--surface3);}
+tbody tr:hover{background:var(--gold-dim);}
+td .ta{font-size:15px;font-weight:600;}
+td small{color:var(--text-dim);display:block;margin-top:3px;font-size:12px;}
+.pill{display:inline-block;font-family:var(--font-mono);font-size:10px;padding:2px 7px;border-radius:4px;letter-spacing:.05em;background:var(--ink-soft);color:var(--ink);}
+.pill--gold{background:var(--gold-dim);color:var(--gold);}
+.pill--rust{background:var(--rust-dim);color:var(--rust);}
+.pill--moss{background:var(--moss-dim);color:var(--moss);}
+.pill--sea{background:var(--sea-dim);color:var(--sea);}
+.pill--plum{background:var(--plum-dim);color:var(--plum);}
+
+/* flow */
+.flow{display:grid;gap:0;margin-top:6px;}
+.stage{display:grid;grid-template-columns:52px 1fr;gap:18px;position:relative;padding-bottom:20px;}
+.stage:last-child{padding-bottom:0;}
+.stage::before{content:'';position:absolute;left:25px;top:44px;bottom:0;width:1px;background:var(--border-bright);}
+.stage:last-child::before{display:none;}
+.stage .dot{width:44px;height:44px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:var(--font-mono);font-size:11px;font-weight:600;background:var(--surface);border:1px solid var(--border-bright);color:var(--ink);z-index:1;}
+.stage.gate .dot{background:var(--gold-dim);border-color:var(--gold-bright);color:var(--gold);}
+.stage.human .dot{background:var(--moss-dim);border-color:var(--moss);color:var(--moss);}
+.stage.sys .dot{background:var(--plum-dim);border-color:var(--plum);color:var(--plum);}
+.stage .content{background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:14px 18px;}
+.stage .content h4{font-size:14px;font-weight:600;margin-bottom:3px;display:flex;flex-wrap:wrap;gap:8px;align-items:baseline;}
+.stage .content h4 .ta-inline{font-family:var(--font-tamil);font-weight:600;font-size:15px;color:var(--gold);}
+.stage .content p{font-size:13.5px;color:var(--text-dim);margin:0;}
+.stage .content p + p{margin-top:7px;}
+
+.callout{border-left:3px solid var(--gold-bright);background:var(--gold-dim);border-radius:0 8px 8px 0;padding:18px 22px;font-size:14.5px;line-height:1.6;}
+.callout--rust{border-left-color:var(--rust);background:var(--rust-dim);}
+.callout--sea{border-left-color:var(--sea);background:var(--sea-dim);}
+.callout--plum{border-left-color:var(--plum);background:var(--plum-dim);}
+
+ol.steps{counter-reset:s;list-style:none;display:grid;gap:14px;margin-top:6px;}
+ol.steps li{counter-increment:s;padding-left:40px;position:relative;font-size:14px;line-height:1.6;}
+ol.steps li::before{content:counter(s,decimal-leading-zero);position:absolute;left:0;top:1px;font-family:var(--font-mono);font-size:11px;color:var(--gold);border:1px solid var(--border-bright);border-radius:4px;padding:2px 5px;background:var(--surface);}
+
+.three{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;}
+.mini{background:var(--surface3);border:1px solid var(--border);border-radius:8px;padding:15px 16px;font-size:13px;line-height:1.55;}
+.mini h5{font-family:var(--font-mono);font-size:10.5px;letter-spacing:.09em;text-transform:uppercase;color:var(--gold);margin-bottom:7px;font-weight:500;}
+.mini p{color:var(--text-dim);margin:0;font-size:13px;}
+.mini .ta-h{font-family:var(--font-tamil);font-size:16px;font-weight:600;color:var(--text);display:block;margin-bottom:6px;}
+
+footer{margin-top:60px;padding-top:28px;border-top:1px solid var(--border);font-size:12.5px;color:var(--text-dim);line-height:1.7;}
+footer p{margin-bottom:8px;}
+
+@media (max-width:820px){
+  body{padding:32px 16px 64px;}
+  .chain{grid-template-columns:1fr;gap:12px;}
+  .link{margin-right:0;} .link::after{display:none;}
+  .three{grid-template-columns:1fr;}
+  .rung{grid-template-columns:1fr;gap:6px;}
+  .stage{grid-template-columns:40px 1fr;gap:12px;}
+  .stage .dot{width:34px;height:34px;font-size:10px;}
+  .stage::before{left:17px;top:36px;}
+}
+
+/* site navigation */
+.vi-nav{display:grid;grid-template-columns:1fr auto 1fr;gap:10px;margin:0 0 28px;font-family:'Noto Sans Tamil','Noto Serif Tamil',var(--font-body)}
+.vi-nav--end{margin:36px 0 0}
+.vi-nav a{display:flex;flex-direction:column;gap:2px;min-width:0;padding:9px 14px;background:var(--surface);color:var(--text);border:1px solid var(--border-bright);border-radius:8px;text-decoration:none;font-size:14px;font-weight:600;line-height:1.35}
+.vi-nav a:hover{border-color:var(--text-dim)}
+.vi-nav small{font-size:12px;font-weight:400;color:var(--text-dim)}
+.vi-nav .up{text-align:center}
+.vi-nav .nx{text-align:right}
+@media (max-width:620px){.vi-nav{grid-template-columns:1fr}.vi-nav>span{display:none}.vi-nav .up,.vi-nav .nx{text-align:left}}
+</style>
+</head>
+<body>
+<div class="wrap">
+<nav class="vi-nav" aria-label="பக்க வழிசெலுத்தல்"><a href="retrieval-design-brief.html"><small>← முன் ஆவணம்</small>Retrieval You Can Defend</a><a class="up" href="../index.html#vanika"><small>↑ மேலே</small>வணிக இணை</a><span></span></nav>
+
+<header>
+  <div class="eyebrow">Second Brain · Architecture Note 02 · rebuilt on the lecture</div>
+  <h1>The file that goes<br>round the <em>office</em></h1>
+  <p class="lede">Your Guru does not describe perception as a flash. He describes it as paperwork — a file raised at the eye, carried inward, investigated, certified, and sent back. Everything below is his chain, not mine; my contribution is only the mapping to software.</p>
+  <div class="meta-row">
+    <span class="chip">Class · <b>Supakkam 15</b></span>
+    <span class="chip">Passage · <b>~48th minute</b></span>
+    <span class="chip">Text · <b>Gnanapadam, verse 12</b></span>
+    <span class="chip">Sectors · <b>Energy · Agriculture · Water</b></span>
+  </div>
+</header>
+
+<!-- 1 -->
+<section style="--i:1">
+  <div class="section-head">
+    <h2>1. The claim he is actually making</h2>
+    <div class="loc">Not "perception is fast" — "perception is a sequence, and speed hides it"</div>
+  </div>
+
+  <p>He puts the objection in your mouth first, then answers it. You look at a tumbler and you simply know it is a tumbler. He says that is not what happened.</p>
+
+  <div class="quote">
+    <span class="stamp">Class 15 · ~47 min</span>
+    <span class="ta-q">"இது தெரிவதற்கு இடையிலே பல படிகள் நடந்துதான் தெரிகிறது. … இந்த படிமுறை நடவடிக்கைகள் மிக வேகமாக நடக்கிறபடியால், இது உடன் தெரிவது போன்ற காட்சி நமக்கு உண்டாகிறது. அவ்வளவுதான் வித்தியாசம்."</span>
+    <span class="gloss">"Many steps happen in between before it is known. Because these stepwise actions happen very fast, it appears to us as though it were known instantly. That is the only difference."</span>
+  </div>
+
+  <p>Then the image that makes it concrete, and it is a better image than any I could have supplied. Tie a fireball to a rope and spin it slowly: you see fire moving through positions. Spin it fast: you see a <em>circle</em> of fire. The fire is never in the circle — it is at each point in turn. The circle is real as an appearance and has no location of its own. He repeats it with a fan blade and a chalk mark.</p>
+
+  <div class="quote">
+    <span class="stamp">Class 15 · ~48 min</span>
+    <span class="ta-q">"அந்த வேலை வேகமாக நடக்கிறபடியால் அது உடன் தெரிவது போலத் தெரிகிறது. அதுபோலத்தான் இந்த டம்ளர் தெரிந்த விஷயம்."</span>
+    <span class="gloss">"Because that work happens fast, it appears as though it is known instantly. The knowing of this tumbler is exactly like that."</span>
+  </div>
+
+  <div class="callout callout--sea">
+    <strong>Read that as a systems statement.</strong> The circle of fire is a sampling artefact — an event rate faster than the observer's frame rate, rendered as a continuous object. Your users will see exactly this: a fact that appears in the UI instantly. The fact is the circle. It has no single location, and it is made of many samples. If you store the circle and not the samples, you have stored an appearance and thrown away the thing that generated it.
+  </div>
+</section>
+
+<!-- 2 -->
+<section style="--i:2">
+  <div class="section-head">
+    <h2>2. The chain, in the order he gives it</h2>
+    <div class="loc">Seven moves from a sight falling on the eye to "this is a tumbler"</div>
+  </div>
+
+  <div class="flow">
+    <div class="stage">
+      <div class="dot">01</div>
+      <div class="content">
+        <h4>Five gates <span class="ta-inline">ஐம்புல வாயில்</span></h4>
+        <p>Eye, nose, ear, tongue, body. Knowledge-messages are drawn in through five different doors. He is explicit that they are five <em>kinds</em> of message, not one stream.</p>
+      </div>
+    </div>
+    <div class="stage">
+      <div class="dot">02</div>
+      <div class="content">
+        <h4>The undifferentiated percept <span class="ta-inline">நிருவிகற்பக் காட்சி</span></h4>
+        <p>A sight falls on the eye and <em>you do not know what it is</em>. Only an object without division has entered. He is emphatic here: do not say "I know it" — that is the speed talking, not the eye.</p>
+      </div>
+    </div>
+    <div class="stage">
+      <div class="dot">03</div>
+      <div class="content">
+        <h4>The slip <span class="ta-inline">ஒரு துண்டிலே குறித்து</span></h4>
+        <p>The eye records the sight on a slip and sends it inward. He calls "slip" his own imaginative word — but the point is that something <em>is written down</em> and carried. The percept becomes an artefact with a carrier.</p>
+      </div>
+    </div>
+    <div class="stage gate">
+      <div class="dot">04</div>
+      <div class="content">
+        <h4>Manas investigates <span class="ta-inline">மனம் — ஆராயும்</span></h4>
+        <p>Its one job is to examine: <em>is it this or is it that?</em> It notes what is seen — "this appears, that appears" — and writes a note. This is <span class="ta">ஐயக்காட்சி</span>, doubt, and he treats it as a normal working stage, not a failure.</p>
+      </div>
+    </div>
+    <div class="stage gate">
+      <div class="dot">05</div>
+      <div class="content">
+        <h4>Buddhi certifies <span class="ta-inline">புத்தி — நிச்சயிக்கும்</span></h4>
+        <p>Given manas's note, buddhi determines: <em>the object you are seeing is this one</em>. That is the act that produces <span class="ta">சவிகற்பக் காட்சி</span> — the named claim. He says plainly that buddhi is the one who signs the file.</p>
+      </div>
+    </div>
+    <div class="stage">
+      <div class="dot">06</div>
+      <div class="content">
+        <h4>Return to manas <span class="ta-inline">திருப்பி மனதுக்கு</span></h4>
+        <p>The certified file goes back. Only now does like and dislike arise — <span class="ta">விருப்பு</span>, <span class="ta">வெறுப்பு</span>. He is specific that this cannot happen at the first stage: preference is downstream of certification.</p>
+      </div>
+    </div>
+    <div class="stage sys">
+      <div class="dot">07</div>
+      <div class="content">
+        <h4>Ahaṁkāra keeps it alive <span class="ta-inline">அகங்காரம் — ஆற்றல்</span></h4>
+        <p>Manas and buddhi, running continuously, reach a state of exhaustion. If they stop, the self has no perception at all. So ahaṁkāra supplies energy in small amounts so the two never tire out.</p>
+      </div>
+    </div>
+  </div>
+
+  <p style="margin-top:18px;">And under all of it sits <span class="ta">சித்தம்</span> — which he calls the <span class="ta">அடித்தளம்</span>, the floor. The other three are activities happening on that floor.</p>
+</section>
+
+<!-- 3 -->
+<section style="--i:3">
+  <div class="section-head">
+    <h2>3. The analogy he reaches for is an office</h2>
+    <div class="loc">This is the sentence to design against</div>
+  </div>
+
+  <div class="quote">
+    <span class="stamp">Class 15 · ~49 min</span>
+    <span class="ta-q">"இது ஒரு அலுவலகத்திலே ஃபைல் போறது போல நடக்கிற விஷயம். ஒரு ஃபைலை ஒருவர் பார்த்து, அடுத்தவர் பார்த்து, அடுத்தவர் பார்த்து, கடைசியிலே அது உறுதி செய்வது போலத்தான்."</span>
+    <span class="gloss">"This is like a file moving in an office. One person looks at it, the next looks at it, the next looks at it, and at the end it is confirmed — that is exactly how it is."</span>
+  </div>
+
+  <p>You had already written "validate — ascertain, maybe human approval — state/record" before you heard this passage, and the Guru reaches for the same shape unprompted. That convergence is the argument. The architecture is not a metaphor imposed on the philosophy; it is the shape both of them independently produce.</p>
+
+  <div class="three" style="margin-top:20px;">
+    <div class="mini">
+      <span class="ta-h">மனம்</span>
+      <p><strong>Investigates.</strong> Generates questions and candidate readings. Its output is a note full of possibilities, not an answer.</p>
+    </div>
+    <div class="mini">
+      <span class="ta-h">புத்தி</span>
+      <p><strong>Certifies.</strong> Takes the note and commits to one reading. Single output, and it is an act of determination, not a score.</p>
+    </div>
+    <div class="mini">
+      <span class="ta-h">அகங்காரம்</span>
+      <p><strong>Sustains.</strong> Supplies energy so the other two do not collapse from fatigue. Not an identity, not a judge — a budget.</p>
+    </div>
+  </div>
+
+  <div class="callout callout--rust" style="margin-top:20px;">
+    <strong>The mapping everyone gets wrong.</strong> Ahaṁkāra is usually translated "ego" and quietly dropped from technical discussions. In this lecture it has a mechanical job: it is the thing that keeps the pipeline from stalling. If you are looking for the component that prevents your agent loop from dying of cost, rate limits and context exhaustion, this is the one the Guru named, and he named it in the 48th minute.
+  </div>
+</section>
+
+<!-- 4 -->
+<section style="--i:4">
+  <div class="section-head">
+    <h2>4. The constraint he names — and it is a throughput constraint</h2>
+    <div class="loc">Why the full chain cannot run on everything</div>
+  </div>
+
+  <p>Immediately after the chain, he asks how much arrives at once. Right now, he says: you are listening to the lesson, looking at the computer, hearing a vehicle outside, smelling something, feeling the air-conditioning — all at the same time.</p>
+
+  <div class="quote">
+    <span class="stamp">Class 15 · ~52 min</span>
+    <span class="ta-q">"ஒரு செகண்டுடைய ஆயிரத்தில் ஒரு பங்குலே உங்களுக்குக் கோடி காட்சிகள் உள்ளே வருகிறது. இவ்வளவையும் உள்வாங்கி, மனம் ஆராய்ந்து புத்திக்கு அனுப்புறது என்றால் களைத்துப் போயிடும்."</span>
+    <span class="gloss">"In one thousandth of a second, crores of percepts come in to you. If manas had to take all of that in, investigate it, and send it to buddhi, it would collapse from exhaustion."</span>
+  </div>
+
+  <p>Then the observation that makes it usable: the fatigue is not felt on routine things. Drinking coffee, hearing a song — no strain. Strain appears only on <em>hard</em> things, on what is not yet known. Which means the chain is not run uniformly. Routine percepts take a cheap path; unfamiliar ones take the full investigation-and-certification path, and that is where the energy goes.</p>
+
+  <div class="callout">
+    <strong>This is a tiered-processing requirement, stated plainly.</strong> Any Second Brain that runs full retrieval-and-validation on every incoming artefact will hit exactly the exhaustion he describes — in tokens, in latency, in cost. The design needs an explicit cheap path (cache hit, known pattern, auto-certify) and an explicit expensive path (novel, conflicting, consequential), with the routing decision itself cheap. He also gives you the routing signal: strain. In a system, strain is measurable — latency, disagreement rate, retry count, token spend. Route on it.
+  </div>
+</section>
+
+<!-- 5 -->
+<section style="--i:5">
+  <div class="section-head">
+    <h2>5. Where the text sits underneath</h2>
+    <div class="loc">Two descriptions of one act — keep them distinct</div>
+  </div>
+
+  <p>Verse 12 gives a different cut of the same event: five <em>constituents</em> that must all be present, rather than a sequence of inner instruments. Both are in this same class, and they are not the same analysis.</p>
+
+  <div class="verse">
+    <span class="vline">உயிரினோடு உணர்வு வாயில் ஒளி உருவாதி பற்றிச்</span>
+    <span class="vline">செயிரொடு விகற்பம் இன்றித் தெரிவது இந்திரியக் காட்சி;</span>
+    <span class="vline">அயர்வு இல் இந்திரிய ஞானம் ஐம்புலன் சார்ந்து உயிர்க்கண்</span>
+    <span class="vline">மயர்வு அற வந்த ஞானம் மானதக் காண்டலாமே.</span>
+  </div>
+  <div class="attrib">சுபக்கம் › ஞானபாதம் › பாடல் 12</div>
+
+  <div class="chain">
+    <div class="link">
+      <span class="num">01</span><span class="ta-word">உயிர்</span>
+      <span class="en">the one who measures</span>
+      <span class="sys">orchestrator +<br>attesting human</span>
+    </div>
+    <div class="link">
+      <span class="num">02</span><span class="ta-word">உணர்வு</span>
+      <span class="en">the light that makes known</span>
+      <span class="sys">inference layer</span>
+    </div>
+    <div class="link">
+      <span class="num">03</span><span class="ta-word">வாயில்</span>
+      <span class="en">gates, steered by manas</span>
+      <span class="sys">connectors + router</span>
+    </div>
+    <div class="link">
+      <span class="num">04</span><span class="ta-word">ஒளி</span>
+      <span class="en">the medium</span>
+      <span class="sys">raw store, event bus</span>
+    </div>
+    <div class="link">
+      <span class="num">05</span><span class="ta-word">உருவம்</span>
+      <span class="en">the object's form</span>
+      <span class="sys">ontology, registry</span>
+    </div>
+  </div>
+
+  <div class="callout callout--sea" style="margin-top:20px;">
+    <strong>Note the fifth link again.</strong> The object is <em>inside</em> the act of knowing. <span class="ta">உருவ ஆதி</span> is one of the five constituents, not a passive target. Your ontology participates in perception — a wrong schema produces wrong percepts, not merely bad labels. The Guru's chain tells you the <em>process</em>; the verse tells you what must be <em>present</em> for the process to be valid at all.
+  </div>
+
+  <p style="margin-top:16px;">And the four <span class="ta">காட்சிகள்</span> sit across both: <span class="ta">நிருவிகற்பம்</span> (bare percept), <span class="ta">ஐயம்</span> (doubt), <span class="ta">விபரீதம்</span> (confident misidentification), <span class="ta">சவிகற்பம்</span> (named claim) — which map onto steps 2, 4, and 5 of his chain, with misidentification as the failure mode of step 5 done badly.</p>
+</section>
+
+<!-- 6 -->
+<section style="--i:6">
+  <div class="section-head">
+    <h2>6. Component map</h2>
+    <div class="loc">Each instrument, its one job, and the failure it produces when missing</div>
+  </div>
+
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr><th>Instrument</th><th>His job description</th><th>System component</th><th>Fails as</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><span class="ta">ஐம்புலன்</span><small>five gates</small></td>
+          <td>Five kinds of message drawn in through five doors</td>
+          <td>Modality connectors — documents, images, audio, structured feeds, human notes</td>
+          <td>One undifferentiated text stream; modality discipline lost</td>
+        </tr>
+        <tr>
+          <td><span class="ta">நிருவிகற்பம்</span><small>bare percept</small></td>
+          <td>An object without division enters; you do not yet know what it is</td>
+          <td>Percept store — label-free extraction with position and confidence</td>
+          <td>Interpretation at ingest; nothing left to re-derive from</td>
+        </tr>
+        <tr>
+          <td><span class="ta">துண்டு</span><small>the slip</small></td>
+          <td>The sight is written on a slip and carried inward</td>
+          <td>Immutable artefact + provenance pointer, content-addressed</td>
+          <td>Lineage breaks; you cannot show where a fact came from</td>
+        </tr>
+        <tr>
+          <td><span class="ta">மனம்</span><small>investigator</small></td>
+          <td>"Is it this or that?" — examines and writes a note</td>
+          <td>Skeptic <em>job</em> — enumerates candidate readings, surfaces contradictions, <strong>never resolves them</strong>. Run on the shared inference capability, not a separate model</td>
+          <td>Doubt collapsed into a confidence number</td>
+        </tr>
+        <tr>
+          <td><span class="ta">புத்தி</span><small>certifier</small></td>
+          <td>"The object you see is this one" — determines</td>
+          <td>Certification <em>job</em> — binds the percept to name, class, property, function, identity. Same inference capability as manas, tighter constraints, different failure budget</td>
+          <td>Confident misidentification — the failure that looks like success</td>
+        </tr>
+        <tr>
+          <td><span class="ta">விருப்பு · வெறுப்பு</span><small>liking · aversion</small></td>
+          <td>Arises only after certification, never before</td>
+          <td>Preference, ranking and recommendation layer — strictly downstream of the fact store</td>
+          <td>Ranking contaminates truth; the system tells you what you wanted to hear</td>
+        </tr>
+        <tr>
+          <td><span class="ta">அகங்காரம்</span><small>sustainer</small></td>
+          <td>Supplies energy so manas and buddhi never stall</td>
+          <td>Budget governor: compute, token and rate-limit allocation; backpressure; retry policy</td>
+          <td>Pipeline dies quietly under load, or spends everything on trivial items</td>
+        </tr>
+        <tr>
+          <td><span class="ta">சித்தம்</span><small>the floor</small></td>
+          <td>The substrate on which the other three operate</td>
+          <td>Persistent substrate — claim store, model and context together — plus a <strong>defined resting state</strong>: no agent running, nothing half-certified</td>
+          <td>No memory, so every question is asked from scratch; or a store always being rewritten, so nothing can be queried reliably</td>
+        </tr>
+        <tr>
+          <td><span class="ta">ஆப்த வாக்கியம்</span><small>who may speak</small></td>
+          <td>Testimony is valid only from one entitled to give it</td>
+          <td><strong>Authority matrix</strong> — claim type × role. A signature alone is not attestation</td>
+          <td>Every claim becomes attested; approval theatre that looks exactly like rigour</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<!-- 7 -->
+<section style="--i:7">
+  <div class="section-head">
+    <h2>7. The rule that falls out of step 6</h2>
+    <div class="loc">The most portable sentence in the lecture</div>
+  </div>
+
+  <p>He is careful about the ordering. Liking and aversion do <em>not</em> arise when the sight first falls, and not while manas is investigating. They arise only after buddhi has certified and sent the file back. He states it twice, to be sure you have not missed it.</p>
+
+  <div class="callout callout--plum">
+    <strong>Preference is downstream of certification.</strong> In system terms: ranking, recommendation and scoring must sit strictly after the fact store, never inside the resolution path. The moment a relevance model influences what gets certified, you have built a system that perceives what it prefers. Every enterprise search product that "learns what you like" and then quietly changes what it reports has broken this rule — and it is the exact error the lecture warns against, stated as a sequence rather than as a moral.
+  </div>
+
+  <p style="margin-top:16px;">There is a second, subtler consequence. The certified file goes <em>back to manas</em>. Perception is a loop, not a pipe — what has already been certified conditions what gets noticed next. That loop is your retrieval path. A Second Brain is not a store you query at the end; it is the memory that manas consults at the start of the next percept.</p>
+</section>
+
+<!-- 8 -->
+<section style="--i:8">
+  <div class="section-head">
+    <h2>8. Three rules from the rest of the hour</h2>
+    <div class="loc">Cheap to build now, painful to retrofit later</div>
+  </div>
+
+  <h3>One light, five instruments</h3>
+  <p>At verse 8 he refuses the obvious reading. Is it the eye that knows an object directly? No. Manas? No. Buddhi? No. <span class="ta">உள்ளே இருந்து ஆன்மாதான் அறிகிறது</span> — it is from within that the self knows, and strictly not even that, but the power of the divine seated in it. Which is why all four perceptions of verse 9 close with the same two words, <span class="ta">ஆன்ம சிற்சக்தி</span>.</p>
+  <p>So the chain is not five knowers passing a parcel. It is <strong>one light in five modes</strong>. Build it that way: a single inference capability, invoked through five instruments with different jobs, different constraints and different failure budgets. Five specialised models is the expensive misreading.</p>
+
+  <h3 style="margin-top:26px;">Citta is the floor, and it must come to rest</h3>
+  <p>The four inner instruments are not peers. <span class="ta">சித்தம்</span> is the floor — the place of pure knowing — and manas, buddhi and ahaṁkāra arise from its agitation. He uses the pillow in its case: you learn where it had been only by pulling it out. And when the three will not settle, the remedy is to return them to where they came from, which he glosses as <span class="ta">ஆதியோடு சமப்படுத்துவது</span> — balancing with the source.</p>
+  <p>In software: a persistent substrate, and transient processes that arise from disturbing it. Those processes must be able to <em>return</em>. Define a quiescent state — no agent running, no claim half-certified, every record either attested or explicitly open. Without it you have a system permanently mid-thought, and you cannot query a store that is being rewritten underneath the query.</p>
+
+  <h3 style="margin-top:26px;">Testimony needs an authority gate</h3>
+  <p>He raises this almost in passing, early in the hour, and it is the sharpest thing in the class.</p>
+  <div class="quote">
+    <span class="stamp">Class 15 · ~13 min</span>
+    <span class="ta-q">"எல்லாரும் பிறகு நான்தான் உயர்ந்தவன், ஆகவே நான் சொல்வதுதான் ஆகம பிரமாணம் என்று தொடங்கிவிட்டால், பிறகு எல்லா பிரமாணமும் ஆகம பிரமாணம் ஆகிவிடும்."</span>
+    <span class="gloss">"If everyone begins saying 'I am the highest, so what I say is testimony', then every means of knowledge becomes testimony."</span>
+  </div>
+  <p>Your design has human attestation but no rule for who counts as an attester. A signature proves someone signed; it does not prove they were entitled to. Build the matrix of claim type against role — a substation engineer may attest a transformer rating and may not attest a tariff order — and keep unattested claims visibly unattested rather than letting them drift up into the record.</p>
+</section>
+
+<!-- 9 -->
+<section style="--i:9">
+  <div class="section-head">
+    <h2>9. Walked through once — Energy</h2>
+    <div class="loc">A transformer nameplate that disagrees with the asset master</div>
+  </div>
+
+  <div class="card card--recess" style="margin-bottom:18px;">
+    <p style="font-family:var(--font-mono);font-size:12px;color:var(--text-dim);margin-bottom:8px;">THE QUESTION</p>
+    <p style="font-size:15px;">"What is the rated capacity of transformer TR-114? A maintenance crew is being scheduled against it this week."</p>
+    <p style="font-size:13px;color:var(--text-dim);">Tolerance: exact, not approximate. Who may sign: the substation engineer. A vendor brochure may not.</p>
+  </div>
+
+  <div class="flow">
+    <div class="stage">
+      <div class="dot">01</div>
+      <div class="content"><h4>Gates</h4><p>Four doors open: a nameplate photograph from the field app, a scanned 2004 commissioning certificate, a SCADA CSV of peak load, and an email thread about a 2019 bushing replacement.</p></div>
+    </div>
+    <div class="stage">
+      <div class="dot">02</div>
+      <div class="content"><h4>Bare percept</h4><p>OCR returns <code>132/33 KV</code>, <code>31.5 MVA</code>, <code>OLTC ±10%</code>, <code>Ynd11</code> — each with a box and a confidence. The certificate returns <code>31.5 MVA</code>. The word "capacity" does not exist yet at this stage. Only spans.</p></div>
+    </div>
+    <div class="stage">
+      <div class="dot">03</div>
+      <div class="content"><h4>Slip</h4><p>All four artefacts hashed, timestamped, stored unmodified, and pointed at from the percept records. Nothing interpreted is written here.</p></div>
+    </div>
+    <div class="stage gate">
+      <div class="dot">04</div>
+      <div class="content"><h4>Manas investigates</h4><p>Candidate readings raised: 31.5 MVA on the nameplate, 31.5 on the certificate, <strong>25 MVA in the asset master</strong> — an entry last touched in 1998. Two sources agree, one disagrees, and the disagreement is written as a finding. Manas does not choose.</p></div>
+    </div>
+    <div class="stage gate">
+      <div class="dot">05</div>
+      <div class="content"><h4>Buddhi certifies</h4><p>Tested: serial on the certificate matches the serial on the nameplate — so the certificate belongs to this unit. Peak load 22.4 MW at 0.8 power factor implies 28 MVA, which fits 31.5 and does not fit 25. The certification is 31.5 MVA, and the rejected hypothesis is kept on the record with its reason.</p></div>
+    </div>
+    <div class="stage human">
+      <div class="dot">06</div>
+      <div class="content"><h4>The human signs</h4><p>The substation engineer reviews both provenance chains, confirms the 2004 replacement from her own knowledge, and signs. Her name and the timestamp go into the claim. <span class="pill pill--moss">attested</span></p></div>
+    </div>
+    <div class="stage">
+      <div class="dot">07</div>
+      <div class="content"><h4>Return and record</h4><p>Fact: TR-114 rated 31.5 MVA. <span class="pill pill--sea">observed</span> nameplate · <span class="pill pill--sea">observed</span> certificate · <span class="pill pill--gold">inferred</span> load arithmetic · <span class="pill pill--moss">attested</span> engineer. Supersedes the 25 MVA entry, which is retained, never deleted.</p></div>
+    </div>
+    <div class="stage sys">
+      <div class="dot">08</div>
+      <div class="content"><h4>Ahaṁkāra</h4><p>Seventeen more transformers are queued behind this one. The governor spends the expensive path on the two that conflict and the cheap path on the fifteen that match their master record — and it records how much budget each one consumed, so the next month's capacity is a calculation and not a guess.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- 9 -->
+<section style="--i:9">
+  <div class="section-head">
+    <h2>10. The same skeleton in three sectors</h2>
+    <div class="loc">Only the gates and the sources of doubt change</div>
+  </div>
+
+  <div class="table-wrap">
+    <table>
+      <thead><tr><th>Stage</th><th>Energy</th><th>Agriculture</th><th>Water</th></tr></thead>
+      <tbody>
+        <tr>
+          <td><strong>Gates</strong></td>
+          <td>SCADA, nameplate photos, outage logs, discom circulars</td>
+          <td>Satellite tiles, soil lab reports, mandi feeds, extension advisories</td>
+          <td>Reservoir gauges, flow meters, quality lab reports, canal registry</td>
+        </tr>
+        <tr>
+          <td><strong>Bare percept</strong></td>
+          <td>Numbers and units with no asset bound to them</td>
+          <td>NDVI values, plot polygons, yields with no crop label</td>
+          <td>Level readings, turbidity values, no tank name attached</td>
+        </tr>
+        <tr>
+          <td><strong>Manas — doubt</strong></td>
+          <td>Master says 25 MVA, nameplate says 31.5</td>
+          <td>Two yield estimates disagree; plot boundary overlaps a neighbouring survey number</td>
+          <td>Gauge reading contradicts inflow-outflow balance; two agencies publish different capacities</td>
+        </tr>
+        <tr>
+          <td><strong>Buddhi — certify</strong></td>
+          <td>Does 31.5 survive the load and power-factor arithmetic?</td>
+          <td>Does the yield survive the rainfall and area arithmetic?</td>
+          <td>Does the level survive mass balance across the week?</td>
+        </tr>
+        <tr>
+          <td><strong>Who signs</strong></td>
+          <td>Substation engineer</td>
+          <td>Agriculture officer or agronomist</td>
+          <td>Sectional engineer or hydrologist</td>
+        </tr>
+        <tr>
+          <td><strong>Strain signal</strong></td>
+          <td>Conflicts per 100 assets; backlog on nameplate digitisation</td>
+          <td>Conflicts per 100 plots; unresolved boundary disputes</td>
+          <td>Gauge vs balance divergence; unresolved inter-agency gaps</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <p style="margin-top:16px;color:var(--text-dim);font-size:14px;">Everything outside these two columns — percept store, slip, the two inner instruments, the governor, the floor — is shared infrastructure. Build it once, point it at three sectors.</p>
+</section>
+
+<!-- 10 -->
+<section style="--i:10">
+  <div class="section-head">
+    <h2>11. Where the mapping breaks</h2>
+    <div class="loc">Read before this goes on a slide</div>
+  </div>
+
+  <div class="ladder">
+    <div class="rung">
+      <div class="label" style="font-size:14px;font-family:var(--font-body);font-weight:600;">Ahaṁkāra is bigger than a budget</div>
+      <div class="body">The lecture gives ahaṁkāra a sustaining function, and that is the only function I have used. But in this school ahaṁkāra is also the seat of "I"-making — the instrument by which the self appropriates what is known as <em>mine</em>. That second function has no software analogue and should not be invented. I am deliberately using half the concept. Say so if you present it.</div>
+    </div>
+    <div class="rung">
+      <div class="label" style="font-size:14px;font-family:var(--font-body);font-weight:600;">The knower is not a process</div>
+      <div class="body"><span class="ta">உயிர்</span> experiences. It persists across every act of knowing and is the same self each time. An orchestrator does neither. The honest mapping is to the human who signs, with the orchestrator as routing only. Any diagram that puts an agent in the <span class="ta">உயிர்</span> slot is flattering the software.</div>
+    </div>
+    <div class="rung">
+      <div class="label" style="font-size:14px;font-family:var(--font-body);font-weight:600;">A parser has no cit</div>
+      <div class="body">Here the sense organ is not a passive transducer; knowing is the self's own act through an instrument. A parser is a metaphor for <em>structure</em>, never for <em>nature</em>. "The system perceives" must not quietly become "the system understands".</div>
+    </div>
+    <div class="rung">
+      <div class="label" style="font-size:14px;font-family:var(--font-body);font-weight:600;">Certainty is not confidence</div>
+      <div class="body">Buddhi's <span class="ta">நிச்சயம்</span> is a determination, not a probability. A validator array produces <em>warrant</em> — a traceable, signed, supersedable claim. It never produces certainty, and in this school certainty belongs to <span class="ta">ஞானம்</span>, not to perception at all. Promise warrant.</div>
+    </div>
+    <div class="rung">
+      <div class="label" style="font-size:14px;font-family:var(--font-body);font-weight:600;">The circle of fire is not a thing</div>
+      <div class="body">The analogy cuts both ways. It explains why perception feels instant, but it also shows that the appearance is an artefact of sampling. Do not let your UI's instant answer become your system's claim about the world. The samples are the evidence; the circle is the presentation.</div>
+    </div>
+    <div class="rung">
+      <div class="label" style="font-size:14px;font-family:var(--font-body);font-weight:600;">Borrowing machinery, refusing conclusions</div>
+      <div class="body">Verse 12 lists six <span class="ta">சம்பந்தங்கள்</span> from Nyāya, and the commentator then says outright that this doctrine does not accept them — they are given because other schools hold them. Do the same with SHACL, PROV, OWL: use the validation machinery, refuse its claim to be the nature of knowledge.</div>
+    </div>
+  </div>
+</section>
+
+<!-- 11 -->
+<section style="--i:11">
+  <div class="section-head">
+    <h2>12. Build order</h2>
+    <div class="loc">Sequence matters more than coverage</div>
+  </div>
+
+  <div class="card">
+    <ol class="steps">
+      <li><strong>The slip, first.</strong> Immutable, content-addressed, label-free. If you build the ontology first, the percept and the interpretation fuse and you can never re-derive after the schema changes. This is the one decision that is expensive to reverse.</li>
+      <li><strong>One capability, five jobs.</strong> Manas and buddhi are not two minds — nothing in the chain knows. They are one inference capability under two sets of constraints, allowed to disagree in public. A single "analyst" agent that both questions and concludes is one instrument doing two jobs, which is exactly what the lecture says does not happen.</li>
+      <li><strong>Build the governor early.</strong> Budget, backpressure, and the cheap/expensive routing decision. Teams defer this until the pipeline stalls under volume, and by then the routing decision is tangled into every prompt.</li>
+      <li><strong>Put a name on every fact — and a role beside the name.</strong> Signature and timestamp, not an "approved" status field. The <span class="ta">உயிர்</span> link is the only one that cannot be automated, so make it the most visible object in the system. Then the authority matrix: claim type against role, or every claim becomes attested and approval becomes theatre.</li>
+      <li><strong>Define the resting state.</strong> No agent running, nothing half-certified, every record attested or explicitly open. The store must be queryable from a stable point, not from inside an in-flight rewrite.</li>
+      <li><strong>Keep preference out of the resolution path.</strong> Ranking and recommendation read from the fact store; they never write to it. Enforce this at the API boundary, not by convention.</li>
+      <li><strong>Retrieval last.</strong> A retriever over a well-formed claim store is a query. Over an unstructured pile it is a second, competing epistemology — and the two will contradict each other forever.</li>
+    </ol>
+  </div>
+
+  <div class="callout" style="margin-top:22px;">
+    <strong>The one line worth carrying out of this.</strong> The Guru's whole point is that speed and structure are not in tension — the structure is what makes the speed possible, and the speed is what hides the structure. Build the structure, buy the speed with parallelism and caching, and never merge two links to go faster. The moment you merge them, you have rebuilt the fire-circle: something that looks like knowledge, moves fast, and has no location.
+  </div>
+</section>
+
+<footer>
+  <p><strong>What is the Guru's.</strong> The chain, the office-file analogy, the fire-circle and fan-blade images, the throughput observation, the fatigue argument, and the placement of like and dislike after certification are all from the class recording for Supakkam 15, at roughly the 47th to 53rd minute. Tamil quotations are from the machine transcript of that recording. Speech-recognition misspellings and stutters have been corrected (for example <span class="ta">நிருமிகர்ப்ப</span> → <span class="ta">நிருவிகற்ப</span>, <span class="ta">கலைத்து</span> → <span class="ta">களைத்து</span>, and dropped repeated words); his wording and word order are otherwise unaltered. Verify any quotation against the recording before publishing it. The transcript has no timecodes, so minute markers are estimated from position in the recording.</p>
+  <p><strong>What is the text's.</strong> Verse 12, the five <span class="ta">உறுப்புகள்</span>, the four <span class="ta">காட்சிகள்</span> and the six <span class="ta">சம்பந்தங்கள்</span> with their explicit disavowal are from <em>சிவஞான சித்தியார் சுபக்கம்</em>, ed. M. Thiruvilangam, Yaalpaanam, 1971, pp. 24–27.</p>
+  <p><strong>What is mine.</strong> The mapping of each instrument to a software component, the percept/claim store split, the governor reading of ahaṁkāra, the downstream-preference rule, the resting-state requirement, the authority matrix, and the Energy walkthrough. These are design judgements built on top of the lecture — defensible, not doctrine. Test them against your Guru before you build.</p>
+  <p><strong>Revision.</strong> This version adds three corrections drawn from the earlier part of the same class — one light in five instruments, citta as substrate with a required return to rest, and the authority gate on testimony — together with the component and build-order changes they imply. Sections 8 onward are renumbered accordingly.</p>
+</footer>
+
+<nav class="vi-nav vi-nav--end" aria-label="பக்க வழிசெலுத்தல்"><a href="retrieval-design-brief.html"><small>← முன் ஆவணம்</small>Retrieval You Can Defend</a><a class="up" href="../index.html#vanika"><small>↑ மேலே</small>வணிக இணை</a><span></span></nav>
+</div>
+</body>
+</html>
