@@ -1,0 +1,18 @@
+{
+  "slug": "siddhiyar-class-05",
+  "date": "unknown",
+  "songs": [],
+  "status": "draft",
+  "source_file": "சித்தியார்_வகுப்பு_5.txt",
+  "audio_file": "சித்தியார் வகுப்பு 5.mp3",
+  "audio_committed": false,
+  "source_channel": "https://www.youtube.com/@KarkaUyarValluvam",
+  "source_url": "",
+  "model": "platform upload (engine not recorded)",
+  "mode": "codemix",
+  "language": "ta-IN",
+  "diarization": true,
+  "keyterms_used": 50,
+  "duration_seconds": 4267,
+  "generated_at": "2026-11-05T14:53:45+00:00"
+}
