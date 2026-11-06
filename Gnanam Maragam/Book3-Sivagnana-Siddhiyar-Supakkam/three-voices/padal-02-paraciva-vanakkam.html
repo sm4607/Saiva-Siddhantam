@@ -1,0 +1,474 @@
+<!DOCTYPE html>
+<html lang="ta">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>பரசிவ வணக்கம் — சிவஞான சித்தியார்</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Tamil:wght@300;400;500;600&family=Noto+Serif+Tamil:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#faf7f2; --bg-deep:#f3ede3; --surface:#fffdf9;
+  --ink:#2b2622; --ink-soft:#5c534a; --dim:#8a7f73;
+  --line:rgba(43,38,34,.13); --line-strong:rgba(43,38,34,.28);
+  --author:#b4441f; --author-dim:#f6e6de;
+  --book:#a9761a; --book-dim:#f7eed9;
+  --guru:#1b5a68; --guru-dim:#e0ecef;
+  --sage:#4f6b1e; --sage-dim:#eaf0dd;
+  --plum:#6b3f5e; --plum-dim:#f0e6ee;
+  --font-body:'Noto Sans Tamil','Latha',system-ui,sans-serif;
+  --font-head:'Noto Serif Tamil','Noto Sans Tamil',serif;
+  --font-mono:'IBM Plex Mono','Noto Sans Tamil',monospace;
+  --maxw:1040px; --radius:10px;
+  --shadow:0 1px 2px rgba(43,38,34,.05);
+}
+*,*::before,*::after{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%;scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--ink);
+  font-family:var(--font-body);font-size:17px;line-height:1.85;-webkit-font-smoothing:antialiased;
+  background-image:radial-gradient(900px 420px at 8% -6%,var(--bg-deep),transparent 70%);
+  background-repeat:no-repeat;background-attachment:fixed}
+.wrap{max-width:var(--maxw);margin:0 auto;padding:0 26px}
+h1,h2,h3,h4{font-family:var(--font-head);margin:0;line-height:1.32;font-weight:600}
+h1{font-size:clamp(1.85rem,4.6vw,2.9rem);letter-spacing:-.01em}
+h2{font-size:clamp(1.3rem,3vw,1.62rem)}
+h3{font-size:1.1rem}
+h4{font-size:1rem}
+p{margin:0 0 1em}
+a{color:var(--author);text-decoration:none}
+a:hover{text-decoration:underline}
+small{font-size:.86em;color:var(--dim)}
+.site-head{border-bottom:1px solid var(--line);position:sticky;top:0;z-index:40;
+  background:rgba(250,247,242,.94);backdrop-filter:blur(10px)}
+.site-head .wrap{display:flex;align-items:center;gap:1rem;min-height:56px;flex-wrap:wrap}
+.brand{font-family:var(--font-head);font-weight:600;font-size:.98rem;color:var(--ink);margin-right:auto}
+.site-head nav{display:flex;gap:.2rem;flex-wrap:wrap}
+.site-head nav a{color:var(--dim);font-size:.87rem;padding:.22rem .5rem;border-radius:6px}
+.site-head nav a:hover{color:var(--ink);background:var(--bg-deep);text-decoration:none}
+.site-head nav a.here{color:var(--ink);background:var(--surface);box-shadow:inset 0 0 0 1px var(--line)}
+.hero{padding:clamp(2rem,4.6vw,3.2rem) 0 1rem;max-width:800px}
+.hero h1{margin:.35rem 0 .85rem}
+.hero .sub{color:var(--ink-soft);font-size:1.02rem;line-height:1.95;margin:0}
+.crumbs{font-family:var(--font-mono);font-size:.7rem;letter-spacing:.1em;color:var(--dim);
+  margin:1.4rem 0 0;text-transform:uppercase}
+.crumbs span{margin:0 .4rem;opacity:.5}
+.chips{display:flex;flex-wrap:wrap;gap:.5rem;margin:1.4rem 0 0}
+.chip{font-family:var(--font-mono);font-size:.72rem;letter-spacing:.04em;border:1px solid var(--line);
+  background:var(--surface);border-radius:100px;padding:.3rem .75rem;color:var(--ink-soft)}
+.chip a{color:var(--ink-soft)}
+.legend{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:.8rem;margin:2rem 0 .5rem}
+@media(max-width:760px){.legend{grid-template-columns:1fr}}
+.voice{border:1px solid var(--line);border-radius:var(--radius);background:var(--surface);
+  padding:.95rem 1.05rem;border-top:3px solid var(--line)}
+.voice.v1{border-top-color:var(--author)} .voice.v2{border-top-color:var(--book)} .voice.v3{border-top-color:var(--guru)}
+.voice .vn{font-family:var(--font-mono);font-size:.66rem;letter-spacing:.1em;color:var(--dim);text-transform:uppercase}
+.voice .vt{font-family:var(--font-head);font-weight:600;font-size:.96rem;margin:.25rem 0 .15rem}
+.voice .vd{font-size:.85rem;color:var(--ink-soft);line-height:1.7;margin:0}
+.callout{background:var(--bg-deep);border:1px solid var(--line);border-left:3px solid var(--dim);
+  border-radius:var(--radius);padding:1rem 1.2rem;margin:1.6rem 0 0;font-size:.89rem;
+  color:var(--ink-soft);line-height:1.8}
+.callout strong{color:var(--ink)}
+.sec{display:flex;align-items:baseline;gap:.7rem;flex-wrap:wrap;margin:2.4rem 0 .3rem}
+.sec .tagn{font-family:var(--font-mono);font-size:.7rem;letter-spacing:.1em;color:var(--dim);text-transform:uppercase}
+.sec-note{color:var(--dim);font-size:.89rem;margin:.15rem 0 1.1rem;max-width:72ch}
+.verse{background:var(--surface);border:1px solid var(--line);border-left:3px solid var(--author);
+  border-radius:var(--radius);padding:1.35rem 1.5rem;margin:0 0 1rem;box-shadow:var(--shadow)}
+.verse p{font-family:var(--font-head);font-size:1.02rem;line-height:2.05;margin:0 0 .1em}
+.verse .vtag{font-family:var(--font-mono);font-size:.66rem;letter-spacing:.1em;color:var(--author);
+  text-transform:uppercase;display:block;margin-bottom:.7rem}
+.artha{color:var(--ink-soft);font-size:.95rem;line-height:1.95;max-width:74ch;margin:1.1rem 0 0}
+.artha b{color:var(--ink);font-weight:600}
+.tree{display:grid;gap:.85rem;margin:0 0 .5rem}
+.branch{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);
+  box-shadow:var(--shadow);overflow:hidden}
+.branch-head{display:flex;gap:.8rem;align-items:flex-start;padding:1rem 1.15rem .85rem;
+  border-bottom:1px solid var(--line);background:linear-gradient(180deg,var(--book-dim),transparent)}
+.bnum{font-family:var(--font-mono);font-size:.7rem;color:var(--book);border:1px solid var(--book);
+  border-radius:50%;width:1.5rem;height:1.5rem;display:grid;place-items:center;flex:none;margin-top:.15rem}
+.branch-head h4{margin:0 0 .15rem}
+.branch-head .bh-sub{font-size:.84rem;color:var(--ink-soft);margin:0;line-height:1.7}
+.nodes{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:0}
+@media(max-width:700px){.nodes{grid-template-columns:1fr}}
+.node{padding:.75rem 1.15rem;border-bottom:1px solid var(--line);min-width:0}
+.node:nth-child(odd){border-right:1px solid var(--line)}
+@media(max-width:700px){.node:nth-child(odd){border-right:none}}
+.node:last-child,.node:nth-last-child(2):nth-child(odd){border-bottom:none}
+.nk{display:block;font-family:var(--font-head);font-weight:600;font-size:.93rem;color:var(--book);margin-bottom:.12rem}
+.nv{display:block;font-size:.86rem;color:var(--ink-soft);line-height:1.75}
+.gcards{display:grid;gap:.85rem}
+.gcard{background:var(--surface);border:1px solid var(--line);border-left:3px solid var(--guru);
+  border-radius:var(--radius);padding:1rem 1.2rem;box-shadow:var(--shadow);min-width:0}
+.gcard h4{margin:.15rem 0 .45rem}
+.gcard p{font-size:.92rem;color:var(--ink-soft);line-height:1.85;margin:0 0 .55em}
+.gcard p:last-child{margin-bottom:0}
+a.gmeta{font-family:var(--font-mono);font-size:.65rem;letter-spacing:.05em;color:var(--guru);
+  text-transform:uppercase;display:inline-block;margin-bottom:.3rem;border-bottom:1px dotted var(--guru)}
+a.gmeta:hover{text-decoration:none;background:var(--guru-dim)}
+.gcard.quote{border-left-color:var(--sage);background:linear-gradient(180deg,var(--sage-dim),var(--surface) 55%)}
+.gcard.quote a.gmeta{color:var(--sage);border-bottom-color:var(--sage)}
+.pull{font-family:var(--font-head);font-size:.99rem;line-height:1.85;color:var(--ink);margin:.2rem 0 .5rem}
+.pull::before{content:"\201C"} .pull::after{content:"\201D"}
+.meet{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:.85rem;margin:1rem 0 0}
+@media(max-width:760px){.meet{grid-template-columns:1fr}}
+.mbox{border:1px solid var(--line);border-radius:var(--radius);padding:1rem 1.15rem;background:var(--surface);min-width:0}
+.mbox.same{border-top:3px solid var(--sage)} .mbox.more{border-top:3px solid var(--guru)}
+.mbox h4{margin:0 0 .55rem;font-size:.92rem}
+.mbox ul{margin:0;padding-left:1.05rem;font-size:.87rem;color:var(--ink-soft);line-height:1.8}
+.mbox li{margin-bottom:.4rem} .mbox li:last-child{margin-bottom:0}
+.mine{background:var(--bg-deep);border:1px dashed var(--line-strong);border-radius:var(--radius);
+  padding:1rem 1.2rem;margin:1.1rem 0 0}
+.mine .mtag{font-family:var(--font-mono);font-size:.64rem;letter-spacing:.1em;color:var(--dim);
+  text-transform:uppercase;display:block;margin-bottom:.35rem}
+.mine p{font-size:.89rem;color:var(--ink-soft);line-height:1.85;margin:0}
+/* lens */
+.lens{border:1px solid var(--line-strong);border-radius:var(--radius);background:var(--surface);
+  margin:1.2rem 0 0;overflow:hidden;box-shadow:var(--shadow)}
+.lens-head{padding:1.05rem 1.25rem .9rem;background:linear-gradient(180deg,var(--plum-dim),transparent);
+  border-bottom:1px solid var(--line)}
+.lens-head .lh{font-family:var(--font-mono);font-size:.64rem;letter-spacing:.1em;
+  color:var(--plum);text-transform:uppercase;display:block;margin-bottom:.2rem}
+.lens-head h4{font-size:1.05rem;margin:0 0 .2rem}
+.lens-head p{font-size:.84rem;color:var(--ink-soft);margin:0;line-height:1.7}
+.lbody{padding:1.1rem 1.25rem 1.25rem}
+.step{display:grid;grid-template-columns:auto minmax(0,1fr);gap:.85rem;margin:0 0 1.05rem}
+.step:last-of-type{margin-bottom:0}
+.snum{font-family:var(--font-mono);font-size:.66rem;color:var(--plum);border:1px solid var(--line-strong);
+  border-radius:50%;width:1.55rem;height:1.55rem;display:grid;place-items:center;flex:none;margin-top:.2rem}
+.step h5{font-family:var(--font-head);font-size:.93rem;margin:.05rem 0 .3rem;font-weight:600}
+.step p{font-size:.89rem;color:var(--ink-soft);line-height:1.85;margin:0 0 .45em}
+.step p:last-child{margin:0}
+.step em.en{font-style:normal;color:var(--ink);font-weight:500}
+.breaks{background:var(--bg-deep);border-left:3px solid var(--author);border-radius:8px;
+  padding:.8rem 1rem;margin:.9rem 0 0;font-size:.87rem;color:var(--ink-soft);line-height:1.8}
+.breaks b{color:var(--author);font-weight:600;display:block;margin-bottom:.2rem;
+  font-family:var(--font-mono);font-size:.64rem;letter-spacing:.09em;text-transform:uppercase}
+.hypo{border:1px solid var(--plum);border-radius:var(--radius);background:var(--plum-dim);
+  padding:1rem 1.2rem;margin:1.2rem 0 0}
+.hypo .ht{font-family:var(--font-mono);font-size:.64rem;letter-spacing:.1em;color:var(--plum);
+  text-transform:uppercase;display:block;margin-bottom:.35rem}
+.hypo p{font-size:.89rem;line-height:1.85;margin:0 0 .5em;color:var(--ink-soft)}
+.hypo p:last-child{margin:0}
+.tblwrap{overflow-x:auto;border:1px solid var(--line);border-radius:var(--radius);
+  background:var(--surface);margin:.8rem 0 0}
+table{border-collapse:collapse;width:100%;font-size:.84rem;min-width:560px}
+th,td{text-align:left;padding:.6rem .8rem;border-bottom:1px solid var(--line);vertical-align:top;line-height:1.7}
+th{font-family:var(--font-mono);font-size:.63rem;letter-spacing:.07em;text-transform:uppercase;
+  color:var(--dim);background:var(--bg-deep)}
+tbody tr:nth-child(even){background:rgba(43,38,34,.018)}
+tbody tr:last-child td{border-bottom:none}
+td code{font-family:var(--font-mono);font-size:.75rem;background:var(--bg-deep);
+  padding:.1rem .3rem;border-radius:4px;overflow-wrap:anywhere}
+.conf{font-family:var(--font-mono);font-size:.63rem;letter-spacing:.05em;text-transform:uppercase;
+  padding:.12rem .45rem;border-radius:100px;white-space:nowrap;display:inline-block}
+.conf.hi{background:var(--sage-dim);color:var(--sage)}
+.conf.mid{background:var(--book-dim);color:var(--book)}
+.conf.own{background:var(--bg-deep);color:var(--dim);border:1px solid var(--line)}
+footer{margin:3rem 0 0;padding:1.6rem 0 3rem;border-top:1px solid var(--line);
+  color:var(--dim);font-size:.83rem;line-height:1.8}
+@keyframes fadeUp{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
+.branch,.gcard,.lens{animation:fadeUp .45s ease both}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+@media print{.site-head{display:none}body{background:#fff;font-size:11pt}
+ .branch,.gcard,.lens,.verse{box-shadow:none}}
+
+details.enblock{margin:1.6rem 0 0;border:1px solid var(--line);border-radius:var(--radius);
+  background:var(--surface);padding:0 1.15rem .2rem}
+details.enblock>summary{cursor:pointer;list-style:none;padding:.85rem 0;
+  font-family:var(--font-mono);font-size:.66rem;letter-spacing:.09em;text-transform:uppercase;
+  color:var(--plum)}
+details.enblock>summary::-webkit-details-marker{display:none}
+details.enblock>summary::before{content:"\25B8  "}
+details.enblock[open]>summary::before{content:"\25BE  "}
+details.enblock[open]{padding-bottom:1rem}
+.enbody{border-top:1px solid var(--line);padding-top:1rem}
+.enbody h5{font-family:var(--font-head);font-size:.95rem;margin:1.1rem 0 .35rem;font-weight:600;color:var(--ink)}
+.enbody h5:first-child{margin-top:0}
+.enbody p{font-size:.9rem;line-height:1.8;color:var(--ink-soft);margin:0 0 .7em}
+.enbody p:last-child{margin-bottom:0}
+.enbody table{min-width:520px}
+.enbody .breaks{margin-top:.7rem}
+
+.seednote{background:var(--bg-deep);border-left:3px solid var(--plum);border-radius:8px;
+  padding:.85rem 1.05rem;font-size:.86rem;line-height:1.85;color:var(--ink-soft);margin:0 0 1rem}
+.seednote strong{color:var(--ink);font-weight:600}
+.seednote a{color:var(--plum);text-decoration:underline;text-decoration-color:rgba(107,63,94,.35)}
+</style>
+</head>
+<body>
+<header class="site-head">
+  <div class="wrap">
+    <span class="brand">சிவஞான சித்தியார் · சுபக்கம்</span>
+    <nav>
+      <a href="padal-01-vinayaka-vanakkam.html">பாடல் 1</a>
+      <a href="padal-02-paraciva-vanakkam.html" class="here">பாடல் 2</a>
+      <a href="padal-03-nulin-vazhi.html">பாடல் 3</a>
+      <a href="#seeds">விதைகள்</a>
+      <a href="#sources">ஆதாரம்</a>
+      <a href="https://github.com/sm4607/Saiva-Siddhantam" target="_blank" rel="noopener">தொகுப்பு ↗</a>
+    </nav>
+  </div>
+</header>
+
+<main class="wrap">
+<section class="hero">
+  <p class="crumbs">பாயிரம் <span>/</span> பாடல் 2 <span>/</span> பக். 3–8</p>
+  <h1>படிக்கட்டு, வாதம் அல்ல</h1>
+  <p class="sub">இருபத்துநான்கு சமயங்களையும் ஒரு படிக்கட்டாக நிறுத்தி, அவற்றிற்கெல்லாம் பொருளாயும் அவற்றின் குறிகளுக்கு அப்பாற்பட்டவனாயும் நிற்கும் சிவனை வணங்குகிறார். வரிசைமுறையே செய்தி — தொலைவிலிருந்து நெருங்கி வரும் ஏற்றம்.</p>
+  <div class="chips">
+    <span class="chip">பாடல் 2 / 12</span>
+    <span class="chip">24 சமயங்கள் · உரைக் குறிப்பு 7</span>
+    <span class="chip">வகுப்பு 3, 4, 5</span>
+    <span class="chip"><a href="https://github.com/sm4607/Saiva-Siddhantam/blob/main/Gnanam%20Maragam/Book3-Sivagnana-Siddhiyar-Supakkam/02-paraciva-vanakkam/index.html" target="_blank" rel="noopener">மூலப் பக்கம் ↗</a></span>
+  </div>
+</section>
+
+<section>
+  <div class="legend">
+    <div class="voice v1"><span class="vn">குரல் 1</span>
+      <div class="vt">அருணந்தி சிவாச்சாரியார்</div>
+      <p class="vd">பாடல். நான்கு அடிகள். இவை மாறாதவை — மற்ற எல்லாம் இதன் மேல் எழும் வாசிப்பு.</p></div>
+    <div class="voice v2"><span class="vn">குரல் 2</span>
+      <div class="vt">திரு. மு. திருவிளங்கம்</div>
+      <p class="vd">உரை. பாடலைப் பிரிவுகளாகப் பிரித்து ஒவ்வொரு சொல்லுக்கும் பொருள் கொடுப்பவர். “மனவரைபடம்” இவருடைய படைப்பு.</p></div>
+    <div class="voice v3"><span class="vn">குரல் 3</span>
+      <div class="vt">கம்பவாரிதி இலங்கை திரு. ஜெயராஜ் அய்யா</div>
+      <p class="vd">வகுப்பு. அதே பாடலை இன்றைய மொழியில், உவமைகளோடு, எதிர்க்கேள்விகளோடு பிரித்துக் காட்டுபவர்.</p></div>
+  </div>
+
+  <div class="callout">
+    <strong>இந்தப் பக்கத்தை நம்பும் முன்.</strong> வகுப்புக் குறிப்புகள் தானியங்கி எழுத்துவடிவம் (ASR), நிலை <em>draft</em> — தொகுப்பிலேயே “ஒலியே முதன்மை” என்று எழுதப்பட்டுள்ளது. குரல் 3-இல் உள்ள எல்லாம் அந்த எழுத்துவடிவத்திலிருந்து படித்தெடுக்கப்பட்டவை; ஒலியோடு ஒப்பிட்டுச் சரிபார்க்கவில்லை. மேற்கோள் குறிகள் இல்லாத இடங்களில் <em>சொற்கள் என்னுடையவை, கருத்து அவருடையது</em>. ஒவ்வொரு அட்டையின் தலைப்பிலும் உள்ள <span style="font-family:var(--font-mono);font-size:.85em;color:var(--guru)">வகுப்பு · நேரம்</span> ஒரு இணைப்பு — அது அந்த வரிக்கே அழைத்துச் செல்லும். ஐயம் இருந்தால் அந்த நொடிக்குச் சென்று ஒலியில் ஒருமுறை கேளுங்கள்.
+  </div>
+</section>
+
+<section class="song">
+  <div class="verse">
+    <span class="vtag">குரல் 1 · மூலம்</span>
+    <p>அறுவகைச் சமயத்தோர்க்கும் அவ்வவர் பொருளாய், வேறும்</p>
+    <p>குறியது உடைத்தாய், வேதாகமங்களின் குறியிறந்து,</p>
+    <p>அங்கு அறிவினில் அருளால் மன்னி, அம்மையோடு அப்பன் ஆகி,</p>
+    <p>செறிவொழியாது நின்ற சிவன் அடி சென்னி வைப்பாம்.</p>
+  </div>
+  <p class="artha"><b>சுருக்கம்.</b> புறப்புறம், புறம், அகப்புறம், அகம் என்னும் நான்கு வகுப்பில் ஆறு ஆறாக நிற்கும் இருபத்துநான்கு சமயத்தாருக்கும் அவரவர் கொண்ட முதற்பொருளாகவும், சித்தாந்த சைவர் கூறும் சொரூப இலக்கணத்தையுடையவனாகவும், வேதாகமங்களின் கருத்துக்கு எட்டாதவனாகவும், அறிவுக்கு அறிவாக அருளால் பொருந்தி நிற்பவனாகவும், சத்தியும் சிவமும் ஆகி உயிர்களுக்கு வியாபக அறிவைப் பயப்பிப்பவனாகவும் எங்கும் செறிந்து நிற்கும் சிவபெருமானின் திருவடியைச் சிரசில் சூடிக்கொள்வோம்.</p>
+
+  <div class="sec"><span class="tagn">குரல் 2</span><h3>உரையாசிரியரின் மனவரைபடம்</h3></div>
+  <p class="sec-note">மூன்று கிளைகள்: சமயங்களின் பட்டியல், சிவன் அந்தச் சமயங்களுக்கு எப்படி நிற்கிறான், சித்தாந்தம் அவனை எப்படிக் காண்கிறது. நான்கு வகுப்பு × ஆறு = இருபத்துநான்கு.</p>
+  <div class="tree">
+    <div class="branch">
+      <div class="branch-head"><span class="bnum">1</span><div>
+        <h4>நான்கு வகுப்பு · இருபத்துநான்கு சமயம்</h4>
+        <p class="bh-sub">சிவனிடமிருந்து தூரமானவற்றிலிருந்து நெருக்கமானவை நோக்கி வரிசை ஏறுகிறது. ஒவ்வொரு வகுப்பிலும் ஆறு.</p></div></div>
+      <div class="nodes">
+        <div class="node"><span class="nk">புறப்புறம்</span><span class="nv">வெளியில் மிகத் தொலைவு — உலோகாயதர், மாத்தியமிகர், யோகாசாரர், சௌத்திராந்திகர், வைபாடிகர், ஆருகதர். பொருள்முதல் வாதியும் நால்வகைப் பெளத்தரும் ஆருகதரும்.</span></div>
+        <div class="node"><span class="nk">புறம்</span><span class="nv">வெளிப்புறம் — தார்க்கிகர், மீமாஞ்சகர், ஏகான்மவாதிகள், சாங்கியர், யோகமதத்தினர், பாஞ்சராத்திரிகள். தத்துவ ஆராய்ச்சி செய்யும் ஆறு.</span></div>
+        <div class="node"><span class="nk">அகப்புறம்</span><span class="nv">உள்ளே நுழைந்த வெளி — பாசுபதர், மாவிரதர், காபாலர், வாமமதத்தினர், வைரவமதத்தினர், ஐக்கியவாத சைவர். ஆணவமலத்தை மறுப்பதால் ஐக்கியவாதர் இங்கே.</span></div>
+        <div class="node"><span class="nk">அகம்</span><span class="nv">உள்ளே — பாடாணவாதர், பேதவாதர், சிவசமவாதர், சிவசங்கிராந்தவாதர், ஈசுவராவிகாரவாதர், சிவாத்துவிதர். இவர்களுள் சிவாத்துவிதமே சித்தாந்தம்.</span></div>
+      </div></div>
+
+    <div class="branch">
+      <div class="branch-head"><span class="bnum">2</span><div>
+        <h4>சிவன் எப்படி நிற்கிறான்</h4>
+        <p class="bh-sub">பாடலின் ஆறு சொற்றொடர்கள் — ஒவ்வொன்றும் அவனது ஒரு நிலையைச் சொல்கிறது.</p></div></div>
+      <div class="nodes">
+        <div class="node"><span class="nk">அவ்வவர் பொருளாய்</span><span class="nv">ஒவ்வொரு சமயமும் தான் கொண்ட முதற்பொருளாகக் கூறுவது வேறு; ஆனால் அனைத்திற்கும் பொருளாய் நிற்பவன் அவனே.</span></div>
+        <div class="node"><span class="nk">வேறுங்குறியது உடைத்தாய்</span><span class="nv">சித்தாந்தத்திற்குச் சச்சிதானந்த வடிவினன், சொரூப இலக்கணத்தையுடையவன். மற்ற சமயங்கள் கூறுவது அவனது குறி மட்டுமே.</span></div>
+        <div class="node"><span class="nk">வேதாகமங்களின் குறியிறந்து</span><span class="nv">வேதம் → பரஞானம், சிவாகமம் → அபரஞானம்; இரண்டாலும் அவன் அறியப்படான். குறி = கருத்து.</span></div>
+        <div class="node"><span class="nk">அறிவினில் அருளால் மன்னி</span><span class="nv">ஆன்ம அறிவின் கூறு திருவருளோடு பொருந்தி உயிருக்குயிராய் நிற்றல்.</span></div>
+        <div class="node"><span class="nk">அம்மையோடு அப்பன் ஆகி</span><span class="nv">சத்தியும் சிவமும் ஆகி, ஏகதேச அறிவை நீக்கி வியாபக அறிவை உண்டாக்குதல்.</span></div>
+        <div class="node"><span class="nk">செறிவொழியாது நின்ற</span><span class="nv">எங்கும் செறிந்து வியாபகமாகி நிற்றல் — ஒரு இடத்திலும் விட்டு விலகாதவன்.</span></div>
+      </div></div>
+
+    <div class="branch">
+      <div class="branch-head"><span class="bnum">3</span><div>
+        <h4>சித்தாந்தம் அவனைக் காணும் விதம்</h4>
+        <p class="bh-sub">மற்ற சமயங்கள் அவனது குறியைப் பிடித்தவை; சித்தாந்தம் அவனது சொரூபத்தைப் பிடிக்கிறது.</p></div></div>
+      <div class="nodes">
+        <div class="node"><span class="nk">சச்சிதானந்த வடிவு</span><span class="nv">சொரூபசிவமே முதற்பொருள் — அறிவும் இன்பமும் உடைய வடிவினன்.</span></div>
+        <div class="node"><span class="nk">ஐந்தொழில்</span><span class="nv">ஆன்மாக்களுக்காகவே பஞ்சகிருத்தியங்களைச் செய்கிறான்.</span></div>
+        <div class="node"><span class="nk">மூன்று தடங்கள்</span><span class="nv">இலயம் · போகம் · அதிகாரம் — ஐந்தொழிலைச் செய்யக் கொள்ளும் மூன்று படிநிலை வடிவங்கள்.</span></div>
+        <div class="node"><span class="nk">தடம் என்றால்</span><span class="nv">நிலை, படிநிலை. அருளுக்கு ஏற்ப வடிவம் மாறுகிறது, அவன் மாறுவதில்லை.</span></div>
+      </div></div>
+  </div>
+  <p class="sec-note" style="margin-top:1rem">உரையின் ஏழு குறிப்புகள் இதையே விரிக்கின்றன. இருபத்துநான்கு சமயங்களின் முதற்பொருள் பட்டியலும் அப்பதிப்பின் உரையின்படி சுருக்கப்பட்டது. <a href="https://github.com/sm4607/Saiva-Siddhantam/blob/main/Gnanam%20Maragam/Book3-Sivagnana-Siddhiyar-Supakkam/02-paraciva-vanakkam/index.html" target="_blank" rel="noopener">மூலப் பக்கத்தில் முழுப் பட்டியல் ↗</a></p>
+
+  <div class="sec"><span class="tagn">குரல் 3</span><h3>அய்யாவின் வகுப்பு</h3></div>
+  <p class="sec-note">பாடல் 2 மூன்று வகுப்புகளில் நீள்கிறது — வகுப்பு 3 (00:03–00:20), வகுப்பு 4 (00:05–00:14), வகுப்பு 5 (00:19–00:26). வகுப்பு 3-இன் தொடக்கத்தில் பாடல் 1-இன் மீள்பார்வை வருகிறது.</p>
+  <div class="gcards">
+<div class="gcard quote"><a class="gmeta" href="https://github.com/sm4607/Saiva-Siddhantam/blob/main/Gnanam%20Maragam/Book3-Sivagnana-Siddhiyar-Supakkam/recordings/siddhiyar-class-03/transcript.md#L24" target="_blank" rel="noopener">வகுப்பு 3 · 00:09:42</a><h4>“சொரூபம்” என்பது ஒரு வடிவம் அல்ல</h4><p class="pull">பேரறிவுப் பொருளைச் சிற்றறிவால் முழுமையாக விளங்கிக்கொள்ள முடியாது.</p><p>இதுவே அவர் விடும் மிக முக்கியமான திருத்தம். “சொரூப நிலை” என்று சொல்லும்போது நாம் ஒரு உருவத்தை நினைத்துக்கொள்கிறோம்; ஆனால் இங்கே அது இறைவனுடைய <em>உறவு நிலை</em> — புத்திக்கு அகப்படாத, காண முடியாத நிலை. சிவன், சிவம், பரசிவம் என்னும் மூன்றும் இந்த நிலையிலிருந்து புரிந்துகொள்ள வேண்டும்.</p></div>
+<div class="gcard"><a class="gmeta" href="https://github.com/sm4607/Saiva-Siddhantam/blob/main/Gnanam%20Maragam/Book3-Sivagnana-Siddhiyar-Supakkam/recordings/siddhiyar-class-03/transcript.md#L28" target="_blank" rel="noopener">வகுப்பு 3 · 00:12:04</a><h4>பெயர் அவனுக்கு இல்லை; நாம் வைத்துக்கொள்கிறோம்</h4><p>பரசிவம் என்றால் “மேலான சிவம்”. சிவம் மேலே நிற்கிற நிலை; அது கீழே இறங்கி வரும்போது சிவன் ஆகிறது. சிவனை நாம் உருவத்தில் ஏற்றுக்கொள்கிறோம், சிவத்தை ஏற்ற முடியாது.</p><p>அதைச் சுட்ட வேண்டியிருக்கிறது — ஆகவே ஒரு பெயர் வைத்துக்கொள்கிறோம். அந்தப் பெயர் அவனுடையது அல்ல, நம்முடைய கருவி. இதை மறந்தால், பரசிவனையும் ஒரு வடிவமாகக் கற்பனை செய்துவிடுவோம்.</p></div>
+<div class="gcard"><a class="gmeta" href="https://github.com/sm4607/Saiva-Siddhantam/blob/main/Gnanam%20Maragam/Book3-Sivagnana-Siddhiyar-Supakkam/recordings/siddhiyar-class-03/transcript.md#L22" target="_blank" rel="noopener">வகுப்பு 3 · 00:08:16</a><h4>இறங்கும் நான்கு நிலைகளும், நால்வகை வழிபாடும்</h4><p>இறைவன் நமக்காக இறங்கி வரும்போது நான்கு நிலைகளைக் கொள்கிறான் — சொரூபம், அருவம், அருவுருவம், உருவம். இந்த நான்கும் அறிவின் அளவுக்கு ஏற்றவை: உருவ வழிபாடு கிரியை நிலைக்கு, அருவுருவ வழிபாடு யோக நிலைக்கு, அருவ வழிபாடு ஞான நிலைக்கு; சொரூப நிலை ஞானத்தில் இறைவனோடு ஒன்றியவர்களுக்கே பயன் செய்யும்.</p><p><a href="https://github.com/sm4607/Saiva-Siddhantam/blob/main/Gnanam%20Maragam/Book3-Sivagnana-Siddhiyar-Supakkam/recordings/siddhiyar-class-04/transcript.md#L20" target="_blank" rel="noopener" style="font-family:var(--font-mono);font-size:.8em">தொடர்ச்சி: வகுப்பு 4 · 00:07:10 ↗</a> — தகுதிக்கு ஏற்ப வழிபாடு மாறுகிறது, இறைவன் மாறுவதில்லை.</p></div>
+<div class="gcard"><a class="gmeta" href="https://github.com/sm4607/Saiva-Siddhantam/blob/main/Gnanam%20Maragam/Book3-Sivagnana-Siddhiyar-Supakkam/recordings/siddhiyar-class-03/transcript.md#L38" target="_blank" rel="noopener">வகுப்பு 3 · 00:18:36</a><h4>நான்கு வகுப்பு — உறவின் வட்டங்கள்</h4><p>சமயங்களை நான்காகப் பிரிப்பதை அய்யா உறவினர் வட்டங்களால் விளக்குகிறார்: நெருங்கிய சொந்தம், அடுத்த வட்டம், அதைவிடத் தூரம், மிகத் தொலைவு. அகம் முதல் புறப்புறம் வரை இந்த வரிசை.</p><p>அவர் சொல்லும் கூரிய கருத்து: ஒரு சமயம் இன்னொரு சமயத்துக்கு எதிராக நிற்கும்போது, அந்தப் பகை கீழ்நிலையில் உள்ளவர்களின் மனதில் தானாக வளர்கிறது. சைவம் அதைச் செய்யவில்லை — சமயங்களைப் பகையாக விடாமல் <em>உறவாக</em> மாற்றியது.</p></div>
+<div class="gcard"><a class="gmeta" href="https://github.com/sm4607/Saiva-Siddhantam/blob/main/Gnanam%20Maragam/Book3-Sivagnana-Siddhiyar-Supakkam/recordings/siddhiyar-class-04/transcript.md#L22" target="_blank" rel="noopener">வகுப்பு 4 · 00:08:15</a><h4>இறைவன் இல்லை என்பவரும் ஏன் இந்தப் பட்டியலில்</h4><p>உலோகாயதரை — “இறைவன் இல்லை” என்பவரை — இருபத்துநான்கில் சேர்த்திருக்கிறார்கள். அய்யாவின் விளக்கம்: இல்லை என்று சொல்லவும் தேடித்தான் சொல்ல வேண்டும். தேடினார்கள் என்னும் அளவிலேயே அவர்களும் ஒரு சமயமாக ஏற்கப்படுகிறார்கள்.</p></div>
+<div class="gcard"><a class="gmeta" href="https://github.com/sm4607/Saiva-Siddhantam/blob/main/Gnanam%20Maragam/Book3-Sivagnana-Siddhiyar-Supakkam/recordings/siddhiyar-class-04/transcript.md#L24" target="_blank" rel="noopener">வகுப்பு 4 · 00:09:52</a><h4>மற்ற சமயங்கள் ஏன் ஒன்றையொன்று ஏற்க முடியாது</h4><p>ஒவ்வொரு சமயமும் தன் கடவுளை ஒரு வடிவத்தோடு காண்கிறது; அந்த வடிவம் ஏற்கனவே வரையறுக்கப்பட்டுவிட்டது. ஆகவே இன்னொரு சமயக் கடவுளை அதற்குள் பொருத்த முடியாது.</p><p>ஆனால் சொரூப நிலை வடிவும் பெயரும் தெரியாதது, சிந்தைக்கு அப்பாற்பட்டது — ஆகவே எல்லாச் சமயங்களின் கடவுளும் அதற்குள் அடங்கிவிடுகிறார்கள். இதனால்தான் சைவம் ஒரு பௌத்தரையும் சைவ அடியாராக இனம் காண முடிந்தது.</p></div>
+<div class="gcard"><a class="gmeta" href="https://github.com/sm4607/Saiva-Siddhantam/blob/main/Gnanam%20Maragam/Book3-Sivagnana-Siddhiyar-Supakkam/recordings/siddhiyar-class-04/transcript.md#L28" target="_blank" rel="noopener">வகுப்பு 4 · 00:12:16</a><h4>வேதம் பொது நூல், ஆகமம் சிறப்பு நூல்</h4><p>வேதத்தைப் பொது நூல் என்கிறார்கள் — எல்லாருக்கும் பொதுவான மூலநூல். ஆகமத்தைச் சிறப்பு நூல் என்கிறார்கள் — சித்தாந்த சைவத்திற்கு எல்லை காட்டும், வழிபாட்டு முறைகளையும் தத்துவங்களையும் தரும் நூல்.</p><p>அவர் சேர்த்துக்கொள்ளும் தெளிவு: <em>சிறப்பு</em> என்றால் “உயர்ந்த” என்று அர்த்தம் அல்ல, “தனித்துவமான” என்று அர்த்தம்.</p></div>
+<div class="gcard"><a class="gmeta" href="https://github.com/sm4607/Saiva-Siddhantam/blob/main/Gnanam%20Maragam/Book3-Sivagnana-Siddhiyar-Supakkam/recordings/siddhiyar-class-04/transcript.md#L30" target="_blank" rel="noopener">வகுப்பு 4 · 00:13:21</a><h4>“குறியிறந்து” — நான் என்ற உணர்வு இருக்கும் வரை</h4><p>வேதமும் ஆகமமும் இறைவனால் வகுக்கப்பட்டவை என்றாலும், அவற்றால்கூடப் பரசிவனை அடையாளம் காண முடியாது. ஏன்? “நான்” என்ற உணர்வு இருக்கும் மட்டும் அவனையும் உணர முடியாது. திருவருள் நம் தகுதியை வளர்க்க அனுமதிக்கும்போதே அது நிறைவேறுகிறது.</p></div>
+<div class="gcard"><a class="gmeta" href="https://github.com/sm4607/Saiva-Siddhantam/blob/main/Gnanam%20Maragam/Book3-Sivagnana-Siddhiyar-Supakkam/recordings/siddhiyar-class-05/transcript.md#L36" target="_blank" rel="noopener">வகுப்பு 5 · 00:19:59</a><h4>“அறிவினில் அருளால் மன்னி” — அருளே அறிவாக நிற்கிறது</h4><p>பரசிவம் எல்லாவற்றிலிருந்தும் விலகி நிற்கிறது; பிறகு அது உணரப்படுவது எப்படி? அறிவுக்குள்ளேயே திருவருளாக வந்து பொருந்தி, நம் அறிவைத் தன் அறிவாக ஆக்குவதால். அருள் வெளியே இருந்து உதவுவது அல்ல — அதுவே நம்முள் அறிவாக நிற்கிறது.</p></div>
+<div class="gcard quote"><a class="gmeta" href="https://github.com/sm4607/Saiva-Siddhantam/blob/main/Gnanam%20Maragam/Book3-Sivagnana-Siddhiyar-Supakkam/recordings/siddhiyar-class-05/transcript.md#L38" target="_blank" rel="noopener">வகுப்பு 5 · 00:21:41</a><h4>“அம்மையோடு அப்பன்” — உயிரும் உடலும் கொடுக்கும் உவமை</h4><p class="pull">காலில் ஒரு எறும்பு ஏறினாலும், கையில் ஏதாவது கடித்தாலும் உடம்பு முழுவதும் அது தெரிகிறது.</p><p>உயிர் உடம்பு முழுவதும் பரவி நிற்பதால் அது நடக்கிறது — ஆனால் உயிரின் வியாபகம் உடம்பின் அளவோடு நின்றுவிடுகிறது. சிவமும் சத்தியும் ஆன்மாவோடு பொருந்தும்போது அதே செயலை உலக அளவில் செய்கின்றன: ஏகதேச அறிவாக இருந்த ஆன்ம அறிவை வியாபக அறிவாக மாற்றுகின்றன.</p><p>அதனால்தான் ஞானிகள் காலம் கடந்த, இடம் கடந்த விஷயங்களைச் சொல்லிப் போனார்கள் என்று அய்யா இதை இணைக்கிறார்.</p><p><a href="https://github.com/sm4607/Saiva-Siddhantam/blob/main/Gnanam%20Maragam/Book3-Sivagnana-Siddhiyar-Supakkam/recordings/siddhiyar-class-05/transcript.md#L42" target="_blank" rel="noopener" style="font-family:var(--font-mono);font-size:.8em">தொடர்ச்சி: வகுப்பு 5 · 00:24:24 ↗</a></p></div>
+  </div>
+
+  <div class="meet">
+    <div class="mbox same"><h4>இருவரும் சந்திக்கும் இடம்</h4><ul><li>இருபத்துநான்கும் ஒரு பட்டியல் அல்ல, ஒரு படிக்கட்டு — தொலைவிலிருந்து நெருங்கி வரும் வரிசை.</li><li>இது சமய வாதம் அல்ல; எதையும் தள்ளிவிடாமல் உள்ளே வைத்துக்கொள்ளும் நிலை.</li><li>சித்தாந்தம் பிடிப்பது குறியை அல்ல, சொரூபத்தை.</li></ul></div>
+    <div class="mbox more"><h4>அய்யா சேர்ப்பது</h4><ul><li>“சொரூபம் என்பது வடிவம் அல்ல” என்னும் திருத்தம் — பாடலைத் தவறாகப் படிக்க வைக்கும் மிகப் பெரிய இடர்.</li><li>நான்கு நிலைகளை நால்வகை வழிபாட்டோடும் தகுதியோடும் இணைப்பது.</li><li>நான்கு வகுப்பை உறவின் வட்டங்களாகவும், சமயப் பகையின் மனவியலாகவும் விளக்குவது.</li><li>உலோகாயதரைச் சேர்த்ததற்கான காரணம்: தேடியவர் என்பதே தகுதி.</li><li>“சிறப்பு = தனித்துவமானது, உயர்ந்தது அல்ல” என்னும் சொல் தெளிவு.</li><li>உயிர்–உடல் உவமை மூலம் வியாபக அறிவை இன்றைய அனுபவத்தில் காட்டுவது.</li></ul></div>
+  </div>
+
+  <div class="mine"><span class="mtag">உங்கள் குறிப்பில் — என் புரிதல்</span>
+    <p>இது சமய வாதம் அல்ல, சமயங்களின் படிக்கட்டு; “அவ்வவர் பொருளாய்” என்பது மற்ற சமயங்களைத் தள்ளாமல் அவை பிடித்தது அவனது குறியை மட்டுமே என்று வைப்பது; வணக்கம் இங்கே தகுதியின் அடையாளமாக மாறுகிறது. இவை உங்கள் வாசிப்பு — நூலின் கூற்றாக இல்லை.</p></div>
+
+  <div class="sec" id="seeds"><span class="tagn">விதைகள் · Seeds</span><h3>இந்தப் பாடலின் வடிவம் இன்று எங்கே தெரிகிறது</h3></div>
+  <p class="sec-note">இரண்டு பார்வைகள்: வணிகம்/தரவு-AI, மற்றும் அறிவியல். ஒவ்வொன்றும் ஒரே வரிசையில் — நூல் என்ன சொல்கிறது, அது தீர்த்த பிரச்சினை, இன்று எங்கே தெரிகிறது, கையில் எடுக்கக்கூடிய கருவி, எல்லை. <strong>ஒப்புமை உடையும் இடம் ஒவ்வொன்றிலும் கட்டாயம் சொல்லப்பட்டுள்ளது</strong> — அது இல்லாத ஒப்புமை அலங்காரம்.</p>
+
+    <p class="seednote"><strong>இது ஒரு விதை — ஒரு கண்டுபிடிப்பு அல்ல.</strong> இங்கே சொல்வது ஒரு கட்டமைப்பு ஒற்றுமை மட்டுமே; நூலின் கூற்று அல்ல, பரிந்துரையும் அல்ல. இதை யாராவது எடுத்து வளர்த்தால் அது <a href="https://github.com/sm4607/Saiva-Siddhantam/tree/main/Gnanam%20Maragam/Book3-Sivagnana-Siddhiyar-Supakkam/vanika-inai" target="_blank" rel="noopener">வணிக இணை</a>-இல் ஒரு முழு ஆவணம் ஆகும். வளராத விதைகள் வளராமல் இருப்பதே சரி — பெரும்பாலான ஒற்றுமைகள் ஒரு உண்மையான பிரச்சினையைத் தொடும்போது நிலைத்திருப்பதில்லை.</p>
+
+  <div class="lens" id="seed-2b">
+    <div class="lens-head">
+      <span class="lh">விதை 2B · Seed</span>
+      <h4>வணிகம், தரவு மற்றும் AI</h4>
+      <p>நூலின் கருத்தை இங்கே கழற்றி, அதன் <em>அமைப்பை</em> மட்டும் எடுத்து ஒப்பிடுகிறோம்.</p>
+    </div>
+    <div class="lbody">
+      <div class="step"><span class="snum">1</span><div>
+        <h5>நூல் என்ன சொல்கிறது</h5>
+        <p>எல்லா நிலைப்பாடுகளையும் நான்கு வளையங்களாக — மையத்திலிருந்து தொலைவுக்கு ஏற்ப — வரிசைப்படுத்துகிறார். எதையும் வெளியே தள்ளவில்லை; இறைவன் இல்லை என்பவரும் உள்ளே. மையத்தை “விவரிக்க முடியாதது” என்றே வரையறுக்கிறார் — அதனால்தான் எல்லா விவரிப்புகளும் அதற்குள் அடங்குகின்றன.</p>
+      </div></div>
+
+      <div class="step"><span class="snum">2</span><div>
+        <h5>அது தீர்த்த பிரச்சினை</h5>
+        <p>“எல்லாப் போட்டியாளர்களையும் ஒரே கட்டமைப்பில் வைத்து, யாரையும் மறுக்காமல், தன் மையத்தை இழக்காமல் இருப்பது எப்படி?” அய்யாவின் வார்த்தையில் — எல்லாவற்றையும் ஒத்துக்கொள்வதும் தனித்தன்மையை இழக்காமல் இருப்பதும்.</p>
+      </div></div>
+
+      <div class="step"><span class="snum">3</span><div>
+        <h5>இன்று எங்கே தெரிகிறது</h5>
+        <p>ஒரு <em class="en">platform abstraction layer</em>-இல். ஒரு தரவுத் தளம் மூல அமைப்புகளை மறுக்கவில்லை; ஒவ்வொன்றையும் ஒரு <em class="en">source</em> ஆக மாதிரியாக்கி, அதற்கு மேலே ஒரு அடுக்கை வரையறுக்கிறது. அதே போல — உலோகாயதரைச் சேர்த்தது, ஒரு ஒப்பீட்டில் <em class="en">null hypothesis</em>-ஐ சேர்ப்பது போல: “வேலை செய்யாது” என்ற வழியையும் சேர்த்தால் தான் ஒப்பீடு நம்பகமாகும்.</p>
+      </div></div>
+
+      <div class="step"><span class="snum">4</span><div>
+        <h5>கையில் எடுக்கக்கூடிய கருவி</h5>
+        <p>ஒரு <em class="en">landscape canvas</em> — நான்கு வளையம், ஒவ்வொரு வழங்குநரும்/தரமும் எந்த வளையத்தில் விழுகிறது என்பதை முடிவு செய்ய மூன்று கேள்விகள்:</p>
+        <div class="tblwrap"><table>
+          <thead><tr><th>வளையம்</th><th>விதி</th><th>கேள்வி</th></tr></thead>
+          <tbody>
+            <tr><td>அகம் — core</td><td>நம்முடையது; நாமே வரையறுப்பது</td><td>இது நம் கட்டுப்பாட்டில் இருக்க வேண்டுமா?</td></tr>
+            <tr><td>அகப்புறம் — adjacent</td><td>நெருக்கம்; பெயரால் அறிந்தவை</td><td>இதன் வடிவம் நம் core-ஐ வரையறுக்கிறதா?</td></tr>
+            <tr><td>புறம் — peripheral</td><td>இணைக்கப்படுபவை</td><td>இதை ஒரு adapter ஆல் மட்டும் இணைக்க முடியுமா?</td></tr>
+            <tr><td>புறப்புறம் — external</td><td>வெளியே; மறுப்பில்லை</td><td>இதை மறுப்பதால் நாம் என்ன இழக்கிறோம்?</td></tr>
+            <tr><td><em class="en">Null row</em></td><td>கட்டாயம் — “எதுவும் செய்யாமை”</td><td>இதை வாங்காமல் இருந்தால் என்ன நடக்கும்?</td></tr>
+          </tbody>
+        </table></div>
+        <p style="margin-top:.6rem">இரண்டு விதிகள்: (1) எந்த வழங்குநரின் பெயரும் core வளையத்திற்குள் நுழையக் கூடாது — சொரூபம் ஒரு வடிவம் அல்ல; (2) <em class="en">null row</em> இல்லாத ஒப்பீட்டை வெளியிடக் கூடாது.</p>
+      </div></div>
+
+      <div class="breaks"><b>ஒப்புமை உடையும் இடம்</b>
+        சைவம் வகைப்படுத்துவது ஒரு உயிரை மேலே கொண்டு செல்ல; ஒரு நிறுவனம் வகைப்படுத்துவது மூலதனத்தை ஒதுக்க. “எதையும் விலக்காதே” என்னும் விதி இங்கே இலவசம் அல்ல — மையம் “விவரிக்க முடியாதது” என்று வரையறுக்கப்பட்டதால் மட்டுமே அது சாத்தியம். ஒரு வணிகக் கட்டமைப்பின் மையத்தை விவரிக்க முடியாதது என்று விட்டால், அதைக் கட்டவோ ஒப்பந்தம் செய்யவோ முடியாது. அங்கே ஒப்புமை உடைந்துவிடுகிறது. மேலும் நூலின் தரவரிசைக் கோல் “இறைவனிலிருந்து தூரம்”; நிறுவனத்தின் கோல் “பொருத்தம் மற்றும் செலவு” — இரண்டும் ஒன்றல்ல.</div>
+    </div>
+  </div>
+
+  <div class="lens" id="seed-2s">
+    <div class="lens-head">
+      <span class="lh">விதை 2S · Seed</span>
+      <h4>அறிவியல் — வகைப்பாட்டின் எல்லை</h4>
+      <p>இந்தப் பாடல் ஒரு முழுமையான வகைப்பாட்டை எப்படிக் கட்டுவது என்பதைக் காட்டுகிறது.</p>
+    </div>
+    <div class="lbody">
+      <div class="step"><span class="snum">1</span><div>
+        <h5>நூல் என்ன சொல்கிறது</h5>
+        <p>இருபத்துநான்கு நிலைப்பாடுகள், நான்கு வளையம், ஒரு சேர்க்கை விதி, மற்றும் வகைப்பாட்டிற்கு வெளியே நிற்கும் ஒரு மையம்.</p>
+      </div></div>
+
+      <div class="step"><span class="snum">2</span><div>
+        <h5>அது தீர்த்த பிரச்சினை</h5>
+        <p>ஒரு வகைப்பாடு முழுமையானதா என்பதை எப்படிச் சொல்வது? உறுப்புகளைப் பட்டியலிடுவதால் மட்டும் சொல்ல முடியாது. இங்கே மூன்று விஷயங்களும் கொடுக்கப்படுகின்றன: <em>சேர்க்கை விதி</em> (தேடியவர் என்பதே தகுதி), <em>வெளியே நிற்பது என்ன</em> (வடிவமற்ற மையம்), <em>வரிசைப்படுத்தும் கோல்</em> (மையத்திலிருந்து தூரம்).</p>
+      </div></div>
+
+      <div class="step"><span class="snum">3</span><div>
+        <h5>இன்று எங்கே தெரிகிறது</h5>
+        <p>ஒரு <em class="en">taxonomy</em> அல்லது <em class="en">ontology</em> ஆவணத்தில். பெரும்பாலான வகைப்பாடுகள் உறுப்புகளைப் பட்டியலிடுகின்றன, ஆனால் எல்லையைச் சொல்வதில்லை. எல்லை சொல்லப்படாத வகைப்பாடு, புதிய உறுப்பு வரும்போது உடைந்துவிடும்.</p>
+      </div></div>
+
+      <div class="step"><span class="snum">4</span><div>
+        <h5>கையில் எடுக்கக்கூடிய கருவி</h5>
+        <p>எந்த வகைப்பாட்டு ஆவணத்திலும் மூன்று வரி: (1) <em class="en">admission test</em> — ஒன்று உள்ளே வர எந்த நிபந்தனை நிறைவேற வேண்டும்; (2) <em class="en">deliberate outside</em> — வேண்டுமென்றே வெளியே வைத்திருப்பது எது; (3) <em class="en">falsifier</em> — இந்த வகைப்பாடு தவறு என்று எப்படித் தெரியும். மூன்றாவது வரிக்கு விடை இல்லாவிட்டால், அது வகைப்பாடு அல்ல — ஒரு நம்பிக்கை.</p>
+      </div></div>
+
+      <div class="breaks"><b>ஒப்புமை உடையும் இடம்</b>
+        மூன்றாவது கேள்விக்கு இந்தப் பாடல் விடை தரவில்லை — தரவும் முடியாது. இது ஒரு அறிவியல் கருதுகோள் அல்ல; இது ஒரு மீட்பியல் (soteriology). அதை அறிவியல் கூற்றாக மாற்றினால், இரண்டையும் இழக்கிறோம். இங்கே கடத்தத்தக்கது <em>வடிவமைப்பு ஒழுக்கம்</em> மட்டுமே — வகைப்பாட்டை எப்படிக் கட்டுவது, அதன் நோக்கம் அல்ல.</div>
+    </div>
+  </div>
+
+  <div class="hypo">
+    <span class="ht">உங்கள் கருதுகோள் — உங்கள் சொந்தக் குறிப்பு</span>
+    <p>நீங்கள் சொல்வது: இன்றைய அறிவியல் அறிவுத்திறனை அளக்கக் கருவிகளில் அதிகம் செலவிடுகிறது; நம் முன்னோர்கள் <em>உணர்வை</em> விரிவாக்கி, தொலைதூர உலகங்களில் நடப்பதைக் கண்டார்கள் — வகுப்பு 16-இல் அய்யா இதைப் பேசுகிறார் என்கிறீர்கள். இது உங்கள் ஊகம்/புரிதல், நூலின் கூற்றாக அல்ல.</p>
+    <p>இந்தப் பாடலில் அது எங்கே இணைகிறது என்பதை மட்டும் காட்டுகிறேன்: “<em>அம்மையோடு அப்பன் ஆகி</em>” — ஏகதேச அறிவு வியாபக அறிவாக மாறும் இடம். அய்யாவின் உயிர்–உடல் உவமையும் அதே இடத்தில் வருகிறது.</p>
+    <p><strong>நான் எப்படி நடந்துகொள்வேன்:</strong> இதை நிரூபித்ததாகச் சொல்ல மாட்டேன். தொகுப்பில் வகுப்பு 1–5 மட்டுமே உள்ளன; வகுப்பு 16 அங்கே இல்லை, அதை நான் படிக்கவில்லை. எனவே இது மூன்று அடுக்குகளாகவே இருக்கும் — நூல் சொல்வது (வியாபக அறிவு), அய்யா சொல்வது (உயிர்–உடல் உவமை, ASR draft), நீங்கள் ஊகிப்பது (உணர்வை விரிவாக்கிக் கண்டது). மூன்றையும் ஒன்றாகக் கலக்காமல் வைத்தால், ஒரு அறிவியல் வாசகரிடம் இதை எடுத்துச் செல்லும்போது நாம் நேர்மையாக இருக்க முடியும்.</p>
+    <p><strong>அறிவியல் உலகுக்குக் கொடுக்க ஒன்று இருந்தால்</strong> — அது முடிவு அல்ல, ஒரு கேள்வி: “உணர்வின் விரிவு” என்பதை அளக்கக்கூடிய, மறுசெய்யக்கூடிய ஒரு நடைமுறை இருக்கிறதா? அதற்கான பதிலை இந்த நூல் தரவில்லை; அதைத் தேடும் வேலையை இது கேட்கிறது. அதுவரை இது சாட்சியம், அளவீடு அல்ல.</p>
+  </div>
+
+  <details class="enblock">
+<summary>English version — the two seeds</summary>
+<div class="enbody">
+<p><em>Each of these is a seed: a structural echo, not a recommendation. Where it breaks is stated in the same breath. Seed 2B is the business one, seed 2S the scientific one — the ids match the anchors on the Tamil side, so anything can link to either directly.</em></p>
+<h5>Seed 2B — Business, data and AI</h5>
+<p>Every position is placed in one of four rings according to its distance from the centre. Nothing is excluded — even the school that denies God is inside. And the centre is defined as that which cannot be described, which is precisely why every description can be contained in it. The problem solved: how to hold every competing position in one frame, refuting none, without losing your own centre.</p>
+<p>That is a platform abstraction layer. A data platform does not refute source systems; it models each as a source and defines a layer above them. Including the Lokayata position is the same move as including the null hypothesis in a comparison — a benchmark that leaves out the do-nothing baseline is less credible, not more.</p>
+<div class="tblwrap"><table>
+<thead><tr><th>Ring</th><th>Rule</th><th>Question</th></tr></thead>
+<tbody>
+<tr><td>Core</td><td>Ours; we define it</td><td>Must this be under our control?</td></tr>
+<tr><td>Adjacent</td><td>Close enough to shape us</td><td>Does its shape constrain our core?</td></tr>
+<tr><td>Peripheral</td><td>Connected, not adopted</td><td>Can an adapter alone suffice?</td></tr>
+<tr><td>External</td><td>Not refuted</td><td>What do we lose by excluding it?</td></tr>
+<tr><td>Null row</td><td>Mandatory</td><td>What happens if we buy nothing?</td></tr>
+</tbody></table></div>
+<p style="margin-top:.6rem">Two rules: no vendor's name enters the core ring, because sorupam is not a form; and no comparison ships without the null row.</p>
+<div class="breaks"><b>Where the analogy breaks</b>
+"Exclude nothing" is affordable here only because the centre is defined as indefinable. A business core must be definable, or it cannot be built, priced or contracted. And the text ranks by distance from God; a firm ranks by fit and cost. The ranking criteria are not the same thing.</div>
+
+<h5>Seed 2S — Science: the boundary of a classification</h5>
+<p>The verse supplies the three things most taxonomies omit. An admission test — having searched is itself the qualification. A deliberate outside — the formless centre that the classification cannot contain. And a ranking criterion — distance from the centre. Member lists alone do not make a classification complete; the boundary does.</p>
+<p>The transferable practice is to require three lines in any taxonomy document: the admission test, what is deliberately kept outside, and the falsifier — how would we know this classification is wrong. A taxonomy that cannot answer the third is not a classification; it is a belief.</p>
+<div class="breaks"><b>Where the analogy breaks</b>
+This verse cannot answer the falsifier and does not try to. It is a soteriology, not a hypothesis. What transfers is the design discipline, not its purpose — and saying so is what keeps the comparison honest.</div>
+
+<h5>Your hypothesis, not the text's</h5>
+<p>Selva's own inference, recorded here so it is not confused with the verse: that modern science spends on instruments to measure intelligence, while the earlier seers expanded consciousness to observe events in distant worlds — a point he recalls Ayya making in class 16. It attaches to this verse at "ammaiyodu appan", where partial knowledge becomes universal knowledge.</p>
+<p>The repository holds classes 1 to 5 only; class 16 is not there and has not been read. So three layers are kept apart: what the text claims, what Ayya says in class, and what Selva infers. What would move this from testimony toward something a scientific reader could engage with is a repeatable procedure and a falsifiable prediction. Until then it stays a claim and a hypothesis.</p>
+</div>
+</details>
+
+  <div class="sec" id="sources"><span class="tagn">ஆதாரம்</span><h3>எங்கிருந்து வந்தது, எவ்வளவு நம்பலாம்</h3></div>
+  <div class="tblwrap">
+    <table>
+      <thead><tr><th>பகுதி</th><th>மூலம்</th><th>நிலை</th></tr></thead>
+      <tbody>
+        <tr><td>பாடல் வரிகள், பொருள், மனவரைபடம், உரைக் குறிப்புகள், 24 சமயப் பட்டியல்</td>
+          <td><a href="https://github.com/sm4607/Saiva-Siddhantam/blob/main/Gnanam%20Maragam/Book3-Sivagnana-Siddhiyar-Supakkam/02-paraciva-vanakkam/index.html" target="_blank" rel="noopener"><code>02-paraciva-vanakkam/index.html</code></a><br><small>உரை: திரு. மு. திருவிளங்கம், 1971, பக். 3–8</small></td>
+          <td><span class="conf hi">உறுதி</span><br><small>தொகுப்பில் உள்ளபடி</small></td></tr>
+        <tr><td>குரல் 3 — வகுப்பு 3</td>
+          <td><a href="https://github.com/sm4607/Saiva-Siddhantam/blob/main/Gnanam%20Maragam/Book3-Sivagnana-Siddhiyar-Supakkam/recordings/siddhiyar-class-03/transcript.md" target="_blank" rel="noopener"><code>recordings/siddhiyar-class-03/transcript.md</code></a><br><small>00:03 – 00:20</small></td>
+          <td><span class="conf mid">ASR draft</span></td></tr>
+        <tr><td>குரல் 3 — வகுப்பு 4</td>
+          <td><a href="https://github.com/sm4607/Saiva-Siddhantam/blob/main/Gnanam%20Maragam/Book3-Sivagnana-Siddhiyar-Supakkam/recordings/siddhiyar-class-04/transcript.md" target="_blank" rel="noopener"><code>recordings/siddhiyar-class-04/transcript.md</code></a><br><small>00:05 – 00:14</small></td>
+          <td><span class="conf mid">ASR draft</span></td></tr>
+        <tr><td>குரல் 3 — வகுப்பு 5</td>
+          <td><a href="https://github.com/sm4607/Saiva-Siddhantam/blob/main/Gnanam%20Maragam/Book3-Sivagnana-Siddhiyar-Supakkam/recordings/siddhiyar-class-05/transcript.md" target="_blank" rel="noopener"><code>recordings/siddhiyar-class-05/transcript.md</code></a><br><small>00:19 – 00:26</small></td>
+          <td><span class="conf mid">ASR draft</span></td></tr>
+        <tr><td>“உங்கள் குறிப்பில் — என் புரிதல்”</td>
+          <td>தொகுப்பின் <em>என் புரிதல்</em> பகுதி</td>
+          <td><span class="conf own">உங்கள் கருத்து</span></td></tr>
+        <tr><td>உங்கள் கருதுகோள் (வகுப்பு 16)</td>
+          <td>உங்கள் உரையாடல் குறிப்பு — தொகுப்பில் வகுப்பு 16 இல்லை</td>
+          <td><span class="conf own">சரிபார்க்கவில்லை</span></td></tr>
+        <tr><td>விதைகள்</td>
+          <td>மேலே உள்ள மூலங்களிலிருந்து எழுதப்பட்ட ஒப்புமை</td>
+          <td><span class="conf mid">ஒப்புமை</span><br><small>நூலின் கூற்று அல்ல</small></td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <footer>
+    பரசிவ வணக்கம் · சிவஞான சித்தியார் சுபக்கம் · பாயிரம். மெய்ஞ்ஞானம் நூலால் மட்டும் வராது; குருவிடம் நேரில் பயில்வதே வழி. இந்தப் பக்கம் ஒரு துணை, மாற்று அல்ல. ·
+    <a href="https://github.com/sm4607/Saiva-Siddhantam/blob/main/Gnanam%20Maragam/Book3-Sivagnana-Siddhiyar-Supakkam/kalaisol-agarathi.md" target="_blank" rel="noopener">கலைச்சொல் அகராதி ↗</a>
+  </footer>
+</section>
+</main>
+</body>
+</html>
