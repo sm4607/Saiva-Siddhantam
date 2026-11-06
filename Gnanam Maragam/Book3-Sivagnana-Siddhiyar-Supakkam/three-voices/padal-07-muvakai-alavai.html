@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+<html lang="ta">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>மூவகை அளவை — சிவஞான சித்தியார்</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Tamil:wght@300;400;500;600&family=Noto+Serif+Tamil:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#faf7f2; --bg-deep:#f3ede3; --surface:#fffdf9;
+  --ink:#2b2622; --ink-soft:#5c534a; --dim:#8a7f73;
+  --line:rgba(43,38,34,.13); --line-strong:rgba(43,38,34,.28);
+  --author:#b4441f; --author-dim:#f6e6de;
+  --book:#a9761a; --book-dim:#f7eed9;
+  --guru:#1b5a68; --guru-dim:#e0ecef;
+  --sage:#4f6b1e; --sage-dim:#eaf0dd;
+  --plum:#6b3f5e; --plum-dim:#f0e6ee;
+  --font-body:'Noto Sans Tamil','Latha',system-ui,sans-serif;
+  --font-head:'Noto Serif Tamil','Noto Sans Tamil',serif;
+  --font-mono:'IBM Plex Mono','Noto Sans Tamil',monospace;
+  --maxw:1040px; --radius:10px;
+  --shadow:0 1px 2px rgba(43,38,34,.05);
+}
+*,*::before,*::after{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%;scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--ink);
+  font-family:var(--font-body);font-size:17px;line-height:1.85;-webkit-font-smoothing:antialiased;
+  background-image:radial-gradient(900px 420px at 8% -6%,var(--bg-deep),transparent 70%);
+  background-repeat:no-repeat;background-attachment:fixed}
+.wrap{max-width:var(--maxw);margin:0 auto;padding:0 26px}
+h1,h2,h3,h4{font-family:var(--font-head);margin:0;line-height:1.32;font-weight:600}
+h1{font-size:clamp(1.85rem,4.6vw,2.9rem);letter-spacing:-.01em}
+h2{font-size:clamp(1.3rem,3vw,1.62rem)}
+h3{font-size:1.1rem}
+h4{font-size:1rem}
+p{margin:0 0 1em}
+a{color:var(--author);text-decoration:none}
+a:hover{text-decoration:underline}
+small{font-size:.86em;color:var(--dim)}
+.site-head{border-bottom:1px solid var(--line);position:sticky;top:0;z-index:40;
+  background:rgba(250,247,242,.94);backdrop-filter:blur(10px)}
+.site-head .wrap{display:flex;align-items:center;gap:1rem;min-height:56px;flex-wrap:wrap}
+.brand{font-family:var(--font-head);font-weight:600;font-size:.98rem;color:var(--ink);margin-right:auto}
+.site-head nav{display:flex;gap:.2rem;flex-wrap:wrap}
+.site-head nav a{color:var(--dim);font-size:.87rem;padding:.22rem .5rem;border-radius:6px}
+.site-head nav a:hover{color:var(--ink);background:var(--bg-deep);text-decoration:none}
+.site-head nav a.here{color:var(--ink);background:var(--surface);box-shadow:inset 0 0 0 1px var(--line)}
+.hero{padding:clamp(2rem,4.6vw,3.2rem) 0 1rem;max-width:800px}
+.hero h1{margin:.35rem 0 .85rem}
+.hero .sub{color:var(--ink-soft);font-size:1.02rem;line-height:1.95;margin:0}
+.crumbs{font-family:var(--font-mono);font-size:.7rem;letter-spacing:.1em;color:var(--dim);
+  margin:1.4rem 0 0;text-transform:uppercase}
+.crumbs span{margin:0 .4rem;opacity:.5}
+.chips{display:flex;flex-wrap:wrap;gap:.5rem;margin:1.4rem 0 0}
+.chip{font-family:var(--font-mono);font-size:.72rem;letter-spacing:.04em;border:1px solid var(--line);
+  background:var(--surface);border-radius:100px;padding:.3rem .75rem;color:var(--ink-soft)}
+.chip a{color:var(--ink-soft)}
+.legend{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:.8rem;margin:2rem 0 .5rem}
+@media(max-width:760px){.legend{grid-template-columns:1fr}}
+.voice{border:1px solid var(--line);border-radius:var(--radius);background:var(--surface);
+  padding:.95rem 1.05rem;border-top:3px solid var(--line)}
+.voice.v1{border-top-color:var(--author)} .voice.v2{border-top-color:var(--book)} .voice.v3{border-top-color:var(--guru)}
+.voice .vn{font-family:var(--font-mono);font-size:.66rem;letter-spacing:.1em;color:var(--dim);text-transform:uppercase}
+.voice .vt{font-family:var(--font-head);font-weight:600;font-size:.96rem;margin:.25rem 0 .15rem}
+.voice .vd{font-size:.85rem;color:var(--ink-soft);line-height:1.7;margin:0}
+.callout{background:var(--bg-deep);border:1px solid var(--line);border-left:3px solid var(--dim);
+  border-radius:var(--radius);padding:1rem 1.2rem;margin:1.6rem 0 0;font-size:.89rem;
+  color:var(--ink-soft);line-height:1.8}
+.callout strong{color:var(--ink)}
+.sec{display:flex;align-items:baseline;gap:.7rem;flex-wrap:wrap;margin:2.4rem 0 .3rem}
+.sec .tagn{font-family:var(--font-mono);font-size:.7rem;letter-spacing:.1em;color:var(--dim);text-transform:uppercase}
+.sec-note{color:var(--dim);font-size:.89rem;margin:.15rem 0 1.1rem;max-width:72ch}
+.verse{background:var(--surface);border:1px solid var(--line);border-left:3px solid var(--author);
+  border-radius:var(--radius);padding:1.35rem 1.5rem;margin:0 0 1rem;box-shadow:var(--shadow)}
+.verse p{font-family:var(--font-head);font-size:1.02rem;line-height:2.05;margin:0 0 .1em}
+.verse .vtag{font-family:var(--font-mono);font-size:.66rem;letter-spacing:.1em;color:var(--author);
+  text-transform:uppercase;display:block;margin-bottom:.7rem}
+.artha{color:var(--ink-soft);font-size:.95rem;line-height:1.95;max-width:74ch;margin:1.1rem 0 0}
+.artha b{color:var(--ink);font-weight:600}
+.tree{display:grid;gap:.85rem;margin:0 0 .5rem}
+.branch{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);
+  box-shadow:var(--shadow);overflow:hidden}
+.branch-head{display:flex;gap:.8rem;align-items:flex-start;padding:1rem 1.15rem .85rem;
+  border-bottom:1px solid var(--line);background:linear-gradient(180deg,var(--book-dim),transparent)}
+.bnum{font-family:var(--font-mono);font-size:.7rem;color:var(--book);border:1px solid var(--book);
+  border-radius:50%;width:1.5rem;height:1.5rem;display:grid;place-items:center;flex:none;margin-top:.15rem}
+.branch-head h4{margin:0 0 .15rem}
+.branch-head .bh-sub{font-size:.84rem;color:var(--ink-soft);margin:0;line-height:1.7}
+.nodes{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:0}
+@media(max-width:700px){.nodes{grid-template-columns:1fr}}
+.node{padding:.75rem 1.15rem;border-bottom:1px solid var(--line);min-width:0}
+.node:nth-child(odd){border-right:1px solid var(--line)}
+@media(max-width:700px){.node:nth-child(odd){border-right:none}}
+.node:last-child,.node:nth-last-child(2):nth-child(odd){border-bottom:none}
+.nk{display:block;font-family:var(--font-head);font-weight:600;font-size:.93rem;color:var(--book);margin-bottom:.12rem}
+.nv{display:block;font-size:.86rem;color:var(--ink-soft);line-height:1.75}
+.gcards{display:grid;gap:.85rem}
+.gcard{background:var(--surface);border:1px solid var(--line);border-left:3px solid var(--guru);
+  border-radius:var(--radius);padding:1rem 1.2rem;box-shadow:var(--shadow);min-width:0}
+.gcard h4{margin:.15rem 0 .45rem}
+.gcard p{font-size:.92rem;color:var(--ink-soft);line-height:1.85;margin:0 0 .55em}
+.gcard p:last-child{margin-bottom:0}
+a.gmeta{font-family:var(--font-mono);font-size:.65rem;letter-spacing:.05em;color:var(--guru);
+  text-transform:uppercase;display:inline-block;margin-bottom:.3rem;border-bottom:1px dotted var(--guru)}
+a.gmeta:hover{text-decoration:none;background:var(--guru-dim)}
+.gcard.quote{border-left-color:var(--sage);background:linear-gradient(180deg,var(--sage-dim),var(--surface) 55%)}
+.gcard.quote a.gmeta{color:var(--sage);border-bottom-color:var(--sage)}
+.pull{font-family:var(--font-head);font-size:.99rem;line-height:1.85;color:var(--ink);margin:.2rem 0 .5rem}
+.pull::before{content:"\201C"} .pull::after{content:"\201D"}
+.meet{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:.85rem;margin:1rem 0 0}
+@media(max-width:760px){.meet{grid-template-columns:1fr}}
+.mbox{border:1px solid var(--line);border-radius:var(--radius);padding:1rem 1.15rem;background:var(--surface);min-width:0}
+.mbox.same{border-top:3px solid var(--sage)} .mbox.more{border-top:3px solid var(--guru)}
+.mbox h4{margin:0 0 .55rem;font-size:.92rem}
+.mbox ul{margin:0;padding-left:1.05rem;font-size:.87rem;color:var(--ink-soft);line-height:1.8}
+.mbox li{margin-bottom:.4rem} .mbox li:last-child{margin-bottom:0}
+.mine{background:var(--bg-deep);border:1px dashed var(--line-strong);border-radius:var(--radius);
+  padding:1rem 1.2rem;margin:1.1rem 0 0}
+.mine .mtag{font-family:var(--font-mono);font-size:.64rem;letter-spacing:.1em;color:var(--dim);
+  text-transform:uppercase;display:block;margin-bottom:.35rem}
+.mine p{font-size:.89rem;color:var(--ink-soft);line-height:1.85;margin:0}
+/* lens */
+.lens{border:1px solid var(--line-strong);border-radius:var(--radius);background:var(--surface);
+  margin:1.2rem 0 0;overflow:hidden;box-shadow:var(--shadow)}
+.lens-head{padding:1.05rem 1.25rem .9rem;background:linear-gradient(180deg,var(--plum-dim),transparent);
+  border-bottom:1px solid var(--line)}
+.lens-head .lh{font-family:var(--font-mono);font-size:.64rem;letter-spacing:.1em;
+  color:var(--plum);text-transform:uppercase;display:block;margin-bottom:.2rem}
+.lens-head h4{font-size:1.05rem;margin:0 0 .2rem}
+.lens-head p{font-size:.84rem;color:var(--ink-soft);margin:0;line-height:1.7}
+.lbody{padding:1.1rem 1.25rem 1.25rem}
+.step{display:grid;grid-template-columns:auto minmax(0,1fr);gap:.85rem;margin:0 0 1.05rem}
+.step:last-of-type{margin-bottom:0}
+.snum{font-family:var(--font-mono);font-size:.66rem;color:var(--plum);border:1px solid var(--line-strong);
+  border-radius:50%;width:1.55rem;height:1.55rem;display:grid;place-items:center;flex:none;margin-top:.2rem}
+.step h5{font-family:var(--font-head);font-size:.93rem;margin:.05rem 0 .3rem;font-weight:600}
+.step p{font-size:.89rem;color:var(--ink-soft);line-height:1.85;margin:0 0 .45em}
+.step p:last-child{margin:0}
+.step em.en{font-style:normal;color:var(--ink);font-weight:500}
+.breaks{background:var(--bg-deep);border-left:3px solid var(--author);border-radius:8px;
+  padding:.8rem 1rem;margin:.9rem 0 0;font-size:.87rem;color:var(--ink-soft);line-height:1.8}
+.breaks b{color:var(--author);font-weight:600;display:block;margin-bottom:.2rem;
+  font-family:var(--font-mono);font-size:.64rem;letter-spacing:.09em;text-transform:uppercase}
+.hypo{border:1px solid var(--plum);border-radius:var(--radius);background:var(--plum-dim);
+  padding:1rem 1.2rem;margin:1.2rem 0 0}
+.hypo .ht{font-family:var(--font-mono);font-size:.64rem;letter-spacing:.1em;color:var(--plum);
+  text-transform:uppercase;display:block;margin-bottom:.35rem}
+.hypo p{font-size:.89rem;line-height:1.85;margin:0 0 .5em;color:var(--ink-soft)}
+.hypo p:last-child{margin:0}
+.tblwrap{overflow-x:auto;border:1px solid var(--line);border-radius:var(--radius);
+  background:var(--surface);margin:.8rem 0 0}
+table{border-collapse:collapse;width:100%;font-size:.84rem;min-width:560px}
+th,td{text-align:left;padding:.6rem .8rem;border-bottom:1px solid var(--line);vertical-align:top;line-height:1.7}
+th{font-family:var(--font-mono);font-size:.63rem;letter-spacing:.07em;text-transform:uppercase;
+  color:var(--dim);background:var(--bg-deep)}
+tbody tr:nth-child(even){background:rgba(43,38,34,.018)}
+tbody tr:last-child td{border-bottom:none}
+td code{font-family:var(--font-mono);font-size:.75rem;background:var(--bg-deep);
+  padding:.1rem .3rem;border-radius:4px;overflow-wrap:anywhere}
+.conf{font-family:var(--font-mono);font-size:.63rem;letter-spacing:.05em;text-transform:uppercase;
+  padding:.12rem .45rem;border-radius:100px;white-space:nowrap;display:inline-block}
+.conf.hi{background:var(--sage-dim);color:var(--sage)}
+.conf.mid{background:var(--book-dim);color:var(--book)}
+.conf.own{background:var(--bg-deep);color:var(--dim);border:1px solid var(--line)}
+footer{margin:3rem 0 0;padding:1.6rem 0 3rem;border-top:1px solid var(--line);
+  color:var(--dim);font-size:.83rem;line-height:1.8}
+@keyframes fadeUp{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
+.branch,.gcard,.lens{animation:fadeUp .45s ease both}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+@media print{.site-head{display:none}body{background:#fff;font-size:11pt}
+ .branch,.gcard,.lens,.verse{box-shadow:none}}
+
+details.enblock{margin:1.6rem 0 0;border:1px solid var(--line);border-radius:var(--radius);
+  background:var(--surface);padding:0 1.15rem .2rem}
+details.enblock>summary{cursor:pointer;list-style:none;padding:.85rem 0;
+  font-family:var(--font-mono);font-size:.66rem;letter-spacing:.09em;text-transform:uppercase;
+  color:var(--plum)}
+details.enblock>summary::-webkit-details-marker{display:none}
+details.enblock>summary::before{content:"\25B8  "}
+details.enblock[open]>summary::before{content:"\25BE  "}
+details.enblock[open]{padding-bottom:1rem}
+.enbody{border-top:1px solid var(--line);padding-top:1rem}
+.enbody h5{font-family:var(--font-head);font-size:.95rem;margin:1.1rem 0 .35rem;font-weight:600;color:var(--ink)}
+.enbody h5:first-child{margin-top:0}
+.enbody p{font-size:.9rem;line-height:1.8;color:var(--ink-soft);margin:0 0 .7em}
+.enbody p:last-child{margin-bottom:0}
+.enbody table{min-width:520px}
+.enbody .breaks{margin-top:.7rem}
+
+.seednote{background:var(--bg-deep);border-left:3px solid var(--plum);border-radius:8px;
+  padding:.85rem 1.05rem;font-size:.86rem;line-height:1.85;color:var(--ink-soft);margin:0 0 1rem}
+.seednote strong{color:var(--ink);font-weight:600}
+.seednote a{color:var(--plum);text-decoration:underline;text-decoration-color:rgba(107,63,94,.35)}
+</style>
+</head>
+<body>
+<header class="site-head">
+  <div class="wrap">
+    <span class="brand">சிவஞான சித்தியார் · சுபக்கம்</span>
+    <nav><a href="padal-01-vinayaka-vanakkam.html">1</a><a href="padal-02-paraciva-vanakkam.html">2</a><a href="padal-03-nulin-vazhi.html">3</a><a href="padal-04-nutaliya-porul.html">4</a><a href="padal-05-avaiyadakkam-1.html">5</a><a href="padal-06-avaiyadakkam-2.html">6</a><a class="here" href="padal-07-muvakai-alavai.html">7</a><a href="padal-08-alavai-ilakkanam.html">8</a><a href="padal-09-naalvakai-kaatchi.html">9</a><a href="padal-10-paakupaadu.html">10</a><a href="padal-11-iyalpu-vaikal.html">11</a><a href="padal-12-indiriya-maanatha.html">12</a><a href="class-verse-map.html">வரைபடம்</a><a href="#seeds">விதைகள்</a><a href="#sources">ஆதாரம்</a><a href="https://github.com/sm4607/Saiva-Siddhantam" target="_blank" rel="noopener">தொகுப்பு ↗</a></nav>
+  </div>
+</header>
+
+<main class="wrap">
+<section class="hero">
+  <p class="crumbs">ஞானபாதம் <span>/</span> பாடல் 7 <span>/</span> பக். 14–17</p>
+  <h1>பத்திலிருந்து மூன்று, மூன்றிலிருந்து ஒன்று</h1>
+  <p class="sub">அறிவின் கருவிகள் பத்திலிருந்து மூன்றாகச் சுருங்கி, முடிவில் ஆன்மாவின் அறிவொளியில் நிற்பது. ஞானபாதத்தின் முதல் பாடல் — அளவையிலக்கணத்தின் தொடக்கம்.</p>
+  <div class="chips">
+    <span class="chip">பாடல் 7 / 12</span>
+    <span class="chip">4 அடிகள் · உரைக் குறிப்பு 1</span>
+    <span class="chip">வகுப்பு 7</span>
+    <span class="chip"><a href="https://github.com/sm4607/Saiva-Siddhantam/blob/main/Gnanam%20Maragam/Book3-Sivagnana-Siddhiyar-Supakkam/07-muvakai-alavai/index.html" target="_blank" rel="noopener">மூலப் பக்கம் ↗</a></span>
+  </div>
+</section>
+
+<section>
+  <div class="legend">
+    <div class="voice v1"><span class="vn">குரல் 1</span>
+      <div class="vt">அருணந்தி சிவாச்சாரியார்</div>
+      <p class="vd">பாடல். நான்கு அடிகள். இவை மாறாதவை — மற்ற எல்லாம் இதன் மேல் எழும் வாசிப்பு.</p></div>
+    <div class="voice v2"><span class="vn">குரல் 2</span>
+      <div class="vt">திரு. மு. திருவிளங்கம்</div>
+      <p class="vd">உரை. பாடலைப் பிரிவுகளாகப் பிரித்து ஒவ்வொரு சொல்லுக்கும் பொருள் கொடுப்பவர்.</p></div>
+    <div class="voice v3"><span class="vn">குரல் 3</span>
+      <div class="vt">கம்பவாரிதி இலங்கை திரு. ஜெயராஜ் அய்யா</div>
+      <p class="vd">வகுப்பு. அதே பாடலை இன்றைய மொழியில், உவமைகளோடு, எதிர்க்கேள்விகளோடு பிரித்துக் காட்டுபவர்.</p></div>
+  </div>
+
+  <div class="callout">
+    <strong>இந்தப் பக்கத்தை நம்பும் முன்.</strong> வகுப்புக் குறிப்புகள் தானியங்கி எழுத்துவடிவம் (ASR), நிலை <em>draft</em>. குரல் 3-இல் உள்ள எல்லாம் அந்த எழுத்துவடிவத்திலிருந்து படித்தெடுக்கப்பட்டவை; ஒலியோடு ஒப்பிட்டுச் சரிபார்க்கவில்லை. மேற்கோள் குறிகள் இல்லாத இடங்களில் <em>சொற்கள் என்னுடையவை, கருத்து அவருடையது</em>. ஒவ்வொரு அட்டையின் தலைப்பிலும் உள்ள <span style="font-family:var(--font-mono);font-size:.85em;color:var(--guru)">வகுப்பு · நேரம்</span> ஒரு இணைப்பு — அது அந்த வரிக்கே அழைத்துச் செல்லும்.
+  </div>
+</section>
+
+<section class="song">
+  <div class="verse">
+    <span class="vtag">குரல் 1 · மூலம்</span>
+    <p>அளவை காண்டல் கருதல் உரை அபாவம் பொருள் ஒப்பு ஆறு என்பர்;</p>
+    <p>அளவை மேலும் ஒழிபு உண்மை ஐதிகத்தோடு இயல்பு என நான்கு</p>
+    <p>அளவை காண்பர்; அவையிற்றின் மேலும் அறைவர்; அவை எல்லாம்</p>
+    <p>அளவை காண்டல் கருதல் உரை என்ற இம்மூன்றில் அடங்கிடுமே.</p>
+  </div>
+  <p class="artha"><b>சுருக்கம்.</b> சிலர் ஆறு அளவைகள் என்பர் — காண்டல், கருதல், உரை, அபாவம், பொருள், ஒப்பு. வேறு சிலர் மேலும் நான்கு — ஒழிபு, உண்மை, ஐதிகம், இயல்பு — சேர்த்து நான்கு என்று கூறுவர். இன்னும் சிலர் அதற்கு மேலும் கூறுவர். ஆனால் அவை எல்லாம் காண்டல், கருதல், உரை என்னும் இம் மூன்றிலேயே அடங்கிவிடும்.</p>
+
+  <div class="sec"><span class="tagn">குரல் 2</span><h3>உரையாசிரியரின் மனவரைபடம்</h3></div>
+  <p class="sec-note">இடப்புறம் ஒன்று, வலப்புறம் மூன்று, ஒவ்வொன்றின் கீழும் அதில் அடங்கும் அளவைகள். பாடல் சொல்லும் பத்து அளவைகளும் அவற்றின் இடமும் இங்கே தெரியும்.</p>
+  <div class="tree">
+    <div class="branch">
+      <div class="branch-head"><span class="bnum">1</span><div>
+        <h4>காட்சி — காண்டல் · பிரத்தியட்சம்</h4>
+        <p class="bh-sub">பொறிகளாலும் மனத்தாலும் நேரடியாகக் கண்டு அறிதல். இதில் அடங்குவன இரண்டு.</p></div></div>
+      <div class="nodes">
+        <div class="node"><span class="nk">அபாவம் — இன்மை</span><span class="nv">இல்லாமையைக் கொண்டே ஒன்றை அறிதல். நான்கு வகை: பிராகபாவம், பிரத்துவம்சாபாவம், அத்தியந்தாபாவம், அந்நியோந்நியாபாவம்.</span></div>
+        <div class="node"><span class="nk">இயல்பு — சகசம்</span><span class="nv">பொருளின் இயற்கைத் தன்மையாலேயே அது அறியப்படுதல். இரு வகை: சிறப்பியல்பு, பொதுவியல்பு.</span></div>
+      </div></div>
+
+    <div class="branch">
+      <div class="branch-head"><span class="bnum">2</span><div>
+        <h4>அனுமானம் — கருதல்</h4>
+        <p class="bh-sub">கண்டதைக் கொண்டு காணாததைக் கருதி அறிதல். இதில் அடங்குவன நான்கு.</p></div></div>
+      <div class="nodes">
+        <div class="node"><span class="nk">பொருள் — அருத்தாபத்தி</span><span class="nv">சொல்லப்படாததைச் சொல்லப்பட்டதைக் கொண்டு பெறுதல். உ-ம்: “இவ்வூரிற் கொடுப்பவர் இவர்” எனின், கொடாதாரும் உண்டு என்னும் பொருள் பெறுதல்.</span></div>
+        <div class="node"><span class="nk">ஒப்பு — உவமை</span><span class="nv">ஒத்த பொருளைக் கொண்டு புதிய பொருளை அறிதல். உ-ம்: “ஆமா என்பது பசுவை ஒக்கும்” எனக் கேட்டவன், காட்டில் கண்டு, அதுவே ஆமா எனத் தெளிதல்.</span></div>
+        <div class="node"><span class="nk">ஒழிபு — பாரிசேடம்</span><span class="nv">மற்றவற்றை ஒழித்து, மிஞ்சி நிற்பதைக் கொண்டு அறிதல். உ-ம்: ஒசைக்குப் பற்றுக்கோடு யாது என ஆராய்ந்து, ஆகாயமே என அறிதல்.</span></div>
+        <div class="node"><span class="nk">உண்மை — சம்பவம்</span><span class="nv">முழுமை சொல்லப்படும்போது பகுதி வருவதை அறிதல். உ-ம்: “ஆயிரம்” என்றால் அதனுள் “நூறும்” அடங்கி நிற்றல்.</span></div>
+      </div></div>
+
+    <div class="branch">
+      <div class="branch-head"><span class="bnum">3</span><div>
+        <h4>ஆகமம் — உரை</h4>
+        <p class="bh-sub">சொல் வழி வரும் அறிவு. இதில் அடங்குவது ஒன்று.</p></div></div>
+      <div class="nodes">
+        <div class="node"><span class="nk">ஐதிகம் — உலகவழக்கு</span><span class="nv">காட்சியில் அறியப்படாததாய்ப் பரம்பரைச் செவ்வியால் அறியப்படுவது. உ-ம்: “இந்த ஆலமரத்திற் பேயுண்டு” என்பன போல்வது.</span></div>
+        <div class="node"><span class="nk">மையக் கருத்து</span><span class="nv">அளவை = பிரமாணம். எண்ணல், எடுத்தல், முகத்தல், நீட்டல் என்னும் நால்வகை அளவால் உலகப் பொருள்களை அளப்பது போல, பதி முதலியவற்றை அளந்தறிதற்குக் கருவியாதலின் பிரமாணம் அளவை எனப்பட்டது.</span></div>
+      </div></div>
+
+    <div class="branch">
+      <div class="branch-head"><span class="bnum">4</span><div>
+        <h4>யார் எத்தனை ஏற்கின்றனர்</h4>
+        <p class="bh-sub">பாடலின் முதல் அடி சமயங்களின் கணக்கை ஒட்டி வருகிறது — ஒவ்வொரு சமயமும் தான் ஏற்கும் அளவைகளின் எண்ணிக்கையால் வரிசைப்படுத்தப்படுகிறது.</p></div></div>
+      <div class="nodes">
+        <div class="node"><span class="nk">ஒன்றே — காண்டல்</span><span class="nv">உலோகாயதர்</span></div>
+        <div class="node"><span class="nk">இரண்டு — + கருதல்</span><span class="nv">வைசேடிகரும் பெளத்தரும்</span></div>
+        <div class="node"><span class="nk">மூன்று — + உரை</span><span class="nv">சாங்கியர்</span></div>
+        <div class="node"><span class="nk">நான்கு — + ஒப்பு</span><span class="nv">நையாயிகர்</span></div>
+        <div class="node"><span class="nk">ஐந்து — + அருத்தாபத்தி</span><span class="nv">பிரபாகரர்</span></div>
+        <div class="node"><span class="nk">ஆறு — + அபாவம்</span><span class="nv">மீமாஞ்சகர்</span></div>
+      </div></div>
+  </div>
+  <p class="sec-note" style="margin-top:1rem">உரையின் முதல் குறிப்பு: பதி, பசு, பாசம் பிரத்தியட்சமாகக் காணப்படா; ஆகவே அவை ஆகமம், அனுமானம் என்னும் இரண்டு கருவிகளாலும், ஆன்மசிற்சத்தியால் அளந்தறியப்படுகின்றன. ஆதலால் ஆன்மசிற்சத்தியே பிரமாணம். <a href="https://github.com/sm4607/Saiva-Siddhantam/blob/main/Gnanam%20Maragam/Book3-Sivagnana-Siddhiyar-Supakkam/07-muvakai-alavai/index.html" target="_blank" rel="noopener">மூலப் பக்கத்தில் முழு உரை ↗</a></p>
+
+  <div class="sec"><span class="tagn">குரல் 3</span><h3>அய்யாவின் வகுப்பு</h3></div>
+  <p class="sec-note">பாடல் 7 முழுவதும் ஏழாம் வகுப்பில். அதன் முதல் பதினைந்து நிமிடங்கள் ஆறு பாடல்களின் மீள்பார்வை.</p>
+  <div class="gcards">
+<div class="gcard"><a class="gmeta" href="https://github.com/sm4607/Saiva-Siddhantam/blob/main/Gnanam%20Maragam/Book3-Sivagnana-Siddhiyar-Supakkam/recordings/siddhiyar-class-07/transcript.md#L64" target="_blank" rel="noopener">வகுப்பு 7 · 00:04:32</a><h4>மீள்பார்வை — எண்ணிக்கையின் ஏணி</h4><p>புதிய பாடலுக்குள் நுழையும் முன், ஆறு பாடல்களையும் திரும்பிப் படிக்கிறார். முதல் பாடலில் “123456” என்ற எண்ணிக்கையை வைத்து விநாயகரை வணங்கியது இங்கே மீண்டும் வருகிறது — ஏழாம் பாடலோ அளவைகளின் எண்ணிக்கையை எடுத்துக்கொள்கிறது.</p><p>இரண்டு பாடல்களும் ஒரே கருவியைப் பயன்படுத்துகின்றன என்பதை இந்த மீள்பார்வை காட்டிவிடுகிறது.</p></div>
+<div class="gcard"><a class="gmeta" href="https://github.com/sm4607/Saiva-Siddhantam/blob/main/Gnanam%20Maragam/Book3-Sivagnana-Siddhiyar-Supakkam/recordings/siddhiyar-class-07/transcript.md#L150" target="_blank" rel="noopener">வகுப்பு 7 · 00:15:09</a><h4>பாடல் 6-இன் தகராறு — அருளினால் அறியலாம்</h4><p>பாடல் 5 சொன்னது இறைவன் அறியப்படான் என்று; பாடல் 6 சொல்கிறது அருளினால் ஆகமத்தே அறியலாம் என்று. முரண்பாடு போலத் தெரிகிறது.</p><p>அய்யா இதை இங்கே தீர்க்கிறார்: அறிவால் அல்ல, அருளால். அதாவது “அறிய முடியாது” என்பது கருவிகளின் எல்லை பற்றியது, அவனுடைய எல்லை பற்றியது அல்ல.</p></div>
+<div class="gcard"><a class="gmeta" href="https://github.com/sm4607/Saiva-Siddhantam/blob/main/Gnanam%20Maragam/Book3-Sivagnana-Siddhiyar-Supakkam/recordings/siddhiyar-class-07/transcript.md#L184" target="_blank" rel="noopener">வகுப்பு 7 · 00:19:39</a><h4>பத்து, பிறகு மூன்று — ஒரு சுருக்கல்</h4><p>பாடலின் கடைசி அடி செய்வது ஒன்றே: எத்தனை அளவைகளைச் சேர்த்தாலும் அவை காண்டல், கருதல், உரை என்னும் மூன்றில் அடங்கிவிடும் என்பதைச் சொல்வது.</p><p>அய்யா இதை ஒரு <em>சுருக்கல்</em> என்றே பேசுகிறார் — பட்டியல் நீளமாகிக்கொண்டே போனாலும் அடிப்படை வடிவங்கள் மூன்றே.</p></div>
+<div class="gcard"><a class="gmeta" href="https://github.com/sm4607/Saiva-Siddhantam/blob/main/Gnanam%20Maragam/Book3-Sivagnana-Siddhiyar-Supakkam/recordings/siddhiyar-class-07/transcript.md#L200" target="_blank" rel="noopener">வகுப்பு 7 · 00:21:05</a><h4>கண்ணால் காண முடியாத மூன்று</h4><p>இந்தப் பாடல் ஏன் தேவை என்ற கேள்விக்கு இதுவே பதில்: பதி, பசு, பாசம் மூன்றையும் கண்ணால் கண்டு அறிய முடியாது. ஆகவே காட்சி மட்டும் போதாது; அனுமானமும் ஆகமமும் தேவைப்படுகின்றன.</p><p>இது பாடலின் கட்டமைப்பை நியாயப்படுத்தும் இடம் — மூன்று அளவைகளில் ஒன்று மட்டும் இங்கே வேலை செய்யாது.</p></div>
+<div class="gcard"><a class="gmeta" href="https://github.com/sm4607/Saiva-Siddhantam/blob/main/Gnanam%20Maragam/Book3-Sivagnana-Siddhiyar-Supakkam/recordings/siddhiyar-class-07/transcript.md#L222" target="_blank" rel="noopener">வகுப்பு 7 · 00:23:10</a><h4>அனுமானம் — உடம்புக்குள் ஒன்று இருந்தது</h4><p>இறந்த உடம்பைப் பார்க்கிறோம்; அதில் இப்போது இல்லாத ஒன்று முன்பு இருந்தது என்பதை அனுமானிக்கிறோம். அதற்கு உயிர் என்று பெயர்.</p><p>இதுவே அனுமானத்தின் வேலை — கண்டதைக் கொண்டு காணாததை அறிவது. அய்யா இதை ஒரு அன்றாட அனுபவத்திலிருந்து எடுக்கிறார், இலக்கணத்திலிருந்து அல்ல.</p></div>
+<div class="gcard"><a class="gmeta" href="https://github.com/sm4607/Saiva-Siddhantam/blob/main/Gnanam%20Maragam/Book3-Sivagnana-Siddhiyar-Supakkam/recordings/siddhiyar-class-07/transcript.md#L258" target="_blank" rel="noopener">வகுப்பு 7 · 00:27:43</a><h4>“இந்த அளவை அறிவை நாங்கள் கைவிட்டுவிட்டோம்”</h4><p>இது அவர் இந்த வகுப்பில் விடும் கூரிய கண்டனம். அளவை படிப்பது சிக்கலான விஷயம் — அந்த அளவை அறிவைத் தமிழர்களாகிய நாம், சைவர்களாகிய நாம், பெரும்பாலும் கைவிட்டுவிட்டோம் என்கிறார்.</p><p>அதாவது இந்தப் பாடலை அவர் ஒரு பட்டியலாகக் கற்பிக்கவில்லை; இழந்த ஒரு கல்வியை மீட்டெடுப்பதாகக் கற்பிக்கிறார்.</p></div>
+<div class="gcard"><a class="gmeta" href="https://github.com/sm4607/Saiva-Siddhantam/blob/main/Gnanam%20Maragam/Book3-Sivagnana-Siddhiyar-Supakkam/recordings/siddhiyar-class-07/transcript.md#L324" target="_blank" rel="noopener">வகுப்பு 7 · 00:39:45</a><h4>கருவிகள் பிரமாணம் எனப்படுவது உபசாரத்தால்</h4><p>உரையின் துணிச்சலான கூற்று இங்கே வருகிறது: அறிவது ஆன்மாவின் சிற்றறிவு; காட்சி, அனுமானம், ஆகமம் மூன்றும் அதற்கு அறிவைத் தோற்றுவிக்கும் துணைக் கருவிகள். உபசாரத்தால் மட்டுமே அவை பிரமாணம் எனப்படுகின்றன.</p><p>உபசாரம் என்றால் ஒன்றன் பெயரை மற்றொன்றுக்கு வழங்குதல் — குருவின் மகனை “குரு” என்று அழைப்பது போல. அய்யா இந்த உவமையை இங்கே பயன்படுத்துகிறார்.</p></div>
+<div class="gcard quote"><a class="gmeta" href="https://github.com/sm4607/Saiva-Siddhantam/blob/main/Gnanam%20Maragam/Book3-Sivagnana-Siddhiyar-Supakkam/recordings/siddhiyar-class-07/transcript.md#L374" target="_blank" rel="noopener">வகுப்பு 7 · 00:45:34</a><h4>லோகாயதரும் இன்றைய அறிவியல்வாதிகளும்</h4></div>
+<div class="gcard"><a class="gmeta" href="https://github.com/sm4607/Saiva-Siddhantam/blob/main/Gnanam%20Maragam/Book3-Sivagnana-Siddhiyar-Supakkam/recordings/siddhiyar-class-07/transcript.md#L416" target="_blank" rel="noopener">வகுப்பு 7 · 00:50:06</a><h4>உபமானம் — ஊர் மாடும் காட்டு மாடும்</h4><p>“ஆமா என்பது பசுவை ஒக்கும்” என்று கேட்டவன், காட்டில் ஒரு விலங்கைக் கண்டு, அது தான் அறிந்த பசுவை ஒத்திருக்கிறது என்பதைப் பார்த்து, அதுவே ஆமா என்று தெளிகிறான்.</p><p>அறியாத ஒன்றை அறிந்த ஒன்றின் மூலம் அறிவது — இதுவே ஒப்பு. அய்யா இதை நீண்ட உவமையாகவே சொல்கிறார்.</p></div>
+<div class="gcard"><a class="gmeta" href="https://github.com/sm4607/Saiva-Siddhantam/blob/main/Gnanam%20Maragam/Book3-Sivagnana-Siddhiyar-Supakkam/recordings/siddhiyar-class-07/transcript.md#L452" target="_blank" rel="noopener">வகுப்பு 7 · 00:54:40</a><h4>அருத்தாபத்தி — சொல்லாததைக் கொண்டு சொல்வது</h4><p>“இவ்வூரில் கொடுப்பவர் இவர்” என்றால், இல்லாதவரும் உண்டு என்பது தானாக வருகிறது. சொல்லப்படாத ஒன்றைச் சொல்லப்பட்டதைக் கொண்டு பெறுவது.</p><p>அய்யா இதையே அன்றாட மொழியிலும் காட்டுகிறார் — “பகல் உண்ணான், பருத்தும் இருக்கிறான்” என்றால் இரவில் உண்பவன் என்பது பெறப்படுகிறது.</p></div>
+<div class="gcard"><a class="gmeta" href="https://github.com/sm4607/Saiva-Siddhantam/blob/main/Gnanam%20Maragam/Book3-Sivagnana-Siddhiyar-Supakkam/recordings/siddhiyar-class-07/transcript.md#L464" target="_blank" rel="noopener">வகுப்பு 7 · 00:57:05</a><h4>அபாவம் — இல்லாமையும் ஒரு கருவி</h4><p>கண்ணுக்குத் தெரியாத ஒன்றை, இல்லை என்பதைக் கொண்டே அறியலாம். நான்கு வகை: பிராகபாவம் (முன்னின்மை), பிரத்துவம்சாபாவம் (பின்னின்மை), அத்தியந்தாபாவம் (என்றும் இன்மை), அந்நியோந்நியாபாவம் (ஒன்றிலொன்றின்மை).</p><p>“உலகம் இல்லை” என்று சொல்வதிலிருந்தே ஒரு காலம் பற்றி அறிகிறோம் — அதுவே இந்தக் கருவியின் வேலை.</p></div>
+  </div>
+
+  <div class="meet">
+    <div class="mbox same"><h4>இருவரும் சந்திக்கும் இடம்</h4><ul>
+      <li>பத்து அளவைகளும் மூன்றில் அடங்கும் — இது ஒரு சுருக்கல், ஒரு மறுப்பு அல்ல.</li>
+      <li>பதி–பசு–பாசம் காட்சிக்கு அகப்படா; ஆகவே காட்சி மட்டும் போதாது.</li>
+      <li>அறிவது ஆன்மாவின் சிற்றறிவு; கருவிகள் உபசாரத்தால் பிரமாணம் எனப்படுகின்றன.</li>
+    </ul></div>
+    <div class="mbox more"><h4>அய்யா சேர்ப்பது</h4><ul>
+      <li>“இந்த அளவை அறிவை நாங்கள் கைவிட்டுவிட்டோம்” என்னும் கண்டனம் — பாடலை ஒரு இழப்பின் மீட்பாக மாற்றுகிறது.</li>
+      <li>பாடல் 5-இன் முரணை அருள் வைத்துத் தீர்ப்பது.</li>
+      <li>அனுமானம், உபமானம், அருத்தாபத்தி — மூன்றுக்கும் அன்றாட வாழ்விலிருந்து உவமைகள்.</li>
+      <li>லோகாயதருக்கும் இன்றைய “காட்சி மட்டும்” நிலைப்பாட்டுக்கும் இடையேயான இணைப்பு.</li>
+    </ul></div>
+  </div>
+
+  <div class="mine"><span class="mtag">உங்கள் குறிப்பில் — என் புரிதல்</span>
+    <p>இது வறண்ட பட்டியல் போலத் தெரிகிறது, ஆனால் இது ஒரு சுருக்கல் இயந்திரம் — பத்து, பிறகு மூன்று, பிறகு ஒன்று. உரையாசிரியரின் துணிச்சலான கூற்று “ஆன்மசிற்சத்தியே பிரமாணம்”; இறைவனைப் பற்றி வாதிடுவதற்கு முன் அறிதல் என்பதே என்ன என்பதைத் தீர்த்தாக வேண்டும். இவை உங்கள் வாசிப்பு — நூலின் கூற்றாக அல்ல.</p></div>
+
+  <div class="sec" id="seeds"><span class="tagn">விதைகள் · Seeds</span><h3>இந்தப் பாடலின் வடிவம் இன்று எங்கே தெரிகிறது</h3></div>
+  <p class="seednote"><strong>இது ஒரு விதை — ஒரு கண்டுபிடிப்பு அல்ல.</strong> இங்கே சொல்வது ஒரு கட்டமைப்பு ஒற்றுமை மட்டுமே; நூலின் கூற்று அல்ல, பரிந்துரையும் அல்ல. இதை யாராவது எடுத்து வளர்த்தால் அது <a href="https://github.com/sm4607/Saiva-Siddhantam/tree/main/Gnanam%20Maragam/Book3-Sivagnana-Siddhiyar-Supakkam/vanika-inai" target="_blank" rel="noopener">வணிக இணை</a>-இல் ஒரு முழு ஆவணம் ஆகும். வளராத விதைகள் வளராமல் இருப்பதே சரி.</p>
+
+  <div class="lens" id="seed-7b">
+    <div class="lens-head">
+      <span class="lh">விதை 7B · Seed</span>
+      <h4>வணிகம் — எந்த ஆதாரம் எடுபடும்</h4>
+      <p>சுருக்கமாக, ஒரு கருத்து மட்டும்.</p>
+    </div>
+    <div class="lbody">
+      <p style="font-size:.9rem;color:var(--ink-soft);line-height:1.9">இந்தப் பாடல் ஒரு <em class="en">evidence standard</em>. எது ஆதாரம், எது அல்ல, யார் எத்தனை ஆதாரங்களை ஏற்கிறார் — இது ஒரு audit, ஒரு diligence, ஒரு model validation ஆகியவற்றின் மையக் கேள்வியே. அளவைகளின் எண்ணிக்கையால் சமயங்களை வரிசைப்படுத்தும் அந்த அட்டவணை, இன்று ஒரு regulator, ஒரு practitioner, ஒரு academic ஆகியோர் ஒரே கேள்விக்கு எவ்வளவு ஆதாரம் verlangen செய்கிறார்கள் என்பதற்கு நேரான ஒப்பு.</p>
+      <p style="font-size:.9rem;color:var(--ink-soft);line-height:1.9">இரண்டாவது, இன்னும் கூரியது: எத்தனை ஆதார வகைகளைச் சேர்த்தாலும் அவை மூன்றில் அடங்கும் என்பது பாடலின் முடிவு. அதாவது ஒரு நிறுவனத்தின் evidence framework எவ்வளவு பெரியதாக இருந்தாலும், அதன் கீழே மூன்று அடிப்படை வடிவங்களே இருக்க வேண்டும் — இல்லாவிட்டால் அது framework அல்ல, பட்டியல்.</p>
+      <div class="breaks"><b>ஒப்புமை உடையும் இடம்</b>
+        இங்கே ஆதாரம் ஒரு <em>உயிரை</em> முத்திக்குக் கொண்டு செல்ல; ஒரு நிறுவனத்தில் அது ஒரு முடிவை நியாயப்படுத்த. மேலும் ஆன்மசிற்சத்தியே பிரமாணம் என்பதற்கு ஒரு கணினியில் இணை இல்லை — அங்கே அறிகிறவன் யாரும் இல்லை. கடத்துவது ஆதாரத்தின் <em>படிநிலை ஒழுக்கம்</em> மட்டுமே.</div>
+    </div>
+  </div>
+
+  <div class="lens" id="seed-7s">
+    <div class="lens-head">
+      <span class="lh">விதை 7S · Seed</span>
+      <h4>அறிவியல் — கருவிகளும் அறிபவனும்</h4>
+      <p>சுருக்கமாக, ஒரு கருத்து மட்டும்.</p>
+    </div>
+    <div class="lbody">
+      <p style="font-size:.9rem;color:var(--ink-soft);line-height:1.9">இந்தப் பாடல் ஒரு கேள்வியை முன்வைக்கிறது, பதிலை அல்ல: கருவிகள் அறிவைத் தருகின்றனவா, அல்லது அவை ஒரு அறிபவனுக்கு உதவுகின்றனவா? உரையாசிரியரின் பதில் இரண்டாவது — கருவிகள் துணை, அறிவது ஆன்மாவின் ஒளி. அறிவியலின் நடைமுறையில் இந்தக் கேள்வி “கருவி சார்ந்த நம்பகத்தன்மை” என்று வருகிறது: ஒரு அளவீடு சரியா என்பது கருவியை மட்டும் பொறுத்தது அல்ல.</p>
+      <p style="font-size:.9rem;color:var(--ink-soft);line-height:1.9">இரண்டாவது, அய்யாவே இழுக்கும் இணைப்பு: காட்சியை மட்டும் ஏற்கும் நிலைப்பாடு இன்றும் இருக்கிறது. அது வலுவான நிலைப்பாடு — அதனால்தான் இந்தப் பாடல் அதை முதல் படியாக வைத்திருக்கிறது, மறுத்துத் தொடங்கவில்லை.</p>
+      <div class="breaks"><b>ஒப்புமை உடையும் இடம்</b>
+        “ஆன்மாவின் ஒளி அறிகிறது” என்பது ஒரு அளவீட்டுக் கூற்று அல்ல; அதை அறிவியல் மொழியில் சோதிக்க முடியாது. கடத்தத்தக்கது கேள்வியின் <em>வடிவம்</em> மட்டுமே — கருவிக்கும் அறிவுக்கும் இடையேயான இடைவெளியை மறக்காமல் இருப்பது.</div>
+    </div>
+  </div>
+
+  <details class="enblock">
+  <summary>English version — the two seeds</summary>
+  <div class="enbody">
+  <p><em>Each of these is a seed: a structural echo, not a recommendation. Seed 7B is the business one, seed 7S the scientific one.</em></p>
+  <h5>Seed 7B — Business: which evidence counts</h5>
+  <p>The verse is an evidence standard. What counts as proof, and how many kinds of proof a school will accept, is the central question of an audit, a diligence or a model validation. The table ranking schools by how many means of knowledge they admit maps cleanly onto how a regulator, a practitioner and an academic demand different amounts of evidence for the same question.</p>
+  <p>Sharper still is the verse's conclusion: however many kinds you add, they collapse into three. An organisation's evidence framework may be as large as it likes, but underneath it there should be three primitive forms — otherwise it is a list, not a framework.</p>
+  <div class="breaks"><b>Where the analogy breaks</b>
+  Here evidence carries a soul toward liberation; in a firm it justifies a decision. And "the soul's own light is the pramana" has no counterpart in a machine — there is no knower inside it. What transfers is the discipline of grading evidence, nothing more.</div>
+  <h5>Seed 7S — Science: instruments and the knower</h5>
+  <p>The verse raises a question rather than settling one: do instruments produce knowledge, or do they assist a knower? The commentator's answer is the second — instruments are aids, the knowing is the soul's light. In scientific practice the same question appears as instrument-dependence of measurement: whether a reading is sound is not a property of the instrument alone.</p>
+  <p>And Ayya draws the link himself: the position that accepts only perception is alive today. It is a strong position — which is why the verse takes it as the first rung rather than refuting it at the outset.</p>
+  <div class="breaks"><b>Where the analogy breaks</b>
+  "The soul's light knows" is not a measurable claim and cannot be tested in scientific language. What transfers is the shape of the question — not forgetting the gap between the instrument and the knowing.</div>
+  </div>
+  </details>
+
+  <div class="sec" id="sources"><span class="tagn">ஆதாரம்</span><h3>எங்கிருந்து வந்தது, எவ்வளவு நம்பலாம்</h3></div>
+  <div class="tblwrap">
+    <table>
+      <thead><tr><th>பகுதி</th><th>மூலம்</th><th>நிலை</th></tr></thead>
+      <tbody>
+        <tr><td>பாடல் வரிகள், பொருள், மனவரைபடம், உரைக் குறிப்பு</td>
+          <td><a href="https://github.com/sm4607/Saiva-Siddhantam/blob/main/Gnanam%20Maragam/Book3-Sivagnana-Siddhiyar-Supakkam/07-muvakai-alavai/index.html" target="_blank" rel="noopener"><code>07-muvakai-alavai/index.html</code></a><br><small>உரை: திரு. மு. திருவிளங்கம், 1971, பக். 14–17</small></td>
+          <td><span class="conf hi">உறுதி</span><br><small>தொகுப்பில் உள்ளபடி</small></td></tr>
+        <tr><td>குரல் 3 — அனைத்து அட்டைகளும்</td>
+          <td><a href="https://github.com/sm4607/Saiva-Siddhantam/blob/main/Gnanam%20Maragam/Book3-Sivagnana-Siddhiyar-Supakkam/recordings/siddhiyar-class-07/transcript.md" target="_blank" rel="noopener"><code>recordings/siddhiyar-class-07/transcript.md</code></a><br><small>ஏழாம் வகுப்பு · ஒவ்வொரு அட்டையின் தலைப்பும் அந்த வரிக்கே இணைக்கப்பட்டுள்ளது</small></td>
+          <td><span class="conf mid">ASR draft</span><br><small>ஒலியோடு ஒப்பிடவில்லை</small></td></tr>
+        <tr><td>“உங்கள் குறிப்பில் — என் புரிதல்”</td>
+          <td>தொகுப்பின் <em>என் புரிதல்</em> பகுதி</td>
+          <td><span class="conf own">உங்கள் கருத்து</span></td></tr>
+        <tr><td>விதைகள்</td>
+          <td>மேலே உள்ள மூலங்களிலிருந்து எழுதப்பட்ட ஒப்புமை</td>
+          <td><span class="conf mid">ஒப்புமை</span><br><small>நூலின் கூற்று அல்ல</small></td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <footer>
+    மூவகை அளவை · சிவஞான சித்தியார் சுபக்கம் · ஞானபாதம். மெய்ஞ்ஞானம் நூலால் மட்டும் வராது; குருவிடம் நேரில் பயில்வதே வழி. இந்தப் பக்கம் ஒரு துணை, மாற்று அல்ல. ·
+    <a href="https://github.com/sm4607/Saiva-Siddhantam/blob/main/Gnanam%20Maragam/Book3-Sivagnana-Siddhiyar-Supakkam/kalaisol-agarathi.md" target="_blank" rel="noopener">கலைச்சொல் அகராதி ↗</a>
+  </footer>
+</section>
+</main>
+</body>
+</html>
