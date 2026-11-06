@@ -1,0 +1,18 @@
+{
+  "slug": "siddhiyar-class-11",
+  "date": "unknown",
+  "songs": [],
+  "status": "draft",
+  "source_file": "சித்தியார்_வகுப்பு_11.txt",
+  "audio_file": "சித்தியார் வகுப்பு 11.mp3",
+  "audio_committed": false,
+  "source_channel": "https://www.youtube.com/@KarkaUyarValluvam",
+  "source_url": "",
+  "model": "platform upload (json segments re-timed)",
+  "mode": "codemix",
+  "language": "ta-IN",
+  "diarization": true,
+  "keyterms_used": 0,
+  "duration_seconds": null,
+  "generated_at": "2026-11-06T00:00:00+00:00"
+}
