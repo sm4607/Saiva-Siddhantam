@@ -1,0 +1,442 @@
+<!DOCTYPE html>
+<html lang="ta">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>விநாயக வணக்கம் — சிவஞான சித்தியார்</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Tamil:wght@300;400;500;600&family=Noto+Serif+Tamil:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#faf7f2; --bg-deep:#f3ede3; --surface:#fffdf9;
+  --ink:#2b2622; --ink-soft:#5c534a; --dim:#8a7f73;
+  --line:rgba(43,38,34,.13); --line-strong:rgba(43,38,34,.28);
+  --author:#b4441f; --author-dim:#f6e6de;
+  --book:#a9761a; --book-dim:#f7eed9;
+  --guru:#1b5a68; --guru-dim:#e0ecef;
+  --sage:#4f6b1e; --sage-dim:#eaf0dd;
+  --plum:#6b3f5e; --plum-dim:#f0e6ee;
+  --font-body:'Noto Sans Tamil','Latha',system-ui,sans-serif;
+  --font-head:'Noto Serif Tamil','Noto Sans Tamil',serif;
+  --font-mono:'IBM Plex Mono','Noto Sans Tamil',monospace;
+  --maxw:1040px; --radius:10px;
+  --shadow:0 1px 2px rgba(43,38,34,.05);
+}
+*,*::before,*::after{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%;scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--ink);
+  font-family:var(--font-body);font-size:17px;line-height:1.85;-webkit-font-smoothing:antialiased;
+  background-image:radial-gradient(900px 420px at 8% -6%,var(--bg-deep),transparent 70%);
+  background-repeat:no-repeat;background-attachment:fixed}
+.wrap{max-width:var(--maxw);margin:0 auto;padding:0 26px}
+h1,h2,h3,h4{font-family:var(--font-head);margin:0;line-height:1.32;font-weight:600}
+h1{font-size:clamp(1.85rem,4.6vw,2.9rem);letter-spacing:-.01em}
+h2{font-size:clamp(1.3rem,3vw,1.62rem)}
+h3{font-size:1.1rem}
+h4{font-size:1rem}
+p{margin:0 0 1em}
+a{color:var(--author);text-decoration:none}
+a:hover{text-decoration:underline}
+small{font-size:.86em;color:var(--dim)}
+.site-head{border-bottom:1px solid var(--line);position:sticky;top:0;z-index:40;
+  background:rgba(250,247,242,.94);backdrop-filter:blur(10px)}
+.site-head .wrap{display:flex;align-items:center;gap:1rem;min-height:56px;flex-wrap:wrap}
+.brand{font-family:var(--font-head);font-weight:600;font-size:.98rem;color:var(--ink);margin-right:auto}
+.site-head nav{display:flex;gap:.2rem;flex-wrap:wrap}
+.site-head nav a{color:var(--dim);font-size:.87rem;padding:.22rem .5rem;border-radius:6px}
+.site-head nav a:hover{color:var(--ink);background:var(--bg-deep);text-decoration:none}
+.site-head nav a.here{color:var(--ink);background:var(--surface);box-shadow:inset 0 0 0 1px var(--line)}
+.hero{padding:clamp(2rem,4.6vw,3.2rem) 0 1rem;max-width:800px}
+.hero h1{margin:.35rem 0 .85rem}
+.hero .sub{color:var(--ink-soft);font-size:1.02rem;line-height:1.95;margin:0}
+.crumbs{font-family:var(--font-mono);font-size:.7rem;letter-spacing:.1em;color:var(--dim);
+  margin:1.4rem 0 0;text-transform:uppercase}
+.crumbs span{margin:0 .4rem;opacity:.5}
+.chips{display:flex;flex-wrap:wrap;gap:.5rem;margin:1.4rem 0 0}
+.chip{font-family:var(--font-mono);font-size:.72rem;letter-spacing:.04em;border:1px solid var(--line);
+  background:var(--surface);border-radius:100px;padding:.3rem .75rem;color:var(--ink-soft)}
+.chip a{color:var(--ink-soft)}
+.legend{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:.8rem;margin:2rem 0 .5rem}
+@media(max-width:760px){.legend{grid-template-columns:1fr}}
+.voice{border:1px solid var(--line);border-radius:var(--radius);background:var(--surface);
+  padding:.95rem 1.05rem;border-top:3px solid var(--line)}
+.voice.v1{border-top-color:var(--author)} .voice.v2{border-top-color:var(--book)} .voice.v3{border-top-color:var(--guru)}
+.voice .vn{font-family:var(--font-mono);font-size:.66rem;letter-spacing:.1em;color:var(--dim);text-transform:uppercase}
+.voice .vt{font-family:var(--font-head);font-weight:600;font-size:.96rem;margin:.25rem 0 .15rem}
+.voice .vd{font-size:.85rem;color:var(--ink-soft);line-height:1.7;margin:0}
+.callout{background:var(--bg-deep);border:1px solid var(--line);border-left:3px solid var(--dim);
+  border-radius:var(--radius);padding:1rem 1.2rem;margin:1.6rem 0 0;font-size:.89rem;
+  color:var(--ink-soft);line-height:1.8}
+.callout strong{color:var(--ink)}
+.sec{display:flex;align-items:baseline;gap:.7rem;flex-wrap:wrap;margin:2.4rem 0 .3rem}
+.sec .tagn{font-family:var(--font-mono);font-size:.7rem;letter-spacing:.1em;color:var(--dim);text-transform:uppercase}
+.sec-note{color:var(--dim);font-size:.89rem;margin:.15rem 0 1.1rem;max-width:72ch}
+.verse{background:var(--surface);border:1px solid var(--line);border-left:3px solid var(--author);
+  border-radius:var(--radius);padding:1.35rem 1.5rem;margin:0 0 1rem;box-shadow:var(--shadow)}
+.verse p{font-family:var(--font-head);font-size:1.02rem;line-height:2.05;margin:0 0 .1em}
+.verse .vtag{font-family:var(--font-mono);font-size:.66rem;letter-spacing:.1em;color:var(--author);
+  text-transform:uppercase;display:block;margin-bottom:.7rem}
+.artha{color:var(--ink-soft);font-size:.95rem;line-height:1.95;max-width:74ch;margin:1.1rem 0 0}
+.artha b{color:var(--ink);font-weight:600}
+.tree{display:grid;gap:.85rem;margin:0 0 .5rem}
+.branch{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);
+  box-shadow:var(--shadow);overflow:hidden}
+.branch-head{display:flex;gap:.8rem;align-items:flex-start;padding:1rem 1.15rem .85rem;
+  border-bottom:1px solid var(--line);background:linear-gradient(180deg,var(--book-dim),transparent)}
+.bnum{font-family:var(--font-mono);font-size:.7rem;color:var(--book);border:1px solid var(--book);
+  border-radius:50%;width:1.5rem;height:1.5rem;display:grid;place-items:center;flex:none;margin-top:.15rem}
+.branch-head h4{margin:0 0 .15rem}
+.branch-head .bh-sub{font-size:.84rem;color:var(--ink-soft);margin:0;line-height:1.7}
+.nodes{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:0}
+@media(max-width:700px){.nodes{grid-template-columns:1fr}}
+.node{padding:.75rem 1.15rem;border-bottom:1px solid var(--line);min-width:0}
+.node:nth-child(odd){border-right:1px solid var(--line)}
+@media(max-width:700px){.node:nth-child(odd){border-right:none}}
+.node:last-child,.node:nth-last-child(2):nth-child(odd){border-bottom:none}
+.nk{display:block;font-family:var(--font-head);font-weight:600;font-size:.93rem;color:var(--book);margin-bottom:.12rem}
+.nv{display:block;font-size:.86rem;color:var(--ink-soft);line-height:1.75}
+.gcards{display:grid;gap:.85rem}
+.gcard{background:var(--surface);border:1px solid var(--line);border-left:3px solid var(--guru);
+  border-radius:var(--radius);padding:1rem 1.2rem;box-shadow:var(--shadow);min-width:0}
+.gcard h4{margin:.15rem 0 .45rem}
+.gcard p{font-size:.92rem;color:var(--ink-soft);line-height:1.85;margin:0 0 .55em}
+.gcard p:last-child{margin-bottom:0}
+a.gmeta{font-family:var(--font-mono);font-size:.65rem;letter-spacing:.05em;color:var(--guru);
+  text-transform:uppercase;display:inline-block;margin-bottom:.3rem;border-bottom:1px dotted var(--guru)}
+a.gmeta:hover{text-decoration:none;background:var(--guru-dim)}
+.gcard.quote{border-left-color:var(--sage);background:linear-gradient(180deg,var(--sage-dim),var(--surface) 55%)}
+.gcard.quote a.gmeta{color:var(--sage);border-bottom-color:var(--sage)}
+.pull{font-family:var(--font-head);font-size:.99rem;line-height:1.85;color:var(--ink);margin:.2rem 0 .5rem}
+.pull::before{content:"\201C"} .pull::after{content:"\201D"}
+.meet{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:.85rem;margin:1rem 0 0}
+@media(max-width:760px){.meet{grid-template-columns:1fr}}
+.mbox{border:1px solid var(--line);border-radius:var(--radius);padding:1rem 1.15rem;background:var(--surface);min-width:0}
+.mbox.same{border-top:3px solid var(--sage)} .mbox.more{border-top:3px solid var(--guru)}
+.mbox h4{margin:0 0 .55rem;font-size:.92rem}
+.mbox ul{margin:0;padding-left:1.05rem;font-size:.87rem;color:var(--ink-soft);line-height:1.8}
+.mbox li{margin-bottom:.4rem} .mbox li:last-child{margin-bottom:0}
+.mine{background:var(--bg-deep);border:1px dashed var(--line-strong);border-radius:var(--radius);
+  padding:1rem 1.2rem;margin:1.1rem 0 0}
+.mine .mtag{font-family:var(--font-mono);font-size:.64rem;letter-spacing:.1em;color:var(--dim);
+  text-transform:uppercase;display:block;margin-bottom:.35rem}
+.mine p{font-size:.89rem;color:var(--ink-soft);line-height:1.85;margin:0}
+/* lens */
+.lens{border:1px solid var(--line-strong);border-radius:var(--radius);background:var(--surface);
+  margin:1.2rem 0 0;overflow:hidden;box-shadow:var(--shadow)}
+.lens-head{padding:1.05rem 1.25rem .9rem;background:linear-gradient(180deg,var(--plum-dim),transparent);
+  border-bottom:1px solid var(--line)}
+.lens-head .lh{font-family:var(--font-mono);font-size:.64rem;letter-spacing:.1em;
+  color:var(--plum);text-transform:uppercase;display:block;margin-bottom:.2rem}
+.lens-head h4{font-size:1.05rem;margin:0 0 .2rem}
+.lens-head p{font-size:.84rem;color:var(--ink-soft);margin:0;line-height:1.7}
+.lbody{padding:1.1rem 1.25rem 1.25rem}
+.step{display:grid;grid-template-columns:auto minmax(0,1fr);gap:.85rem;margin:0 0 1.05rem}
+.step:last-of-type{margin-bottom:0}
+.snum{font-family:var(--font-mono);font-size:.66rem;color:var(--plum);border:1px solid var(--line-strong);
+  border-radius:50%;width:1.55rem;height:1.55rem;display:grid;place-items:center;flex:none;margin-top:.2rem}
+.step h5{font-family:var(--font-head);font-size:.93rem;margin:.05rem 0 .3rem;font-weight:600}
+.step p{font-size:.89rem;color:var(--ink-soft);line-height:1.85;margin:0 0 .45em}
+.step p:last-child{margin:0}
+.step em.en{font-style:normal;color:var(--ink);font-weight:500}
+.breaks{background:var(--bg-deep);border-left:3px solid var(--author);border-radius:8px;
+  padding:.8rem 1rem;margin:.9rem 0 0;font-size:.87rem;color:var(--ink-soft);line-height:1.8}
+.breaks b{color:var(--author);font-weight:600;display:block;margin-bottom:.2rem;
+  font-family:var(--font-mono);font-size:.64rem;letter-spacing:.09em;text-transform:uppercase}
+.hypo{border:1px solid var(--plum);border-radius:var(--radius);background:var(--plum-dim);
+  padding:1rem 1.2rem;margin:1.2rem 0 0}
+.hypo .ht{font-family:var(--font-mono);font-size:.64rem;letter-spacing:.1em;color:var(--plum);
+  text-transform:uppercase;display:block;margin-bottom:.35rem}
+.hypo p{font-size:.89rem;line-height:1.85;margin:0 0 .5em;color:var(--ink-soft)}
+.hypo p:last-child{margin:0}
+.tblwrap{overflow-x:auto;border:1px solid var(--line);border-radius:var(--radius);
+  background:var(--surface);margin:.8rem 0 0}
+table{border-collapse:collapse;width:100%;font-size:.84rem;min-width:560px}
+th,td{text-align:left;padding:.6rem .8rem;border-bottom:1px solid var(--line);vertical-align:top;line-height:1.7}
+th{font-family:var(--font-mono);font-size:.63rem;letter-spacing:.07em;text-transform:uppercase;
+  color:var(--dim);background:var(--bg-deep)}
+tbody tr:nth-child(even){background:rgba(43,38,34,.018)}
+tbody tr:last-child td{border-bottom:none}
+td code{font-family:var(--font-mono);font-size:.75rem;background:var(--bg-deep);
+  padding:.1rem .3rem;border-radius:4px;overflow-wrap:anywhere}
+.conf{font-family:var(--font-mono);font-size:.63rem;letter-spacing:.05em;text-transform:uppercase;
+  padding:.12rem .45rem;border-radius:100px;white-space:nowrap;display:inline-block}
+.conf.hi{background:var(--sage-dim);color:var(--sage)}
+.conf.mid{background:var(--book-dim);color:var(--book)}
+.conf.own{background:var(--bg-deep);color:var(--dim);border:1px solid var(--line)}
+footer{margin:3rem 0 0;padding:1.6rem 0 3rem;border-top:1px solid var(--line);
+  color:var(--dim);font-size:.83rem;line-height:1.8}
+@keyframes fadeUp{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
+.branch,.gcard,.lens{animation:fadeUp .45s ease both}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+@media print{.site-head{display:none}body{background:#fff;font-size:11pt}
+ .branch,.gcard,.lens,.verse{box-shadow:none}}
+
+details.enblock{margin:1.6rem 0 0;border:1px solid var(--line);border-radius:var(--radius);
+  background:var(--surface);padding:0 1.15rem .2rem}
+details.enblock>summary{cursor:pointer;list-style:none;padding:.85rem 0;
+  font-family:var(--font-mono);font-size:.66rem;letter-spacing:.09em;text-transform:uppercase;
+  color:var(--plum)}
+details.enblock>summary::-webkit-details-marker{display:none}
+details.enblock>summary::before{content:"\25B8  "}
+details.enblock[open]>summary::before{content:"\25BE  "}
+details.enblock[open]{padding-bottom:1rem}
+.enbody{border-top:1px solid var(--line);padding-top:1rem}
+.enbody h5{font-family:var(--font-head);font-size:.95rem;margin:1.1rem 0 .35rem;font-weight:600;color:var(--ink)}
+.enbody h5:first-child{margin-top:0}
+.enbody p{font-size:.9rem;line-height:1.8;color:var(--ink-soft);margin:0 0 .7em}
+.enbody p:last-child{margin-bottom:0}
+.enbody table{min-width:520px}
+.enbody .breaks{margin-top:.7rem}
+
+.seednote{background:var(--bg-deep);border-left:3px solid var(--plum);border-radius:8px;
+  padding:.85rem 1.05rem;font-size:.86rem;line-height:1.85;color:var(--ink-soft);margin:0 0 1rem}
+.seednote strong{color:var(--ink);font-weight:600}
+.seednote a{color:var(--plum);text-decoration:underline;text-decoration-color:rgba(107,63,94,.35)}
+</style>
+</head>
+<body>
+<header class="site-head">
+  <div class="wrap">
+    <span class="brand">சிவஞான சித்தியார் · சுபக்கம்</span>
+    <nav><a class="here" href="padal-01-vinayaka-vanakkam.html">1</a><a href="padal-02-paraciva-vanakkam.html">2</a><a href="padal-03-nulin-vazhi.html">3</a><a href="padal-04-nutaliya-porul.html">4</a><a href="padal-05-avaiyadakkam-1.html">5</a><a href="padal-06-avaiyadakkam-2.html">6</a><a href="padal-07-muvakai-alavai.html">7</a><a href="padal-08-alavai-ilakkanam.html">8</a><a href="padal-09-naalvakai-kaatchi.html">9</a><a href="padal-10-paakupaadu.html">10</a><a href="padal-11-iyalpu-vaikal.html">11</a><a href="padal-12-indiriya-maanatha.html">12</a><a href="class-verse-map.html">வரைபடம்</a><a href="#seeds">விதைகள்</a><a href="#sources">ஆதாரம்</a><a href="https://github.com/sm4607/Saiva-Siddhantam" target="_blank" rel="noopener">தொகுப்பு ↗</a></nav>
+  </div>
+</header>
+
+<main class="wrap">
+<section class="hero">
+  <p class="crumbs">பாயிரம் <span>/</span> பாடல் 1 <span>/</span> காப்பு · பக். 1–3</p>
+  <h1>வணக்கத்திலேயே தத்துவம்</h1>
+  <p class="sub">காப்புச் செய்யுள். ஆனால் விநாயகரின் ஒவ்வொரு அங்கமும் ஒரு கருத்தின் குறி — உருவத்தைப் படித்து முடிக்கும்போது, நூல் முழுவதும் விளக்கப்போகும் பதி–பசு–பாசம் ஏற்கனவே சொல்லப்பட்டுவிடுகிறது.</p>
+  <div class="chips">
+    <span class="chip">பாடல் 1 / 12</span>
+    <span class="chip">4 அடிகள் · உரைக் குறிப்பு 6</span>
+    <span class="chip">வகுப்பு 2</span>
+    <span class="chip"><a href="https://github.com/sm4607/Saiva-Siddhantam/blob/main/Gnanam%20Maragam/Book3-Sivagnana-Siddhiyar-Supakkam/01-vinayaka-vanakkam/index.html" target="_blank" rel="noopener">மூலப் பக்கம் ↗</a></span>
+  </div>
+</section>
+
+<section>
+  <div class="legend">
+    <div class="voice v1"><span class="vn">குரல் 1</span>
+      <div class="vt">அருணந்தி சிவாச்சாரியார்</div>
+      <p class="vd">பாடல். நான்கு அடிகள். இவை மாறாதவை — மற்ற எல்லாம் இதன் மேல் எழும் வாசிப்பு.</p></div>
+    <div class="voice v2"><span class="vn">குரல் 2</span>
+      <div class="vt">திரு. மு. திருவிளங்கம்</div>
+      <p class="vd">உரை. பாடலைப் பிரிவுகளாகப் பிரித்து ஒவ்வொரு சொல்லுக்கும் பொருள் கொடுப்பவர். “மனவரைபடம்” இவருடைய படைப்பு.</p></div>
+    <div class="voice v3"><span class="vn">குரல் 3</span>
+      <div class="vt">கம்பவாரிதி இலங்கை திரு. ஜெயராஜ் அய்யா</div>
+      <p class="vd">வகுப்பு. அதே பாடலை இன்றைய மொழியில், உவமைகளோடு, எதிர்க்கேள்விகளோடு பிரித்துக் காட்டுபவர்.</p></div>
+  </div>
+
+  <div class="callout">
+    <strong>இந்தப் பக்கத்தை நம்பும் முன்.</strong> வகுப்புக் குறிப்புகள் தானியங்கி எழுத்துவடிவம் (ASR), நிலை <em>draft</em> — தொகுப்பிலேயே “ஒலியே முதன்மை” என்று எழுதப்பட்டுள்ளது. குரல் 3-இல் உள்ள எல்லாம் அந்த எழுத்துவடிவத்திலிருந்து படித்தெடுக்கப்பட்டவை; ஒலியோடு ஒப்பிட்டுச் சரிபார்க்கவில்லை. மேற்கோள் குறிகள் இல்லாத இடங்களில் <em>சொற்கள் என்னுடையவை, கருத்து அவருடையது</em>. ஒவ்வொரு அட்டையின் தலைப்பிலும் உள்ள <span style="font-family:var(--font-mono);font-size:.85em;color:var(--guru)">வகுப்பு · நேரம்</span> ஒரு இணைப்பு — அது அந்த வரிக்கே அழைத்துச் செல்லும். ஐயம் இருந்தால் அந்த நொடிக்குச் சென்று ஒலியில் ஒருமுறை கேளுங்கள்.
+  </div>
+</section>
+
+<section class="song">
+  <div class="verse">
+    <span class="vtag">குரல் 1 · மூலம்</span>
+    <p>ஒருகோட்டன் இருசெவியன் மும்மதத்தன் நால்வாய் ஐங்கரத்தன்</p>
+    <p>ஆறு தருகோட்டம் பிறை இதழித் தாழ் சடையான் தரும் ஒருவாரணத்தின் தாள்கள்</p>
+    <p>உருகு ஓட்டு அன்பொடும் வணங்கி ஓவாதே இரவுபகல் உணர்வோர் சிந்தைத்</p>
+    <p>திருகு ஓட்டும்; அயன் திருமால் செல்வமும் ஒன்றோ என்னச் செய்யும், தேவே.</p>
+  </div>
+  <p class="artha"><b>சுருக்கம்.</b> சிவபெருமான் தந்தருளிய, ஒரு கொம்பும் இரண்டு செவியும் மூன்று மதமும் தூங்கும் வாயும் ஐந்து கையும் உடைய யானைமுகக் கடவுளின் திருவடிகளை, உருகி ஓடும் அன்போடு வணங்கி, இரவும் பகலும் இடைவிடாது தியானிப்பவரது மனத்தின் மலக்குற்றத்தை அது நீக்கி, பிரமனும் திருமாலும் உடைய செல்வமும் இதற்கு ஒப்பாகுமோ என்று வெறுக்கும்படி தெய்வத்தன்மைப் பெருவாழ்வையும் தரும்.</p>
+
+  <div class="sec"><span class="tagn">குரல் 2</span><h3>உரையாசிரியரின் மனவரைபடம்</h3></div>
+  <p class="sec-note">பாடலை மூன்று அசைவுகளாகப் பிரிக்கிறார்: உருவை விவரித்தல், வணங்குதல், பயன். ஒவ்வொரு உறுப்பும் ஓர் அலங்காரம் அல்ல, ஒரு சொல்.</p>
+  <div class="tree">
+    <div class="branch">
+      <div class="branch-head"><span class="bnum">1</span><div>
+        <h4>வணங்கப்படும் உருவம்</h4>
+        <p class="bh-sub">விநாயகரின் ஆறு அங்கங்கள் — ஒவ்வொன்றும் ஒரு சித்தாந்தக் கருத்தின் குறியீடு.</p></div></div>
+      <div class="nodes">
+        <div class="node"><span class="nk">ஒரு கோட்டன்</span><span class="nv">ஓர் கொம்பு · ஒற்றைத் தந்தம் — பரஞானபதி; ஒப்பற்ற, பிளவுபடாத மேலான அறிவு.</span></div>
+        <div class="node"><span class="nk">இருசெவியன்</span><span class="nv">இரண்டு செவிகள் — சர்வஞ்ஞத்துவமும் சர்வகர்த்திருத்துவமும்; எல்லாம் அறிதலும் எல்லாம் செய்தலும்.</span></div>
+        <div class="node"><span class="nk">மும்மதத்தன்</span><span class="nv">மூன்று மதம் — இச்சா, ஞான, கிரியை; இறைவனின் மூன்று சத்திகள்.</span></div>
+        <div class="node"><span class="nk">நால்வாய் ஐங்கரத்தன்</span><span class="nv">தூங்கும் வாய் · ஐந்து கை — பஞ்சகிருத்தியபதி; படைத்தல், காத்தல், அழித்தல், மறைத்தல், அருளல்.</span></div>
+        <div class="node"><span class="nk">ஒருவாரணம்</span><span class="nv">ஒப்பற்ற யானைமுகம் — பிரணவச் சொரூபம், ஓம் என்பதன் வடிவம். வாரணம் ஆகுபெயர்.</span></div>
+        <div class="node"><span class="nk">தாள்கள்</span><span class="nv">திருவடிகள் — ஞானசத்தியும் கிரியாசத்தியும்; இவை மலத்தை நீக்கி ஞானம் தருவன.</span></div>
+      </div></div>
+
+    <div class="branch">
+      <div class="branch-head"><span class="bnum">2</span><div>
+        <h4>சிவனின் திருவுரு</h4>
+        <p class="bh-sub">“தாழ் சடையான் தரும்” — உருவத்தின் மூலம் சிவன். அவன் அணிகலன்களும் அலங்காரம் அல்ல, குணத்தின் குறி.</p></div></div>
+      <div class="nodes">
+        <div class="node"><span class="nk">கங்கை</span><span class="nv">அகங்காரத்தை அடக்கும் வல்லமையைக் குறிக்கும்.</span></div>
+        <div class="node"><span class="nk">கோட்டம் தரு பிறை</span><span class="nv">வளைவு பொருந்திய பிறை — சரணடைந்தோருக்கு உயர்நிலை அருளுபவர்; ஞானவடிவினர்; சர்வஞ்ஞத்துவர்.</span></div>
+        <div class="node"><span class="nk">இதழி</span><span class="nv">கொன்றை மாலை · உபாங்கம் — திருவருளைக் குறிக்கும்.</span></div>
+        <div class="node"><span class="nk">தாழ் சடை</span><span class="nv">அங்கமாக நின்று திருவருளைக் குறிக்கும். இதழியும் சடையும் முறையே உபாங்கமும் அங்கமும்.</span></div>
+      </div></div>
+
+    <div class="branch">
+      <div class="branch-head"><span class="bnum">3</span><div>
+        <h4>வணங்குவோரும் பயனும்</h4>
+        <p class="bh-sub">வணக்கம் எப்படி இருக்க வேண்டும், அதனால் என்ன கிடைக்கும் — இரண்டும் இங்கே, இரண்டு படிகளாக.</p></div></div>
+      <div class="nodes">
+        <div class="node"><span class="nk">உருகு ஓட்டு அன்பொடும்</span><span class="nv">கரைந்து ஓடும் பேரன்பு. முதனிலைத் தொழிற்பெயர்; ஓடு → ஓட்டு எனப் பகுதி விகாரம்.</span></div>
+        <div class="node"><span class="nk">ஓவாதே இரவுபகல்</span><span class="nv">இடைவிடாத தியானம் — வணங்குவோரின் இலக்கணம்.</span></div>
+        <div class="node"><span class="nk">சிந்தைத் திருகு ஓட்டும்</span><span class="nv">முதற் பயன் — அறிவில் பொருந்திய மலக்குற்றத்தை நீக்கும். திருகு = மாறுபாடு, குற்றம்.</span></div>
+        <div class="node"><span class="nk">தேவு செய்யும்</span><span class="nv">இரண்டாம் பயன் — தெய்வத்தன்மைப் பெருவாழ்வு. அயன் திருமால் செல்வமும் ஒப்பாகுமோ என வெறுக்கும்படி.</span></div>
+      </div></div>
+  </div>
+  <p class="sec-note" style="margin-top:1rem">உரையாசிரியர் பாடலுக்குப் பின் ஆறு குறிப்புகள் தருகிறார் — மூன்று பொருள் விளக்கம், மூன்று சொல்லிலக்கணம். ஆறாவது குறிப்பு நூலின் முடிவைப் பேசுகிறது: திருவடிகள் இடையூற்றை நீக்குவதால் இந்நூல் இனிது முடிவுபெறுவது அருமையன்று. <a href="https://github.com/sm4607/Saiva-Siddhantam/blob/main/Gnanam%20Maragam/Book3-Sivagnana-Siddhiyar-Supakkam/01-vinayaka-vanakkam/index.html" target="_blank" rel="noopener">மூலப் பக்கத்தில் முழு உரை ↗</a></p>
+
+  <div class="sec"><span class="tagn">குரல் 3</span><h3>அய்யாவின் வகுப்பு</h3></div>
+  <p class="sec-note">பாடல் 1 முழுவதும் இரண்டாம் வகுப்பில் (00:43 – 01:10). ஒவ்வொரு அட்டையின் மேலும் உள்ள நேரக் குறியீடு அந்த வரிக்கே இணைக்கப்பட்டுள்ளது.</p>
+  <div class="gcards">
+<div class="gcard"><a class="gmeta" href="https://github.com/sm4607/Saiva-Siddhantam/blob/main/Gnanam%20Maragam/Book3-Sivagnana-Siddhiyar-Supakkam/recordings/siddhiyar-class-02/transcript.md#L96" target="_blank" rel="noopener">வகுப்பு 2 · 00:55:49</a><h4>உரையின் இரு அடுக்கு முறை</h4><p>உரையாசிரியர் ஒரு பாடலை எடுத்தால் முதலில் மேலோட்டமான பொருள் தருகிறார், பிறகு அதே வரிகளுக்குத் தத்துவப் பொருள் தருகிறார். இந்த இரண்டு அடுக்கையும் பிரித்துப் படிக்காவிட்டால், பாடல் ஒரு கடவுள் வணக்கப் பாடலாகவே தெரியும்.</p><p>இதுவே அவர் உரை எழுதும் முறை என்பது அய்யாவின் கருத்து.</p></div>
+<div class="gcard"><a class="gmeta" href="https://github.com/sm4607/Saiva-Siddhantam/blob/main/Gnanam%20Maragam/Book3-Sivagnana-Siddhiyar-Supakkam/recordings/siddhiyar-class-02/transcript.md#L84" target="_blank" rel="noopener">வகுப்பு 2 · 00:46:39</a><h4>கொம்பின் கதையும், கொம்பின் செய்தியும்</h4><p>ஒற்றைத் தந்தத்திற்கு மகாபாரதம் எழுத உடைத்தார் என்னும் கதை வழக்கில் உண்டு. அய்யா அதை ஒதுக்கவில்லை — ஆனால் கதை முக்கியமல்ல, அது தாங்கி வரும் <em>செய்தி</em> முக்கியம் என்கிறார். கதையை நிறுத்திவிட்டால், உருவம் ஒரு சின்னமாக மாறும்.</p></div>
+<div class="gcard"><a class="gmeta" href="https://github.com/sm4607/Saiva-Siddhantam/blob/main/Gnanam%20Maragam/Book3-Sivagnana-Siddhiyar-Supakkam/recordings/siddhiyar-class-02/transcript.md#L94" target="_blank" rel="noopener">வகுப்பு 2 · 00:54:33</a><h4>யானை முகம் என்பது யானை முகம் அல்ல</h4><p>இது அவர் விடும் மிகத் துல்லியமான குறிப்பு. யானைமுகம் “தத்துவார்த்தமாக” வைக்கப்பட்டது; அதனால்தான் உரையாசிரியர்கள் “யானை முகம் <em>போன்ற</em> முகத்தையுடைய” என்று எழுதுகிறார்கள். உவமை என்பதைத் தவறவிட்டால், விநாயகரை ஒரு யானைத் தலை என்று மட்டுமே பார்ப்போம்.</p></div>
+<div class="gcard quote"><a class="gmeta" href="https://github.com/sm4607/Saiva-Siddhantam/blob/main/Gnanam%20Maragam/Book3-Sivagnana-Siddhiyar-Supakkam/recordings/siddhiyar-class-02/transcript.md#L102" target="_blank" rel="noopener">வகுப்பு 2 · 01:00:03</a><h4>அணிகலன் ஒரு வாக்கியம்</h4><p class="pull">ஆணவத்தோடு வந்த கங்கையைத் தன் சடையில் அடக்கிக் கொண்டவர்.</p><p>கங்கை வரலாறு அய்யாவிடம் ஒரு தத்துவக் கருவியாக மாறுகிறது: சிவன் தலையில் இருக்கும் கங்கை “ஆணவத்தை அடக்கும் திறன்” உள்ளவர் என்பதைச் சொல்கிறது. அதே போல இதழியும் சடையும் அங்கம்–உபாங்கம் எனப் பிரிக்கப்பட்டு, சேர்ந்து திருவருளைக் குறிக்கின்றன. உடம்போடு பொருந்தி இருக்கின்ற உறவு என்பது அவர் அந்த இடத்தில் தரும் விளக்கம்.</p></div>
+<div class="gcard"><a class="gmeta" href="https://github.com/sm4607/Saiva-Siddhantam/blob/main/Gnanam%20Maragam/Book3-Sivagnana-Siddhiyar-Supakkam/recordings/siddhiyar-class-02/transcript.md#L88" target="_blank" rel="noopener">வகுப்பு 2 · 00:50:00</a><h4>“அயன் திருமால் செல்வமும் ஒன்றோ” — இகழ்ச்சி அல்ல</h4><p>பிரமனையும் திருமாலையும் தாழ்த்திப் பேசும் வரி இது அல்ல. அவர்களுடைய பெருஞ்செல்வத்தைக்கூட “வேண்டாம்” என்று தூக்கி எறியும் <em>மனநிலையை</em> அந்த வரி உருவாக்குகிறது — அந்த மனநிலையே பயன். அய்யா இதை வணக்கத்தின் பலனாகவே மீண்டும் மீண்டும் சொல்கிறார்.</p></div>
+<div class="gcard"><a class="gmeta" href="https://github.com/sm4607/Saiva-Siddhantam/blob/main/Gnanam%20Maragam/Book3-Sivagnana-Siddhiyar-Supakkam/recordings/siddhiyar-class-02/transcript.md#L114" target="_blank" rel="noopener">வகுப்பு 2 · 01:07:30</a><h4>திருவடிகளின் பயன், நூலின் முடிவு</h4><p>ஆறாவது உரைக்குறிப்பை அவர் இங்கே முடிக்கிறார்: திருவடிகள் இடையூற்றை நீக்கவல்லவை என்பதால், இந்நூல் இனிது முடிவுபெறும் என்பது அருமையான காரியமன்று. வணக்கத்தின் பயனையே நூலின் முடிவுக்கு உத்தரவாதமாக மாற்றும் இடம் இது.</p></div>
+  </div>
+
+  <div class="meet">
+    <div class="mbox same"><h4>இருவரும் சந்திக்கும் இடம்</h4><ul><li>உருவம் ஒரு குறியீட்டுத் தொகுப்பு, அலங்காரம் அல்ல.</li><li>பயன் இரண்டு படி: மலம் நீங்குதல், பின்னர் தெய்வத்தன்மை.</li><li>“அயன் திருமால் செல்வமும்” என்பது மற்ற தெய்வங்களை இகழ்தல் அல்ல.</li></ul></div>
+    <div class="mbox more"><h4>அய்யா சேர்ப்பது</h4><ul><li>“யானை முகம் <em>போன்ற</em>” என்னும் உவமை நுட்பம் — உரைநடையில் மட்டுமே தெரியும் சொல் வேறுபாடு.</li><li>கங்கை வரலாறு = ஆணவ அடக்கத்தின் குறி; அங்கம்–உபாங்கம் = உடம்போடு பொருந்திய உறவு.</li><li>உரையின் “மேலோட்டம் → தத்துவம்” என்ற இரு அடுக்கு முறையை வெளிப்படையாகச் சொல்வது.</li><li>ஒற்றைத் தந்தத்தின் புராணக் கதையை மறுப்பதும் இல்லாமல், அதைவிட மேலே செல்வது.</li></ul></div>
+  </div>
+
+  <div class="mine"><span class="mtag">உங்கள் குறிப்பில் — என் புரிதல்</span>
+    <p>நூல் முழுவதும் விளக்கப்போகும் பதி–பசு–பாசம் மூன்றின் இயல்பு, முதல் பாடலின் உருவத்திலேயே அடங்கிவிட்டது; விநாயகரின் வடிவம் சிவனால் தரப்பட்டது என்பதை ஆசிரியர் மறக்கவில்லை. இது உங்கள் சொந்த வாசிப்பு — நூலின் கூற்றாக அல்ல, உங்கள் குரலாகவே இங்கே வைக்கப்பட்டுள்ளது.</p></div>
+
+  <div class="sec" id="seeds"><span class="tagn">விதைகள் · Seeds</span><h3>இந்தப் பாடலின் வடிவம் இன்று எங்கே தெரிகிறது</h3></div>
+  <p class="sec-note">இரண்டு பார்வைகள்: வணிகம்/தரவு-AI, மற்றும் அறிவியல். ஒவ்வொன்றும் ஒரே வரிசையில் — நூல் என்ன சொல்கிறது, அது தீர்த்த பிரச்சினை, இன்று எங்கே தெரிகிறது, கையில் எடுக்கக்கூடிய கருவி, எல்லை. <strong>ஒப்புமை உடையும் இடம் ஒவ்வொன்றிலும் கட்டாயம் சொல்லப்பட்டுள்ளது</strong> — அது இல்லாத ஒப்புமை அலங்காரம்.</p>
+
+    <p class="seednote"><strong>இது ஒரு விதை — ஒரு கண்டுபிடிப்பு அல்ல.</strong> இங்கே சொல்வது ஒரு கட்டமைப்பு ஒற்றுமை மட்டுமே; நூலின் கூற்று அல்ல, பரிந்துரையும் அல்ல. இதை யாராவது எடுத்து வளர்த்தால் அது <a href="https://github.com/sm4607/Saiva-Siddhantam/tree/main/Gnanam%20Maragam/Book3-Sivagnana-Siddhiyar-Supakkam/vanika-inai" target="_blank" rel="noopener">வணிக இணை</a>-இல் ஒரு முழு ஆவணம் ஆகும். வளராத விதைகள் வளராமல் இருப்பதே சரி — பெரும்பாலான ஒற்றுமைகள் ஒரு உண்மையான பிரச்சினையைத் தொடும்போது நிலைத்திருப்பதில்லை.</p>
+
+  <div class="lens" id="seed-1b">
+    <div class="lens-head">
+      <span class="lh">விதை 1B · Seed</span>
+      <h4>வணிகம், தரவு மற்றும் AI</h4>
+      <p>நூலின் கருத்தை இங்கே கழற்றி, அதன் <em>அமைப்பை</em> மட்டும் எடுத்து ஒப்பிடுகிறோம்.</p>
+    </div>
+    <div class="lbody">
+      <div class="step"><span class="snum">1</span><div>
+        <h5>நூல் என்ன சொல்கிறது</h5>
+        <p>ஒரு பொருளை ஆறு பண்புகளாகப் பிரித்து, ஒவ்வொன்றுக்கும் ஒரு <em>செயல்பாட்டுப் பொருள்</em> கொடுக்கிறார் — கொம்பு ஒரு திறன், செவிகள் இரண்டு திறன்கள், மூன்று மதம் மூன்று சத்திகள், ஐந்து கை ஐந்து தொழில்கள். பிறகு அந்த உருவத்தைத் தாண்டி வணங்குவோரின் நிலைக்குச் செல்கிறார். <a href="https://github.com/sm4607/Saiva-Siddhantam/blob/main/Gnanam%20Maragam/Book3-Sivagnana-Siddhiyar-Supakkam/01-vinayaka-vanakkam/index.html" target="_blank" rel="noopener">இடம்: பாடல் 1, அடி 1–4 ↗</a>.</p>
+      </div></div>
+
+      <div class="step"><span class="snum">2</span><div>
+        <h5>அது தீர்த்த பிரச்சினை</h5>
+        <p>“ஒரு பொருளை விவரிப்பது என்றால் என்ன?” — பெயரையும் தோற்றத்தையும் சொல்வதா, அல்லது அது என்ன <em>செய்கிறது</em> என்பதைச் சொல்வதா? உரையாசிரியர் இரண்டையும் இணைக்கிறார்: ஒவ்வொரு உறுப்பும் ஒரு திறனின் குறி. விவரணம் என்பது பண்புகளின் பட்டியல் அல்ல, திறன்களின் வரைபடம்.</p>
+      </div></div>
+
+      <div class="step"><span class="snum">3</span><div>
+        <h5>இன்று எங்கே தெரிகிறது</h5>
+        <p>ஒரு <em class="en">canonical entity model</em>-இல். ஒரு நிறுவனம், ஒரு ஒப்பந்தம், ஒரு கருவி — இவற்றை விவரிக்கும்போது field பெயர்கள் மட்டும் இருந்தால், புதிய குழு வந்து “இது என்ன செய்யும்?” என்று கேட்கும். பாடலின் அமைப்பு சொல்வது: ஒவ்வொரு field-ம் ஒரு திறனைத் தாங்க வேண்டும்; தாங்கவில்லை என்றால் அது விவரணம் அல்ல, பெயர்ப்பட்டியல்.</p>
+      </div></div>
+
+      <div class="step"><span class="snum">4</span><div>
+        <h5>கையில் எடுக்கக்கூடிய கருவி</h5>
+        <p>ஒரு <em class="en">capability-first entity schema</em> — எந்த entity model-க்கும் மூன்று நிரல் கட்டாயம்:</p>
+        <div class="tblwrap"><table>
+          <thead><tr><th>Field</th><th>எந்தத் திறனைத் தாங்குகிறது</th><th>தவறினால் என்ன உடையும்</th></tr></thead>
+          <tbody>
+            <tr><td>Entity identifier</td><td>ஒற்றுமை — ஒரே பொருள் இரு இடத்தில் இரு பொருளாகாமை</td><td>Portfolio roll-up இரட்டை எண்ணும்</td></tr>
+            <tr><td>Ownership</td><td>பொறுப்பு — யார் மாற்றலாம், யார் அமைக்கலாம்</td><td>தரவு யாருக்கும் சொந்தமில்லாமல் போகும்</td></tr>
+            <tr><td>State / stage</td><td>இயக்கம் — இது எந்த நிலையில் உள்ளது</td><td>முடிந்ததையும் நடப்பதையும் ஒன்றாக எண்ணும்</td></tr>
+            <tr><td>Provenance</td><td>மூலம் — இந்த மதிப்பு எங்கிருந்து வந்தது</td><td>தவறு கண்டுபிடிக்க முடியாது</td></tr>
+            <tr><td>Validity window</td><td>காலம் — எப்போது உண்மையாயிற்று, எப்போது அற்றது</td><td>பழைய உண்மையை இன்றையதாக நம்பும்</td></tr>
+          </tbody>
+        </table></div>
+        <p style="margin-top:.6rem">விதி ஒன்றே: “இந்த field எந்தத் திறனைத் தாங்குகிறது” என்ற கேள்விக்கு விடை இல்லாத field-ஐ schema-வில் வைக்கக் கூடாது. பாடலில் ஆறு உறுப்புகளுக்கும் ஆறு பொருள் இருப்பதுபோல.</p>
+      </div></div>
+
+      <div class="breaks"><b>ஒப்புமை உடையும் இடம்</b>
+        விநாயகரின் உறுப்புகள் <em>தரப்படும்</em> — யாரும் அவற்றை அளக்கவில்லை, ஒப்பிடவில்லை, SLA வைக்கவில்லை. அவை தியானிக்கப்படுகின்றன. ஒரு capability model-ஐ ஆளுகை செய்ய வேண்டும்; இதை வணங்க வேண்டும். மேலும் “ஒரு கோட்டன் = பரஞானபதி” என்பது ஒரு செயல்பாட்டு இணைப்பு அல்ல — இறையியல் இணைப்பு. அதை ஒரு metric ஆக மாற்றினால், இரண்டையும் இழக்கிறோம்.</div>
+    </div>
+  </div>
+
+  <div class="lens" id="seed-1s">
+    <div class="lens-head">
+      <span class="lh">விதை 1S · Seed</span>
+      <h4>அறிவியல் — மாதிரியும் பொருளும்</h4>
+      <p>இந்தப் பாடலில் அறிவியலுக்கு நெருக்கமானது ஒன்றே ஒன்று — ஆனால் அது மிகக் கூரியது.</p>
+    </div>
+    <div class="lbody">
+      <div class="step"><span class="snum">1</span><div>
+        <h5>நூல் என்ன சொல்கிறது</h5>
+        <p>“யானை முகம் <em>போன்ற</em>” — உவமையை உவமையாகவே வைத்திருக்கிறார். அதாவது: இது ஒரு ஒப்பு, பொருள் அல்ல.</p>
+      </div></div>
+
+      <div class="step"><span class="snum">2</span><div>
+        <h5>அது தீர்த்த பிரச்சினை</h5>
+        <p>ஒப்பைப் பொருளாக மாற்றிவிடும் ஆபத்து. அய்யா இதை வெளிப்படையாகச் சொல்கிறார்: உவமையைத் தவறவிட்டால், விநாயகரை ஒரு யானைத் தலை என்று மட்டுமே பார்ப்போம். அறிவியலில் இதே தவறுக்குப் பெயர் உண்டு — <em class="en">reification</em>. ஒரு மாதிரி தன்னைப் பொருளாக நினைத்துக்கொள்ளும் இடத்தில், அது தவறாகும் ஆபத்து தொடங்குகிறது.</p>
+      </div></div>
+
+      <div class="step"><span class="snum">3</span><div>
+        <h5>இன்று எங்கே தெரிகிறது</h5>
+        <p>ஒரு <em class="en">proxy metric</em>-ஐ இலக்காக மாற்றும்போது. வாடிக்கையாளர் திருப்தியை அளக்க ஒரு குறியீட்டை வைக்கிறோம்; காலப்போக்கில் குறியீடே இலக்காகிவிடுகிறது, திருப்தி மறைந்துவிடுகிறது. “போன்ற” என்ற வார்த்தையை நீக்கிவிட்டதன் விலை அது.</p>
+      </div></div>
+
+      <div class="step"><span class="snum">4</span><div>
+        <h5>கையில் எடுக்கக்கூடிய கருவி</h5>
+        <p>எந்த மாதிரி ஆவணத்திலும் மூன்று வரி கட்டாயம்: (1) <em class="en">referent</em> — இது எதைப் பற்றியது; (2) <em class="en">respect</em> — எந்த அம்சத்தில் இது அதைப் போல இருக்கிறது; (3) <em class="en">break</em> — எந்த அம்சத்தில் இது அதைப் போல இல்லை. மூன்றாவது வரி இல்லாத மாதிரி ஆவணம் முழுமையானது அல்ல. பாடல் நமக்குத் தரும் பாடம் இதுவே — உவமையை மறைக்காமல் வெளியே சொல்வது.</p>
+      </div></div>
+
+      <div class="breaks"><b>ஒப்புமை உடையும் இடம்</b>
+        இந்தப் பாடலின் நோக்கம் விளக்கமா, மாற்றமா? நூல் விளக்கவில்லை — <em>மாற்றுகிறது</em>. அறிவியல் ஒரு கூற்றின் அமைப்பை எடுத்துக்கொள்ளும்; நூல் அதை வணக்கமாகவே வைத்திருக்கும். மேலும் ஆறு உறுப்புகளும் <em>நிறுவப்படவில்லை</em> — சொல்லப்படுகின்றன. இங்கே ஆதாரச் சங்கிலி இல்லை, சாட்சியம் மட்டுமே. அதை மறைக்காமல் சொல்வதே நேர்மை.</div>
+    </div>
+  </div>
+
+  <details class="enblock">
+<summary>English version — the two seeds</summary>
+<div class="enbody">
+<p><em>Each of these is a seed: a structural echo, not a recommendation. Where it breaks is stated in the same breath. Seed 1B is the business one, seed 1S the scientific one — the ids match the anchors on the Tamil side, so anything can link to either directly.</em></p>
+<h5>Seed 1B — Business, data and AI</h5>
+<p>The verse describes one object through six attributes and gives each a function: one tusk for supreme knowledge, two ears for omniscience and omnipotence, three matams for the three powers, five hands for the five acts. Then it leaves the image and describes the state of the person who contemplates it. The problem it solves is not "what is Ganapati" but "what does it mean to describe something at all" — a name and a shape, or what the thing does. The commentator joins both: every limb is the mark of a capacity.</p>
+<p>In an organisation that shows up in a canonical entity model. A field that carries only a label, with no answer to what it enables, is not a description — it is a list entry.</p>
+<div class="tblwrap"><table>
+<thead><tr><th>Field</th><th>Capability it carries</th><th>What breaks if it is wrong</th></tr></thead>
+<tbody>
+<tr><td>Entity identifier</td><td>Oneness — one thing is not two things</td><td>Portfolio roll-up double counts</td></tr>
+<tr><td>Ownership</td><td>Responsibility — who may change it</td><td>Data that belongs to nobody</td></tr>
+<tr><td>State / stage</td><td>Movement — where it stands</td><td>Finished and running work counted as one</td></tr>
+<tr><td>Provenance</td><td>Origin — where the value came from</td><td>Errors cannot be traced</td></tr>
+<tr><td>Validity window</td><td>Time — when it became true, when it stopped</td><td>An old truth trusted as today's</td></tr>
+</tbody></table></div>
+<p style="margin-top:.6rem">One rule: no field without an answer to "which capability does this carry". Six limbs, six meanings.</p>
+<div class="breaks"><b>Where the analogy breaks</b>
+Ganapati's limbs are contemplated, not measured. Nobody assigns them an owner, a metric or an SLA. A capability model exists to be governed; this exists to be worshipped. Turning "one tusk equals supreme knowledge" into a KPI loses both sides.</div>
+
+<h5>Seed 1S — Science: model and referent</h5>
+<p>One line carries the whole scientific value here: "a face <em>like</em> an elephant's". The likeness is kept as a likeness. Ayya is explicit that if you drop the comparison you will see only an elephant's head, and that failure has a name — reification, the model quietly taking itself for the thing. In practice it looks like a proxy metric that becomes the target and slowly replaces what it was measuring.</p>
+<p>The transferable discipline is a three-line rule on any model document: what is the referent, in what respect is this a likeness, and where does the likeness fail. A model document without the third line is incomplete.</p>
+<div class="breaks"><b>Where the analogy breaks</b>
+The verse does not explain, it transforms. Its six limbs are asserted, not derived — there is testimony here, not an evidence chain. Treating it as a scientific claim would misrepresent it in both directions.</div>
+</div>
+</details>
+
+  <div class="sec" id="sources"><span class="tagn">ஆதாரம்</span><h3>எங்கிருந்து வந்தது, எவ்வளவு நம்பலாம்</h3></div>
+  <div class="tblwrap">
+    <table>
+      <thead><tr><th>பகுதி</th><th>மூலம்</th><th>நிலை</th></tr></thead>
+      <tbody>
+        <tr><td>பாடல் வரிகள், பொருள், மனவரைபடம், உரைக் குறிப்புகள்</td>
+          <td><a href="https://github.com/sm4607/Saiva-Siddhantam/blob/main/Gnanam%20Maragam/Book3-Sivagnana-Siddhiyar-Supakkam/01-vinayaka-vanakkam/index.html" target="_blank" rel="noopener"><code>01-vinayaka-vanakkam/index.html</code></a><br><small>உரை: திரு. மு. திருவிளங்கம், 1971, பக். 1–3</small></td>
+          <td><span class="conf hi">உறுதி</span><br><small>தொகுப்பில் உள்ளபடி</small></td></tr>
+        <tr><td>குரல் 3 — அனைத்து அட்டைகளும்</td>
+          <td><a href="https://github.com/sm4607/Saiva-Siddhantam/blob/main/Gnanam%20Maragam/Book3-Sivagnana-Siddhiyar-Supakkam/recordings/siddhiyar-class-02/transcript.md" target="_blank" rel="noopener"><code>recordings/siddhiyar-class-02/transcript.md</code></a><br><small>00:43 – 01:10 · ஒவ்வொரு அட்டையின் தலைப்பும் அந்த வரிக்கே இணைக்கப்பட்டுள்ளது</small></td>
+          <td><span class="conf mid">ASR draft</span><br><small>ஒலியோடு ஒப்பிடவில்லை</small></td></tr>
+        <tr><td>“உங்கள் குறிப்பில் — என் புரிதல்”</td>
+          <td>தொகுப்பின் <em>என் புரிதல்</em> பகுதி</td>
+          <td><span class="conf own">உங்கள் கருத்து</span></td></tr>
+        <tr><td>விதைகள்</td>
+          <td>மேலே உள்ள மூலங்களிலிருந்து எழுதப்பட்ட ஒப்புமை</td>
+          <td><span class="conf mid">ஒப்புமை</span><br><small>நூலின் கூற்று அல்ல</small></td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <footer>
+    விநாயக வணக்கம் · சிவஞான சித்தியார் சுபக்கம் · பாயிரம். மெய்ஞ்ஞானம் நூலால் மட்டும் வராது; குருவிடம் நேரில் பயில்வதே வழி. இந்தப் பக்கம் ஒரு துணை, மாற்று அல்ல. ·
+    <a href="https://github.com/sm4607/Saiva-Siddhantam/blob/main/Gnanam%20Maragam/Book3-Sivagnana-Siddhiyar-Supakkam/kalaisol-agarathi.md" target="_blank" rel="noopener">கலைச்சொல் அகராதி ↗</a>
+  </footer>
+</section>
+</main>
+</body>
+</html>

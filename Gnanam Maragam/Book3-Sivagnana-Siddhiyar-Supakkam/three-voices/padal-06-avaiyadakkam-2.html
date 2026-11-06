@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="ta"><head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>அவையடக்கம் — 2 — சிவஞான சித்தியார்</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Tamil:wght@300;400;500;600&family=Noto+Serif+Tamil:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#faf7f2; --bg-deep:#f3ede3; --surface:#fffdf9;
+  --ink:#2b2622; --ink-soft:#5c534a; --dim:#8a7f73;
+  --line:rgba(43,38,34,.13); --line-strong:rgba(43,38,34,.28);
+  --author:#b4441f; --author-dim:#f6e6de;
+  --book:#a9761a; --book-dim:#f7eed9;
+  --guru:#1b5a68; --guru-dim:#e0ecef;
+  --sage:#4f6b1e; --sage-dim:#eaf0dd;
+  --plum:#6b3f5e; --plum-dim:#f0e6ee;
+  --font-body:'Noto Sans Tamil','Latha',system-ui,sans-serif;
+  --font-head:'Noto Serif Tamil','Noto Sans Tamil',serif;
+  --font-mono:'IBM Plex Mono','Noto Sans Tamil',monospace;
+  --maxw:1040px; --radius:10px;
+  --shadow:0 1px 2px rgba(43,38,34,.05);
+}
+*,*::before,*::after{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%;scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--ink);
+  font-family:var(--font-body);font-size:17px;line-height:1.85;-webkit-font-smoothing:antialiased;
+  background-image:radial-gradient(900px 420px at 8% -6%,var(--bg-deep),transparent 70%);
+  background-repeat:no-repeat;background-attachment:fixed}
+.wrap{max-width:var(--maxw);margin:0 auto;padding:0 26px}
+h1,h2,h3,h4{font-family:var(--font-head);margin:0;line-height:1.32;font-weight:600}
+h1{font-size:clamp(1.85rem,4.6vw,2.9rem);letter-spacing:-.01em}
+h2{font-size:clamp(1.3rem,3vw,1.62rem)}
+h3{font-size:1.1rem}
+h4{font-size:1rem}
+p{margin:0 0 1em}
+a{color:var(--author);text-decoration:none}
+a:hover{text-decoration:underline}
+small{font-size:.86em;color:var(--dim)}
+.site-head{border-bottom:1px solid var(--line);position:sticky;top:0;z-index:40;
+  background:rgba(250,247,242,.94);backdrop-filter:blur(10px)}
+.site-head .wrap{display:flex;align-items:center;gap:1rem;min-height:56px;flex-wrap:wrap}
+.brand{font-family:var(--font-head);font-weight:600;font-size:.98rem;color:var(--ink);margin-right:auto}
+.site-head nav{display:flex;gap:.2rem;flex-wrap:wrap}
+.site-head nav a{color:var(--dim);font-size:.87rem;padding:.22rem .5rem;border-radius:6px}
+.site-head nav a:hover{color:var(--ink);background:var(--bg-deep);text-decoration:none}
+.site-head nav a.here{color:var(--ink);background:var(--surface);box-shadow:inset 0 0 0 1px var(--line)}
+.hero{padding:clamp(2rem,4.6vw,3.2rem) 0 1rem;max-width:800px}
+.hero h1{margin:.35rem 0 .85rem}
+.hero .sub{color:var(--ink-soft);font-size:1.02rem;line-height:1.95;margin:0}
+.crumbs{font-family:var(--font-mono);font-size:.7rem;letter-spacing:.1em;color:var(--dim);
+  margin:1.4rem 0 0;text-transform:uppercase}
+.crumbs span{margin:0 .4rem;opacity:.5}
+.chips{display:flex;flex-wrap:wrap;gap:.5rem;margin:1.4rem 0 0}
+.chip{font-family:var(--font-mono);font-size:.72rem;letter-spacing:.04em;border:1px solid var(--line);
+  background:var(--surface);border-radius:100px;padding:.3rem .75rem;color:var(--ink-soft)}
+.chip a{color:var(--ink-soft)}
+.legend{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:.8rem;margin:2rem 0 .5rem}
+@media(max-width:760px){.legend{grid-template-columns:1fr}}
+.voice{border:1px solid var(--line);border-radius:var(--radius);background:var(--surface);
+  padding:.95rem 1.05rem;border-top:3px solid var(--line)}
+.voice.v1{border-top-color:var(--author)} .voice.v2{border-top-color:var(--book)} .voice.v3{border-top-color:var(--guru)}
+.voice .vn{font-family:var(--font-mono);font-size:.66rem;letter-spacing:.1em;color:var(--dim);text-transform:uppercase}
+.voice .vt{font-family:var(--font-head);font-weight:600;font-size:.96rem;margin:.25rem 0 .15rem}
+.voice .vd{font-size:.85rem;color:var(--ink-soft);line-height:1.7;margin:0}
+.callout{background:var(--bg-deep);border:1px solid var(--line);border-left:3px solid var(--dim);
+  border-radius:var(--radius);padding:1rem 1.2rem;margin:1.6rem 0 0;font-size:.89rem;
+  color:var(--ink-soft);line-height:1.8}
+.callout strong{color:var(--ink)}
+.sec{display:flex;align-items:baseline;gap:.7rem;flex-wrap:wrap;margin:2.4rem 0 .3rem}
+.sec .tagn{font-family:var(--font-mono);font-size:.7rem;letter-spacing:.1em;color:var(--dim);text-transform:uppercase}
+.sec-note{color:var(--dim);font-size:.89rem;margin:.15rem 0 1.1rem;max-width:72ch}
+.verse{background:var(--surface);border:1px solid var(--line);border-left:3px solid var(--author);
+  border-radius:var(--radius);padding:1.35rem 1.5rem;margin:0 0 1rem;box-shadow:var(--shadow)}
+.verse p{font-family:var(--font-head);font-size:1.02rem;line-height:2.05;margin:0 0 .1em}
+.verse .vtag{font-family:var(--font-mono);font-size:.66rem;letter-spacing:.1em;color:var(--author);
+  text-transform:uppercase;display:block;margin-bottom:.7rem}
+.artha{color:var(--ink-soft);font-size:.95rem;line-height:1.95;max-width:74ch;margin:1.1rem 0 0}
+.artha b{color:var(--ink);font-weight:600}
+.tree{display:grid;gap:.85rem;margin:0 0 .5rem}
+.branch{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);
+  box-shadow:var(--shadow);overflow:hidden}
+.branch-head{display:flex;gap:.8rem;align-items:flex-start;padding:1rem 1.15rem .85rem;
+  border-bottom:1px solid var(--line);background:linear-gradient(180deg,var(--book-dim),transparent)}
+.bnum{font-family:var(--font-mono);font-size:.7rem;color:var(--book);border:1px solid var(--book);
+  border-radius:50%;width:1.5rem;height:1.5rem;display:grid;place-items:center;flex:none;margin-top:.15rem}
+.branch-head h4{margin:0 0 .15rem}
+.branch-head .bh-sub{font-size:.84rem;color:var(--ink-soft);margin:0;line-height:1.7}
+.nodes{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:0}
+@media(max-width:700px){.nodes{grid-template-columns:1fr}}
+.node{padding:.75rem 1.15rem;border-bottom:1px solid var(--line);min-width:0}
+.node:nth-child(odd){border-right:1px solid var(--line)}
+@media(max-width:700px){.node:nth-child(odd){border-right:none}}
+.node:last-child,.node:nth-last-child(2):nth-child(odd){border-bottom:none}
+.nk{display:block;font-family:var(--font-head);font-weight:600;font-size:.93rem;color:var(--book);margin-bottom:.12rem}
+.nv{display:block;font-size:.86rem;color:var(--ink-soft);line-height:1.75}
+.gcards{display:grid;gap:.85rem}
+.gcard{background:var(--surface);border:1px solid var(--line);border-left:3px solid var(--guru);
+  border-radius:var(--radius);padding:1rem 1.2rem;box-shadow:var(--shadow);min-width:0}
+.gcard h4{margin:.15rem 0 .45rem}
+.gcard p{font-size:.92rem;color:var(--ink-soft);line-height:1.85;margin:0 0 .55em}
+.gcard p:last-child{margin-bottom:0}
+a.gmeta{font-family:var(--font-mono);font-size:.65rem;letter-spacing:.05em;color:var(--guru);
+  text-transform:uppercase;display:inline-block;margin-bottom:.3rem;border-bottom:1px dotted var(--guru)}
+a.gmeta:hover{text-decoration:none;background:var(--guru-dim)}
+.gcard.quote{border-left-color:var(--sage);background:linear-gradient(180deg,var(--sage-dim),var(--surface) 55%)}
+.gcard.quote a.gmeta{color:var(--sage);border-bottom-color:var(--sage)}
+.pull{font-family:var(--font-head);font-size:.99rem;line-height:1.85;color:var(--ink);margin:.2rem 0 .5rem}
+.pull::before{content:"\201C"} .pull::after{content:"\201D"}
+.meet{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:.85rem;margin:1rem 0 0}
+@media(max-width:760px){.meet{grid-template-columns:1fr}}
+.mbox{border:1px solid var(--line);border-radius:var(--radius);padding:1rem 1.15rem;background:var(--surface);min-width:0}
+.mbox.same{border-top:3px solid var(--sage)} .mbox.more{border-top:3px solid var(--guru)}
+.mbox h4{margin:0 0 .55rem;font-size:.92rem}
+.mbox ul{margin:0;padding-left:1.05rem;font-size:.87rem;color:var(--ink-soft);line-height:1.8}
+.mbox li{margin-bottom:.4rem} .mbox li:last-child{margin-bottom:0}
+.mine{background:var(--bg-deep);border:1px dashed var(--line-strong);border-radius:var(--radius);
+  padding:1rem 1.2rem;margin:1.1rem 0 0}
+.mine .mtag{font-family:var(--font-mono);font-size:.64rem;letter-spacing:.1em;color:var(--dim);
+  text-transform:uppercase;display:block;margin-bottom:.35rem}
+.mine p{font-size:.89rem;color:var(--ink-soft);line-height:1.85;margin:0}
+/* lens */
+.lens{border:1px solid var(--line-strong);border-radius:var(--radius);background:var(--surface);
+  margin:1.2rem 0 0;overflow:hidden;box-shadow:var(--shadow)}
+.lens-head{padding:1.05rem 1.25rem .9rem;background:linear-gradient(180deg,var(--plum-dim),transparent);
+  border-bottom:1px solid var(--line)}
+.lens-head .lh{font-family:var(--font-mono);font-size:.64rem;letter-spacing:.1em;
+  color:var(--plum);text-transform:uppercase;display:block;margin-bottom:.2rem}
+.lens-head h4{font-size:1.05rem;margin:0 0 .2rem}
+.lens-head p{font-size:.84rem;color:var(--ink-soft);margin:0;line-height:1.7}
+.lbody{padding:1.1rem 1.25rem 1.25rem}
+.step{display:grid;grid-template-columns:auto minmax(0,1fr);gap:.85rem;margin:0 0 1.05rem}
+.step:last-of-type{margin-bottom:0}
+.snum{font-family:var(--font-mono);font-size:.66rem;color:var(--plum);border:1px solid var(--line-strong);
+  border-radius:50%;width:1.55rem;height:1.55rem;display:grid;place-items:center;flex:none;margin-top:.2rem}
+.step h5{font-family:var(--font-head);font-size:.93rem;margin:.05rem 0 .3rem;font-weight:600}
+.step p{font-size:.89rem;color:var(--ink-soft);line-height:1.85;margin:0 0 .45em}
+.step p:last-child{margin:0}
+.step em.en{font-style:normal;color:var(--ink);font-weight:500}
+.breaks{background:var(--bg-deep);border-left:3px solid var(--author);border-radius:8px;
+  padding:.8rem 1rem;margin:.9rem 0 0;font-size:.87rem;color:var(--ink-soft);line-height:1.8}
+.breaks b{color:var(--author);font-weight:600;display:block;margin-bottom:.2rem;
+  font-family:var(--font-mono);font-size:.64rem;letter-spacing:.09em;text-transform:uppercase}
+.hypo{border:1px solid var(--plum);border-radius:var(--radius);background:var(--plum-dim);
+  padding:1rem 1.2rem;margin:1.2rem 0 0}
+.hypo .ht{font-family:var(--font-mono);font-size:.64rem;letter-spacing:.1em;color:var(--plum);
+  text-transform:uppercase;display:block;margin-bottom:.35rem}
+.hypo p{font-size:.89rem;line-height:1.85;margin:0 0 .5em;color:var(--ink-soft)}
+.hypo p:last-child{margin:0}
+.tblwrap{overflow-x:auto;border:1px solid var(--line);border-radius:var(--radius);
+  background:var(--surface);margin:.8rem 0 0}
+table{border-collapse:collapse;width:100%;font-size:.84rem;min-width:560px}
+th,td{text-align:left;padding:.6rem .8rem;border-bottom:1px solid var(--line);vertical-align:top;line-height:1.7}
+th{font-family:var(--font-mono);font-size:.63rem;letter-spacing:.07em;text-transform:uppercase;
+  color:var(--dim);background:var(--bg-deep)}
+tbody tr:nth-child(even){background:rgba(43,38,34,.018)}
+tbody tr:last-child td{border-bottom:none}
+td code{font-family:var(--font-mono);font-size:.75rem;background:var(--bg-deep);
+  padding:.1rem .3rem;border-radius:4px;overflow-wrap:anywhere}
+.conf{font-family:var(--font-mono);font-size:.63rem;letter-spacing:.05em;text-transform:uppercase;
+  padding:.12rem .45rem;border-radius:100px;white-space:nowrap;display:inline-block}
+.conf.hi{background:var(--sage-dim);color:var(--sage)}
+.conf.mid{background:var(--book-dim);color:var(--book)}
+.conf.own{background:var(--bg-deep);color:var(--dim);border:1px solid var(--line)}
+footer{margin:3rem 0 0;padding:1.6rem 0 3rem;border-top:1px solid var(--line);
+  color:var(--dim);font-size:.83rem;line-height:1.8}
+@keyframes fadeUp{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
+.branch,.gcard,.lens{animation:fadeUp .45s ease both}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+@media print{.site-head{display:none}body{background:#fff;font-size:11pt}
+ .branch,.gcard,.lens,.verse{box-shadow:none}}
+
+details.enblock{margin:1.6rem 0 0;border:1px solid var(--line);border-radius:var(--radius);
+  background:var(--surface);padding:0 1.15rem .2rem}
+details.enblock>summary{cursor:pointer;list-style:none;padding:.85rem 0;
+  font-family:var(--font-mono);font-size:.66rem;letter-spacing:.09em;text-transform:uppercase;
+  color:var(--plum)}
+details.enblock>summary::-webkit-details-marker{display:none}
+details.enblock>summary::before{content:"\25B8  "}
+details.enblock[open]>summary::before{content:"\25BE  "}
+details.enblock[open]{padding-bottom:1rem}
+.enbody{border-top:1px solid var(--line);padding-top:1rem}
+.enbody h5{font-family:var(--font-head);font-size:.95rem;margin:1.1rem 0 .35rem;font-weight:600;color:var(--ink)}
+.enbody h5:first-child{margin-top:0}
+.enbody p{font-size:.9rem;line-height:1.8;color:var(--ink-soft);margin:0 0 .7em}
+.enbody p:last-child{margin-bottom:0}
+.enbody table{min-width:520px}
+.enbody .breaks{margin-top:.7rem}
+
+.seednote{background:var(--bg-deep);border-left:3px solid var(--plum);border-radius:8px;
+  padding:.85rem 1.05rem;font-size:.86rem;line-height:1.85;color:var(--ink-soft);margin:0 0 1rem}
+.seednote strong{color:var(--ink);font-weight:600}
+.seednote a{color:var(--plum);text-decoration:underline;text-decoration-color:rgba(107,63,94,.35)}
+</style></head><body>
+<header class="site-head"><div class="wrap"><span class="brand">சிவஞான சித்தியார் · சுபக்கம்</span>
+<nav><a href="padal-01-vinayaka-vanakkam.html">1</a><a href="padal-02-paraciva-vanakkam.html">2</a><a href="padal-03-nulin-vazhi.html">3</a><a href="padal-04-nutaliya-porul.html">4</a><a href="padal-05-avaiyadakkam-1.html">5</a><a class="here" href="padal-06-avaiyadakkam-2.html">6</a><a href="padal-07-muvakai-alavai.html">7</a><a href="padal-08-alavai-ilakkanam.html">8</a><a href="padal-09-naalvakai-kaatchi.html">9</a><a href="padal-10-paakupaadu.html">10</a><a href="padal-11-iyalpu-vaikal.html">11</a><a href="padal-12-indiriya-maanatha.html">12</a><a href="class-verse-map.html">வரைபடம்</a><a href="#seeds">விதைகள்</a><a href="#sources">ஆதாரம்</a><a href="https://github.com/sm4607/Saiva-Siddhantam" target="_blank" rel="noopener">தொகுப்பு ↗</a></nav></div></header>
+<main class="wrap">
+<section class="hero">
+  <p class="crumbs">பாயிரம் <span>/</span> பாடல் 6 <span>/</span> பாயிரம் · அவையடக்கம்</p>
+  <h1>மறுப்பின் விடை — அருளால் அறியலாம்</h1><p class="sub">முந்தைய பாடலின் விடை. அறிவால் அறிய முடியாது என்பது சரி — ஆனால் அருளாலும், ஆகமத்தாலும், குருவின் உபதேசத்தாலும் அறியலாம். மறுப்பு இங்கே நிறைவாக மாறுகிறது.</p>
+  <div class="chips"><span class="chip">பாடல் 6 / 12</span><span class="chip">4 வழிகள்</span>
+  <span class="chip">பக். 13 – 14</span><span class="chip"><a href="https://github.com/sm4607/Saiva-Siddhantam/blob/main/Gnanam%20Maragam/Book3-Sivagnana-Siddhiyar-Supakkam/06-avaiyadakkam-2/index.html" target="_blank" rel="noopener">மூலப் பக்கம் ↗</a></span></div>
+</section>
+<section>
+  <div class="legend">
+    <div class="voice v1"><span class="vn">குரல் 1</span><div class="vt">அருணந்தி சிவாச்சாரியார்</div><p class="vd">பாடல். நான்கு அடிகள்.</p></div>
+    <div class="voice v2"><span class="vn">குரல் 2</span><div class="vt">திரு. மு. திருவிளங்கம்</div><p class="vd">உரை. ஒவ்வொரு சொல்லுக்கும் பொருள்.</p></div>
+    <div class="voice v3"><span class="vn">குரல் 3</span><div class="vt">கம்பவாரிதி இலங்கை திரு. ஜெயராஜ் அய்யா</div><p class="vd">வகுப்பு. அதே பாடலை இன்றைய மொழியில்.</p></div>
+  </div>
+  <div class="callout"><strong>இந்தப் பக்கத்தை நம்பும் முன்.</strong> வகுப்புக் குறிப்புகள் தானியங்கி எழுத்துவடிவம் (ASR), நிலை <em>draft</em>. குரல் 3-இல் உள்ள எல்லாம் அந்த எழுத்துவடிவத்திலிருந்து படித்தெடுக்கப்பட்டவை; ஒலியோடு ஒப்பிட்டுச் சரிபார்க்கவில்லை. மேற்கோள் குறிகள் இல்லாத இடங்களில் <em>சொற்கள் என்னுடையவை, கருத்து அவருடையது</em>.</div>
+</section>
+<section class="song">
+  <div class="verse"><span class="vtag">குரல் 1 · மூலம்</span><p>அருளினால் ஆகமத்தே அறியலாம்; அளவினாலும்</p><p>தெருளலாம்; சிவனை ஞானச் செய்தியால் சிந்தையுள்ளே</p><p>மருளெலாம் நீங்கக் கண்டு வாழலாம்; பிறவி மாயா</p><p>இருளெலாம் இரிக்கல் ஆகும்; அடியரோடு இருக்கலாமே.</p></div>
+  <p class="artha"><b>சுருக்கம்.</b> அருளினால் சிவாகமங்களின் வழியே சிவனை அறியலாம்; பிரமாணங்களாலும் தெளியலாம்; ஞானாசிரியரது உபதேசத்தால் மயக்கம் எல்லாம் ஒழிய, தனது அறிவின் கண்ணே அவனைக் கண்டு நிட்டை கூடி வாழலாம்; பிறவியாகிய மாயையின் இருள் எல்லாம் ஒழியும்படி மலங்களை ஒழிக்கலாம்; சிவனடியாரோடு இருக்கலாம்.</p>
+  <div class="sec"><span class="tagn">குரல் 2</span><h3>உரையாசிரியரின் மனவரைபடம்</h3></div>
+  <p class="sec-note">நான்கு படிகள்: அறிதல், தெளிதல், கண்டு வாழ்தல், இருள் ஒழித்தல். ஒவ்வொன்றும் முந்தையதை விட உள்ளே நகர்கிறது.</p>
+  <div class="tree"><div class="branch"><div class="branch-head"><span class="bnum">1</span><div><h4>அறிதலும் தெளிதலும்</h4>
+ <p class="bh-sub">முதல் அடி — அறிவின் இரு நிலைகள், இரண்டும் அருளைச் சார்ந்தவை.</p></div></div>
+ <div class="nodes">
+  <div class="node"><span class="nk">அருளினால் ஆகமத்தே</span><span class="nv">திருவருளால் சிவாகமங்களின் வழியே சிவனை அறியலாம். பாடல் 5-இல் “மறையினால் கூறொணாது” என்றது வேதத்தை; இங்கே சிவாகமம் பேசப்படுகிறது.</span></div>
+  <div class="node"><span class="nk">அளவினாலும் தெருளலாம்</span><span class="nv">அதற்கு அனுகூலமான பிரமாணங்களாலும் அவனைத் தெளிய அறியலாம். அறிவும் அருளும் இணைந்து வேலை செய்கின்றன.</span></div>
+ </div></div>
+ <div class="branch"><div class="branch-head"><span class="bnum">2</span><div><h4>ஞானச் செய்தி</h4>
+ <p class="bh-sub">வெளியிலிருந்து வரும் சொல், உள்ளே நிகழும் மாற்றம்.</p></div></div>
+ <div class="nodes">
+  <div class="node"><span class="nk">ஞானச் செய்தி</span><span class="nv">ஞானாசிரியரது உபதேசத்தால் — அதுவே செய்தி, அதுவே வழி.</span></div>
+  <div class="node"><span class="nk">சிந்தையுள்ளே கண்டு</span><span class="nv">தனது அறிவின் கண்ணே அவனை அறிந்து, நிட்டை கூடி அனுபவித்தல். காண்பது வெளியில் அல்ல — சிந்தைக்குள்ளே.</span></div>
+  <div class="node"><span class="nk">மருளெலாம் நீங்க</span><span class="nv">மயக்கம் எல்லாம் ஒழியக் கண்டு வாழலாம்.</span></div>
+ </div></div>
+ <div class="branch"><div class="branch-head"><span class="bnum">3</span><div><h4>அதன் பயன்</h4>
+ <p class="bh-sub">கடைசி அடி — பயன் என்ன, யாரோடு நிற்பது.</p></div></div>
+ <div class="nodes">
+  <div class="node"><span class="nk">பிறவி மாயா இருள்</span><span class="nv">பிறவியும் மாயையும் ஆகிய இருள் எல்லாம் — ஒழியாமைக்கேதுவாகிய மலங்களை ஒழிக்கலாம்.</span></div>
+  <div class="node"><span class="nk">அடியரோடு இருக்கலாமே</span><span class="nv">சிவனடியாரோடு கூடி இருக்கலாம். பாடல் 5-இல் “யான்” என்றவர், இங்கே “அடியார்” என்னும் வட்டத்திற்குள் வருகிறார்.</span></div>
+ </div></div></div>
+  <div class="sec"><span class="tagn">குரல் 3</span><h3>அய்யாவின் வகுப்பு</h3></div>
+  <p class="sec-note">பாடல் 6 ஆறாம் வகுப்பில், பாடல் 5-ஐத் தொடர்ந்து. இங்கேதான் முந்தைய பாடலின் மறுப்பு விடையாகிறது.</p>
+  <div class="gcards"><div class="gcard"><a class="gmeta" href="https://github.com/sm4607/Saiva-Siddhantam/blob/main/Gnanam%20Maragam/Book3-Sivagnana-Siddhiyar-Supakkam/recordings/siddhiyar-class-06/transcript.md#L354" target="_blank" rel="noopener">வகுப்பு 6 · 00:35:15</a><h4>“இதுவும் அது” — ஒரே பாடலின் இரு பாதிகள்</h4><p>பாடல் 6-ஐ அவர் தனியாக எடுக்கவில்லை; “இதுவும் அது” என்று பாடல் 5-உடன் இணைக்கிறார். இரண்டும் ஒரே கேள்விக்கான இரு பாதிகள்.</p></div>
+<div class="gcard"><a class="gmeta" href="https://github.com/sm4607/Saiva-Siddhantam/blob/main/Gnanam%20Maragam/Book3-Sivagnana-Siddhiyar-Supakkam/recordings/siddhiyar-class-06/transcript.md#L366" target="_blank" rel="noopener">வகுப்பு 6 · 00:36:32</a><h4>“காண முடியாது” என்பது மறுப்பு அல்ல</h4><p>பலர் பாடல் 5-ஐ “இறைவனைக் காண முடியாது” என்று முடிவு செய்தார்கள். அப்படி அல்ல என்கிறார் — அது அந்தத் திருவடிகளின் பெருமையை உணர்த்துவதற்காகச் சொன்னது.</p><p>காண்பதற்கான வழிகளும் உண்டு என்பதைச் சொல்வதற்காகவே இந்தப் பாடல்.</p></div>
+<div class="gcard"><a class="gmeta" href="https://github.com/sm4607/Saiva-Siddhantam/blob/main/Gnanam%20Maragam/Book3-Sivagnana-Siddhiyar-Supakkam/recordings/siddhiyar-class-06/transcript.md#L374" target="_blank" rel="noopener">வகுப்பு 6 · 00:38:12</a><h4>சரணடைந்தால் காணலாம்</h4><p>அவனை அறிய முடியாது என்பது அவனை அணுக முடியாது என்பது அல்ல. சரணடைந்தவனுக்கு அவன் கிடைக்கிறான் — இதை அவர் ஒரு கதையால் விளக்குகிறார்.</p></div>
+<div class="gcard"><a class="gmeta" href="https://github.com/sm4607/Saiva-Siddhantam/blob/main/Gnanam%20Maragam/Book3-Sivagnana-Siddhiyar-Supakkam/recordings/siddhiyar-class-06/transcript.md#L384" target="_blank" rel="noopener">வகுப்பு 6 · 00:39:26</a><h4>“சிறப்பு” என்பது “உயர்ந்தது” அல்ல</h4><p>சிவாகமம் சிறப்பு நூல் என்பது வேதத்தைவிட உயர்ந்தது என்று அர்த்தமல்ல. நமக்கு அது உரியது என்பதால் அது சிறப்பு.</p><p>இதை அவர் மீண்டும் மீண்டும் சொல்கிறார் — ஒரு சொல் தவறாகப் புரிந்தால் அது சமயப் பிளவாக மாறும் என்பதால்.</p></div>
+<div class="gcard"><a class="gmeta" href="https://github.com/sm4607/Saiva-Siddhantam/blob/main/Gnanam%20Maragam/Book3-Sivagnana-Siddhiyar-Supakkam/recordings/siddhiyar-class-06/transcript.md#L396" target="_blank" rel="noopener">வகுப்பு 6 · 00:40:34</a><h4>ஞான தேசிகன் — ஒளியும் இருளும் நீக்கப்பட்டவன்</h4><p>“தேசிகன்” என்றால் ஒளி இருள் நீக்கப்பட்டவன். அப்படிப்பட்ட குரு அருள் செய்தால், ஆகமங்களை வைத்துக்கொண்டு அறியலாம்.</p><p>அதாவது நூல் மட்டும் போதாது; நூலைத் திறக்கும் ஒருவர் வேண்டும்.</p></div>
+<div class="gcard"><a class="gmeta" href="https://github.com/sm4607/Saiva-Siddhantam/blob/main/Gnanam%20Maragam/Book3-Sivagnana-Siddhiyar-Supakkam/recordings/siddhiyar-class-06/transcript.md#L410" target="_blank" rel="noopener">வகுப்பு 6 · 00:42:08</a><h4>உபதேசம் — வெளிச்சொல், உட்செயல்</h4><p>“ஞானச் செய்தியால்” என்பது ஞான ஆசிரியரின் உபதேசம். அது வெளியிலிருந்து வருகிறது, ஆனால் வேலை செய்வது உள்ளே.</p><p>அதனால்தான் அடுத்த சொல் “சிந்தையுள்ளே கண்டு” — காண்பது வெளியில் அல்ல.</p></div>
+<div class="gcard"><a class="gmeta" href="https://github.com/sm4607/Saiva-Siddhantam/blob/main/Gnanam%20Maragam/Book3-Sivagnana-Siddhiyar-Supakkam/recordings/siddhiyar-class-06/transcript.md#L424" target="_blank" rel="noopener">வகுப்பு 6 · 00:43:56</a><h4>மயக்கம் நீங்க இறைவன் பிரகாசிப்பான்</h4><p>மயக்கம் நீங்கும்போது ஆன்மாவுக்குள்ளே இறைவன் பிரகாசிப்பான். அதுவே “கண்டு வாழலாம்” என்பதன் பொருள்.</p></div>
+<div class="gcard"><a class="gmeta" href="https://github.com/sm4607/Saiva-Siddhantam/blob/main/Gnanam%20Maragam/Book3-Sivagnana-Siddhiyar-Supakkam/recordings/siddhiyar-class-06/transcript.md#L430" target="_blank" rel="noopener">வகுப்பு 6 · 00:44:37</a><h4>பரஞானம், அபரஞானம்</h4><p>சிவஞானம் இருவகை — பரஞானம் (திருவருள்) மற்றும் அபரஞானம் (சிவாகமங்களை ஓதி உணர்வது). இரண்டும் சேர்ந்தே இறைவனை உணர முடியும்.</p><p>அதாவது அறிவும் அருளும் எதிரிகள் அல்ல, இரண்டு கால்கள்.</p></div></div>
+  <div class="meet">
+    <div class="mbox same"><h4>இருவரும் சந்திக்கும் இடம்</h4><ul><li>பாடல் 5-இன் மறுப்பு பாடல் 6-இல் விடையாகிறது — இரண்டும் ஒரே கேள்வி.</li><li>அறிய முடியாதது அணுக முடியாதது அல்ல.</li><li>நான்கு படிகள்: அறிதல், தெளிதல், கண்டு வாழ்தல், இருள் ஒழித்தல்.</li></ul></div>
+    <div class="mbox more"><h4>அய்யா சேர்ப்பது</h4><ul><li>“சிறப்பு” என்பது உயர்ந்தது அல்ல என்ற மீள விளக்கம்.</li><li>ஞான தேசிகன் — ஒளியும் இருளும் நீக்கப்பட்டவன்.</li><li>பரஞானம் / அபரஞானம் — அறிவும் அருளும் இரண்டு கால்கள்.</li></ul></div>
+  </div>
+  <div class="mine"><span class="mtag">உங்கள் குறிப்பில் — என் புரிதல்</span><p>பாடல் 5 “தெரியாது” என்று முடிகிறது; பாடல் 6 “தெரியும், ஆனால் வேறு வழியில்” என்கிறது. இரண்டையும் சேர்த்துப் படிக்காவிட்டால் முதல் பாடல் ஒரு மறுப்பாகவே தோன்றும். இவை உங்கள் வாசிப்பு — நூலின் கூற்றாக அல்ல.</p></div>
+  <div class="sec" id="seeds"><span class="tagn">விதைகள் · Seeds</span><h3>இந்தப் பாடலின் வடிவம் இன்று எங்கே தெரிகிறது</h3></div>
+  <p class="seednote"><strong>இது ஒரு விதை — ஒரு கண்டுபிடிப்பு அல்ல.</strong> இங்கே சொல்வது ஒரு கட்டமைப்பு ஒற்றுமை மட்டுமே; நூலின் கூற்று அல்ல, பரிந்துரையும் அல்ல.</p>
+  <div class="lens" id="seed-6b"><div class="lens-head"><span class="lh">விதை 6B · Seed</span><h4>வணிகம் — நேரடி அளவீடு இல்லாதபோது</h4><p>சுருக்கமாக, ஒரு கருத்து மட்டும்.</p></div><div class="lbody"><p style='font-size:.9rem;color:var(--ink-soft);line-height:1.9'>ஒரு விஷயத்தை நேரடியாக அளக்க முடியாதபோது, மூன்று வழிகள் மிஞ்சும்: நம்பத்தக்க ஒரு ஆதாரம், அதைத் திறக்கும் ஒரு நிபுணர், மற்றும் அந்த ஆதாரத்தின் தொடர்ச்சி. இந்தப் பாடல் சொல்வது சரியாக அதுவே — அருள், ஆகமம், குரு. அதாவது <em class='en'>proxy evidence with a named authority</em>.</p><p style='font-size:.9rem;color:var(--ink-soft);line-height:1.9'>முக்கியமான நிபந்தனை: அந்த அதிகாரம் யார் என்று பெயர் சொல்ல வேண்டும். “தேசிகன்” என்று ஒரு தகுதியை வரையறுக்கிறார் — ஒளியும் இருளும் நீக்கப்பட்டவன். அதாவது நிபுணத்துவம் ஒரு வரையறைக்கு உட்பட்டது, பொதுவான பட்டம் அல்ல.</p><div class="breaks"><b>ஒப்புமை உடையும் இடம்</b>இங்கே நிபுணர் உண்மையைத் தருகிறார், ஒரு நிறுவனத்தில் அவர் ஒரு கருத்தைத் தருகிறார் — அதை மறுபரிசீலனை செய்யலாம். மேலும் இங்கே இலக்கு முத்தி; ஒரு முடிவு எடுப்பதல்ல.</div></div></div><div class="lens" id="seed-6s"><div class="lens-head"><span class="lh">விதை 6S · Seed</span><h4>அறிவியல் — கருவியும் கருவியை இயக்குபவரும்</h4><p>சுருக்கமாக, ஒரு கருத்து மட்டும்.</p></div><div class="lbody"><p style='font-size:.9rem;color:var(--ink-soft);line-height:1.9'>இந்தப் பாடல் ஒரு <em class='en'>two-channel</em> மாதிரி: வெளியிலிருந்து வரும் சொல் (உபதேசம், ஆகமம்) மற்றும் உள்ளே நிகழும் மாற்றம் (சிந்தையுள்ளே கண்டு). அளவீட்டிலும் இதே இரு கால்கள் — கருவி மற்றும் அதை அளவீடு செய்தவர்.</p><p style='font-size:.9rem;color:var(--ink-soft);line-height:1.9'>“பரஞானம் / அபரஞானம்” என்பது இரு வகை அறிவு — ஒன்று வெளியிலிருந்து படித்தது, மற்றது உள்ளே வந்தது. இன்றைய மொழியில் இது <em class='en'>explicit vs. tacit knowledge</em> என்பதற்கு நெருக்கமான பிளவு.</p><div class="breaks"><b>ஒப்புமை உடையும் இடம்</b>இங்கே இரண்டாம் வகை அறிவு அருளால் வருகிறது, பயிற்சியால் அல்ல. தசிட் அறிவு பயிற்சியால் வளர்கிறது — அதுவே முக்கிய வேறுபாடு.</div></div></div>
+  <details class="enblock"><summary>English version — the two seeds</summary><div class="enbody">
+  <p><em>Each of these is a seed: a structural echo, not a recommendation.</em></p>
+  <h5>Seed 6B — Business: when you cannot measure it directly</h5><p>When a thing cannot be measured directly, three routes remain: a trusted source, an expert who can open it, and the chain that connects them. The verse names exactly those — grace, scripture, teacher. That is proxy evidence with a named authority.</p><p>The important condition is that the authority must be specified. He defines 'desika' as one in whom light and darkness have been removed — expertise as a criterion, not a title.</p><div class="breaks"><b>Where the analogy breaks</b>Here the expert delivers truth; in a firm he delivers an opinion that can be re-examined. And the aim here is liberation, not a decision.</div><h5>Seed 6S — Science: instrument and operator</h5><p>The verse is a two-channel model: a word from outside (teaching, scripture) and a change from inside. Measurement has the same two legs — the instrument and the one who calibrated it.</p><p>'Para-jnana and apara-jnana' is a split between knowledge that came from outside and knowledge that arose within — close to the modern explicit-versus-tacit distinction.</p><div class="breaks"><b>Where the analogy breaks</b>Here the second kind of knowledge arrives by grace, not practice; tacit knowledge grows by practice. That is the decisive difference.</div></div></details>
+  <div class="sec" id="sources"><span class="tagn">ஆதாரம்</span><h3>எங்கிருந்து வந்தது, எவ்வளவு நம்பலாம்</h3></div>
+  <div class="tblwrap"><table>
+  <thead><tr><th>பகுதி</th><th>மூலம்</th><th>நிலை</th></tr></thead><tbody>
+  <tr><td>பாடல் வரிகள், பொருள், மனவரைபடம்</td>
+    <td><a href="https://github.com/sm4607/Saiva-Siddhantam/blob/main/Gnanam%20Maragam/Book3-Sivagnana-Siddhiyar-Supakkam/06-avaiyadakkam-2/index.html" target="_blank" rel="noopener"><code>06-avaiyadakkam-2/index.html</code></a><br><small>உரை: திரு. மு. திருவிளங்கம், 1971, பாயிரம் · அவையடக்கம்</small></td>
+    <td><span class="conf hi">உறுதி</span></td></tr>
+  <tr><td>குரல் 3 — அனைத்து அட்டைகளும்</td>
+    <td><a href="https://github.com/sm4607/Saiva-Siddhantam/blob/main/Gnanam%20Maragam/Book3-Sivagnana-Siddhiyar-Supakkam/recordings/siddhiyar-class-06/transcript.md" target="_blank" rel="noopener"><code>recordings/siddhiyar-class-06/transcript.md</code></a><br><small>ஆறாம் வகுப்பு · தலைப்பு அந்த வரிக்கே இணைக்கப்பட்டுள்ளது</small></td>
+    <td><span class="conf mid">ASR draft</span></td></tr>
+  <tr><td>“உங்கள் குறிப்பில்”</td><td>தொகுப்பின் <em>என் புரிதல்</em></td><td><span class="conf own">உங்கள் கருத்து</span></td></tr>
+  <tr><td>விதைகள்</td><td>மேலே உள்ள மூலங்களிலிருந்து எழுதப்பட்ட ஒப்புமை</td><td><span class="conf mid">ஒப்புமை</span></td></tr>
+  </tbody></table></div>
+  <footer>பாடல் 6 · சிவஞான சித்தியார் சுபக்கம் · பாயிரம். இந்தப் பக்கம் ஒரு துணை, மாற்று அல்ல.</footer>
+</section></main></body></html>
