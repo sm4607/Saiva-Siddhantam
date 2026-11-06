@@ -12,7 +12,7 @@ starting either one — it is the full runbook, with the generator and the page 
 
 | Job | In | Out |
 |---|---|---|
-| **A. Transcript merge** | `சித்தியார்_வகுப்பு_<N>.txt` + `.json` | `recordings/siddhiyar-class-<NN>/transcript.md`, `meta.json`, `index.html` |
+| **A. Transcript merge** | `சித்தியார்_வகுப்பு_<N>.txt` + `.json` | `recordings/siddhiyar-class-<NN>/transcript.md`, `meta.json`, `review.md`, `index.html` |
 | **B. 3-in-1 page** | verse text + commentary + class transcript | `three-voices/padal-<NN>-<slug>.html` |
 
 **A comes before B. Always.** A page's third voice links to `#L<line>` in the transcript, so a card
@@ -30,6 +30,20 @@ generated.
 - Some segments arrive as `{"alternatives": [{}]}` with no transcript — use `.get()` and skip.
 - Run `references/gen_md.py <N> <out.md>`.
 - `duration_seconds` = max `resultEndTime`, not a guess.
+
+### The keyterm review — `review.md`
+
+Every class carries one. It is a QA sheet over the same **fifty keyterms**, checked against the
+transcript, and it is the step that goes missing if the generator only writes the transcript.
+
+- **The fifty terms are identical for every class.** Recover the list from any existing
+  `review.md`; do not re-select per class. (Union of the five originals = intersection = 50.)
+- Four sections: **distorted** (correct term, what the ASR wrote, similarity ≥ 0.82), **absent**,
+  **correct**, and **every word the recogniser was unsure of** — confidence < 0.55 — with its
+  timestamp, so the audio is played only at those seconds.
+- Run `references/gen_review.py <N> <out.md>`.
+- Then set `"keyterms_used": 50` in `meta.json`. **A zero there means the pass never ran** — that
+  is exactly how this was missed once.
 - Then the class page, then the ledger row in `recordings/index.html` with paragraph and word counts.
 
 **The line numbers are a contract.** Paragraph 1 sits on line 10 and each one after moves by two.

@@ -116,7 +116,28 @@ each paragraph after it moves by two.** The song pages link to these line number
   Check by printing the timestamp at the cited line: `sed -n '388p' <file>` must show the time the
   page claims.
 
-## 1.6 `meta.json`
+## 1.6 The keyterm review — `review.md`
+
+A QA sheet over **fifty fixed keyterms**, run against the transcript. Same list for every class —
+the union of the five original reports is fifty and so is the intersection, so there is nothing
+per-class to recover.
+
+Four sections:
+
+| Section | Rule |
+|---|---|
+| சிதைந்திருக்கலாம் | the term does not appear verbatim, but a near-match does at similarity **≥ 0.82** — report the correct term, what the ASR wrote, and the score |
+| வரவே இல்லை | no near-match either |
+| சரியாக வந்தவை | appears verbatim |
+| குறைந்த நம்பிக்கை | every word with confidence **< 0.55**, with its timestamp |
+
+Generate with `references/gen_review.py <N> <out.md>`. The similarity cut of 0.82 is calibrated
+against the original reports, whose lowest listed score is 0.82; the confidence cut of 0.55 puts
+roughly 8% of words in the listening table, which matches the originals.
+
+Then set `"keyterms_used": 50` in `meta.json`. A zero is the fingerprint of a skipped pass.
+
+## 1.7 `meta.json`
 
 Same shape as the existing classes. Fill `duration_seconds` from the JSON, not by guessing:
 
@@ -135,7 +156,7 @@ dur = max(float(s["resultEndTime"][:-1]) for s in results if s.get("resultEndTim
 }
 ```
 
-## 1.7 The class page
+## 1.8 The class page
 
 One page per class at `recordings/siddhiyar-class-<NN>/index.html`, built to the same shell as the
 existing five: site header, hero with the class number, pager to the previous and next class, a
@@ -149,7 +170,7 @@ paras = len(re.findall(r"\*\*\[([\d:]+)\] பேச்சாளர் 0:\*\*\s*(
 words = sum(len(t.split()) for _, t in re.findall(r"\*\*\[([\d:]+)\] பேச்சாளர் 0:\*\*\s*(.+)", md))
 ```
 
-## 1.8 Register the class
+## 1.9 Register the class
 
 Append a row to the ledger in `recordings/index.html` and bump its count:
 
@@ -161,12 +182,13 @@ Append a row to the ledger in `recordings/index.html` and bump its count:
 </a>
 ```
 
-## 1.9 Checks before it is called done
+## 1.10 Checks before it is called done
 
 - [ ] Paragraph count and first/last timestamp look right for the class length
 - [ ] No empty paragraphs, no `KeyError` survivors, no `None` in the text
 - [ ] `duration_seconds` roughly matches the last timestamp
 - [ ] `sed -n '<L>p' transcript.md` returns the paragraph the song page cites
+- [ ] `review.md` written and `keyterms_used` set to 50 in `meta.json`
 - [ ] Ledger row added and the count bumped
 
 ---
