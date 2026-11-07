@@ -9,6 +9,7 @@ A newly learned word appears in the glossary by itself, under பொருள்
 until someone writes its meaning in the master list and runs sync.
 The loop for each class:
 
+    python3 tools/class_terms.py new-class 17  # a new class only: build it from the ASR json
     python3 tools/class_terms.py propose 7     # known misheard forms -> corrections.tsv
     (open corrections.tsv, write yes or no on rows with an empty decision)
     python3 tools/class_terms.py apply 7 --dry-run
@@ -58,6 +59,7 @@ Columns of terms-master.tsv:
 
 import argparse
 import csv
+import datetime
 import difflib
 import html
 import io
@@ -533,6 +535,102 @@ def cmd_apply(repo, a):
     print("Next: run review for this class, propose for the others, then check.")
 
 
+def class_link(n, kind):
+    label = {"prev": f"← முன் வகுப்பு · {n}", "next": f"அடுத்த வகுப்பு · {n} →"}[kind]
+    extra = " pager-next" if kind == "next" else ""
+    return (f'<a class="pager-link{extra}" href="../siddhiyar-class-{n:02d}/index.html">'
+            f'<span class="k">{label}</span><span class="t">சித்தியார் வகுப்பு {n}</span></a>')
+
+
+def segments(a, n):
+    """[(time, text)] from a class's ASR json, and the class length in seconds."""
+    path = os.path.join(a.sources, f"சித்தியார் வகுப்பு {n}.json")
+    if not os.path.exists(path):
+        sys.exit(f"No ASR json at {path}")
+    out, length = [], 0
+    for seg in json.loads(read(path))["results"]:
+        alt = (seg.get("alternatives") or [{}])[0]
+        end = seg.get("resultEndTime") or (alt["words"][-1]["endTime"] if alt.get("words") else "0s")
+        length = max(length, float(end.rstrip("s")))
+        text = " ".join((alt.get("transcript") or "").split())
+        if text:
+            out.append((hhmmss(end), text))
+    return out, int(length)
+
+
+def cmd_new_class(repo, a):
+    """Build a class folder from its ASR json, using the previous class page as the shell."""
+    n, prev = a.n, a.n - 1
+    folder = repo.class_dir(n)
+    if os.path.exists(folder):
+        sys.exit(f"class {n} already exists. Nothing changed.")
+    if not os.path.exists(repo.path(prev, "index.html")):
+        sys.exit(f"class {prev} does not exist, so class {n} has no previous page. Nothing changed.")
+    paras, length = segments(a, n)
+    if not paras:
+        sys.exit(f"class {n}: the json has no text. Nothing changed.")
+
+    banner = (f"இது ஒரு வகுப்பின் எழுத்துவடிவம். தானியங்கியாக எடுக்கப்பட்டது, {BANNER_OLD[0]}. "
+              "தவறுகள் இருக்கலாம் — ஒலியே முதன்மை.")
+    md = (f"---\ntitle: siddhiyar-class-{n:02d} — class transcript\nrecorded_on: unknown\n"
+          f"songs: unassigned\nstatus: draft\n---\n\n> {banner}\n\n"
+          + "\n\n".join(f"**[{t}] பேச்சாளர் 0:** {x}" for t, x in paras) + "\n")
+    words = sum(len(x.split()) for _, x in paras)
+    ledger = f"{words:,} சொற்கள் · {len(paras):,} பத்திகள்"
+
+    old = read(repo.path(prev, "index.html"))
+    page = old.replace(f"சித்தியார் வகுப்பு {prev}", f"சித்தியார் வகுப்பு {n}")
+    page = page.replace(f"siddhiyar-class-{prev:02d}</p>", f"siddhiyar-class-{n:02d}</p>")
+    page = re.sub(r'<a class="pager-link" href=.*?</a>', class_link(prev, "prev"), page)
+    page = re.sub(r"\d[\d,]* சொற்கள் · \d[\d,]* பத்திகள்", ledger, page, count=1)
+    page = re.sub(r'<div class="note">.*?</div>', f'<div class="note">{banner}</div>', page, count=1)
+    body = "\n".join(f'<p><span class="ts">{t}</span>{html.escape(x, quote=False)}</p>'
+                     for t, x in paras)
+    page = re.sub(r'(<div class="prose tr">\n).*?(\n\s*</div>\n\s*<nav class="pager")',
+                  lambda m: m[1] + body + m[2], page, count=1, flags=re.S)
+
+    meta = json.loads(read(repo.path(prev, "meta.json")))
+    meta.update(slug=f"siddhiyar-class-{n:02d}", songs=[], status="draft",
+                source_file=f"சித்தியார்_வகுப்பு_{n}.txt", audio_file=f"சித்தியார் வகுப்பு {n}.mp3",
+                model="platform upload (json segments re-timed)", keyterms_used=0,
+                duration_seconds=length,
+                generated_at=datetime.datetime.now(datetime.timezone.utc).isoformat(timespec="seconds"))
+
+    next_link = class_link(n, "next")
+    last = old.replace("<span></span>\n      </nav>", f"{next_link}\n      </nav>")
+    if last == old:
+        sys.exit(f"class {prev}: no free next-class slot in its pager. Nothing changed.")
+
+    listings = {}
+    for path, href, small in (
+            (os.path.join(repo.book3, "recordings", "index.html"), "", ""),
+            (os.path.join(repo.book3, "index.html"), "recordings/",
+             '<span style="text-transform:none">Class transcript</span> · ')):
+        text = read(path)
+        match = re.search(rf'(\s*)<a class="row" href="{href}siddhiyar-class-{prev:02d}/index\.html">.*?</a>',
+                          text, flags=re.S)
+        if not match:
+            sys.exit(f"No row for class {prev} in {path}. Nothing changed.")
+        row = (f'{match[1]}<a class="row" href="{href}siddhiyar-class-{n:02d}/index.html">'
+               f'{match[1]}  <div class="num">{n}</div>'
+               f'{match[1]}  <div class="t">சித்தியார் வகுப்பு {n:02d}<small>{small}'
+               f'{len(paras):,} பத்திகள் · {words:,} சொற்கள்</small></div>'
+               f'{match[1]}  <div class="go">திறக்க →</div>{match[1]}</a>')
+        text = text[:match.end()] + row + text[match.end():]
+        listings[path] = text.replace(f'f-count">{prev} வகுப்புகள்', f'f-count">{n} வகுப்புகள்')
+
+    os.makedirs(folder)
+    write(repo.path(n, "transcript.md"), md)
+    write(repo.path(n, "index.html"), page)
+    write(repo.path(n, "meta.json"), json.dumps(meta, ensure_ascii=False, indent=2) + "\n")
+    write(repo.path(prev, "index.html"), last)
+    for path, text in listings.items():
+        write(path, text)
+    print(f"class {n}: {len(paras):,} paragraphs · {words:,} words · {hhmmss(length)} long")
+    print(f"Next: propose {n}, review {n}, then add its row to three-voices/class-verse-map.html "
+          "and its songs to meta.json and transcript.md.")
+
+
 def cmd_undo(repo, a):
     md = read(repo.path(a.n, "transcript.md"))
     page = read(repo.path(a.n, "index.html"))
@@ -696,6 +794,7 @@ def main():
     sub.add_parser("check", help="report anything out of step")
     for name in ("propose", "review"):
         sub.add_parser(name).add_argument("n", type=int)
+    sub.add_parser("new-class", help="build a new class from its ASR json").add_argument("n", type=int)
     p = sub.add_parser("song", help="list a song page's candidate words for review")
     p.add_argument("n", type=int)
     p.add_argument("--page", default="", help="the page, if it is not in its song folder yet")
@@ -710,7 +809,7 @@ def main():
     a = ap.parse_args()
     run = {"sync": cmd_sync, "propose": cmd_propose, "review": cmd_review,
            "apply": cmd_apply, "undo": cmd_undo, "check": cmd_check,
-           "song": cmd_song, "learn": cmd_learn}[a.cmd]
+           "song": cmd_song, "learn": cmd_learn, "new-class": cmd_new_class}[a.cmd]
     sys.exit(run(Repo(a.root), a) or 0)
 
 
