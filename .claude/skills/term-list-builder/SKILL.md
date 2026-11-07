@@ -28,6 +28,9 @@ One row per term:
 | status | confirmed, or proposed |
 | glossary | yes or no. No keeps it on the review list only |
 | first_class | First class where a fix was approved |
+| taught_first | Where the teacher first taught the term |
+| expansion | The explanation given then, in full. Only for compressed terms |
+| later_form | How the term comes back later |
 
 Generated files, never edited by hand: the plain term list and the glossary. If someone edits the
 glossary directly, `check` reports it and the next `sync` overwrites it.
@@ -76,8 +79,9 @@ When a later passage uses a term without explaining it:
 4. Show where it sits in the book.
 5. If it is not on the list, add it with its status.
 
-For these terms it helps to record five things: the term in the teacher's own form, where it was first
-taught (book, chapter, class), the expansion in full, how it appears later, and its status.
+For these terms, fill `taught_first`, `expansion` and `later_form` in the master list. A term with an
+expansion appears in the glossary's compressed terms section. Cite the class and time or the book page.
+Leave a field blank rather than guessing, and keep a term as `proposed` until its meaning is confirmed.
 
 ## Done when
 

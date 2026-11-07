@@ -55,6 +55,10 @@ Columns of terms-master.tsv:
   glossary    yes or no. no keeps the word on the review list but out of the glossary.
               New words default to yes. Set it in corrections.tsv or the song words file.
   first_class first class where a fix was approved
+  taught_first   where the teacher first taught the term: book, song, class, time
+  expansion      the explanation given then, in full. Filled only for compressed terms,
+                 ones taught at length and later used as a single word.
+  later_form     how the term comes back later
 """
 
 import argparse
@@ -69,9 +73,11 @@ import re
 import sys
 
 BOOK3 = "Gnanam Maragam/Book3-Sivagnana-Siddhiyar-Supakkam"
-MASTER_COLS = ["term", "auto", "ask", "kind", "section", "meaning", "source", "status", "glossary", "first_class"]
+MASTER_COLS = ["term", "auto", "ask", "kind", "section", "meaning", "source", "status", "glossary", "first_class",
+               "taught_first", "expansion", "later_form"]
 FIX_COLS = ["line", "time", "wrong", "right", "term", "evidence", "certainty", "decision", "glossary"]
-SONG_COLS = ["term", "kind", "section", "meaning", "source", "glossary", "decision"]
+SONG_COLS = ["term", "kind", "section", "meaning", "source", "glossary", "decision",
+             "taught_first", "expansion", "later_form"]
 PARA = re.compile(r"^\*\*\[([\d:]+)\] பேச்சாளர் 0:\*\*\s*(.*)$")
 HTML_PARA = re.compile(r'<p><span class="ts">([\d:]+)</span>(.*?)</p>')
 COUNTS = r"\d[\d,]* பத்திகள் · \d[\d,]* சொற்கள்"
@@ -84,6 +90,9 @@ GLOSSARY_SECTIONS = ["விநாயக வணக்கம்", "பரசி�
                      "இந்திரிய/மானதக் காட்சி", "தன்வேதனை, யோகக் காட்சி"]
 NAMES_SECTION = "பெயர்கள்"
 PENDING_SECTION = "பொருள் சேர்க்க வேண்டியவை"
+COMPRESSED_SECTION = "ஒடுங்கிய கலைச்சொற்கள்"
+COMPRESSED_NOTE = ("விரிவாகக் கற்பிக்கப்பட்டு, பின்னர் ஒற்றைச் சொல்லாக விளக்கமின்றி வரும் சொற்கள். "
+                   "பாடலில் இவை வந்தால் இங்கே உள்ள விரிவைப் படிக்கவும்.")
 GLOSSARY_HEAD = """# கலைச்சொல் அகராதி — சிவஞான சித்தியார் சுபக்கம்
 
 > வளரும் பட்டியல். புதிய பாடம் வரும்போது இதில் சேரும். ஒவ்வொரு சொல்லும்
@@ -196,6 +205,13 @@ def render_glossary(rows):
             out += [f"## {section}\n", "| சொல் | பொருள் |", "|---|---|"]
             out += [f"| **{r['term']}** | {r['meaning']} |" for r in groups[section]]
             out.append("")
+    compressed = [r for r in confirmed if r["expansion"]]
+    if compressed:
+        out += [f"## {COMPRESSED_SECTION}\n", f"{COMPRESSED_NOTE}\n",
+                "| சொல் | முதலில் | விரிவு | பிற்கால வடிவம் |", "|---|---|---|---|"]
+        out += [f"| **{r['term']}** | {r['taught_first'] or '—'} | {r['expansion']} | "
+                f"{r['later_form'] or '—'} |" for r in compressed]
+        out.append("")
     if pending:
         out += [f"## {PENDING_SECTION}\n", "| சொல் | முதல் வகுப்பு | மூலம் |", "|---|---|---|"]
         out += [f"| **{r['term']}** | {r['first_class'] or '—'} | {r['source'] or '—'} |"
@@ -705,7 +721,8 @@ def cmd_learn(repo, a):
         if r["term"] in terms:
             sys.exit(f"song {a.n}: {r['term']} is already in the master list. Nothing changed.")
         row = dict.fromkeys(MASTER_COLS, "")
-        row.update({c: r[c] for c in ("term", "kind", "section", "meaning", "source")})
+        row.update({c: r[c] for c in ("term", "kind", "section", "meaning", "source",
+                                      "taught_first", "expansion", "later_form")})
         row.update(status="confirmed", glossary=r["glossary"] or "yes")
         rows.append(row)
         terms[r["term"]] = row
