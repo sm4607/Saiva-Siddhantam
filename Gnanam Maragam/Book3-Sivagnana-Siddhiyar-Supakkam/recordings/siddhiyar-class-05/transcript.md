@@ -1,7 +1,7 @@
 ---
 title: siddhiyar-class-05 — class transcript
 recorded_on: unknown
-songs: unassigned
+songs: 2, 3, 4
 status: draft
 ---
 

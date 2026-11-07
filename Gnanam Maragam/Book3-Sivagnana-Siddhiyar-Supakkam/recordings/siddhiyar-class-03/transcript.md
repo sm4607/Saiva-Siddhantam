@@ -1,7 +1,7 @@
 ---
 title: siddhiyar-class-03 — class transcript
 recorded_on: unknown
-songs: unassigned
+songs: 2
 status: draft
 ---
 

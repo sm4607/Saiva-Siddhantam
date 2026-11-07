@@ -319,7 +319,7 @@ def asr_words(a, n):
     if not os.path.exists(path):
         return None
     data = json.loads(read(path))["results"]
-    return [w for seg in data for alt in seg["alternatives"] for w in alt.get("words") or []
+    return [w for seg in data for alt in seg.get("alternatives", []) for w in alt.get("words") or []
             if w.get("word")]
 
 
@@ -387,7 +387,7 @@ def cmd_review(repo, a):
                 f"({LOW_CONFIDENCE} என்னும் நம்பிக்கை அளவுக்குக் கீழே). இவை கருவி முதலில் "
                 "எழுதிய சொற்கள் — திருத்தத்துக்கு முந்தையவை.\n",
                 "| நேரம் | சொல் | நம்பிக்கை |", "|---|---|---|"]
-        out += [f"| {hhmmss(w['startTime'])} | {w['word'].strip()} | {w.get('confidence', 0):.2f} |"
+        out += [f"| {hhmmss(w.get('startTime', '0s'))} | {w['word'].strip()} | {w.get('confidence', 0):.2f} |"
                 for w in low]
         out.append("")
     write(repo.path(a.n, "review.md"), "\n".join(out))
@@ -644,13 +644,18 @@ def cmd_check(repo, _):
         print(f"Words still needing a meaning: {', '.join(no_meaning)}")
 
     citations = set()
+    cited_by = set()
     for base, _, files in os.walk(repo.book3):
         if "recordings" in base:
             continue
         for name in files:
             if name.endswith(".html"):
-                citations |= set(re.findall(r"siddhiyar-class-(\d+)/transcript\.md#L(\d+)",
-                                            read(os.path.join(base, name))))
+                found = set(re.findall(r"siddhiyar-class-(\d+)/transcript\.md#L(\d+)",
+                                       read(os.path.join(base, name))))
+                citations |= found
+                song = re.match(r"padal-(\d+)", name)
+                if song:
+                    cited_by.update((int(c), int(song[1])) for c, _ in found)
 
     for n in repo.classes():
         md = read(repo.path(n, "transcript.md"))
@@ -659,6 +664,10 @@ def cmd_check(repo, _):
         if [(t, x) for _, t, x in paras] != [(t, html.unescape(x)) for t, x in page]:
             problems.append(f"class {n}: transcript.md and index.html differ")
         para_lines = {l: x for l, _, x in paras}
+        songs = json.loads(read(repo.path(n, "meta.json")))["songs"]
+        for c, song in sorted(cited_by):
+            if c == n and song not in songs:
+                problems.append(f"class {n}: page for song {song} cites it, but meta.json songs omit it")
         for c, line in citations:
             if int(c) == n and int(line) not in para_lines:
                 problems.append(f"class {n}: a page cites line {line}, which is not a paragraph")

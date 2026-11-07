@@ -1,7 +1,7 @@
 ---
 title: siddhiyar-class-06 — class transcript
 recorded_on: unknown
-songs: []
+songs: 5, 6
 status: terms-corrected
 ---
 

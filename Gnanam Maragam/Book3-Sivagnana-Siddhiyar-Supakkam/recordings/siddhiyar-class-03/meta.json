@@ -1,7 +1,9 @@
 {
   "slug": "siddhiyar-class-03",
   "date": "unknown",
-  "songs": [],
+  "songs": [
+    2
+  ],
   "status": "draft",
   "source_file": "சித்தியார்_வகுப்பு_3.txt",
   "audio_file": "சித்தியார் வகுப்பு 3.mp3",
@@ -12,7 +14,7 @@
   "mode": "codemix",
   "language": "ta-IN",
   "diarization": true,
-  "keyterms_used": 50,
+  "keyterms_used": 119,
   "duration_seconds": 3731,
   "generated_at": "2026-11-05T14:53:36+00:00"
 }

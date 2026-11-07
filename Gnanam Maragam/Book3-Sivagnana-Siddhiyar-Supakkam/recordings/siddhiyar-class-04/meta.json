@@ -1,8 +1,10 @@
 {
   "slug": "siddhiyar-class-04",
   "date": "unknown",
-  "songs": [],
-  "status": "draft",
+  "songs": [
+    2
+  ],
+  "status": "terms-corrected",
   "source_file": "சித்தியார்_வகுப்பு_4.txt",
   "audio_file": "சித்தியார் வகுப்பு 4.mp3",
   "audio_committed": false,
@@ -12,7 +14,7 @@
   "mode": "codemix",
   "language": "ta-IN",
   "diarization": true,
-  "keyterms_used": 50,
+  "keyterms_used": 119,
   "duration_seconds": 3569,
   "generated_at": "2026-11-05T14:53:41+00:00"
 }
