@@ -13,6 +13,8 @@ or a person can read them and produce the same artefacts.
 
 ## The four steps
 
+[`WORKFLOW.md`](WORKFLOW.md) lists what to do in each step, and where things stand.
+
 | Step | Input | Output |
 |---|---|---|
 | 1 | Source PDF | 1.1 mind map per song · 1.2 review words (`terms-master.tsv`) · 1.3 glossary (`kalaisol-agarathi.md`) |

@@ -1,0 +1,261 @@
+# -*- coding: utf-8 -*-
+"""build_lib.py — CSS, HEAD and render() for one mind-map page.
+Copy as-is; only the data changes. Two labels can be set for another text:
+source_label (default மூலம்) and insight_label (default என் புரிதல்).
+Never call str.format() on CSS. HEAD is used with .replace("{title}", ...).
+"""
+
+CSS = """:root{
+  --bg:#faf7f2;--bg-deep:#f3ede3;--surface:#fffdf9;
+  --ink:#2b2622;--ink-soft:#5c534a;--ink-dim:#8a7f73;
+  --line:rgba(43,38,34,0.13);--line-strong:rgba(43,38,34,0.28);
+  --terracotta:#b4441f;--terracotta-dim:#f6e6de;
+  --sage:#4f6b1e;--sage-dim:#eaf0dd;
+  --teal:#1b5a68;--teal-dim:#e0ecef;
+  --gold:#a9761a;--gold-dim:#f7eed9;
+  --font-body:'Noto Sans Tamil','Latha',system-ui,sans-serif;
+  --font-head:'Noto Serif Tamil','Noto Sans Tamil',serif;
+  --font-mono:'IBM Plex Mono',monospace;
+}
+*{box-sizing:border-box;}
+body{margin:0;
+  background:radial-gradient(1200px 600px at 12% -8%, rgba(180,68,31,0.07), transparent 60%),
+             radial-gradient(900px 500px at 92% 4%, rgba(27,90,104,0.07), transparent 60%),
+             var(--bg);
+  color:var(--ink);font-family:var(--font-body);font-size:16px;line-height:1.65;
+  -webkit-font-smoothing:antialiased;}
+.wrap{max-width:1240px;margin:0 auto;padding:52px 32px 92px;}
+.eyebrow{font-family:var(--font-mono);font-size:11.5px;letter-spacing:.16em;text-transform:uppercase;
+  color:var(--terracotta);display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin-bottom:20px;}
+.eyebrow::before{content:"";width:26px;height:1px;background:var(--terracotta);display:block;}
+h1{font-family:var(--font-head);font-size:clamp(34px,4.8vw,56px);line-height:1.16;margin:0 0 14px;
+  font-weight:700;letter-spacing:-0.01em;}
+.sub{font-size:16.5px;color:var(--ink-soft);max-width:70ch;margin:0;}
+.meta{display:flex;flex-wrap:wrap;gap:8px;margin-top:26px;}
+.chip{font-family:var(--font-mono);font-size:11.5px;letter-spacing:.04em;padding:5px 11px;
+  border:1px solid var(--line-strong);border-radius:999px;color:var(--ink-soft);background:rgba(255,255,255,.5);}
+.verse{margin:42px 0 0;padding:34px 38px 30px;background:var(--surface);border:1px solid var(--line);
+  border-left:3px solid var(--gold);border-radius:4px;
+  box-shadow:0 1px 2px rgba(43,38,34,.04),0 12px 32px -22px rgba(43,38,34,.4);}
+.verse .tag{font-family:var(--font-mono);font-size:11px;letter-spacing:.16em;text-transform:uppercase;
+  color:var(--gold);margin-bottom:16px;}
+.verse p{font-family:var(--font-head);font-size:clamp(16px,1.95vw,20.5px);line-height:2.05;margin:0;}
+.verse .gloss{font-family:var(--font-body);font-size:14.5px;color:var(--ink-soft);margin-top:18px;
+  padding-top:16px;border-top:1px dashed var(--line);line-height:1.8;}
+.sec{margin-top:72px;}
+.sec-head{display:flex;align-items:baseline;gap:14px;margin-bottom:8px;}
+.sec-num{font-family:var(--font-mono);font-size:12px;color:var(--terracotta);letter-spacing:.1em;}
+h2{font-family:var(--font-head);font-size:clamp(23px,2.8vw,31px);margin:0;font-weight:700;letter-spacing:-0.01em;}
+.sec-note{color:var(--ink-soft);font-size:15px;margin:0 0 32px;max-width:78ch;}
+.map{margin-top:8px;}
+.rootwrap{display:flex;flex-direction:column;align-items:center;}
+.root{background:var(--ink);color:#faf7f2;padding:20px 40px 18px;border-radius:6px;text-align:center;
+  box-shadow:0 14px 34px -18px rgba(43,38,34,.65);max-width:760px;}
+.root .r-main{font-family:var(--font-head);font-size:clamp(21px,2.5vw,29px);font-weight:700;line-height:1.3;}
+.root .r-sub{font-family:var(--font-mono);font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;
+  color:rgba(250,247,242,.62);margin-top:7px;}
+.root .r-sub2{font-size:13.5px;color:rgba(250,247,242,.82);margin-top:9px;}
+.stem{width:2px;height:34px;background:var(--line-strong);}
+.bus{height:2px;background:var(--line-strong);margin:0 16.66%;}
+.cols{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:26px;align-items:start;}
+.branch{position:relative;padding-top:32px;}
+.branch::before{content:"";position:absolute;top:0;left:50%;width:2px;height:32px;
+  background:var(--line-strong);transform:translateX(-1px);}
+.bhead{border-radius:6px;padding:18px 20px 16px;border:1px solid;position:relative;}
+.bhead .b-name{font-family:var(--font-head);font-size:21px;font-weight:700;line-height:1.3;}
+.bhead .b-eq{font-family:var(--font-mono);font-size:10.5px;letter-spacing:.09em;text-transform:uppercase;
+  margin-top:6px;opacity:.85;}
+.bhead .b-desc{font-size:13.6px;line-height:1.62;margin-top:9px;color:var(--ink-soft);}
+.bhead .b-count{position:absolute;top:-11px;right:14px;font-family:var(--font-mono);font-size:10.5px;
+  letter-spacing:.1em;padding:2px 9px;border-radius:999px;background:var(--surface);
+  border:1px solid var(--line-strong);color:var(--ink-dim);}
+.b1 .bhead{background:var(--terracotta-dim);border-color:rgba(180,68,31,.28);}
+.b1 .b-name,.b1 .b-eq{color:var(--terracotta);}
+.b2 .bhead{background:var(--sage-dim);border-color:rgba(79,107,30,.3);}
+.b2 .b-name,.b2 .b-eq{color:var(--sage);}
+.b3 .bhead{background:var(--teal-dim);border-color:rgba(27,90,104,.3);}
+.b3 .b-name,.b3 .b-eq{color:var(--teal);}
+.children{margin:20px 0 0 14px;padding-left:18px;border-left:1px solid var(--line-strong);}
+.b1 .children{border-left-color:rgba(180,68,31,.35);}
+.b2 .children{border-left-color:rgba(79,107,30,.38);}
+.b3 .children{border-left-color:rgba(27,90,104,.35);}
+.node{position:relative;margin-bottom:13px;}
+.node:last-child{margin-bottom:0;}
+.node::before{content:"";position:absolute;left:-18px;top:20px;width:16px;height:1px;background:var(--line-strong);}
+.b1 .node::before{background:rgba(180,68,31,.35);}
+.b2 .node::before{background:rgba(79,107,30,.38);}
+.b3 .node::before{background:rgba(27,90,104,.35);}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:5px;padding:13px 16px 14px;
+  transition:border-color .18s ease,transform .18s ease,box-shadow .18s ease;}
+.card:hover{border-color:var(--line-strong);transform:translateY(-1px);
+  box-shadow:0 10px 22px -18px rgba(43,38,34,.6);}
+.card .n-t{font-family:var(--font-head);font-size:16px;font-weight:700;line-height:1.42;}
+.card .n-s{font-family:var(--font-mono);font-size:10.5px;letter-spacing:.05em;color:var(--ink-dim);margin-top:3px;}
+.card .n-d{font-size:13.5px;line-height:1.62;color:var(--ink-soft);margin-top:8px;}
+.card .n-x{font-size:12.8px;line-height:1.6;color:var(--ink-dim);margin-top:9px;padding-top:9px;
+  border-top:1px dotted var(--line);}
+.card .n-x b{color:var(--ink-soft);font-weight:600;}
+.b1 .n-t{color:var(--terracotta);}
+.b2 .n-t{color:var(--sage);}
+.b3 .n-t{color:var(--teal);}
+.flow{margin-top:32px;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));
+  border:1px solid var(--line);border-radius:6px;overflow:hidden;background:var(--surface);}
+.fcell{padding:18px 22px;border-right:1px solid var(--line);}
+.fcell:last-child{border-right:none;}
+.fcell .f-top{font-family:var(--font-mono);font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;
+  color:var(--ink-dim);margin-bottom:8px;}
+.fcell .f-main{font-family:var(--font-head);font-size:17px;font-weight:700;}
+.fcell .f-note{font-size:13.2px;line-height:1.6;color:var(--ink-soft);margin-top:6px;}
+.f1 .f-main{color:var(--terracotta);}
+.f2 .f-main{color:var(--sage);}
+.f3 .f-main{color:var(--teal);}
+.panels{display:grid;grid-template-columns:1.1fr 1fr;gap:26px;margin-top:32px;align-items:start;}
+.panel{background:var(--surface);border:1px solid var(--line);border-radius:6px;padding:26px 28px 24px;}
+.panel h3{font-family:var(--font-head);font-size:19px;margin:0 0 4px;font-weight:700;}
+.panel .p-note{font-size:13.4px;color:var(--ink-dim);margin:0 0 18px;}
+table{width:100%;border-collapse:collapse;font-size:14px;}
+th{text-align:left;font-family:var(--font-mono);font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;
+  color:var(--ink-dim);font-weight:500;padding:0 0 9px;border-bottom:1px solid var(--line-strong);}
+td{padding:9px 0;border-bottom:1px solid var(--line);vertical-align:top;line-height:1.55;}
+tr:last-child td{border-bottom:none;}
+td.term{font-family:var(--font-head);font-weight:700;color:var(--ink);width:36%;font-size:14px;}
+td.mean{color:var(--ink-soft);}
+ol.kuripu{list-style:none;counter-reset:k;margin:0;padding:0;}
+ol.kuripu li{counter-increment:k;position:relative;padding-left:34px;font-size:14px;line-height:1.68;
+  color:var(--ink-soft);margin-bottom:14px;}
+ol.kuripu li:last-child{margin-bottom:0;}
+ol.kuripu li::before{content:counter(k);position:absolute;left:0;top:1px;font-family:var(--font-mono);
+  font-size:11.5px;width:22px;height:22px;border-radius:50%;display:flex;align-items:center;
+  justify-content:center;background:var(--bg-deep);border:1px solid var(--line-strong);color:var(--ink-dim);}
+ol.kuripu li b{color:var(--ink);font-weight:600;}
+.insight{margin-top:32px;padding:34px 38px 32px;background:linear-gradient(180deg,#fffdf9,#fbf5ea);
+  border:1px solid var(--line);border-top:3px solid var(--terracotta);border-radius:6px;}
+.insight .i-tag{font-family:var(--font-mono);font-size:10.5px;letter-spacing:.16em;text-transform:uppercase;
+  color:var(--terracotta);margin-bottom:14px;}
+.insight .i-q{font-family:var(--font-head);font-size:clamp(20px,2.5vw,27px);line-height:1.45;margin:0 0 18px;
+  font-weight:700;}
+.insight p{font-size:15px;line-height:1.82;color:var(--ink-soft);margin:0 0 14px;max-width:82ch;}
+.insight p:last-child{margin-bottom:0;}
+.insight strong{color:var(--ink);font-weight:600;}
+footer{margin-top:64px;padding-top:22px;border-top:1px solid var(--line);font-size:12.5px;
+  color:var(--ink-dim);line-height:1.8;}
+footer b{color:var(--ink-soft);font-weight:600;}
+@media (max-width:960px){
+  .wrap{padding:38px 20px 66px;}
+  .cols{grid-template-columns:1fr;gap:18px;}
+  .bus,.stem{display:none;}
+  .branch{padding-top:0;}
+  .branch::before{display:none;}
+  .bhead .b-count{position:static;display:inline-block;margin-top:10px;}
+  .flow,.panels{grid-template-columns:1fr;}
+  .fcell{border-right:none;border-bottom:1px solid var(--line);}
+  .fcell:last-child{border-bottom:none;}
+  .verse,.insight{padding:24px 22px;}
+}
+@media (prefers-color-scheme:dark){
+  :root{--bg:#17140f;--bg-deep:#221d16;--surface:#1e1a15;--ink:#f2ece1;--ink-soft:#c3b8a8;
+    --ink-dim:#94897a;--line:rgba(242,236,225,0.12);--line-strong:rgba(242,236,225,0.26);
+    --terracotta:#e0784e;--terracotta-dim:#2a1a12;--sage:#a3c260;--sage-dim:#1d2314;
+    --teal:#6cb3c4;--teal-dim:#122226;--gold:#d9a94a;}
+  .root{background:#2a231a;color:#f7f1e6;}
+  .insight{background:linear-gradient(180deg,#1e1a15,#241d15);}
+  .chip{background:rgba(255,255,255,.04);}
+}
+@media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important;}}"""
+
+HEAD = """<!DOCTYPE html>
+<html lang="ta">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>{title} — சிவஞான சித்தியார் சுபக்கம்</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Tamil:wght@400;500;600;700&family=Noto+Serif+Tamil:wght@600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+""" + CSS + """
+</style>
+</head>
+<body>
+<div class="wrap">
+"""
+
+def render(song):
+    out = [HEAD.replace("{title}", song["title"])]
+    out.append('  <div class="eyebrow">%s</div>\n' % song["eyebrow"])
+    out.append('  <h1>%s</h1>\n' % song["title"])
+    out.append('  <p class="sub">%s</p>\n' % song["sub"])
+    out.append('  <div class="meta">\n')
+    for c in song["chips"]:
+        out.append('    <span class="chip">%s</span>\n' % c)
+    out.append('  </div>\n')
+
+    # verse
+    out.append('  <div class="verse">\n    <div class="tag">%s — %s</div>\n    <p>\n'
+               % (song.get("source_label", "மூலம்"), song["verse_tag"]))
+    out.append("<br>\n".join("      " + l for l in song["verse_lines"]))
+    out.append('\n    </p>\n    <div class="gloss">%s</div>\n  </div>\n' % song["gloss"])
+
+    # map
+    out.append('  <div class="sec">\n    <div class="sec-head">\n      <span class="sec-num">01</span>\n'
+               '      <h2>%s</h2>\n    </div>\n    <p class="sec-note">%s</p>\n' % (song["map_head"], song["map_note"]))
+    out.append('    <div class="map">\n      <div class="rootwrap">\n        <div class="root">\n')
+    out.append('          <div class="r-main">%s</div>\n' % song["root_main"])
+    out.append('          <div class="r-sub">%s</div>\n' % song["root_sub"])
+    out.append('          <div class="r-sub2">%s</div>\n' % song["root_sub2"])
+    out.append('        </div>\n        <div class="stem"></div>\n        <div class="bus"></div>\n      </div>\n\n      <div class="cols">\n')
+    for i, br in enumerate(song["branches"], 1):
+        out.append('        <div class="branch b%d">\n          <div class="bhead">\n' % i)
+        out.append('            <span class="b-count">%d / %d</span>\n' % (i, len(song["branches"])))
+        out.append('            <div class="b-name">%s</div>\n' % br["name"])
+        out.append('            <div class="b-eq">%s</div>\n' % br["eq"])
+        out.append('            <div class="b-desc">%s</div>\n          </div>\n' % br["desc"])
+        out.append('          <div class="children">\n')
+        for c in br["cards"]:
+            out.append('            <div class="node"><div class="card">\n')
+            out.append('              <div class="n-t">%s</div>\n' % c["t"])
+            out.append('              <div class="n-s">%s</div>\n' % c["s"])
+            out.append('              <div class="n-d">%s</div>\n' % c["d"])
+            if c.get("x"):
+                out.append('              <div class="n-x">%s</div>\n' % c["x"])
+            out.append('            </div></div>\n\n')
+        out.append('          </div>\n        </div>\n\n')
+    out.append('      </div>\n    </div>\n\n')
+
+    # flow
+    out.append('    <div class="flow">\n')
+    for i, f in enumerate(song["flow"], 1):
+        out.append('      <div class="fcell f%d">\n        <div class="f-top">%s</div>\n'
+                   '        <div class="f-main">%s</div>\n        <div class="f-note">%s</div>\n      </div>\n'
+                   % (i, f["top"], f["main"], f["note"]))
+    out.append('    </div>\n  </div>\n')
+
+    # panels
+    out.append('  <div class="sec">\n    <div class="sec-head">\n      <span class="sec-num">02</span>\n'
+               '      <h2>%s</h2>\n    </div>\n    <p class="sec-note">%s</p>\n'
+               '    <div class="panels">\n' % (song["panel_head"], song["panel_note"]))
+    for p in song["panels"]:
+        out.append('      <div class="panel">\n        <h3>%s</h3>\n        <p class="p-note">%s</p>\n'
+                   % (p["title"], p["note"]))
+        if p["type"] == "table":
+            out.append('        <table>\n          <thead><tr><th>%s</th><th>%s</th></tr></thead>\n'
+                       '          <tbody>\n' % (p["h1"], p["h2"]))
+            for term, mean in p["rows"]:
+                out.append('            <tr><td class="term">%s</td><td class="mean">%s</td></tr>\n' % (term, mean))
+            out.append('          </tbody>\n        </table>\n')
+        else:
+            out.append('        <ol class="kuripu">\n')
+            for it in p["rows"]:
+                out.append('          <li>%s</li>\n' % it)
+            out.append('        </ol>\n')
+        out.append('      </div>\n')
+    out.append('    </div>\n  </div>\n')
+
+    # insight
+    out.append('  <div class="insight">\n    <div class="i-tag">%s</div>\n' % song.get("insight_label", "என் புரிதல்"))
+    out.append('    <div class="i-q">%s</div>\n' % song["i_q"])
+    for para in song["i_paras"]:
+        out.append('    <p>%s</p>\n' % para)
+    out.append('  </div>\n')
+    out.append('  <footer>%s</footer>\n</div>\n</body>\n</html>\n' % song["footer"])
+    return "".join(out)
