@@ -52,4 +52,5 @@ data-quality gate, a decision record. "This could be used in companies" is too v
 ## From seed to proposal
 
 For Step 4, start from seeds the user has picked, not ones you choose. Keep each seed's break in the
-proposal. Do not write to the repository without showing the file and asking.
+proposal. Proposals stay private: keep them out of public repositories unless the user decides
+otherwise for that specific one.

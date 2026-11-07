@@ -74,18 +74,20 @@ There is no guide for this step yet. These are the steps as agreed so far.
 1. Pick the seeds you want to take further from the three-in-one pages.
 2. Record which seeds you picked and why.
 3. Write a specific business proposal from them.
-4. Add it to `vanika-inai/` and list it in the Book 3 `index.html`.
+4. Keep it in the private skill `business-lens-private`, on your Mac. It goes public only if you decide that for a specific proposal.
 
 **Done when:** you have approved the proposal. The format is still to be decided.
+
+This repository is public, so business proposals and firm details stay out of it.
 
 ## Where things stand (2026-11-07)
 
 | Step | Done | Next |
 |---|---|---|
-| 1 | Mind maps for songs 1–13 · 119 words in the master list, 118 confirmed · glossary built from it | Song 14 |
+| 1 | Mind maps for songs 1–13 · 122 words in the master list, 121 confirmed · glossary built from it | Song 14 |
 | 2 | Classes 1–16 corrected for key terms | Class 17, then on to class 25 as you listen. Source files for all 25 are ready |
 | 3 | Pages for songs 1–12 | Song 13, once its classes from 17 onward are corrected |
-| 4 | 24 seeds available · two வணிக இணை documents | Pick seeds, and agree the proposal format |
+| 4 | 24 seeds available · two business documents kept privately | Pick seeds, and agree the proposal format |
 
 Open items:
 

@@ -20,7 +20,7 @@ or a person can read them and produce the same artefacts.
 | 1 | Source PDF | 1.1 mind map per song · 1.2 review words (`terms-master.tsv`) · 1.3 glossary (`kalaisol-agarathi.md`) |
 | 2 | The Guru's class, converted to a transcript by an external tool | 2.1 corrected transcript · 2.2 approved words added to 1.2, and appropriate ones to 1.3 |
 | 3 | 1.1 + 2.1 | 3.1 the three-in-one view, with business and science sightings |
-| 4 | Seeds the user picks from 3.1 | A specific business proposal. The two வணிக இணை documents belong here |
+| 4 | Seeds the user picks from 3.1 | A specific business proposal, kept private and out of this repository |
 
 ## Rules that run through both
 
