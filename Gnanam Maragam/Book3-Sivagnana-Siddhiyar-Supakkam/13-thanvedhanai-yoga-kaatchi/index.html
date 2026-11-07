@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html lang="ta">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>தன்வேதனைக் காட்சியும் யோகக் காட்சியும் — சிவஞான சித்தியார் சுபக்கம்</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Tamil:wght@400;500;600;700&family=Noto+Serif+Tamil:wght@600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#faf7f2;--bg-deep:#f3ede3;--surface:#fffdf9;
+  --ink:#2b2622;--ink-soft:#5c534a;--ink-dim:#8a7f73;
+  --line:rgba(43,38,34,0.13);--line-strong:rgba(43,38,34,0.28);
+  --terracotta:#b4441f;--terracotta-dim:#f6e6de;
+  --sage:#4f6b1e;--sage-dim:#eaf0dd;
+  --teal:#1b5a68;--teal-dim:#e0ecef;
+  --gold:#a9761a;--gold-dim:#f7eed9;
+  --font-body:'Noto Sans Tamil','Latha',system-ui,sans-serif;
+  --font-head:'Noto Serif Tamil','Noto Sans Tamil',serif;
+  --font-mono:'IBM Plex Mono',monospace;
+}
+*{box-sizing:border-box;}
+body{margin:0;
+  background:radial-gradient(1200px 600px at 12% -8%, rgba(180,68,31,0.07), transparent 60%),
+             radial-gradient(900px 500px at 92% 4%, rgba(27,90,104,0.07), transparent 60%),
+             var(--bg);
+  color:var(--ink);font-family:var(--font-body);font-size:16px;line-height:1.65;
+  -webkit-font-smoothing:antialiased;}
+.wrap{max-width:1240px;margin:0 auto;padding:52px 32px 92px;}
+.eyebrow{font-family:var(--font-mono);font-size:11.5px;letter-spacing:.16em;text-transform:uppercase;
+  color:var(--terracotta);display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin-bottom:20px;}
+.eyebrow::before{content:"";width:26px;height:1px;background:var(--terracotta);display:block;}
+h1{font-family:var(--font-head);font-size:clamp(34px,4.8vw,56px);line-height:1.16;margin:0 0 14px;
+  font-weight:700;letter-spacing:-0.01em;}
+.sub{font-size:16.5px;color:var(--ink-soft);max-width:70ch;margin:0;}
+.meta{display:flex;flex-wrap:wrap;gap:8px;margin-top:26px;}
+.chip{font-family:var(--font-mono);font-size:11.5px;letter-spacing:.04em;padding:5px 11px;
+  border:1px solid var(--line-strong);border-radius:999px;color:var(--ink-soft);background:rgba(255,255,255,.5);}
+.verse{margin:42px 0 0;padding:34px 38px 30px;background:var(--surface);border:1px solid var(--line);
+  border-left:3px solid var(--gold);border-radius:4px;
+  box-shadow:0 1px 2px rgba(43,38,34,.04),0 12px 32px -22px rgba(43,38,34,.4);}
+.verse .tag{font-family:var(--font-mono);font-size:11px;letter-spacing:.16em;text-transform:uppercase;
+  color:var(--gold);margin-bottom:16px;}
+.verse p{font-family:var(--font-head);font-size:clamp(16px,1.95vw,20.5px);line-height:2.05;margin:0;}
+.verse .gloss{font-family:var(--font-body);font-size:14.5px;color:var(--ink-soft);margin-top:18px;
+  padding-top:16px;border-top:1px dashed var(--line);line-height:1.8;}
+.sec{margin-top:72px;}
+.sec-head{display:flex;align-items:baseline;gap:14px;margin-bottom:8px;}
+.sec-num{font-family:var(--font-mono);font-size:12px;color:var(--terracotta);letter-spacing:.1em;}
+h2{font-family:var(--font-head);font-size:clamp(23px,2.8vw,31px);margin:0;font-weight:700;letter-spacing:-0.01em;}
+.sec-note{color:var(--ink-soft);font-size:15px;margin:0 0 32px;max-width:78ch;}
+.map{margin-top:8px;}
+.rootwrap{display:flex;flex-direction:column;align-items:center;}
+.root{background:var(--ink);color:#faf7f2;padding:20px 40px 18px;border-radius:6px;text-align:center;
+  box-shadow:0 14px 34px -18px rgba(43,38,34,.65);max-width:760px;}
+.root .r-main{font-family:var(--font-head);font-size:clamp(21px,2.5vw,29px);font-weight:700;line-height:1.3;}
+.root .r-sub{font-family:var(--font-mono);font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;
+  color:rgba(250,247,242,.62);margin-top:7px;}
+.root .r-sub2{font-size:13.5px;color:rgba(250,247,242,.82);margin-top:9px;}
+.stem{width:2px;height:34px;background:var(--line-strong);}
+.bus{height:2px;background:var(--line-strong);margin:0 16.66%;}
+.cols{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:26px;align-items:start;}
+.branch{position:relative;padding-top:32px;}
+.branch::before{content:"";position:absolute;top:0;left:50%;width:2px;height:32px;
+  background:var(--line-strong);transform:translateX(-1px);}
+.bhead{border-radius:6px;padding:18px 20px 16px;border:1px solid;position:relative;}
+.bhead .b-name{font-family:var(--font-head);font-size:21px;font-weight:700;line-height:1.3;}
+.bhead .b-eq{font-family:var(--font-mono);font-size:10.5px;letter-spacing:.09em;text-transform:uppercase;
+  margin-top:6px;opacity:.85;}
+.bhead .b-desc{font-size:13.6px;line-height:1.62;margin-top:9px;color:var(--ink-soft);}
+.bhead .b-count{position:absolute;top:-11px;right:14px;font-family:var(--font-mono);font-size:10.5px;
+  letter-spacing:.1em;padding:2px 9px;border-radius:999px;background:var(--surface);
+  border:1px solid var(--line-strong);color:var(--ink-dim);}
+.b1 .bhead{background:var(--terracotta-dim);border-color:rgba(180,68,31,.28);}
+.b1 .b-name,.b1 .b-eq{color:var(--terracotta);}
+.b2 .bhead{background:var(--sage-dim);border-color:rgba(79,107,30,.3);}
+.b2 .b-name,.b2 .b-eq{color:var(--sage);}
+.b3 .bhead{background:var(--teal-dim);border-color:rgba(27,90,104,.3);}
+.b3 .b-name,.b3 .b-eq{color:var(--teal);}
+.children{margin:20px 0 0 14px;padding-left:18px;border-left:1px solid var(--line-strong);}
+.b1 .children{border-left-color:rgba(180,68,31,.35);}
+.b2 .children{border-left-color:rgba(79,107,30,.38);}
+.b3 .children{border-left-color:rgba(27,90,104,.35);}
+.node{position:relative;margin-bottom:13px;}
+.node:last-child{margin-bottom:0;}
+.node::before{content:"";position:absolute;left:-18px;top:20px;width:16px;height:1px;background:var(--line-strong);}
+.b1 .node::before{background:rgba(180,68,31,.35);}
+.b2 .node::before{background:rgba(79,107,30,.38);}
+.b3 .node::before{background:rgba(27,90,104,.35);}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:5px;padding:13px 16px 14px;
+  transition:border-color .18s ease,transform .18s ease,box-shadow .18s ease;}
+.card:hover{border-color:var(--line-strong);transform:translateY(-1px);
+  box-shadow:0 10px 22px -18px rgba(43,38,34,.6);}
+.card .n-t{font-family:var(--font-head);font-size:16px;font-weight:700;line-height:1.42;}
+.card .n-s{font-family:var(--font-mono);font-size:10.5px;letter-spacing:.05em;color:var(--ink-dim);margin-top:3px;}
+.card .n-d{font-size:13.5px;line-height:1.62;color:var(--ink-soft);margin-top:8px;}
+.card .n-x{font-size:12.8px;line-height:1.6;color:var(--ink-dim);margin-top:9px;padding-top:9px;
+  border-top:1px dotted var(--line);}
+.card .n-x b{color:var(--ink-soft);font-weight:600;}
+.b1 .n-t{color:var(--terracotta);}
+.b2 .n-t{color:var(--sage);}
+.b3 .n-t{color:var(--teal);}
+.flow{margin-top:32px;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));
+  border:1px solid var(--line);border-radius:6px;overflow:hidden;background:var(--surface);}
+.fcell{padding:18px 22px;border-right:1px solid var(--line);}
+.fcell:last-child{border-right:none;}
+.fcell .f-top{font-family:var(--font-mono);font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;
+  color:var(--ink-dim);margin-bottom:8px;}
+.fcell .f-main{font-family:var(--font-head);font-size:17px;font-weight:700;}
+.fcell .f-note{font-size:13.2px;line-height:1.6;color:var(--ink-soft);margin-top:6px;}
+.f1 .f-main{color:var(--terracotta);}
+.f2 .f-main{color:var(--sage);}
+.f3 .f-main{color:var(--teal);}
+.panels{display:grid;grid-template-columns:1.1fr 1fr;gap:26px;margin-top:32px;align-items:start;}
+.panel{background:var(--surface);border:1px solid var(--line);border-radius:6px;padding:26px 28px 24px;}
+.panel h3{font-family:var(--font-head);font-size:19px;margin:0 0 4px;font-weight:700;}
+.panel .p-note{font-size:13.4px;color:var(--ink-dim);margin:0 0 18px;}
+table{width:100%;border-collapse:collapse;font-size:14px;}
+th{text-align:left;font-family:var(--font-mono);font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;
+  color:var(--ink-dim);font-weight:500;padding:0 0 9px;border-bottom:1px solid var(--line-strong);}
+td{padding:9px 0;border-bottom:1px solid var(--line);vertical-align:top;line-height:1.55;}
+tr:last-child td{border-bottom:none;}
+td.term{font-family:var(--font-head);font-weight:700;color:var(--ink);width:36%;font-size:14px;}
+td.mean{color:var(--ink-soft);}
+ol.kuripu{list-style:none;counter-reset:k;margin:0;padding:0;}
+ol.kuripu li{counter-increment:k;position:relative;padding-left:34px;font-size:14px;line-height:1.68;
+  color:var(--ink-soft);margin-bottom:14px;}
+ol.kuripu li:last-child{margin-bottom:0;}
+ol.kuripu li::before{content:counter(k);position:absolute;left:0;top:1px;font-family:var(--font-mono);
+  font-size:11.5px;width:22px;height:22px;border-radius:50%;display:flex;align-items:center;
+  justify-content:center;background:var(--bg-deep);border:1px solid var(--line-strong);color:var(--ink-dim);}
+ol.kuripu li b{color:var(--ink);font-weight:600;}
+.insight{margin-top:32px;padding:34px 38px 32px;background:linear-gradient(180deg,#fffdf9,#fbf5ea);
+  border:1px solid var(--line);border-top:3px solid var(--terracotta);border-radius:6px;}
+.insight .i-tag{font-family:var(--font-mono);font-size:10.5px;letter-spacing:.16em;text-transform:uppercase;
+  color:var(--terracotta);margin-bottom:14px;}
+.insight .i-q{font-family:var(--font-head);font-size:clamp(20px,2.5vw,27px);line-height:1.45;margin:0 0 18px;
+  font-weight:700;}
+.insight p{font-size:15px;line-height:1.82;color:var(--ink-soft);margin:0 0 14px;max-width:82ch;}
+.insight p:last-child{margin-bottom:0;}
+.insight strong{color:var(--ink);font-weight:600;}
+footer{margin-top:64px;padding-top:22px;border-top:1px solid var(--line);font-size:12.5px;
+  color:var(--ink-dim);line-height:1.8;}
+footer b{color:var(--ink-soft);font-weight:600;}
+@media (max-width:960px){
+  .wrap{padding:38px 20px 66px;}
+  .cols{grid-template-columns:1fr;gap:18px;}
+  .bus,.stem{display:none;}
+  .branch{padding-top:0;}
+  .branch::before{display:none;}
+  .bhead .b-count{position:static;display:inline-block;margin-top:10px;}
+  .flow,.panels{grid-template-columns:1fr;}
+  .fcell{border-right:none;border-bottom:1px solid var(--line);}
+  .fcell:last-child{border-bottom:none;}
+  .verse,.insight{padding:24px 22px;}
+}
+@media (prefers-color-scheme:dark){
+  :root{--bg:#17140f;--bg-deep:#221d16;--surface:#1e1a15;--ink:#f2ece1;--ink-soft:#c3b8a8;
+    --ink-dim:#94897a;--line:rgba(242,236,225,0.12);--line-strong:rgba(242,236,225,0.26);
+    --terracotta:#e0784e;--terracotta-dim:#2a1a12;--sage:#a3c260;--sage-dim:#1d2314;
+    --teal:#6cb3c4;--teal-dim:#122226;--gold:#d9a94a;}
+  .root{background:#2a231a;color:#f7f1e6;}
+  .insight{background:linear-gradient(180deg,#1e1a15,#241d15);}
+  .chip{background:rgba(255,255,255,.04);}
+}
+@media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important;}}
+</style>
+<style>
+.sd-back{display:inline-block;margin:0 0 1.3rem;font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.1em;color:#8a7f73;text-decoration:none;border:1px solid rgba(43,38,34,.28);border-radius:6px;padding:5px 11px;background:rgba(255,253,249,.9)}
+.sd-back:hover{color:#b4441f;border-color:#b4441f;text-decoration:none}
+</style>
+</head>
+<body>
+<div class="wrap">
+<a class="sd-back" href="../index.html#songs">← பாடல்களின் பட்டியல்</a> · <a class="sd-back" href="../12-indiriya-maanatha-kaatchi/index.html">← 12</a>
+
+  <div class="eyebrow">சிவஞான சித்தியார் சுபக்கம் · ஞானபாதம் · பாடல் 13</div>
+  <h1>தன்வேதனைக் காட்சியும் யோகக் காட்சியும்</h1>
+  <p class="sub">நான்காகப் பிரிக்கப்பட்ட காட்சியின் கடைசி இரண்டு இங்கே வரையறுக்கப்படுகின்றன. ஒன்று தனக்கு நேர்வதை அறிகிறது; மற்றது மலம் நீங்கிய நிலையில் எல்லாவற்றையும் காண்கிறது.</p>
+  <div class="meta">
+    <span class="chip">பாடல் 13 / 13</span>
+    <span class="chip">ஞானபாதம் · பகுதி 7</span>
+    <span class="chip">2 காட்சிகள்</span>
+    <span class="chip">5 தத்துவங்கள்</span>
+    <span class="chip">பக். 27 – 29</span>
+  </div>
+  <div class="verse">
+    <div class="tag">மூலம் — பாடல் 13</div>
+    <p>
+      அருந்தின்பத் துன்ப முள்ளத் தறிவினுக் கராக மாதி<br>
+      தருந்தன்வே தனையாங் காட்சி சமாதியான் மலங்கள் வாட்டிப்<br>
+      பொருந்திய தேச கால வியல்பகல் பொருள்க ளெல்லாம்<br>
+      இருந்துணர் கின்ற ஞான மியோகநற் காண்ட லாமே.
+    </p>
+    <div class="gloss">அராகம் முதலிய ஐந்து தத்துவங்களால் செலுத்தப்பட்டு, அனுபவிக்கப்படும் இன்ப துன்பங்கள் ஆன்மாவின் அறிவிற்கு விடயமாதல் தன்வேதனைக் காட்சி எனப்படும். மல சத்திகளை அட்டாங்க யோக சமாதியால் கெடுத்து, ஓரிடத்திருந்து, மூவிடத்தும் முக்காலத்தும் இயல்பாக விரிந்த பொருள்கள் எல்லாவற்றையும் உணர்கின்ற அறிவு நல்ல யோகக் காட்சியாம்.</div>
+  </div>
+  <div class="sec">
+    <div class="sec-head">
+      <span class="sec-num">01</span>
+      <h2>இரு காட்சிகளும், அவற்றின் கீழ் ஓடும் ஒரு இழை</h2>
+    </div>
+    <p class="sec-note">பாடல் இரு பாதிகளாக நிற்கிறது — தன்வேதனை, யோகம். மூன்றாவது கிளை அவற்றின் கீழ் ஓடும் ஆன்ம சிற்சத்தி, ஏனென்றால் இரண்டு காட்சிகளும் அதே ஒரு ஆற்றலின் இரு நிலைகளே.</p>
+    <div class="map">
+      <div class="rootwrap">
+        <div class="root">
+          <div class="r-main">தன்னை அறிவதும், எல்லாவற்றையும் அறிவதும்</div>
+          <div class="r-sub">பாடல் 13 · தன்வேதனை · யோகம்</div>
+          <div class="r-sub2">ஒரே ஆன்ம சிற்சத்தி — தடைப்பட்ட நிலையும், தடை நீங்கிய நிலையும்</div>
+        </div>
+        <div class="stem"></div>
+        <div class="bus"></div>
+      </div>
+
+      <div class="cols">
+        <div class="branch b1">
+          <div class="bhead">
+            <span class="b-count">1 / 3</span>
+            <div class="b-name">தன்வேதனைக் காட்சி</div>
+            <div class="b-eq">தனக்கு நேர்வதை அறிதல்</div>
+            <div class="b-desc">இன்ப துன்பங்களை, பொறிகளின் துணையின்றி, ஆன்மாவின் அறிவு தானே அறிவது.</div>
+          </div>
+          <div class="children">
+            <div class="node"><div class="card">
+              <div class="n-t">அராகம் ஆதி ஐந்து</div>
+              <div class="n-s">கலை · காலம் · நியதி · வித்தை · அராகம்</div>
+              <div class="n-d">இந்த ஐந்து தத்துவங்களும் உயிரை இயக்கி, அனுபவத்தை அதன் அறிவுக்கு விடயமாக்குகின்றன.</div>
+              <div class="n-x"><b>குறிப்பு 1:</b> சாத்துவிக குணத்தோடு கூடினால் இன்பமாகவும், தமோ குணத்தோடு கூடினால் துன்பமாகவும் தோன்றும்.</div>
+            </div></div>
+
+            <div class="node"><div class="card">
+              <div class="n-t">அருந்தின்பத் துன்பம்</div>
+              <div class="n-s">அருந்து — அனுபவி</div>
+              <div class="n-d">அனுபவிக்கப்படும் இன்பமும் துன்பமும். பாடல் ‘அருந்து’ என்பதை அனுபவித்தல் என்றே கொள்கிறது.</div>
+            </div></div>
+
+            <div class="node"><div class="card">
+              <div class="n-t">உள்ளத்து அறிவு</div>
+              <div class="n-s">ஆன்மாவின் அறிவு</div>
+              <div class="n-d">அவ்வனுபவங்கள் ஆன்மாவின் அறிவிற்கு விடயமாதலே தன்வேதனைக் காட்சி எனப்படும்.</div>
+            </div></div>
+
+            <div class="node"><div class="card">
+              <div class="n-t">இந்திரிய சகாயம் வேண்டா</div>
+              <div class="n-s">தன் + வேதனை</div>
+              <div class="n-d">பொறிகளின் துணை இல்லாமலே சுக துக்க அனுபவங்களை அறிவதால் இப்பெயர் பெற்றது.</div>
+              <div class="n-x"><b>தன்</b> — தன்னுடைய; <b>வேதனை</b> — சுக துக்கம் முதலிய அநுபவம்.</div>
+            </div></div>
+
+          </div>
+        </div>
+
+        <div class="branch b2">
+          <div class="bhead">
+            <span class="b-count">2 / 3</span>
+            <div class="b-name">யோகக் காட்சி</div>
+            <div class="b-eq">சமாதியால் மலம் நீங்கிக் காண்டல்</div>
+            <div class="b-desc">மல சத்திகள் தடுத்து நிற்கும் காணும் ஆற்றலைச் சமாதி நீக்கும்போது நிகழ்வது.</div>
+          </div>
+          <div class="children">
+            <div class="node"><div class="card">
+              <div class="n-t">மலங்கள் வாட்டி</div>
+              <div class="n-s">வாட்டுதல் — கெடுத்து நீக்குதல்</div>
+              <div class="n-d">மல சத்திகள் ஆன்மாவின் காணும் இயல்பைத் தடுத்து நிற்கின்றன; சமாதி அவற்றை வாட்டி நீக்குகிறது.</div>
+            </div></div>
+
+            <div class="node"><div class="card">
+              <div class="n-t">அட்டாங்க யோக சமாதி</div>
+              <div class="n-s">இயமம் · நியமம் முதல் எட்டு உறுப்பு</div>
+              <div class="n-d">இயமம், நியமம் முதலிய எட்டு உறுப்புகளால் ஆன யோக சமாதி — இதுவே மலத்தை நீக்கும் கருவி.</div>
+            </div></div>
+
+            <div class="node"><div class="card">
+              <div class="n-t">மூவிடம் · முக்காலம்</div>
+              <div class="n-s">மேல் · கீழ் · நடு | இறந்த · நிகழ் · எதிர்</div>
+              <div class="n-d">மூவிடம் என்பது மேலும் கீழும் நடுவுமாகிய மூன்று இடங்கள்; முக்காலம் என்பது மூன்று காலங்கள்.</div>
+            </div></div>
+
+            <div class="node"><div class="card">
+              <div class="n-t">இருந்து உணர்கின்ற ஞானம்</div>
+              <div class="n-s">ஓரிடத்திருந்து காண்டல்</div>
+              <div class="n-d">ஓரிடத்திருந்து, மூவிடத்தும் முக்காலத்தும் இயல்பாக விரிந்த பொருள்கள் எல்லாவற்றையும் உணர்கின்ற அறிவே யோகக் காட்சி.</div>
+            </div></div>
+
+          </div>
+        </div>
+
+        <div class="branch b3">
+          <div class="bhead">
+            <span class="b-count">3 / 3</span>
+            <div class="b-name">ஆன்ம சிற்சத்தி</div>
+            <div class="b-eq">இரண்டிற்கும் அடியான இழை</div>
+            <div class="b-desc">உரையாசிரியரின் இரண்டாம் குறிப்பு இதை வெளிப்படையாகச் சொல்கிறது — இரண்டு காட்சிகளும் ஒரே ஆற்றலின் இரு நிலைகள்.</div>
+          </div>
+          <div class="children">
+            <div class="node"><div class="card">
+              <div class="n-t">இயல்பாகக் காணும் ஆற்றல்</div>
+              <div class="n-s">ஆன்ம சிற்சத்தி</div>
+              <div class="n-d">ஆன்ம சிற்சத்தி மூவிடத்தும் முக்காலத்தும் விரிந்த பொருள்களைக் காணும் இயல்புடையது.</div>
+            </div></div>
+
+            <div class="node"><div class="card">
+              <div class="n-t">தடுப்பது மலம்</div>
+              <div class="n-s">மல சத்திகள்</div>
+              <div class="n-d">அவ்வாறு காணவொட்டாது தடை செய்து நிற்பன மல சத்திகளாம். அதாவது தடை ஆன்மாவில் இல்லை, மலத்தில்.</div>
+            </div></div>
+
+            <div class="node"><div class="card">
+              <div class="n-t">ஏகதேசம் → விரிவு</div>
+              <div class="n-s">சிறிதே விளங்குதல்</div>
+              <div class="n-d">மற்ற காட்சிகளில் ஆன்ம சிற்சத்தி ஏகதேசமாக விளங்குகிறது; யோக சமாதியில் தடை நீங்கி முழுமையாக விரிகிறது.</div>
+            </div></div>
+
+            <div class="node"><div class="card">
+              <div class="n-t">சிவசத்தி நீக்குகிறது</div>
+              <div class="n-s">வியஞ்சகம்</div>
+              <div class="n-d">மலத்தைச் சிறிதே நீக்குவது சிவசத்தி; கலை முதலிய தத்துவங்கள் அதற்கு வியஞ்சகமாகும்.</div>
+            </div></div>
+
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <div class="flow">
+      <div class="fcell f1">
+        <div class="f-top">அடி 1</div>
+        <div class="f-main">அனுபவம் விடயமாதல்</div>
+        <div class="f-note">ஐந்து தத்துவங்கள் உயிரை இயக்கி, இன்ப துன்பத்தை அதன் அறிவிற்குக் கொண்டு வருகின்றன.</div>
+      </div>
+      <div class="fcell f2">
+        <div class="f-top">அடி 2</div>
+        <div class="f-main">மலம் நீங்குதல்</div>
+        <div class="f-note">சமாதி மல சத்திகளை வாட்ட, தடைப்பட்ட ஆற்றல் விடுபடுகிறது.</div>
+      </div>
+      <div class="fcell f3">
+        <div class="f-top">அடி 3 – 4</div>
+        <div class="f-main">எல்லாம் காண்டல்</div>
+        <div class="f-note">மூவிடத்தும் முக்காலத்தும் உள்ள பொருள்கள் எல்லாவற்றையும் காணும் ஞானம்.</div>
+      </div>
+    </div>
+  </div>
+  <div class="sec">
+    <div class="sec-head">
+      <span class="sec-num">02</span>
+      <h2>உரையாசிரியரின் குறிப்புகளும், நால்வகையில் இதன் இடமும்</h2>
+    </div>
+    <p class="sec-note">இடது புறம் அவருடைய இரு குறிப்புகள்; வலது புறம் இந்தப் பாடல் முடிக்கும் நால்வகைக் கணக்கு.</p>
+    <div class="panels">
+      <div class="panel">
+        <h3>குறிப்புகள்</h3>
+        <p class="p-note">திரு. மு. திருவிளங்கம், பக். 28</p>
+        <ol class="kuripu">
+          <li><b>1. தன்வேதனை.</b> மானதக்காட்சி உணர்வு முக்குணங்களுள் சாத்துவிகத்தோடு கூடும்போது இன்பமாகவும், தமோ குணத்தோடு கூடும்போது துன்பமாகவும் தோன்றும். அந்த உணர்வைப் புருடன் அனுபவிக்கக் கலை, காலம், நியதி, வித்தை, அராகம் என்னும் ஐந்தும் பொருத்தும். இந்திரியங்களின் சகாயம் வேண்டாது தன் சுகதுக்க அனுபவங்களை அறிவில் காண்டலால் ‘தன் வேதனைக் காட்சி’ எனப்பட்டது.</li>
+          <li><b>2. சமாதியான் மலங்கள் வாட்டி.</b> ஆன்ம சிற்சத்தி மூவிடத்தும் முக்காலத்தும் விரிந்த பொருள்களைக் காணும் இயல்புடையது; அவ்வாறு காணவொட்டாது தடை செய்வது மல சத்திகள். அவற்றைச் சிவசத்தி காலம் முதலிய தத்துவங்களாற் சிறிதே நீக்க, ஆன்ம சிற்சத்தி ஏகதேசமாக விளங்கும். யோக சமாதியில் அத்தடை முழுதும் நீங்கி, மூவிடத்தும் முக்காலத்தும் உள்ள பொருள்களைக் காணும் வல்லமை பெறும்.</li>
+        </ol>
+      </div>
+      <div class="panel">
+        <h3>நால்வகைக் காட்சி</h3>
+        <p class="p-note">பாடல் 9-இல் தொடங்கி இங்கே நிறைகிறது</p>
+        <table>
+          <thead><tr><th>காட்சி</th><th>எதை அறிகிறது</th></tr></thead>
+          <tbody>
+            <tr><td class="term">வாயில்</td><td class="mean">பொறிகளின் வழியாக வெளியில் தெரிவது</td></tr>
+            <tr><td class="term">மானதம்</td><td class="mean">மனத்தால், விகற்பத்தோடு அறிவது</td></tr>
+            <tr><td class="term">தன் வேதனை</td><td class="mean">தனக்கு நேரும் இன்ப துன்பத்தை உள்ளிருந்து அறிவது</td></tr>
+            <tr><td class="term">யோகம்</td><td class="mean">சமாதியில் மூவிடம் முக்காலப் பொருள்கள் எல்லாவற்றையும் காண்பது</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+  <div class="insight">
+    <div class="i-tag">என் புரிதல்</div>
+    <div class="i-q">இந்தப் பாடல் ஒரு பட்டியலை முடிக்கவில்லை — ஒரு தடையைப் பற்றிப் பேசுகிறது</div>
+    <p>நான்கு காட்சிகளும் ஒரே வரிசையில் நிற்கின்றன என்று படித்தால், இந்தப் பாடல் கடைசி இரண்டு காட்சிகளைச் சேர்ப்பது போலத் தெரியும். ஆனால் உரையாசிரியர் அதை வேறுவிதமாகக் கட்டுகிறார்: <strong>தடை ஆன்மாவில் இல்லை, மலத்தில்</strong>. ஆன்ம சிற்சத்தி இயல்பாகவே மூவிடத்தும் முக்காலத்தும் உள்ளதைக் காணும் ஆற்றல் உடையது; காண முடியாமை ஒரு திறனின்மை அல்ல, ஒரு மறைப்பு.</p>
+    <p>அப்படிப் படித்தால் தன்வேதனையும் யோகமும் ஒரே அளவுகோலின் இரு முனைகளாகின்றன. ஒன்றில் தடை முழுதும் இருக்கிறது — ஆனால் தனக்கு நேர்வதை மட்டும் அறிய முடிகிறது, ஏனென்றால் அது உள்ளிருந்து வருகிறது. மற்றதில் தடை நீங்குகிறது — அப்போது அதே ஆற்றல் வெளியையும் தொடுகிறது. <strong>வேறுபாடு அறிவின் அளவில் அல்ல, மறைப்பின் அளவில்.</strong></p>
+    <p>இதுவே இந்தப் பகுதி முழுவதற்கும் காரணம் என நான் படிக்கிறேன். அளவை இயல் முழுதும் ‘எப்படி அறிகிறோம்’ என்று கேட்டுக்கொண்டே வந்தது; இங்கே அது ‘எது தடுக்கிறது’ என்று திரும்புகிறது. அதனால் இந்தப் பாடல் நூலின் ஒரு முடிவு அல்ல — ஒரு திருப்பம்.</p>
+  </div>
+  <footer><b>மூலம்:</b> சிவஞான சித்தியார் சுபக்கம், உரை திரு. மு. திருவிளங்கம். யாழ்ப்பாணம் கூட்டுறவுத் தமிழ் நூற்பதிப்பு விற்பனைக் கழகம், 1971 (இரண்டாம் பதிப்பு), பக். 27–29. பாடல் வரிகள் 254 dpi ஸ்கேனோடு சொல் வாரியாக ஒப்பிடப்பட்டுள்ளன.</footer>
+<nav class="sd-nav">
+  <a class="sd-nav-link" href="../12-indiriya-maanatha-kaatchi/index.html">
+    <span class="sd-nav-k">← முன் பாடல் · 12</span>
+    <span class="sd-nav-t">இந்திரியக்காட்சியும் மானதக்காட்சியும்</span>
+  </a>
+  <a class="sd-nav-link sd-nav-link--up" href="../index.html#songs">
+    <span class="sd-nav-k">↑ மேலே</span>
+    <span class="sd-nav-t">பாடல்களின் பட்டியல்</span>
+  </a>
+  <span></span>
+</nav>
+</div>
+</body>
+</html>
