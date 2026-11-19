@@ -15,10 +15,12 @@ Paths below start from `Gnanam Maragam/Book3-Sivagnana-Siddhiyar-Supakkam/`, exc
 
 ## Rules for every step
 
-- A song gets its three-in-one page only after Step 2 is complete for the classes that teach it.
+- A song's three-in-one page is built from the classes processed so far. A song can never be known to be finished, so update the page if a later class adds something.
 - There is one three-in-one page per song, never one per class.
 - `three-voices/class-verse-map.html` is the source for which class teaches which song.
-- Classes are added one at a time, as you listen to each class.
+- Classes are added one at a time, as you listen to each class. From class 17 they switch between the introduction (songs 1–20) and the core (song 21 onward).
+- After each class you send a summary: songs covered, and any student sharing. It is the source for the map.
+- Students' words never go in the Guru's voice. They cannot be marked by time, so anything doubtful is left out.
 - Nothing is merged to `main` until you say so. A push to `main` publishes the site.
 
 ## Step 1: From the book to a song
@@ -56,7 +58,7 @@ Correction covers key terms only. Other recognition errors stay in the transcrip
 
 ## Step 3: From song and classes to the three-in-one page
 
-Do this once per song, after Steps 1 and 2 are complete for that song.
+Do this for a song once its mind map exists and at least one class that teaches it is corrected. Update it when a later class adds something.
 
 1. Use the map to find every class that teaches the song.
 2. Read those classes and pick the points worth citing.
@@ -80,14 +82,14 @@ There is no guide for this step yet. These are the steps as agreed so far.
 
 This repository is public, so business proposals and firm details stay out of it.
 
-## Where things stand (2026-11-07)
+## Where things stand (2026-11-20)
 
 | Step | Done | Next |
 |---|---|---|
-| 1 | Mind maps for songs 1–13 · 122 words in the master list, 121 confirmed · glossary built from it | Song 14 |
-| 2 | Classes 1–16 corrected for key terms | Class 17, then on to class 25 as you listen. Source files for all 25 are ready |
-| 3 | Pages for songs 1–12 | Song 13, once its classes from 17 onward are corrected |
-| 4 | 24 seeds available · two business documents kept privately | Pick seeds, and agree the proposal format |
+| 1 | Mind maps for songs 1–14 · 135 words in the master list, 134 confirmed | Songs 15, 21, 22, 23 |
+| 2 | Classes 1–17 corrected for key terms | Classes 18–23 |
+| 3 | Pages for songs 1–12; song 12 now uses classes 13, 15, 16, 17 | Songs 13, 14, 21 |
+| 4 | 24 seeds · three private business notes, the third from seed 8B | Your own seed picks |
 
 Open items:
 

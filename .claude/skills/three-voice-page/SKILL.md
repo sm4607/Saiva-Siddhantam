@@ -12,12 +12,16 @@ In this repository, read `docs/agent-skills/transcript-and-3in1/procedures.md`, 
 
 ## Before you start
 
-**Check that the page is due.** A song gets its page only after the classes that teach it are in the
-repository and corrected, and the mind map exists. If the classes are incomplete, stop and say so.
-Do not build ahead on a partial overview, however much material one class has.
+**Use the classes processed so far.** A song's page needs its mind map and the corrected
+transcripts of the classes that teach it. You cannot know when a song is finished, because the
+teacher may return to it later, so build from what is in and update the page if a later class adds
+something. Say on the page which classes it uses.
 
 **One page per song, never per class.** Use the class map to find every class that teaches the song.
-That map is the user's source, so follow it and do not rewrite its rows.
+That map is the user's source, so follow it and do not rewrite its rows. Classes can switch between
+parts of the book, so one song's classes may be far apart.
+
+**Keep students out of the teacher's voice.** Students sometimes share their understanding of earlier classes, usually for one or two songs, while the teacher speaks for most of the class. The transcript gives everyone the same speaker label, so read the lines around a passage for signs that a student is speaking, such as the teacher inviting a summary. Leave out anything doubtful rather than credit a student's words to the teacher.
 
 ## Page order
 

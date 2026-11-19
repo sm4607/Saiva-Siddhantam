@@ -129,8 +129,8 @@ Do this after listening. Add a row to `three-voices/class-verse-map.html`, then 
 
 ## 2.1 What it is
 
-This is Step 3. Build a page only when the classes that teach the song are in the repository and
-corrected, and use the map to find them. One self-contained HTML page per verse, never per class, at
+This is Step 3. Build a page from the classes that teach the song and are already in the repository
+and corrected; use the map to find them, and keep any student sharing out of the Guru's voice. One self-contained HTML page per verse, never per class, at
 `Gnanam Maragam/Book3-Sivagnana-Siddhiyar-Supakkam/three-voices/padal-<NN>-<slug>.html`.
 
 It carries three voices and a fourth block that is the maker's:

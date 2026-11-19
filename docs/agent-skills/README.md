@@ -24,8 +24,9 @@ or a person can read them and produce the same artefacts.
 
 ## Rules that run through both
 
-**Step 3 only after Step 2.** A song gets its three-in-one page only when the classes that teach it
-are in the repository and corrected. Do not build one ahead of that.
+**Step 3 only after Step 2.** A song's three-in-one page is built from classes that are already in
+the repository and corrected. Do not wait for a song to be finished; that cannot be known. Update the
+page if a later class adds something.
 
 **One three-in-one page per song, never per class.** Several classes can feed one page, and a class
 need not be cited at all.
@@ -33,8 +34,12 @@ need not be cited at all.
 **The map is the source for mappings.** `three-voices/class-verse-map.html` says which class teaches
 which song. Do not override its rows.
 
-**Classes are done one at a time.** Classes 17 onward are added as the user listens to each class,
-not as a batch.
+**Classes are done one at a time.** Classes 17 onward are added as the user listens to each class.
+From class 17 they switch between the introduction (songs 1–20) and the core (song 21 onward), and
+the user's summary after each class says which songs it covered.
+
+**Students are not the Guru.** Some classes include students sharing their understanding. Their words
+never go in the Guru's voice; when it is unclear who is speaking, leave the passage out.
 
 **Nothing goes to `main` unshown.** A change is proposed with the file, the exact content and the
 branch, and waits for a yes.

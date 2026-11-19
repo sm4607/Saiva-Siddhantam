@@ -62,8 +62,10 @@ banner accurate. The audio stays the authority.
 
 ## Mapping
 
-Which class teaches which song comes from the user's class map. Do not guess a song number from a
-transcript. If a class needs a row, ask, or mark how you derived it.
+Which class teaches which song comes from the user's class map, and from the summary the user sends
+after each class. Do not guess a song number from a transcript. Check the summary against the
+transcript, and raise any difference instead of overriding it. If a class needs a row, ask, or mark
+how you derived it.
 
 ## Done when
 

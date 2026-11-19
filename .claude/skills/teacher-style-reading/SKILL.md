@@ -17,6 +17,18 @@ references matter later, so keep them.
 The first three are form, not content. Do not quote them back as substance. Do not pad an answer
 with them either.
 
+## When classes switch between parts
+
+A teacher may move between parts of a book from class to class: for this text, from class 17 the
+classes alternate between the introduction (songs 1–20) and the core (song 21 onward). So one class
+can cover songs far apart, and a song can be taught across classes weeks apart. The user sends a
+summary after each class with the songs covered; take that as the source, and raise any difference
+with the transcript instead of overriding it.
+
+## When students speak
+
+Students sometimes share their understanding of earlier classes, usually for one or two songs, while the teacher speaks for most of the class. The transcript gives everyone the same speaker label, so read the lines around a passage for signs that a student is speaking, such as the teacher inviting a summary. Leave out anything doubtful rather than credit a student's words to the teacher. In this class, the teacher first asked for a student summary at the end of class 17.
+
 ## Reading a class
 
 1. **Separate form from substance.** Set aside salutations and thanks.

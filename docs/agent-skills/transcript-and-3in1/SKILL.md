@@ -15,8 +15,8 @@ starting either one — it is the full runbook, with the generator and the page 
 | **A. Class transcript** | `சித்தியார் வகுப்பு <N>.json` | `recordings/siddhiyar-class-<NN>/transcript.md`, `meta.json`, `corrections.tsv`, `review.md`, `index.html` |
 | **B. 3-in-1 page** | verse text + commentary + class transcript | `three-voices/padal-<NN>-<slug>.html` |
 
-**A comes before B. Always.** This is Step 2 before Step 3: a song gets its page only when the classes
-that teach it are in the repository and corrected. A page's third voice links to `#L<line>` in the
+**A comes before B. Always.** This is Step 2 before Step 3: a page uses only classes that are in the
+repository and corrected. Build from those, and update the page when a later class adds something. A page's third voice links to `#L<line>` in the
 transcript, so a card cannot be written until its line number exists. One page per song, never per
 class. `three-voices/class-verse-map.html` says which classes teach which song.
 
