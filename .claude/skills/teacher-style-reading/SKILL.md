@@ -14,6 +14,8 @@ Most classes run in the same order: salutations, thanks, recap, then the new mat
 classes of a book often differ, because they introduce it and refer back to earlier books. Those
 references matter later, so keep them.
 
+A recording may also open and close with a short voice-over that introduces the class and gives links; that is not the teacher. Greetings and thanks right after it are usually the teacher's own opening.
+
 The first three are form, not content. Do not quote them back as substance. Do not pad an answer
 with them either.
 
