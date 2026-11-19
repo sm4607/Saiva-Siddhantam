@@ -294,6 +294,48 @@
         </a>
       </div>
       </details>
+      <details class="folder" id="vanika" hidden>
+      <summary><span class="f-name"><span class="n">வணிகப் பார்வை (Business)</span><h2>வணிக இணை <span style="font-weight:400;font-size:.8em;opacity:.75">(Business lens · on this computer only)</span></h2></span><span class="f-count" data-vanika-count></span></summary>
+      <p class="sec-note">தனிப்பட்ட ஆவணங்கள். இந்தக் கணினியில் மட்டுமே தெரியும்; பொதுத் தளத்தில் இல்லை.</p>
+      <div class="ledger" data-vanika-list></div>
+      </details>
+      <script>
+      // Shows the private business notes only when browsing on this computer.
+      // The notes and their list live outside the public repository, so on the
+      // public site this section stays hidden and nothing is requested.
+      (function () {
+        var local = ['localhost', '127.0.0.1', '::1', '[::1]'];
+        if (local.indexOf(location.hostname) === -1) return;
+        fetch('vanika-inai/notes.json', {cache: 'no-store'})
+          .then(function (r) { return r.ok ? r.json() : null; })
+          .then(function (notes) {
+            if (!notes || !notes.length) return;
+            var list = document.querySelector('[data-vanika-list]');
+            notes.forEach(function (n, i) {
+              var a = document.createElement('a');
+              a.className = 'row';
+              a.href = 'vanika-inai/' + encodeURIComponent(n.file);
+              var num = document.createElement('div');
+              num.className = 'num';
+              num.textContent = String(i + 1).padStart(2, '0');
+              var t = document.createElement('div');
+              t.className = 't';
+              t.textContent = n.title;
+              var small = document.createElement('small');
+              small.textContent = n.note || '';
+              t.appendChild(small);
+              var go = document.createElement('div');
+              go.className = 'go';
+              go.textContent = 'திறக்க →';
+              a.append(num, t, go);
+              list.appendChild(a);
+            });
+            document.querySelector('[data-vanika-count]').textContent = notes.length + ' ஆவணங்கள்';
+            document.getElementById('vanika').hidden = false;
+          })
+          .catch(function () {});
+      })();
+      </script>
       </div>
     </div>
   </section>
