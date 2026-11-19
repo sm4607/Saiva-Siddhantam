@@ -1,0 +1,23 @@
+{
+  "slug": "siddhiyar-class-22",
+  "date": "unknown",
+  "songs": [
+    14,
+    21,
+    22,
+    23
+  ],
+  "status": "terms-corrected",
+  "source_file": "சித்தியார்_வகுப்பு_22.txt",
+  "audio_file": "சித்தியார் வகுப்பு 22.mp3",
+  "audio_committed": false,
+  "source_channel": "https://www.youtube.com/@KarkaUyarValluvam",
+  "source_url": "",
+  "model": "platform upload (json segments re-timed)",
+  "mode": "codemix",
+  "language": "ta-IN",
+  "diarization": true,
+  "keyterms_used": 152,
+  "duration_seconds": 3427,
+  "generated_at": "2026-11-19T20:50:03+00:00"
+}

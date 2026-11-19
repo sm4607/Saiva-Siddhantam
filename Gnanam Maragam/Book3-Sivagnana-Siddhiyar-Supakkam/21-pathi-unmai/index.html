@@ -1,0 +1,414 @@
+<!DOCTYPE html>
+<html lang="ta">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>பதியுண்மையும் பதியிலக்கணமும் — சிவஞான சித்தியார் சுபக்கம்</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Tamil:wght@400;500;600;700&family=Noto+Serif+Tamil:wght@600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#faf7f2;--bg-deep:#f3ede3;--surface:#fffdf9;
+  --ink:#2b2622;--ink-soft:#5c534a;--ink-dim:#8a7f73;
+  --line:rgba(43,38,34,0.13);--line-strong:rgba(43,38,34,0.28);
+  --terracotta:#b4441f;--terracotta-dim:#f6e6de;
+  --sage:#4f6b1e;--sage-dim:#eaf0dd;
+  --teal:#1b5a68;--teal-dim:#e0ecef;
+  --gold:#a9761a;--gold-dim:#f7eed9;
+  --font-body:'Noto Sans Tamil','Latha',system-ui,sans-serif;
+  --font-head:'Noto Serif Tamil','Noto Sans Tamil',serif;
+  --font-mono:'IBM Plex Mono',monospace;
+}
+*{box-sizing:border-box;}
+body{margin:0;
+  background:radial-gradient(1200px 600px at 12% -8%, rgba(180,68,31,0.07), transparent 60%),
+             radial-gradient(900px 500px at 92% 4%, rgba(27,90,104,0.07), transparent 60%),
+             var(--bg);
+  color:var(--ink);font-family:var(--font-body);font-size:16px;line-height:1.65;
+  -webkit-font-smoothing:antialiased;}
+.wrap{max-width:1240px;margin:0 auto;padding:52px 32px 92px;}
+.eyebrow{font-family:var(--font-mono);font-size:11.5px;letter-spacing:.16em;text-transform:uppercase;
+  color:var(--terracotta);display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin-bottom:20px;}
+.eyebrow::before{content:"";width:26px;height:1px;background:var(--terracotta);display:block;}
+h1{font-family:var(--font-head);font-size:clamp(34px,4.8vw,56px);line-height:1.16;margin:0 0 14px;
+  font-weight:700;letter-spacing:-0.01em;}
+.sub{font-size:16.5px;color:var(--ink-soft);max-width:70ch;margin:0;}
+.meta{display:flex;flex-wrap:wrap;gap:8px;margin-top:26px;}
+.chip{font-family:var(--font-mono);font-size:11.5px;letter-spacing:.04em;padding:5px 11px;
+  border:1px solid var(--line-strong);border-radius:999px;color:var(--ink-soft);background:rgba(255,255,255,.5);}
+.verse{margin:42px 0 0;padding:34px 38px 30px;background:var(--surface);border:1px solid var(--line);
+  border-left:3px solid var(--gold);border-radius:4px;
+  box-shadow:0 1px 2px rgba(43,38,34,.04),0 12px 32px -22px rgba(43,38,34,.4);}
+.verse .tag{font-family:var(--font-mono);font-size:11px;letter-spacing:.16em;text-transform:uppercase;
+  color:var(--gold);margin-bottom:16px;}
+.verse p{font-family:var(--font-head);font-size:clamp(16px,1.95vw,20.5px);line-height:2.05;margin:0;}
+.verse .gloss{font-family:var(--font-body);font-size:14.5px;color:var(--ink-soft);margin-top:18px;
+  padding-top:16px;border-top:1px dashed var(--line);line-height:1.8;}
+.sec{margin-top:72px;}
+.sec-head{display:flex;align-items:baseline;gap:14px;margin-bottom:8px;}
+.sec-num{font-family:var(--font-mono);font-size:12px;color:var(--terracotta);letter-spacing:.1em;}
+h2{font-family:var(--font-head);font-size:clamp(23px,2.8vw,31px);margin:0;font-weight:700;letter-spacing:-0.01em;}
+.sec-note{color:var(--ink-soft);font-size:15px;margin:0 0 32px;max-width:78ch;}
+.map{margin-top:8px;}
+.rootwrap{display:flex;flex-direction:column;align-items:center;}
+.root{background:var(--ink);color:#faf7f2;padding:20px 40px 18px;border-radius:6px;text-align:center;
+  box-shadow:0 14px 34px -18px rgba(43,38,34,.65);max-width:760px;}
+.root .r-main{font-family:var(--font-head);font-size:clamp(21px,2.5vw,29px);font-weight:700;line-height:1.3;}
+.root .r-sub{font-family:var(--font-mono);font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;
+  color:rgba(250,247,242,.62);margin-top:7px;}
+.root .r-sub2{font-size:13.5px;color:rgba(250,247,242,.82);margin-top:9px;}
+.stem{width:2px;height:34px;background:var(--line-strong);}
+.bus{height:2px;background:var(--line-strong);margin:0 16.66%;}
+.cols{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:26px;align-items:start;}
+.branch{position:relative;padding-top:32px;}
+.branch::before{content:"";position:absolute;top:0;left:50%;width:2px;height:32px;
+  background:var(--line-strong);transform:translateX(-1px);}
+.bhead{border-radius:6px;padding:18px 20px 16px;border:1px solid;position:relative;}
+.bhead .b-name{font-family:var(--font-head);font-size:21px;font-weight:700;line-height:1.3;}
+.bhead .b-eq{font-family:var(--font-mono);font-size:10.5px;letter-spacing:.09em;text-transform:uppercase;
+  margin-top:6px;opacity:.85;}
+.bhead .b-desc{font-size:13.6px;line-height:1.62;margin-top:9px;color:var(--ink-soft);}
+.bhead .b-count{position:absolute;top:-11px;right:14px;font-family:var(--font-mono);font-size:10.5px;
+  letter-spacing:.1em;padding:2px 9px;border-radius:999px;background:var(--surface);
+  border:1px solid var(--line-strong);color:var(--ink-dim);}
+.b1 .bhead{background:var(--terracotta-dim);border-color:rgba(180,68,31,.28);}
+.b1 .b-name,.b1 .b-eq{color:var(--terracotta);}
+.b2 .bhead{background:var(--sage-dim);border-color:rgba(79,107,30,.3);}
+.b2 .b-name,.b2 .b-eq{color:var(--sage);}
+.b3 .bhead{background:var(--teal-dim);border-color:rgba(27,90,104,.3);}
+.b3 .b-name,.b3 .b-eq{color:var(--teal);}
+.children{margin:20px 0 0 14px;padding-left:18px;border-left:1px solid var(--line-strong);}
+.b1 .children{border-left-color:rgba(180,68,31,.35);}
+.b2 .children{border-left-color:rgba(79,107,30,.38);}
+.b3 .children{border-left-color:rgba(27,90,104,.35);}
+.node{position:relative;margin-bottom:13px;}
+.node:last-child{margin-bottom:0;}
+.node::before{content:"";position:absolute;left:-18px;top:20px;width:16px;height:1px;background:var(--line-strong);}
+.b1 .node::before{background:rgba(180,68,31,.35);}
+.b2 .node::before{background:rgba(79,107,30,.38);}
+.b3 .node::before{background:rgba(27,90,104,.35);}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:5px;padding:13px 16px 14px;
+  transition:border-color .18s ease,transform .18s ease,box-shadow .18s ease;}
+.card:hover{border-color:var(--line-strong);transform:translateY(-1px);
+  box-shadow:0 10px 22px -18px rgba(43,38,34,.6);}
+.card .n-t{font-family:var(--font-head);font-size:16px;font-weight:700;line-height:1.42;}
+.card .n-s{font-family:var(--font-mono);font-size:10.5px;letter-spacing:.05em;color:var(--ink-dim);margin-top:3px;}
+.card .n-d{font-size:13.5px;line-height:1.62;color:var(--ink-soft);margin-top:8px;}
+.card .n-x{font-size:12.8px;line-height:1.6;color:var(--ink-dim);margin-top:9px;padding-top:9px;
+  border-top:1px dotted var(--line);}
+.card .n-x b{color:var(--ink-soft);font-weight:600;}
+.b1 .n-t{color:var(--terracotta);}
+.b2 .n-t{color:var(--sage);}
+.b3 .n-t{color:var(--teal);}
+.flow{margin-top:32px;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));
+  border:1px solid var(--line);border-radius:6px;overflow:hidden;background:var(--surface);}
+.fcell{padding:18px 22px;border-right:1px solid var(--line);}
+.fcell:last-child{border-right:none;}
+.fcell .f-top{font-family:var(--font-mono);font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;
+  color:var(--ink-dim);margin-bottom:8px;}
+.fcell .f-main{font-family:var(--font-head);font-size:17px;font-weight:700;}
+.fcell .f-note{font-size:13.2px;line-height:1.6;color:var(--ink-soft);margin-top:6px;}
+.f1 .f-main{color:var(--terracotta);}
+.f2 .f-main{color:var(--sage);}
+.f3 .f-main{color:var(--teal);}
+.panels{display:grid;grid-template-columns:1.1fr 1fr;gap:26px;margin-top:32px;align-items:start;}
+.panel{background:var(--surface);border:1px solid var(--line);border-radius:6px;padding:26px 28px 24px;}
+.panel h3{font-family:var(--font-head);font-size:19px;margin:0 0 4px;font-weight:700;}
+.panel .p-note{font-size:13.4px;color:var(--ink-dim);margin:0 0 18px;}
+table{width:100%;border-collapse:collapse;font-size:14px;}
+th{text-align:left;font-family:var(--font-mono);font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;
+  color:var(--ink-dim);font-weight:500;padding:0 0 9px;border-bottom:1px solid var(--line-strong);}
+td{padding:9px 0;border-bottom:1px solid var(--line);vertical-align:top;line-height:1.55;}
+tr:last-child td{border-bottom:none;}
+td.term{font-family:var(--font-head);font-weight:700;color:var(--ink);width:36%;font-size:14px;}
+td.mean{color:var(--ink-soft);}
+ol.kuripu{list-style:none;counter-reset:k;margin:0;padding:0;}
+ol.kuripu li{counter-increment:k;position:relative;padding-left:34px;font-size:14px;line-height:1.68;
+  color:var(--ink-soft);margin-bottom:14px;}
+ol.kuripu li:last-child{margin-bottom:0;}
+ol.kuripu li::before{content:counter(k);position:absolute;left:0;top:1px;font-family:var(--font-mono);
+  font-size:11.5px;width:22px;height:22px;border-radius:50%;display:flex;align-items:center;
+  justify-content:center;background:var(--bg-deep);border:1px solid var(--line-strong);color:var(--ink-dim);}
+ol.kuripu li b{color:var(--ink);font-weight:600;}
+.insight{margin-top:32px;padding:34px 38px 32px;background:linear-gradient(180deg,#fffdf9,#fbf5ea);
+  border:1px solid var(--line);border-top:3px solid var(--terracotta);border-radius:6px;}
+.insight .i-tag{font-family:var(--font-mono);font-size:10.5px;letter-spacing:.16em;text-transform:uppercase;
+  color:var(--terracotta);margin-bottom:14px;}
+.insight .i-q{font-family:var(--font-head);font-size:clamp(20px,2.5vw,27px);line-height:1.45;margin:0 0 18px;
+  font-weight:700;}
+.insight p{font-size:15px;line-height:1.82;color:var(--ink-soft);margin:0 0 14px;max-width:82ch;}
+.insight p:last-child{margin-bottom:0;}
+.insight strong{color:var(--ink);font-weight:600;}
+footer{margin-top:64px;padding-top:22px;border-top:1px solid var(--line);font-size:12.5px;
+  color:var(--ink-dim);line-height:1.8;}
+footer b{color:var(--ink-soft);font-weight:600;}
+@media (max-width:960px){
+  .wrap{padding:38px 20px 66px;}
+  .cols{grid-template-columns:1fr;gap:18px;}
+  .bus,.stem{display:none;}
+  .branch{padding-top:0;}
+  .branch::before{display:none;}
+  .bhead .b-count{position:static;display:inline-block;margin-top:10px;}
+  .flow,.panels{grid-template-columns:1fr;}
+  .fcell{border-right:none;border-bottom:1px solid var(--line);}
+  .fcell:last-child{border-bottom:none;}
+  .verse,.insight{padding:24px 22px;}
+}
+@media (prefers-color-scheme:dark){
+  :root{--bg:#17140f;--bg-deep:#221d16;--surface:#1e1a15;--ink:#f2ece1;--ink-soft:#c3b8a8;
+    --ink-dim:#94897a;--line:rgba(242,236,225,0.12);--line-strong:rgba(242,236,225,0.26);
+    --terracotta:#e0784e;--terracotta-dim:#2a1a12;--sage:#a3c260;--sage-dim:#1d2314;
+    --teal:#6cb3c4;--teal-dim:#122226;--gold:#d9a94a;}
+  .root{background:#2a231a;color:#f7f1e6;}
+  .insight{background:linear-gradient(180deg,#1e1a15,#241d15);}
+  .chip{background:rgba(255,255,255,.04);}
+}
+@media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important;}}
+</style>
+<style>
+.sd-back{display:inline-block;margin:0 0 1.3rem;font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.1em;color:#8a7f73;text-decoration:none;border:1px solid rgba(43,38,34,.28);border-radius:6px;padding:5px 11px;background:rgba(255,253,249,.9)}
+.sd-back:hover{color:#b4441f;border-color:#b4441f;text-decoration:none}
+</style>
+<style>
+.sd-back{display:inline-block;margin:0 0 1.3rem;font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.1em;color:#8a7f73;text-decoration:none;border:1px solid rgba(43,38,34,.28);border-radius:6px;padding:5px 11px;background:rgba(255,253,249,.9)}
+.sd-back:hover{color:#b4441f;border-color:#b4441f;text-decoration:none}
+.sd-nav{display:flex;justify-content:space-between;gap:1rem;flex-wrap:wrap;
+  margin:2.6rem 0 0;padding-top:1.5rem;border-top:1px solid rgba(43,38,34,.13)}
+.sd-nav-link{display:flex;flex-direction:column;gap:.15rem;text-decoration:none;
+  border:1px solid rgba(43,38,34,.28);border-radius:8px;padding:.7rem 1.05rem;
+  min-width:13rem;background:#fffdf9;color:#2b2622;transition:border-color .15s ease,transform .15s ease}
+.sd-nav-link:hover{border-color:#b4441f;text-decoration:none;transform:translateY(-1px)}
+.sd-nav-k{font-family:'Noto Sans Tamil',sans-serif;font-size:12px;letter-spacing:.02em;color:#8a7f73}
+.sd-nav-t{font-family:'Noto Serif Tamil',serif;font-size:.97rem;font-weight:600;line-height:1.45}
+.sd-nav-link--next{text-align:right;margin-left:auto}
+.sd-top{display:flex;justify-content:space-between;gap:.6rem;flex-wrap:wrap}
+.sd-top-pn{display:flex;gap:.5rem}
+.sd-nav{display:grid;grid-template-columns:1fr auto 1fr}
+.sd-nav-link{min-width:0}
+.sd-nav-link--next{margin-left:0}
+.sd-nav-link--up{text-align:center}
+@media (max-width:620px){.sd-nav{grid-template-columns:1fr}.sd-nav>span{display:none}.sd-nav-link--up,.sd-nav-link--next{text-align:left}}
+</style>
+</head>
+<body>
+<div class="wrap">
+<a class="sd-back" href="../index.html#songs">← பாடல்களின் பட்டியல்</a> · <a class="sd-back" href="../15-moovagai-pakkam/index.html">← 15</a> · <a class="sd-back" href="../22-ulagam-thotra-naasam/index.html">22 →</a>
+
+  <div class="eyebrow">சிவஞான சித்தியார் சுபக்கம் · முதற் சூத்திரம் · பாடல் 21</div>
+  <h1>பதியுண்மையும் பதியிலக்கணமும்</h1>
+  <p class="sub">மையப் பகுதியின் முதல் பாடல். உலகம் தோன்றி நின்று ஒடுங்குவதால் அதைச் செய்யும் கருத்தா ஒருவன் வேண்டும்; அவன் எத்தகையவன் என்பதையும் தொகுத்துச் சொல்கிறது.</p>
+  <div class="meta">
+    <span class="chip">பாடல் 21 · மையம்</span>
+    <span class="chip">முதற் சூத்திரம் · பதியுண்மை</span>
+    <span class="chip">2 கூறுகள்</span>
+    <span class="chip">பக். 57 – 59</span>
+  </div>
+  <div class="verse">
+    <div class="tag">மூலம் — பாடல் 21 · பதியுண்மையும் பதியிலக்கணமும் தொகுத்துக் கூறல்</div>
+    <p>
+      ஒருவனோ டொருத்தி யொன்றென் றுரைத்திடு முலகமெல்லாம்<br>
+      வருமுறை வந்து நின்று போவது மாத லாலே<br>
+      தருபவ னொருவன் வேண்டுந் தான்முத லீறு மாகி<br>
+      மருவிடு மநாதி முத்த சித்துரு மன்னி நின்றே.
+    </p>
+    <div class="gloss">சேதனாசேதனப்பிரபஞ்சம் தோன்றி நின்று ஒடுங்குதலால், அதனைக் காரியப்படுத்தும் ஒரு கருத்தா வேண்டும். அக்கருத்தா நிமித்தகாரணனும் சங்காரகாரணனுமாய்ச், சத்திவடிவம் பொருந்தி நின்று பிரபஞ்சத்தைக் காரியப்படுத்தும் இயல்புடையனும்.</div>
+  </div>
+  <div class="sec">
+    <div class="sec-head">
+      <span class="sec-num">01</span>
+      <h2>உண்மை முதலில், இலக்கணம் பின்</h2>
+    </div>
+    <p class="sec-note">இச்செய்யுள் இரண்டு கூறுடையது: முதற் கூறு பதி உண்டு என்பதை நிறுவுகிறது; இரண்டாவது அப்பதியின் இயல்பைச் சொல்கிறது. மூன்றாவது கிளை இச்செய்யுள் சூத்திரத்தில் நிற்கும் இடம்.</p>
+    <div class="map">
+      <div class="rootwrap">
+        <div class="root">
+          <div class="r-main">பதி</div>
+          <div class="r-sub">பாடல் 21 · உண்மை · இலக்கணம்</div>
+          <div class="r-sub2">உலகைத் தோற்றி நிறுத்தி ஒடுக்கும் கருத்தா</div>
+        </div>
+        <div class="stem"></div>
+        <div class="bus"></div>
+      </div>
+
+      <div class="cols">
+        <div class="branch b1">
+          <div class="bhead">
+            <span class="b-count">1 / 3</span>
+            <div class="b-name">பதியுண்மை</div>
+            <div class="b-eq">முதற் கூறு</div>
+            <div class="b-desc">உலகம் வந்து நின்று போவதால் தருபவன் ஒருவன் வேண்டும்.</div>
+          </div>
+          <div class="children">
+            <div class="node"><div class="card">
+              <div class="n-t">ஒருவனோடு ஒருத்தி ஒன்று</div>
+              <div class="n-s">அவன் · அவள் · அது</div>
+              <div class="n-d">அவன் என்றும் அவள் என்றும் அது என்றும் கூறப்படும் சேதனாசேதனப் பிரபஞ்சம் எல்லாம்.</div>
+              <div class="n-x">உலகம் — சடமும் சித்துமாகிய சேதனாசேதனப் பிரபஞ்சம்.</div>
+            </div></div>
+
+            <div class="node"><div class="card">
+              <div class="n-t">வருமுறை வந்து நின்று போவது</div>
+              <div class="n-s">தோற்றம் · நிலை · ஒடுக்கம்</div>
+              <div class="n-d">தோன்றும் முறையிலே தோன்றி நின்று ஒடுங்குதலும் உடைமையால்.</div>
+              <div class="n-x">வருமுறை — கன்மம் பக்குவமானவிடத்துச் சேதனப் பிரபஞ்சமும், சற்காரிய முறைப்படி அசேதனப் பிரபஞ்சமும் தோன்றும் முறைமை.</div>
+            </div></div>
+
+            <div class="node"><div class="card">
+              <div class="n-t">தருபவன் ஒருவன் வேண்டும்</div>
+              <div class="n-s">கருத்தா</div>
+              <div class="n-d">அவற்றைத் தோற்றுவித்து நிலைபெறுத்தி ஒடுக்கும் கருத்தா ஒருவன் வேண்டப்படும்.</div>
+              <div class="n-x">கடவுள் பிரத்தியட்சமாகக் காணப்படாமையாலும், ஆகமம் எல்லாச் சமயத்தவராலும் ஒத்துக்கொள்ளப்படாமையாலும், அனுமானத்தால் சாதிக்கப்படுகிறது.</div>
+            </div></div>
+
+          </div>
+        </div>
+
+        <div class="branch b2">
+          <div class="bhead">
+            <span class="b-count">2 / 3</span>
+            <div class="b-name">பதியிலக்கணம்</div>
+            <div class="b-eq">இரண்டாம் கூறு</div>
+            <div class="b-desc">அக்கருத்தா எத்தகையவன்.</div>
+          </div>
+          <div class="children">
+            <div class="node"><div class="card">
+              <div class="n-t">தான் முதல் ஈறும் ஆகி</div>
+              <div class="n-s">நிமித்தகாரணன் · சங்காரகாரணன்</div>
+              <div class="n-d">தனக்கொரு முதல்வனின்றித் தானே எவற்றிற்கும் நிமித்தகாரணனும் சங்காரகாரணனுமாய்.</div>
+              <div class="n-x">முதல் — நிமித்தகாரணன்; ஈறு — சங்காரகாரணன்; இரண்டும் ஆகுபெயர்.</div>
+            </div></div>
+
+            <div class="node"><div class="card">
+              <div class="n-t">அநாதி முத்த சித்துரு</div>
+              <div class="n-s">பராசத்தி</div>
+              <div class="n-d">இயல்பாகவே பாசம் நீங்கிய ஞானமாகிய சத்திவடிவத்தைப் பொருந்தி நின்று.</div>
+              <div class="n-x">அநாதிமுத்தசித்து — சுத்தஞானம், பராசத்தி. முத்த — விடப்பட்ட; சித்து — ஞானம்.</div>
+            </div></div>
+
+            <div class="node"><div class="card">
+              <div class="n-t">மருவிடும்</div>
+              <div class="n-s">காரியப்படுத்துதல்</div>
+              <div class="n-d">அவற்றைக் காரியப்படுத்தும் இயல்புடையன்.</div>
+              <div class="n-x">மருவுதல் — பொருந்தல்; மருவுவித்தல் — பொருத்துதல், காரியப்படுத்தல்.</div>
+            </div></div>
+
+          </div>
+        </div>
+
+        <div class="branch b3">
+          <div class="bhead">
+            <span class="b-count">3 / 3</span>
+            <div class="b-name">சூத்திரத்தில் இதன் இடம்</div>
+            <div class="b-eq">தொகுத்தல் · வகுத்தல்</div>
+            <div class="b-desc">இச்செய்யுள் தொகுத்துச் சொல்வதைப் பின்வரும் செய்யுள்கள் வகுத்துச் சொல்கின்றன.</div>
+          </div>
+          <div class="children">
+            <div class="node"><div class="card">
+              <div class="n-t">முதற் சூத்திரம்</div>
+              <div class="n-s">பதியுண்மையும் பதியிலக்கணமும்</div>
+              <div class="n-d">பிரபஞ்சத்தைத் தோற்றி ஒடுக்குதற்குப் பதி ஒருவன் வேண்டப்படும் என்பதும், அப்பதி அதனைத் தோற்றி ஒடுக்கும் முறைமையும் கூறுகிறது.</div>
+            </div></div>
+
+            <div class="node"><div class="card">
+              <div class="n-t">அசேதனப் பிரபஞ்சம்</div>
+              <div class="n-s">செய். 22 – 51</div>
+              <div class="n-d">அசேதனப் பிரபஞ்சம் தோன்றி ஒடுங்கும் என்பது முப்பது செய்யுள்களால் கூறப்படும்.</div>
+            </div></div>
+
+            <div class="node"><div class="card">
+              <div class="n-t">சேதனப் பிரபஞ்சம்</div>
+              <div class="n-s">செய். 52</div>
+              <div class="n-d">உயிர்கள் தோன்றி ஒடுங்கும் என்பது 52-ம் செய்யுளால் கூறப்படும்.</div>
+            </div></div>
+
+            <div class="node"><div class="card">
+              <div class="n-t">முதலதிகரணம்</div>
+              <div class="n-s">பதியுண்மைக்குப் பிரமாணம்</div>
+              <div class="n-d">முதற் கூறு ஓர் அதிகரணமாக விரிகிறது; உலோகாயதர் முதலிய நான்கு மதங்கள் மறுக்கப்படுகின்றன. அட்டவணை கீழே.</div>
+            </div></div>
+
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <div class="flow">
+      <div class="fcell f1">
+        <div class="f-top">அடி 1</div>
+        <div class="f-main">உலகம் மூன்று</div>
+        <div class="f-note">அவன், அவள், அது — சேதனாசேதனப் பிரபஞ்சம்.</div>
+      </div>
+      <div class="fcell f2">
+        <div class="f-top">அடி 2 – 3</div>
+        <div class="f-main">ஆகவே ஒருவன்</div>
+        <div class="f-note">வந்து நின்று போவதால் தருபவன் வேண்டும்.</div>
+      </div>
+      <div class="fcell f3">
+        <div class="f-top">அடி 3 – 4</div>
+        <div class="f-main">அவன் இயல்பு</div>
+        <div class="f-note">முதலும் ஈறும், அநாதிமுத்த சித்துரு.</div>
+      </div>
+    </div>
+  </div>
+  <div class="sec">
+    <div class="sec-head">
+      <span class="sec-num">02</span>
+      <h2>உரையாசிரியரின் குறிப்புகளும், முதலதிகரணமும்</h2>
+    </div>
+    <p class="sec-note">இடது புறம் அவருடைய ஏழு குறிப்புகளின் சுருக்கம்; வலது புறம் முதலதிகரணத்தில் மறுக்கப்படும் நான்கு மதங்கள்.</p>
+    <div class="panels">
+      <div class="panel">
+        <h3>குறிப்புகள்</h3>
+        <p class="p-note">திரு. மு. திருவிளங்கம், பக். 57–58</p>
+        <ol class="kuripu">
+          <li><b>உலகம்</b> — சடமும் சித்துமாகிய சேதனாசேதனப் பிரபஞ்சம். அசேதனம் தோன்றி ஒடுங்குவது 22 – 51, சேதனம் 52-ம் செய்யுள்.</li>
+          <li><b>வருமுறை</b> — கன்மம் பக்குவமானவிடத்துச் சேதனப்பிரபஞ்சமும், சற்காரிய முறைப்படி அசேதனப்பிரபஞ்சமும் தோன்றும் முறைமை. சற்காரியமுறை — உள்ள பொருளினின்று உள்ளதாகிய காரியம் தோன்றும் முறைமை. சத் — உள்பொருள்.</li>
+          <li><b>வந்து நின்று போவதும்</b> — உம்மை எண்ணும்மை.</li>
+          <li><b>தருபவன் ஒருவன் வேண்டும்</b> — கடவுள் பிரத்தியட்சமாகக் காணப்படாத பொருளாயிருத்தலாலும், ஆகமம் எல்லாச் சமயத்தவராலும் ஒத்துக்கொள்ளப்படாதிருத்தலாலும், அவ்விரண்டையும் ஒழித்து அனுமானப் பிரமாணத்தால் கடவுள் ஒருவர் உண்டென்பது இச்சூத்திரத்திற் சாதிக்கப்படுகின்றது (செ. 37 பார்).</li>
+          <li><b>தான் முதல் ஈறும் ஆகி</b> — முதல் — நிமித்தகாரணன்; ஈறு — சங்காரகாரணன்; ஆகுபெயர் (செ. 38, 52 பார்).</li>
+          <li><b>அநாதிமுத்தசித்து</b> — சுத்தஞானம், பராசத்தி.</li>
+          <li><b>மருவிடும்</b> — மருவுதல் — பொருந்தல்; மருவுவித்தல் — பொருத்துதல், காரியப்படுத்தல்.</li>
+        </ol>
+      </div>
+      <div class="panel">
+        <h3>முதலதிகரணம்</h3>
+        <p class="p-note">பக். 59 – 60 · பதியுண்மைக்குப் பிரமாணம்</p>
+        <table>
+          <thead><tr><th>மதம் பற்றி ஆசங்கித்து</th><th>சாதிப்பது · செய்யுள்</th></tr></thead>
+          <tbody>
+            <tr><td class="term">உலோகாயதர்</td><td class="mean">உலகம் தோற்றநாசங்களையுடையது; தருபவன் ஒருவன் வேண்டும் (22 – 24)</td></tr>
+            <tr><td class="term">சௌத்திராந்திகர்</td><td class="mean">சற்காரிய முறைப்படி தோன்றி ஒடுங்கும்; தருபவன் வேண்டும் (25 – 27)</td></tr>
+            <tr><td class="term">மீமாஞ்சகர்</td><td class="mean">தோற்றநாசங்களுக்குக் காலம் துணைக்காரணம்; நிமித்தகாரணன் வேறு (28 – 30)</td></tr>
+            <tr><td class="term">தார்க்கிகர்</td><td class="mean">உலகிற்கு முதற்காரணம் மாயை; தோற்ற ஒடுக்கங்கள் கருத்தாவினால் (31 – 37)</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+  <div class="insight">
+    <div class="i-tag">என் புரிதல்</div>
+    <div class="i-q">மையப் பகுதி அளவையோடு தொடங்குகிறது</div>
+    <p>இருபது பாடல்கள் அளவையைக் கற்பித்தன. இந்தப் பாடல் அவற்றை உடனே பயன்படுத்துகிறது: கடவுள் காட்சிக்கு வருவதில்லை, ஆகமம் எல்லோராலும் ஏற்கப்படுவதில்லை — ஆகவே <strong>அனுமானம்</strong>. அறிமுகப் பகுதி ஏன் அவ்வளவு நீண்டது என்பதற்கு இதுவே விடை.</p>
+    <p>வாதத்தின் வடிவம் பாடல் 14-இல் கண்டதே: உலகம் வந்து நின்று போகிறது — அது காணப்படுவது; ஆகவே தருபவன் ஒருவன் உண்டு — அது துணியப்படுவது. உரையாசிரியர் இதை ஒரு வரியோடு விடவில்லை; <strong>அடுத்த முப்பது செய்யுள்கள்</strong> இதை வகுத்துச் சொல்லும் என்கிறார்.</p>
+    <p>உண்மை முதல், இலக்கணம் பின் — இருப்பதை நிறுவிய பின்னே அது எத்தகையது என்று பேசுவது. இந்தப் பாடல் ஒரு <strong>தொகுப்பு</strong>; விரிவு பின்னால்.</p>
+  </div>
+  <footer><b>மூலம்:</b> சிவஞான சித்தியார் சுபக்கம், உரை திரு. மு. திருவிளங்கம். யாழ்ப்பாணம் கூட்டுறவுத் தமிழ் நூற்பதிப்பு விற்பனைக் கழகம், 1971 (இரண்டாம் பதிப்பு), பக். 57–59. பாடல் வரிகள் ஸ்கேனோடு சொல் வாரியாக ஒப்பிடப்பட்டுள்ளன.</footer>
+<nav class="sd-nav">
+  <a class="sd-nav-link" href="../15-moovagai-pakkam/index.html">
+    <span class="sd-nav-k">← முன் பாடல் · 15</span>
+    <span class="sd-nav-t">மூவகைப் பக்கங்கள்</span>
+  </a>
+  <a class="sd-nav-link sd-nav-link--up" href="../index.html#songs">
+    <span class="sd-nav-k">↑ மேலே</span>
+    <span class="sd-nav-t">பாடல்களின் பட்டியல்</span>
+  </a>
+  <a class="sd-nav-link sd-nav-link--next" href="../22-ulagam-thotra-naasam/index.html">
+    <span class="sd-nav-k">அடுத்த பாடல் · 22 →</span>
+    <span class="sd-nav-t">உலகம் தோற்றநாசங்களையுடையது</span>
+  </a>
+</nav>
+</div>
+</body>
+</html>

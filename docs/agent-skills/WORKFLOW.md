@@ -82,13 +82,13 @@ There is no guide for this step yet. These are the steps as agreed so far.
 
 This repository is public, so business proposals and firm details stay out of it.
 
-## Where things stand (2026-11-20)
+## Where things stand (2026-11-20, after batch 2)
 
 | Step | Done | Next |
 |---|---|---|
-| 1 | Mind maps for songs 1–14 · 135 words in the master list, 134 confirmed | Songs 15, 21, 22, 23 |
-| 2 | Classes 1–17 corrected for key terms | Classes 18–23 |
-| 3 | Pages for songs 1–12; song 12 now uses classes 13, 15, 16, 17 | Songs 13, 14, 21 |
+| 1 | Mind maps for songs 1–15 and 21–23 · 152 words in the master list, 151 confirmed | Songs 16 onward, as classes reach them |
+| 2 | Classes 1–23 corrected for key terms, mapped as அறிமுகம் or மையம் | Classes 24 and 25 |
+| 3 | Pages for songs 1–12; song 12 uses classes 13, 15, 16, 17 | Songs 13, 14, 21 |
 | 4 | 24 seeds · three private business notes, the third from seed 8B | Your own seed picks |
 
 Open items:
